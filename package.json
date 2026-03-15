@@ -1,0 +1,20 @@
+{
+  "name": "duvu",
+  "version": "19.0.0",
+  "description": "DUVU — 범용 디자인 시스템 엔진. AI 에이전트와 사람 모두를 위한 디자인 토큰/프리셋/템플릿 CLI.",
+  "license": "MIT",
+  "author": "tinygem <cj@tinygem.ai>",
+  "bin": {
+    "duvu": "./bin/duvu.js"
+  },
+  "type": "module",
+  "keywords": ["design-system", "design-tokens", "css", "tailwind", "flutter", "swiftui", "unity", "ai-skill", "claude-code", "codex", "gemini"],
+  "files": ["bin/", "data/", "demo/", "skills/", "README.md"],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node bin/duvu.js",
+    "demo": "node bin/duvu.js demo"
+  }
+}

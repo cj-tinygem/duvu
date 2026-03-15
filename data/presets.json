@@ -1,0 +1,3871 @@
+{
+  "version": "19.0",
+  "color": [
+    {
+      "id": "toss",
+      "name": "Toss",
+      "cat": "brand",
+      "src": "#3182F6",
+      "radius": 16,
+      "dark": {
+        "bg": "#08080b",
+        "surface": "#111115",
+        "surface2": "#1b1b20",
+        "fg": "#eaeaec",
+        "fg2": "#848990",
+        "fg3": "#515458",
+        "accent": "#3182F6",
+        "accent-rgb": "49, 130, 246"
+      },
+      "light": {
+        "bg": "#f2f1ee",
+        "surface": "#ffffff",
+        "surface2": "#e8e7e4",
+        "fg": "#0e0f11",
+        "fg2": "#60656c",
+        "fg3": "#9a9da2",
+        "accent": "#3182F6",
+        "accent-rgb": "49, 130, 246"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "linear",
+      "name": "Linear",
+      "cat": "brand",
+      "src": "#5E6AD2",
+      "radius": 16,
+      "dark": {
+        "bg": "#0a0a0f",
+        "surface": "#12121a",
+        "surface2": "#1c1c26",
+        "fg": "#eaeaec",
+        "fg2": "#848590",
+        "fg3": "#515158",
+        "accent": "#5E6AD2",
+        "accent-rgb": "94, 106, 210"
+      },
+      "light": {
+        "bg": "#f8f8fc",
+        "surface": "#ffffff",
+        "surface2": "#ededf5",
+        "fg": "#0e0e11",
+        "fg2": "#60616c",
+        "fg3": "#9a9ba2",
+        "accent": "#5E6AD2",
+        "accent-rgb": "94, 106, 210"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "cat": "brand",
+      "src": "#635BFF",
+      "radius": 16,
+      "dark": {
+        "bg": "#0a0a14",
+        "surface": "#13132a",
+        "surface2": "#1c1c38",
+        "fg": "#e8e6f0",
+        "fg2": "#9590b0",
+        "fg3": "#5a5578",
+        "accent": "#635BFF",
+        "accent-rgb": "99, 91, 255"
+      },
+      "light": {
+        "bg": "#f6f9fc",
+        "surface": "#ffffff",
+        "surface2": "#eef2f7",
+        "fg": "#0a2540",
+        "fg2": "#425466",
+        "fg3": "#8898aa",
+        "accent": "#635BFF",
+        "accent-rgb": "99, 91, 255"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "apple",
+      "name": "Apple",
+      "cat": "brand",
+      "src": "#007AFF",
+      "radius": 16,
+      "dark": {
+        "bg": "#000000",
+        "surface": "#1c1c1e",
+        "surface2": "#2c2c2e",
+        "fg": "#eaebec",
+        "fg2": "#848990",
+        "fg3": "#515458",
+        "accent": "#007AFF",
+        "accent-rgb": "0, 122, 255"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#f2f2f7",
+        "surface2": "#e5e5ea",
+        "fg": "#0e0f11",
+        "fg2": "#60666c",
+        "fg3": "#9a9ea2",
+        "accent": "#007AFF",
+        "accent-rgb": "0, 122, 255"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "notion",
+      "name": "Notion",
+      "cat": "brand",
+      "src": "#2383E2",
+      "radius": 8,
+      "dark": {
+        "bg": "#191919",
+        "surface": "#202020",
+        "surface2": "#252525",
+        "fg": "#eaebec",
+        "fg2": "#848a90",
+        "fg3": "#515458",
+        "accent": "#2383E2",
+        "accent-rgb": "35, 131, 226"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#ffffff",
+        "surface2": "#f7f6f3",
+        "fg": "#0e0f11",
+        "fg2": "#60666c",
+        "fg3": "#9a9ea2",
+        "accent": "#2383E2",
+        "accent-rgb": "35, 131, 226"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "cat": "brand",
+      "src": "#238636",
+      "radius": 8,
+      "dark": {
+        "bg": "#0d1117",
+        "surface": "#161b22",
+        "surface2": "#21262d",
+        "fg": "#eaecea",
+        "fg2": "#849086",
+        "fg3": "#515852",
+        "accent": "#238636",
+        "accent-rgb": "35, 134, 54"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#f6f8fa",
+        "surface2": "#eaeef2",
+        "fg": "#0e110f",
+        "fg2": "#606c62",
+        "fg3": "#9aa29c",
+        "accent": "#238636",
+        "accent-rgb": "35, 134, 54"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "cat": "brand",
+      "src": "#1DB954",
+      "radius": 24,
+      "dark": {
+        "bg": "#121212",
+        "surface": "#181818",
+        "surface2": "#282828",
+        "fg": "#eaecea",
+        "fg2": "#849088",
+        "fg3": "#515853",
+        "accent": "#1DB954",
+        "accent-rgb": "29, 185, 84"
+      },
+      "light": {
+        "bg": "#f8f8f8",
+        "surface": "#ffffff",
+        "surface2": "#f0f0f0",
+        "fg": "#0e110f",
+        "fg2": "#606c64",
+        "fg3": "#9aa29d",
+        "accent": "#1aa54b",
+        "accent-rgb": "26, 165, 75"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "supabase",
+      "name": "Supabase",
+      "cat": "brand",
+      "src": "#3ECF8E",
+      "radius": 8,
+      "dark": {
+        "bg": "#171717",
+        "surface": "#1e1e1e",
+        "surface2": "#262626",
+        "fg": "#eaeceb",
+        "fg2": "#84908a",
+        "fg3": "#515854",
+        "accent": "#3ECF8E",
+        "accent-rgb": "62, 207, 142"
+      },
+      "light": {
+        "bg": "#f8f9fa",
+        "surface": "#ffffff",
+        "surface2": "#f0f2f4",
+        "fg": "#0e110f",
+        "fg2": "#606c67",
+        "fg3": "#9aa29f",
+        "accent": "#28a06a",
+        "accent-rgb": "40, 160, 106"
+      },
+      "btnText": "#000000"
+    },
+    {
+      "id": "figma",
+      "name": "Figma",
+      "cat": "brand",
+      "src": "#A259FF",
+      "radius": 12,
+      "dark": {
+        "bg": "#0e0e10",
+        "surface": "#18181c",
+        "surface2": "#222228",
+        "fg": "#eaeaec",
+        "fg2": "#898490",
+        "fg3": "#545158",
+        "accent": "#A259FF",
+        "accent-rgb": "162, 89, 255"
+      },
+      "light": {
+        "bg": "#f5f5f5",
+        "surface": "#ffffff",
+        "surface2": "#eeeeee",
+        "fg": "#0f0e11",
+        "fg2": "#65606c",
+        "fg3": "#9e9aa2",
+        "accent": "#A259FF",
+        "accent-rgb": "162, 89, 255"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "cat": "brand",
+      "src": "#FF385C",
+      "radius": 16,
+      "dark": {
+        "bg": "#0f0f0f",
+        "surface": "#1a1a1a",
+        "surface2": "#242424",
+        "fg": "#eceaea",
+        "fg2": "#908486",
+        "fg3": "#585152",
+        "accent": "#FF385C",
+        "accent-rgb": "255, 56, 92"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#ffffff",
+        "surface2": "#f7f7f7",
+        "fg": "#110e0f",
+        "fg2": "#6c6062",
+        "fg3": "#a29a9c",
+        "accent": "#FF385C",
+        "accent-rgb": "255, 56, 92"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "slack",
+      "name": "Slack",
+      "cat": "brand",
+      "src": "#4A154B",
+      "radius": 8,
+      "dark": {
+        "bg": "#1a1d21",
+        "surface": "#222529",
+        "surface2": "#2b2d31",
+        "fg": "#d1d2d3",
+        "fg2": "#868789",
+        "fg3": "#56575a",
+        "accent": "#ae31b1",
+        "accent-rgb": "174, 49, 177"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#f8f8f8",
+        "surface2": "#f0f0f0",
+        "fg": "#1d1c1d",
+        "fg2": "#616061",
+        "fg3": "#969696",
+        "accent": "#4A154B",
+        "accent-rgb": "74, 21, 75"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "cat": "brand",
+      "src": "#0070F3",
+      "radius": 8,
+      "dark": {
+        "bg": "#000000",
+        "surface": "#111111",
+        "surface2": "#1a1a1a",
+        "fg": "#eaebec",
+        "fg2": "#848990",
+        "fg3": "#515458",
+        "accent": "#0070F3",
+        "accent-rgb": "0, 112, 243"
+      },
+      "light": {
+        "bg": "#ffffff",
+        "surface": "#fafafa",
+        "surface2": "#f5f5f5",
+        "fg": "#0e0f11",
+        "fg2": "#60666c",
+        "fg3": "#9a9ea2",
+        "accent": "#0070F3",
+        "accent-rgb": "0, 112, 243"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "sunny-beach",
+      "name": "Sunny Beach",
+      "cat": "curated",
+      "src": "#2A9D8F",
+      "dark": {
+        "bg": "#0a1210",
+        "surface": "#12201c",
+        "surface2": "#1a2e28",
+        "fg": "#eaeceb",
+        "fg2": "#84908e",
+        "fg3": "#515857",
+        "accent": "#2A9D8F",
+        "accent-rgb": "42, 157, 143"
+      },
+      "light": {
+        "bg": "#f5f9f8",
+        "surface": "#ffffff",
+        "surface2": "#e8f2f0",
+        "fg": "#0e1110",
+        "fg2": "#606c6b",
+        "fg3": "#9aa2a1",
+        "accent": "#2A9D8F",
+        "accent-rgb": "42, 157, 143"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "olive-garden",
+      "name": "Olive Garden",
+      "cat": "curated",
+      "src": "#606C38",
+      "dark": {
+        "bg": "#0c0e07",
+        "surface": "#161a0e",
+        "surface2": "#202616",
+        "fg": "#ebecea",
+        "fg2": "#8d9084",
+        "fg3": "#565851",
+        "accent": "#606C38",
+        "accent-rgb": "96, 108, 56"
+      },
+      "light": {
+        "bg": "#fafaf0",
+        "surface": "#ffffff",
+        "surface2": "#f0f0e4",
+        "fg": "#10110e",
+        "fg2": "#696c60",
+        "fg3": "#a0a29a",
+        "accent": "#606C38",
+        "accent-rgb": "96, 108, 56"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "summer-ocean",
+      "name": "Summer Ocean",
+      "cat": "curated",
+      "src": "#457B9D",
+      "dark": {
+        "bg": "#080d12",
+        "surface": "#101820",
+        "surface2": "#18242e",
+        "fg": "#eaebec",
+        "fg2": "#848b90",
+        "fg3": "#515558",
+        "accent": "#457B9D",
+        "accent-rgb": "69, 123, 157"
+      },
+      "light": {
+        "bg": "#f4f8fb",
+        "surface": "#ffffff",
+        "surface2": "#e8f0f6",
+        "fg": "#0e1011",
+        "fg2": "#60676c",
+        "fg3": "#9a9fa2",
+        "accent": "#457B9D",
+        "accent-rgb": "69, 123, 157"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "black-gold",
+      "name": "Black & Gold",
+      "cat": "curated",
+      "src": "#FCA311",
+      "dark": {
+        "bg": "#080808",
+        "surface": "#121212",
+        "surface2": "#1c1c1c",
+        "fg": "#ecebea",
+        "fg2": "#908b84",
+        "fg3": "#585551",
+        "accent": "#FCA311",
+        "accent-rgb": "252, 163, 17"
+      },
+      "light": {
+        "bg": "#fdfbf5",
+        "surface": "#ffffff",
+        "surface2": "#f5f0e0",
+        "fg": "#11100e",
+        "fg2": "#6c6760",
+        "fg3": "#a29f9a",
+        "accent": "#cd8003",
+        "accent-rgb": "205, 128, 3"
+      },
+      "btnText": "#000000"
+    },
+    {
+      "id": "ocean-pearl",
+      "name": "Ocean Pearl",
+      "cat": "curated",
+      "src": "#006D77",
+      "dark": {
+        "bg": "#060e10",
+        "surface": "#0e1a1c",
+        "surface2": "#162628",
+        "fg": "#eaebec",
+        "fg2": "#848f90",
+        "fg3": "#515758",
+        "accent": "#006D77",
+        "accent-rgb": "0, 109, 119"
+      },
+      "light": {
+        "bg": "#f3fafa",
+        "surface": "#ffffff",
+        "surface2": "#e6f4f4",
+        "fg": "#0e1011",
+        "fg2": "#606b6c",
+        "fg3": "#9aa1a2",
+        "accent": "#006D77",
+        "accent-rgb": "0, 109, 119"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "earthy-forest",
+      "name": "Earthy Forest",
+      "cat": "curated",
+      "src": "#588157",
+      "dark": {
+        "bg": "#0a0e0a",
+        "surface": "#141c14",
+        "surface2": "#1e281e",
+        "fg": "#eaecea",
+        "fg2": "#849084",
+        "fg3": "#515851",
+        "accent": "#588157",
+        "accent-rgb": "88, 129, 87"
+      },
+      "light": {
+        "bg": "#f6f9f4",
+        "surface": "#ffffff",
+        "surface2": "#e8f0e6",
+        "fg": "#0e110e",
+        "fg2": "#606c60",
+        "fg3": "#9aa29a",
+        "accent": "#588157",
+        "accent-rgb": "88, 129, 87"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "arctic-blue",
+      "name": "Arctic Blue",
+      "cat": "curated",
+      "src": "#4A8CAE",
+      "dark": {
+        "bg": "#080c10",
+        "surface": "#10181e",
+        "surface2": "#18242c",
+        "fg": "#eaebec",
+        "fg2": "#848c90",
+        "fg3": "#515558",
+        "accent": "#4A8CAE",
+        "accent-rgb": "74, 140, 174"
+      },
+      "light": {
+        "bg": "#f4f8fb",
+        "surface": "#ffffff",
+        "surface2": "#e6f0f6",
+        "fg": "#0e1011",
+        "fg2": "#60686c",
+        "fg3": "#9a9fa2",
+        "accent": "#4A8CAE",
+        "accent-rgb": "74, 140, 174"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "warm-coral",
+      "name": "Warm Coral",
+      "cat": "curated",
+      "src": "#D4594A",
+      "dark": {
+        "bg": "#100a08",
+        "surface": "#1c1210",
+        "surface2": "#281c18",
+        "fg": "#eceaea",
+        "fg2": "#908584",
+        "fg3": "#585251",
+        "accent": "#D4594A",
+        "accent-rgb": "212, 89, 74"
+      },
+      "light": {
+        "bg": "#fdf7f6",
+        "surface": "#ffffff",
+        "surface2": "#f8ece8",
+        "fg": "#110e0e",
+        "fg2": "#6c6160",
+        "fg3": "#a29b9a",
+        "accent": "#D4594A",
+        "accent-rgb": "212, 89, 74"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "indigo-bloom",
+      "name": "Indigo Bloom",
+      "cat": "curated",
+      "src": "#5B5FE0",
+      "dark": {
+        "bg": "#0a0a12",
+        "surface": "#12121e",
+        "surface2": "#1c1c2a",
+        "fg": "#eaeaec",
+        "fg2": "#848490",
+        "fg3": "#515158",
+        "accent": "#5B5FE0",
+        "accent-rgb": "91, 95, 224"
+      },
+      "light": {
+        "bg": "#f6f6fc",
+        "surface": "#ffffff",
+        "surface2": "#ecebf6",
+        "fg": "#0e0e11",
+        "fg2": "#60606c",
+        "fg3": "#9a9aa2",
+        "accent": "#5B5FE0",
+        "accent-rgb": "91, 95, 224"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "ocean",
+      "name": "Ocean",
+      "cat": "color",
+      "src": "#0077B6",
+      "dark": {
+        "bg": "#060c12",
+        "surface": "#0e1820",
+        "surface2": "#16242e",
+        "fg": "#eaebec",
+        "fg2": "#848c90",
+        "fg3": "#515558",
+        "accent": "#0077B6",
+        "accent-rgb": "0, 119, 182"
+      },
+      "light": {
+        "bg": "#f2f8fc",
+        "surface": "#ffffff",
+        "surface2": "#e4f0f8",
+        "fg": "#0e1011",
+        "fg2": "#60686c",
+        "fg3": "#9a9fa2",
+        "accent": "#0077B6",
+        "accent-rgb": "0, 119, 182"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "sunset",
+      "name": "Sunset",
+      "cat": "color",
+      "src": "#C06030",
+      "dark": {
+        "bg": "#100c08",
+        "surface": "#1c1610",
+        "surface2": "#282018",
+        "fg": "#eceaea",
+        "fg2": "#908884",
+        "fg3": "#585351",
+        "accent": "#C06030",
+        "accent-rgb": "192, 96, 48"
+      },
+      "light": {
+        "bg": "#fdf8f4",
+        "surface": "#ffffff",
+        "surface2": "#f6ece4",
+        "fg": "#110f0e",
+        "fg2": "#6c6460",
+        "fg3": "#a29d9a",
+        "accent": "#C06030",
+        "accent-rgb": "192, 96, 48"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "forest",
+      "name": "Forest",
+      "cat": "color",
+      "src": "#2D6A4F",
+      "dark": {
+        "bg": "#080e0c",
+        "surface": "#101c18",
+        "surface2": "#182a24",
+        "fg": "#eaeceb",
+        "fg2": "#84908a",
+        "fg3": "#515855",
+        "accent": "#2D6A4F",
+        "accent-rgb": "45, 106, 79"
+      },
+      "light": {
+        "bg": "#f4faf6",
+        "surface": "#ffffff",
+        "surface2": "#e6f2ec",
+        "fg": "#0e110f",
+        "fg2": "#606c67",
+        "fg3": "#9aa29f",
+        "accent": "#2D6A4F",
+        "accent-rgb": "45, 106, 79"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "royal",
+      "name": "Royal",
+      "cat": "color",
+      "src": "#7C3AED",
+      "dark": {
+        "bg": "#0c0810",
+        "surface": "#18101e",
+        "surface2": "#24182c",
+        "fg": "#eaeaec",
+        "fg2": "#888490",
+        "fg3": "#535158",
+        "accent": "#7C3AED",
+        "accent-rgb": "124, 58, 237"
+      },
+      "light": {
+        "bg": "#f8f4fe",
+        "surface": "#ffffff",
+        "surface2": "#efe8fa",
+        "fg": "#0f0e11",
+        "fg2": "#64606c",
+        "fg3": "#9d9aa2",
+        "accent": "#7C3AED",
+        "accent-rgb": "124, 58, 237"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "midnight",
+      "name": "Midnight",
+      "cat": "color",
+      "src": "#4A7FB5",
+      "dark": {
+        "bg": "#080c12",
+        "surface": "#101820",
+        "surface2": "#18242e",
+        "fg": "#eaebec",
+        "fg2": "#848a90",
+        "fg3": "#515458",
+        "accent": "#4A7FB5",
+        "accent-rgb": "74, 127, 181"
+      },
+      "light": {
+        "bg": "#f4f7fc",
+        "surface": "#ffffff",
+        "surface2": "#e6eef6",
+        "fg": "#0e0f11",
+        "fg2": "#60666c",
+        "fg3": "#9a9ea2",
+        "accent": "#4A7FB5",
+        "accent-rgb": "74, 127, 181"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "lavender",
+      "name": "Lavender",
+      "cat": "color",
+      "src": "#7C6FA0",
+      "dark": {
+        "bg": "#0c0a10",
+        "surface": "#18141e",
+        "surface2": "#241e2c",
+        "fg": "#eaeaec",
+        "fg2": "#878490",
+        "fg3": "#535158",
+        "accent": "#7C6FA0",
+        "accent-rgb": "124, 111, 160"
+      },
+      "light": {
+        "bg": "#f8f6fc",
+        "surface": "#ffffff",
+        "surface2": "#eeecf4",
+        "fg": "#0f0e11",
+        "fg2": "#63606c",
+        "fg3": "#9c9aa2",
+        "accent": "#7C6FA0",
+        "accent-rgb": "124, 111, 160"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "earth",
+      "name": "Earth",
+      "cat": "color",
+      "src": "#8B6E4F",
+      "dark": {
+        "bg": "#100e0a",
+        "surface": "#1c1810",
+        "surface2": "#282218",
+        "fg": "#ecebea",
+        "fg2": "#908a84",
+        "fg3": "#585451",
+        "accent": "#8B6E4F",
+        "accent-rgb": "139, 110, 79"
+      },
+      "light": {
+        "bg": "#faf8f4",
+        "surface": "#ffffff",
+        "surface2": "#f2ece4",
+        "fg": "#110f0e",
+        "fg2": "#6c6660",
+        "fg3": "#a29e9a",
+        "accent": "#8B6E4F",
+        "accent-rgb": "139, 110, 79"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "rose",
+      "name": "Rose",
+      "cat": "color",
+      "src": "#D4547A",
+      "dark": {
+        "bg": "#100a0c",
+        "surface": "#1c1218",
+        "surface2": "#281c24",
+        "fg": "#eceaea",
+        "fg2": "#908487",
+        "fg3": "#585153",
+        "accent": "#D4547A",
+        "accent-rgb": "212, 84, 122"
+      },
+      "light": {
+        "bg": "#fdf6f8",
+        "surface": "#ffffff",
+        "surface2": "#f8e8ee",
+        "fg": "#110e0f",
+        "fg2": "#6c6064",
+        "fg3": "#a29a9d",
+        "accent": "#D4547A",
+        "accent-rgb": "212, 84, 122"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "beach-teal",
+      "name": "Beach Teal",
+      "cat": "popular",
+      "src": "#264653",
+      "dark": {
+        "bg": "#070b0d",
+        "surface": "#0f1618",
+        "surface2": "#172024",
+        "fg": "#eaebec",
+        "fg2": "#848c90",
+        "fg3": "#515658",
+        "accent": "#376578",
+        "accent-rgb": "55, 101, 120"
+      },
+      "light": {
+        "bg": "#f4f7f8",
+        "surface": "#ffffff",
+        "surface2": "#e8eff2",
+        "fg": "#0e1011",
+        "fg2": "#60696c",
+        "fg3": "#9aa0a2",
+        "accent": "#264653",
+        "accent-rgb": "38, 70, 83"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "warm-amber",
+      "name": "Warm Amber",
+      "cat": "popular",
+      "src": "#F4A261",
+      "dark": {
+        "bg": "#100c06",
+        "surface": "#1c160e",
+        "surface2": "#282016",
+        "fg": "#eceaea",
+        "fg2": "#908984",
+        "fg3": "#585451",
+        "accent": "#F4A261",
+        "accent-rgb": "244, 162, 97"
+      },
+      "light": {
+        "bg": "#fefaf4",
+        "surface": "#ffffff",
+        "surface2": "#f8f0e4",
+        "fg": "#110f0e",
+        "fg2": "#6c6560",
+        "fg3": "#a29e9a",
+        "accent": "#e26d10",
+        "accent-rgb": "226, 109, 16"
+      },
+      "btnText": "#000000"
+    },
+    {
+      "id": "coral-red",
+      "name": "Coral Red",
+      "cat": "popular",
+      "src": "#E76F51",
+      "dark": {
+        "bg": "#100a08",
+        "surface": "#1c1410",
+        "surface2": "#281e18",
+        "fg": "#eceaea",
+        "fg2": "#908684",
+        "fg3": "#585251",
+        "accent": "#E76F51",
+        "accent-rgb": "231, 111, 81"
+      },
+      "light": {
+        "bg": "#fdf6f4",
+        "surface": "#ffffff",
+        "surface2": "#f8ece8",
+        "fg": "#110f0e",
+        "fg2": "#6c6260",
+        "fg3": "#a29c9a",
+        "accent": "#e6694a",
+        "accent-rgb": "230, 105, 74"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "sage-green",
+      "name": "Sage Green",
+      "cat": "popular",
+      "src": "#84A98C",
+      "dark": {
+        "bg": "#0a0e0c",
+        "surface": "#141c18",
+        "surface2": "#1e2822",
+        "fg": "#eaecea",
+        "fg2": "#849086",
+        "fg3": "#515852",
+        "accent": "#84A98C",
+        "accent-rgb": "132, 169, 140"
+      },
+      "light": {
+        "bg": "#f6faf6",
+        "surface": "#ffffff",
+        "surface2": "#e8f2ea",
+        "fg": "#0e110f",
+        "fg2": "#606c63",
+        "fg3": "#9aa29c",
+        "accent": "#6d9977",
+        "accent-rgb": "109, 153, 119"
+      },
+      "btnText": "#000000"
+    },
+    {
+      "id": "navy-depth",
+      "name": "Navy Depth",
+      "cat": "popular",
+      "src": "#1D3557",
+      "dark": {
+        "bg": "#060810",
+        "surface": "#0e1220",
+        "surface2": "#161c2e",
+        "fg": "#eaeaec",
+        "fg2": "#848990",
+        "fg3": "#515458",
+        "accent": "#345f9c",
+        "accent-rgb": "52, 95, 156"
+      },
+      "light": {
+        "bg": "#f4f6fb",
+        "surface": "#ffffff",
+        "surface2": "#e6ecf6",
+        "fg": "#0e0f11",
+        "fg2": "#60656c",
+        "fg3": "#9a9da2",
+        "accent": "#1D3557",
+        "accent-rgb": "29, 53, 87"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "sky-blue",
+      "name": "Sky Blue",
+      "cat": "popular",
+      "src": "#219EBC",
+      "dark": {
+        "bg": "#060e12",
+        "surface": "#0e1a20",
+        "surface2": "#16262e",
+        "fg": "#eaebec",
+        "fg2": "#848d90",
+        "fg3": "#515658",
+        "accent": "#219EBC",
+        "accent-rgb": "33, 158, 188"
+      },
+      "light": {
+        "bg": "#f2f9fb",
+        "surface": "#ffffff",
+        "surface2": "#e4f2f6",
+        "fg": "#0e1011",
+        "fg2": "#606a6c",
+        "fg3": "#9aa0a2",
+        "accent": "#2099b5",
+        "accent-rgb": "32, 153, 181"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "mauve-rose",
+      "name": "Mauve Rose",
+      "cat": "popular",
+      "src": "#944454",
+      "dark": {
+        "bg": "#100a0c",
+        "surface": "#1c1218",
+        "surface2": "#281a22",
+        "fg": "#eceaea",
+        "fg2": "#908486",
+        "fg3": "#585152",
+        "accent": "#944454",
+        "accent-rgb": "148, 68, 84"
+      },
+      "light": {
+        "bg": "#faf6f6",
+        "surface": "#ffffff",
+        "surface2": "#f4eaec",
+        "fg": "#110e0f",
+        "fg2": "#6c6062",
+        "fg3": "#a29a9c",
+        "accent": "#944454",
+        "accent-rgb": "148, 68, 84"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "autumn-red",
+      "name": "Autumn Red",
+      "cat": "popular",
+      "src": "#D62828",
+      "dark": {
+        "bg": "#100808",
+        "surface": "#1c1010",
+        "surface2": "#281818",
+        "fg": "#eceaea",
+        "fg2": "#908484",
+        "fg3": "#585151",
+        "accent": "#D62828",
+        "accent-rgb": "214, 40, 40"
+      },
+      "light": {
+        "bg": "#fdf4f4",
+        "surface": "#ffffff",
+        "surface2": "#f8e8e8",
+        "fg": "#110e0e",
+        "fg2": "#6c6060",
+        "fg3": "#a29a9a",
+        "accent": "#D62828",
+        "accent-rgb": "214, 40, 40"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "golden-sun",
+      "name": "Golden Sun",
+      "cat": "popular",
+      "src": "#F77F00",
+      "dark": {
+        "bg": "#100c04",
+        "surface": "#1c160a",
+        "surface2": "#282012",
+        "fg": "#ecebea",
+        "fg2": "#908a84",
+        "fg3": "#585451",
+        "accent": "#F77F00",
+        "accent-rgb": "247, 127, 0"
+      },
+      "light": {
+        "bg": "#fefaf2",
+        "surface": "#ffffff",
+        "surface2": "#f8efe0",
+        "fg": "#110f0e",
+        "fg2": "#6c6660",
+        "fg3": "#a29e9a",
+        "accent": "#e07300",
+        "accent-rgb": "224, 115, 0"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "pine-forest",
+      "name": "Pine Forest",
+      "cat": "popular",
+      "src": "#52796F",
+      "dark": {
+        "bg": "#080e0c",
+        "surface": "#101c18",
+        "surface2": "#182824",
+        "fg": "#eaeceb",
+        "fg2": "#84908d",
+        "fg3": "#515856",
+        "accent": "#52796F",
+        "accent-rgb": "82, 121, 111"
+      },
+      "light": {
+        "bg": "#f4faf8",
+        "surface": "#ffffff",
+        "surface2": "#e6f2ee",
+        "fg": "#0e1110",
+        "fg2": "#606c69",
+        "fg3": "#9aa2a0",
+        "accent": "#52796F",
+        "accent-rgb": "82, 121, 111"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "electric-blue",
+      "name": "Electric Blue",
+      "cat": "popular",
+      "src": "#3A86FF",
+      "dark": {
+        "bg": "#080a14",
+        "surface": "#10142a",
+        "surface2": "#181e38",
+        "fg": "#eaeaec",
+        "fg2": "#848890",
+        "fg3": "#515358",
+        "accent": "#3A86FF",
+        "accent-rgb": "58, 134, 255"
+      },
+      "light": {
+        "bg": "#f4f6fe",
+        "surface": "#ffffff",
+        "surface2": "#e8eefa",
+        "fg": "#0e0f11",
+        "fg2": "#60656c",
+        "fg3": "#9a9da2",
+        "accent": "#3A86FF",
+        "accent-rgb": "58, 134, 255"
+      },
+      "btnText": "#ffffff"
+    },
+    {
+      "id": "deep-purple",
+      "name": "Deep Purple",
+      "cat": "popular",
+      "src": "#8338EC",
+      "dark": {
+        "bg": "#0c0810",
+        "surface": "#18101e",
+        "surface2": "#24182e",
+        "fg": "#eaeaec",
+        "fg2": "#898490",
+        "fg3": "#545158",
+        "accent": "#8338EC",
+        "accent-rgb": "131, 56, 236"
+      },
+      "light": {
+        "bg": "#f8f4fe",
+        "surface": "#ffffff",
+        "surface2": "#efe8fc",
+        "fg": "#0f0e11",
+        "fg2": "#65606c",
+        "fg3": "#9d9aa2",
+        "accent": "#8338EC",
+        "accent-rgb": "131, 56, 236"
+      },
+      "btnText": "#ffffff"
+    }
+  ],
+  "typography": [
+    {
+      "id": "pretendard",
+      "name": "Pretendard",
+      "family": "'Pretendard'",
+      "desc": "한국어 기본. 안전하고 깔끔.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css",
+      "mood": "안전, 깔끔, 한국어 기본",
+      "description": "한국어에 최적화된 네오 그로테스크. 본문과 UI 모두에 안정적.",
+      "fallback": "'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif"
+    },
+    {
+      "id": "inter",
+      "name": "Inter",
+      "family": "'Inter'",
+      "desc": "범용 UI. 중성적이고 가독성 높음.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
+      "mood": "중성적, 범용, 데이터 친화",
+      "description": "가변 폰트의 표준. 숫자/데이터 표현에 탁월.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "dm-sans",
+      "name": "DM Sans",
+      "family": "'DM Sans'",
+      "desc": "지오메트릭. 현대적이고 친근.",
+      "category": "sans-serif",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap",
+      "mood": "기하학적, 현대적, 친근",
+      "description": "둥근 기하학적 산세리프. 따뜻하면서 현대적인 톤.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "space-grotesk",
+      "name": "Space Grotesk",
+      "family": "'Space Grotesk'",
+      "desc": "테크 느낌. 코드와 잘 어울림.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
+      "mood": "기술적, 코드 친화",
+      "description": "모노스페이스에서 파생된 프로포셔널 산세리프. 개발자 도구에 최적.",
+      "fallback": "'SF Mono', 'Consolas', monospace"
+    },
+    {
+      "id": "satoshi",
+      "name": "Satoshi",
+      "family": "'Satoshi'",
+      "desc": "독특하면서 균형. Fontshare.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        700,
+        900
+      ],
+      "cdn": "https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap",
+      "mood": "독특, 균형, 크리에이티브",
+      "description": "Fontshare 대표 폰트. 독특한 글자꼴로 차별화된 느낌.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "general-sans",
+      "name": "General Sans",
+      "family": "'General Sans'",
+      "desc": "소프트 지오메트릭. 세련됨.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap",
+      "mood": "부드럽고 세련",
+      "description": "곡선이 부드러운 현대 산세리프. 럭셔리/프리미엄 톤에 적합.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "plus-jakarta",
+      "name": "Plus Jakarta",
+      "family": "'Plus Jakarta Sans'",
+      "desc": "따뜻하고 현대적.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700,
+        800
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap",
+      "mood": "따뜻하고 현대적",
+      "description": "인간적인 터치의 기하학적 산세리프. 커머스/소셜에 적합.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "outfit",
+      "name": "Outfit",
+      "family": "'Outfit'",
+      "desc": "둥글고 친근. 앱 UI에 적합.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap",
+      "mood": "둥글고 친근, 앱 UI",
+      "description": "라운드 산세리프. 웰니스/헬스/앱 UI에 자연스러운 톤.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "sora",
+      "name": "Sora",
+      "family": "'Sora'",
+      "desc": "기하학적 모던. 디지털 네이티브.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap",
+      "mood": "기하학적 모던, 디지털 네이티브",
+      "description": "정밀한 기하학적 구조. 핀테크/디지털 서비스에 최적.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    },
+    {
+      "id": "manrope",
+      "name": "Manrope",
+      "family": "'Manrope'",
+      "desc": "세미 모노스페이스. 기술적이면서 친근.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700,
+        800
+      ],
+      "cdn": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap",
+      "mood": "세미 모노, 기술적이면서 친근",
+      "description": "모노스페이스와 산세리프의 중간. 기술적이면서 접근성 좋음.",
+      "fallback": "'Helvetica Neue', Arial, sans-serif"
+    }
+  ],
+  "layout": [
+    {
+      "id": "comfortable",
+      "name": "Comfortable",
+      "density": 1,
+      "gap": 16,
+      "padding": 24,
+      "desc": "기본. 충분한 여백.",
+      "multiplier": 1,
+      "description": "기본 간격. 대부분의 UI에 적합한 균형잡힌 여백."
+    },
+    {
+      "id": "compact",
+      "name": "Compact",
+      "density": 0.75,
+      "gap": 12,
+      "padding": 16,
+      "desc": "밀도 높음. 대시보드에 적합.",
+      "multiplier": 0.75,
+      "description": "밀도 높은 레이아웃. 대시보드/데이터 테이블에 적합."
+    },
+    {
+      "id": "spacious",
+      "name": "Spacious",
+      "density": 1.25,
+      "gap": 20,
+      "padding": 32,
+      "desc": "넓은 여백. 에디토리얼.",
+      "multiplier": 1.25,
+      "description": "넓은 여백. 에디토리얼/럭셔리/포트폴리오에 적합."
+    },
+    {
+      "id": "dense",
+      "name": "Dense",
+      "density": 0.6,
+      "gap": 8,
+      "padding": 12,
+      "desc": "최소 간격. 데이터 테이블.",
+      "multiplier": 0.6,
+      "description": "최소 간격. 극도로 밀도 높은 데이터 인터페이스용."
+    }
+  ],
+  "style": [
+    {
+      "id": "rounded",
+      "name": "Rounded",
+      "radius": 16,
+      "radiusSm": 10,
+      "btnRadius": 10,
+      "cardRadius": 16,
+      "shadow": "md",
+      "motion": 1,
+      "gradient": "none",
+      "desc": "부드럽고 현대적. 기본.",
+      "description": "부드러운 곡선(16px). 현대적 SaaS/앱의 기본."
+    },
+    {
+      "id": "sharp",
+      "name": "Sharp",
+      "radius": 4,
+      "radiusSm": 2,
+      "btnRadius": 2,
+      "cardRadius": 4,
+      "shadow": "sm",
+      "motion": 0.6,
+      "gradient": "none",
+      "desc": "각진 미니멀. 개발자 도구.",
+      "description": "직선적(4px). 데이터/개발자 도구 느낌."
+    },
+    {
+      "id": "pill",
+      "name": "Pill",
+      "radius": 100,
+      "radiusSm": 100,
+      "btnRadius": 100,
+      "cardRadius": 28,
+      "shadow": "md",
+      "motion": 1,
+      "gradient": "none",
+      "desc": "완전한 라운드. 소셜/앱.",
+      "description": "완전 라운드(100px). 버튼/칩에 소셜/크리에이티브 느낌."
+    },
+    {
+      "id": "soft",
+      "name": "Soft",
+      "radius": 24,
+      "radiusSm": 16,
+      "btnRadius": 16,
+      "cardRadius": 24,
+      "shadow": "lg",
+      "motion": 1.2,
+      "gradient": "subtle",
+      "desc": "둥글고 깊은 그림자.",
+      "description": "큰 곡선(24px). 부드럽고 고급스러운 인상."
+    },
+    {
+      "id": "flat",
+      "name": "Flat",
+      "radius": 8,
+      "radiusSm": 6,
+      "btnRadius": 6,
+      "cardRadius": 8,
+      "shadow": "none",
+      "motion": 0.4,
+      "gradient": "none",
+      "desc": "그림자 없음. 미니멀.",
+      "description": "중간 곡선(8px). 미니멀 플랫 디자인."
+    },
+    {
+      "id": "glass",
+      "name": "Glass",
+      "radius": 16,
+      "radiusSm": 12,
+      "btnRadius": 12,
+      "cardRadius": 16,
+      "shadow": "md",
+      "motion": 1,
+      "gradient": "subtle",
+      "desc": "글래스모피즘. iOS 스타일.",
+      "description": "글래스모피즘(16px). 반투명 블러 효과와 함께."
+    },
+    {
+      "id": "brutalist",
+      "name": "Brutalist",
+      "radius": 0,
+      "radiusSm": 0,
+      "btnRadius": 0,
+      "cardRadius": 0,
+      "shadow": "none",
+      "motion": 0,
+      "gradient": "none",
+      "desc": "날 것 그대로. 강렬한 대비.",
+      "description": "각진 모서리(0px). 강렬하고 실험적인 디자인."
+    },
+    {
+      "id": "neo",
+      "name": "Neo",
+      "radius": 20,
+      "radiusSm": 14,
+      "btnRadius": 14,
+      "cardRadius": 20,
+      "shadow": "lg",
+      "motion": 1.5,
+      "gradient": "vibrant",
+      "desc": "큰 라운드 + 강한 모션.",
+      "description": "뉴모피즘(20px). 볼록/오목한 표면 효과."
+    }
+  ],
+  "motion": [
+    {
+      "id": "none",
+      "name": "None",
+      "scale": 0,
+      "ease": "linear",
+      "dur": "0.01s",
+      "durSlow": "0.01s",
+      "desc": "애니메이션 없음. 접근성 우선.",
+      "duration": 0,
+      "description": "모션 없음. prefers-reduced-motion 또는 정적 UI용."
+    },
+    {
+      "id": "subtle",
+      "name": "Subtle",
+      "scale": 0.5,
+      "ease": "cubic-bezier(0.4, 0, 0.2, 1)",
+      "dur": "0.25s",
+      "durSlow": "0.4s",
+      "desc": "은은한 페이드. 기본.",
+      "duration": 0.2,
+      "description": "최소 모션. 상태 전환만 표시. 대시보드/데이터 도구용."
+    },
+    {
+      "id": "smooth",
+      "name": "Smooth",
+      "scale": 1,
+      "ease": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "dur": "0.4s",
+      "durSlow": "0.7s",
+      "desc": "스프링 이징. osmo.supply 수준.",
+      "duration": 0.4,
+      "description": "부드러운 감속. 대부분의 UI에 적합한 기본 모션."
+    },
+    {
+      "id": "expressive",
+      "name": "Expressive",
+      "scale": 1.5,
+      "ease": "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      "dur": "0.5s",
+      "durSlow": "0.9s",
+      "desc": "과감한 스프링. 페이지 전환.",
+      "duration": 0.5,
+      "description": "오버슈팅 스프링. 크리에이티브/소셜/포트폴리오에 적합."
+    },
+    {
+      "id": "cinematic",
+      "name": "Cinematic",
+      "scale": 2,
+      "ease": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "dur": "0.7s",
+      "durSlow": "1.2s",
+      "desc": "드라마틱 리빌. 풀스크린.",
+      "duration": 0.7,
+      "description": "영화적 연출. 럭셔리/에디토리얼의 극적 효과용."
+    }
+  ],
+  "gradient": [
+    {
+      "id": "dawn",
+      "name": "Dawn",
+      "desc": "새벽의 따뜻한 빛",
+      "swatchColors": "linear-gradient(135deg, #FFB88C, #FF96C8)",
+      "value": "radial-gradient(ellipse at 30% 20%, rgba(255,180,130,0.25) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(255,130,180,0.15) 0%, transparent 50%)",
+      "cardBg": "linear-gradient(145deg, var(--duvu-surface) 0%, rgba(255,180,160,0.08) 100%)",
+      "description": "새벽의 따뜻한 빛. 분홍~주황 그라디언트."
+    },
+    {
+      "id": "ocean-depth",
+      "name": "Ocean Depth",
+      "desc": "깊은 바다의 고요",
+      "swatchColors": "linear-gradient(180deg, #0078C8, #00B4B4)",
+      "value": "radial-gradient(ellipse at 50% 0%, rgba(0,100,200,0.2) 0%, transparent 50%), radial-gradient(ellipse at 50% 100%, rgba(0,180,180,0.12) 0%, transparent 50%)",
+      "cardBg": "linear-gradient(180deg, var(--duvu-surface) 0%, rgba(0,150,200,0.06) 100%)",
+      "description": "깊은 바다의 고요. 청록~진청 그라디언트."
+    },
+    {
+      "id": "aurora",
+      "name": "Aurora",
+      "desc": "오로라의 빛",
+      "swatchColors": "linear-gradient(135deg, #64C8FF, #B464FF)",
+      "value": "radial-gradient(ellipse at 20% 50%, rgba(100,200,255,0.2) 0%, transparent 40%), radial-gradient(ellipse at 80% 30%, rgba(180,100,255,0.18) 0%, transparent 40%)",
+      "cardBg": "linear-gradient(160deg, var(--duvu-surface) 0%, rgba(140,160,255,0.07) 100%)",
+      "description": "오로라의 빛. 보라~청록 그라디언트."
+    },
+    {
+      "id": "ember",
+      "name": "Ember",
+      "desc": "잔불의 온기",
+      "swatchColors": "linear-gradient(135deg, #FF7832, #C83250)",
+      "value": "radial-gradient(ellipse at 60% 80%, rgba(255,120,50,0.22) 0%, transparent 45%), radial-gradient(ellipse at 30% 20%, rgba(200,50,80,0.12) 0%, transparent 40%)",
+      "cardBg": "linear-gradient(150deg, var(--duvu-surface) 0%, rgba(255,100,60,0.06) 100%)",
+      "description": "잔불의 온기. 주황~빨강 그라디언트."
+    },
+    {
+      "id": "mist",
+      "name": "Mist",
+      "desc": "안개의 그라디언트",
+      "swatchColors": "linear-gradient(180deg, #C8C8D2, #9696A0)",
+      "value": "radial-gradient(ellipse at 50% 50%, rgba(200,200,220,0.15) 0%, transparent 50%)",
+      "cardBg": "linear-gradient(180deg, var(--duvu-surface) 0%, rgba(180,180,190,0.04) 100%)",
+      "description": "안개의 그라디언트. 연회색 미묘한 변화."
+    },
+    {
+      "id": "forest-glow",
+      "name": "Forest Glow",
+      "desc": "숲 속 빛줄기",
+      "swatchColors": "linear-gradient(160deg, #50B464, #287850)",
+      "value": "radial-gradient(ellipse at 40% 60%, rgba(80,180,100,0.2) 0%, transparent 45%), radial-gradient(ellipse at 70% 20%, rgba(40,120,80,0.1) 0%, transparent 35%)",
+      "cardBg": "linear-gradient(160deg, var(--duvu-surface) 0%, rgba(80,180,100,0.05) 100%)",
+      "description": "숲 속 빛줄기. 녹색 계열 그라디언트."
+    },
+    {
+      "id": "twilight",
+      "name": "Twilight",
+      "desc": "황혼의 보라빛",
+      "swatchColors": "linear-gradient(135deg, #643CB4, #C86496)",
+      "value": "radial-gradient(ellipse at 30% 30%, rgba(100,60,180,0.2) 0%, transparent 40%), radial-gradient(ellipse at 70% 70%, rgba(200,100,150,0.15) 0%, transparent 40%)",
+      "cardBg": "linear-gradient(145deg, var(--duvu-surface) 0%, rgba(130,80,180,0.06) 100%)",
+      "description": "황혼의 보라빛. 보라~분홍 그라디언트."
+    },
+    {
+      "id": "gold-dust",
+      "name": "Gold Dust",
+      "desc": "금빛 먼지",
+      "swatchColors": "linear-gradient(135deg, #DCB450, #B48C3C)",
+      "value": "radial-gradient(ellipse at 50% 40%, rgba(220,180,80,0.22) 0%, transparent 45%)",
+      "cardBg": "linear-gradient(140deg, var(--duvu-surface) 0%, rgba(220,180,80,0.06) 100%)",
+      "description": "금빛 먼지. 노랑~갈색 그라디언트."
+    },
+    {
+      "id": "gradient-none",
+      "name": "None",
+      "desc": "그라디언트 없음",
+      "swatchColors": null,
+      "value": "none",
+      "cardBg": "none",
+      "description": "그라디언트 없음. 단색 배경."
+    }
+  ],
+  "templates": [
+    {
+      "id": "saas",
+      "name": "SaaS",
+      "color": "toss",
+      "typo": "inter",
+      "layout": "comfortable",
+      "style": "rounded",
+      "motion": "smooth",
+      "gridStyle": "default",
+      "heroAlign": "center",
+      "gradient": "none",
+      "desc": "클린 SaaS. 안정감 있는 파란색 + 부드러운 라운드.",
+      "typography": "inter",
+      "description": "B2B SaaS, 관리 도구, 웹앱. 클린하고 안정적인 전문 톤.",
+      "tags": [
+        "saas",
+        "b2b",
+        "webapp",
+        "admin",
+        "professional"
+      ],
+      "domainTags": [
+        "saas",
+        "b2b",
+        "webapp",
+        "admin"
+      ]
+    },
+    {
+      "id": "editorial",
+      "name": "Editorial",
+      "color": "sunset",
+      "typo": "dm-sans",
+      "layout": "spacious",
+      "style": "soft",
+      "motion": "smooth",
+      "gridStyle": "editorial",
+      "heroAlign": "left",
+      "gradient": "subtle",
+      "desc": "에디토리얼. 따뜻한 톤 + 넓은 여백.",
+      "typography": "dm-sans",
+      "description": "블로그, 매거진, 미디어. 따뜻하고 읽기 편한 여백.",
+      "tags": [
+        "blog",
+        "magazine",
+        "media",
+        "editorial",
+        "content"
+      ],
+      "domainTags": [
+        "blog",
+        "magazine",
+        "media",
+        "content"
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "name": "E-Commerce",
+      "color": "airbnb",
+      "typo": "plus-jakarta",
+      "layout": "comfortable",
+      "style": "rounded",
+      "motion": "smooth",
+      "gridStyle": "featured",
+      "heroAlign": "center",
+      "desc": "커머스. 강렬한 CTA.",
+      "typography": "plus-jakarta",
+      "description": "온라인 스토어, 마켓플레이스. 강렬한 CTA.",
+      "tags": [
+        "ecommerce",
+        "shop",
+        "store",
+        "marketplace",
+        "product"
+      ],
+      "domainTags": [
+        "store",
+        "marketplace",
+        "product",
+        "shop"
+      ]
+    },
+    {
+      "id": "dashboard",
+      "name": "Dashboard",
+      "color": "midnight",
+      "typo": "inter",
+      "layout": "compact",
+      "style": "sharp",
+      "motion": "subtle",
+      "gridStyle": "dense",
+      "heroAlign": "center",
+      "desc": "대시보드. 밀도 높은 데이터.",
+      "typography": "inter",
+      "description": "데이터 대시보드, 분석 도구. 높은 밀도.",
+      "tags": [
+        "dashboard",
+        "analytics",
+        "data",
+        "admin",
+        "monitoring"
+      ],
+      "domainTags": [
+        "analytics",
+        "data",
+        "monitoring",
+        "admin"
+      ]
+    },
+    {
+      "id": "portfolio",
+      "name": "Portfolio",
+      "color": "vercel",
+      "typo": "space-grotesk",
+      "layout": "spacious",
+      "style": "sharp",
+      "motion": "expressive",
+      "gridStyle": "asymmetric",
+      "heroAlign": "left",
+      "desc": "포트폴리오. 모노톤 + 비대칭.",
+      "typography": "space-grotesk",
+      "description": "개인 포트폴리오, 에이전시. 비대칭 임팩트.",
+      "tags": [
+        "portfolio",
+        "agency",
+        "personal",
+        "creative",
+        "showcase"
+      ],
+      "domainTags": [
+        "personal",
+        "agency",
+        "creative",
+        "showcase"
+      ]
+    },
+    {
+      "id": "fintech",
+      "name": "Fintech",
+      "color": "stripe",
+      "typo": "sora",
+      "layout": "comfortable",
+      "style": "rounded",
+      "motion": "smooth",
+      "gridStyle": "default",
+      "heroAlign": "center",
+      "desc": "금융. 신뢰감 있는 보라.",
+      "typography": "sora",
+      "description": "금융, 결제, 투자. 신뢰감.",
+      "tags": [
+        "finance",
+        "payment",
+        "investment",
+        "fintech",
+        "banking"
+      ],
+      "domainTags": [
+        "finance",
+        "payment",
+        "investment",
+        "banking"
+      ]
+    },
+    {
+      "id": "creative",
+      "name": "Creative",
+      "color": "figma",
+      "typo": "satoshi",
+      "layout": "spacious",
+      "style": "pill",
+      "motion": "expressive",
+      "gridStyle": "mosaic",
+      "heroAlign": "center",
+      "gradient": "vibrant",
+      "desc": "크리에이티브. 모자이크.",
+      "typography": "satoshi",
+      "description": "디자인 도구, 크리에이티브. 대담.",
+      "tags": [
+        "design",
+        "creative",
+        "tool",
+        "art",
+        "experimental"
+      ],
+      "domainTags": [
+        "design",
+        "creative",
+        "tool",
+        "art"
+      ]
+    },
+    {
+      "id": "dev-tool",
+      "name": "Dev Tool",
+      "color": "github",
+      "typo": "space-grotesk",
+      "layout": "compact",
+      "style": "sharp",
+      "motion": "subtle",
+      "gridStyle": "dense",
+      "heroAlign": "left",
+      "desc": "개발자 도구.",
+      "typography": "space-grotesk",
+      "description": "개발자 도구, CLI. 코드 친화.",
+      "tags": [
+        "developer",
+        "tool",
+        "cli",
+        "code",
+        "api"
+      ],
+      "domainTags": [
+        "developer",
+        "tool",
+        "cli",
+        "code",
+        "api"
+      ]
+    },
+    {
+      "id": "health",
+      "name": "Health",
+      "color": "ocean-pearl",
+      "typo": "outfit",
+      "layout": "spacious",
+      "style": "soft",
+      "motion": "smooth",
+      "gridStyle": "card-focus",
+      "heroAlign": "center",
+      "desc": "헬스케어.",
+      "typography": "outfit",
+      "description": "헬스케어, 웰니스. 차분하고 부드러움.",
+      "tags": [
+        "health",
+        "wellness",
+        "medical",
+        "care",
+        "fitness"
+      ],
+      "domainTags": [
+        "health",
+        "wellness",
+        "medical",
+        "care",
+        "fitness"
+      ]
+    },
+    {
+      "id": "luxury",
+      "name": "Luxury",
+      "color": "black-gold",
+      "typo": "general-sans",
+      "layout": "spacious",
+      "style": "soft",
+      "motion": "cinematic",
+      "gridStyle": "editorial",
+      "heroAlign": "center",
+      "gradient": "subtle",
+      "desc": "럭셔리. 블랙&골드.",
+      "typography": "general-sans",
+      "description": "프리미엄 브랜드, 럭셔리. 블랙 & 골드.",
+      "tags": [
+        "luxury",
+        "premium",
+        "brand",
+        "fashion",
+        "exclusive"
+      ],
+      "domainTags": [
+        "luxury",
+        "premium",
+        "brand",
+        "fashion",
+        "exclusive"
+      ]
+    },
+    {
+      "id": "nature",
+      "name": "Nature",
+      "color": "earthy-forest",
+      "typo": "manrope",
+      "layout": "spacious",
+      "style": "rounded",
+      "motion": "smooth",
+      "gridStyle": "card-focus",
+      "heroAlign": "center",
+      "desc": "자연/환경.",
+      "typography": "manrope",
+      "description": "환경, 자연, 유기농. 자연스러운 녹색.",
+      "tags": [
+        "nature",
+        "environment",
+        "organic",
+        "eco",
+        "green"
+      ],
+      "domainTags": [
+        "nature",
+        "environment",
+        "organic",
+        "eco",
+        "green"
+      ]
+    },
+    {
+      "id": "social",
+      "name": "Social",
+      "color": "indigo-bloom",
+      "typo": "plus-jakarta",
+      "layout": "comfortable",
+      "style": "pill",
+      "motion": "expressive",
+      "gridStyle": "mosaic",
+      "heroAlign": "center",
+      "desc": "소셜.",
+      "typography": "plus-jakarta",
+      "description": "소셜 미디어, 커뮤니티. 활기찬 둥근 톤.",
+      "tags": [
+        "social",
+        "community",
+        "chat",
+        "messaging",
+        "network"
+      ],
+      "domainTags": [
+        "social",
+        "community",
+        "chat",
+        "messaging",
+        "network"
+      ]
+    },
+    {
+      "id": "pop-bold",
+      "name": "Pop Bold",
+      "isClone": true,
+      "ref": "museumofmoney.com",
+      "color": "forest",
+      "typo": "satoshi",
+      "layout": "spacious",
+      "style": "rounded",
+      "motion": "expressive",
+      "gridStyle": "featured",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#42C487",
+        "dark": {
+          "bg": "#002914",
+          "surface": "#003d1f",
+          "surface2": "#00522a",
+          "fg": "#e8fce8",
+          "fg2": "#7dbb8c",
+          "fg3": "#3d6d4a"
+        },
+        "light": {
+          "bg": "#f0faf0",
+          "surface": "#ffffff",
+          "surface2": "#ddf4dd",
+          "fg": "#002914",
+          "fg2": "#3a6b40",
+          "fg3": "#7daa7d"
+        }
+      },
+      "desc": "뮤지엄오브머니. 팝 + 볼드 그린.",
+      "typography": "satoshi",
+      "description": "대담한 색상, 모션 중심. museumofmoney.com 스타일.",
+      "tags": [
+        "bold",
+        "pop",
+        "motion",
+        "experimental"
+      ],
+      "references": "museumofmoney.com",
+      "domainTags": [
+        "bold",
+        "pop",
+        "motion",
+        "experimental"
+      ]
+    },
+    {
+      "id": "cinematic-dark",
+      "name": "Cinematic Dark",
+      "isClone": true,
+      "ref": "adambricker.com",
+      "color": "github",
+      "typo": "inter",
+      "layout": "spacious",
+      "style": "flat",
+      "motion": "cinematic",
+      "gridStyle": "editorial",
+      "heroAlign": "left",
+      "customColor": {
+        "src": "#0b9347",
+        "dark": {
+          "bg": "#000000",
+          "surface": "#0a0a0a",
+          "surface2": "#141414",
+          "fg": "#ffffff",
+          "fg2": "#888888",
+          "fg3": "#444444"
+        },
+        "light": {
+          "bg": "#ffffff",
+          "surface": "#f5f5f5",
+          "surface2": "#ebebeb",
+          "fg": "#000000",
+          "fg2": "#666666",
+          "fg3": "#aaaaaa"
+        }
+      },
+      "desc": "아담브리커. 시네마틱 블랙.",
+      "typography": "inter",
+      "description": "영화적 연출, 미니멀. adambricker.com 스타일.",
+      "tags": [
+        "cinematic",
+        "dark",
+        "minimal",
+        "film"
+      ],
+      "references": "adambricker.com",
+      "domainTags": [
+        "cinematic",
+        "dark",
+        "minimal",
+        "film"
+      ]
+    },
+    {
+      "id": "editorial-brutalist",
+      "name": "Editorial Brut",
+      "isClone": true,
+      "ref": "oci.madebybuzzworthy.com",
+      "color": "navy-depth",
+      "typo": "space-grotesk",
+      "layout": "spacious",
+      "style": "brutalist",
+      "motion": "expressive",
+      "gridStyle": "asymmetric",
+      "heroAlign": "left",
+      "customColor": {
+        "src": "#1925aa",
+        "dark": {
+          "bg": "#050510",
+          "surface": "#0a0a1e",
+          "surface2": "#10102e",
+          "fg": "#e8e6e0",
+          "fg2": "#8888aa",
+          "fg3": "#555580"
+        },
+        "light": {
+          "bg": "#e8e6e0",
+          "surface": "#f0ede6",
+          "surface2": "#d8d4cc",
+          "fg": "#1925aa",
+          "fg2": "#444466",
+          "fg3": "#888899"
+        }
+      },
+      "desc": "OCI. 에디토리얼 브루탈리스트.",
+      "typography": "space-grotesk",
+      "description": "0px 라운딩, 강렬한 대비. oci.madebybuzzworthy.com 스타일.",
+      "tags": [
+        "brutalist",
+        "editorial",
+        "experimental",
+        "contrast"
+      ],
+      "references": "oci.madebybuzzworthy.com",
+      "domainTags": [
+        "brutalist",
+        "editorial",
+        "experimental",
+        "contrast"
+      ]
+    },
+    {
+      "id": "tech-neon",
+      "name": "Tech Neon",
+      "isClone": true,
+      "ref": "on.energy",
+      "color": "golden-sun",
+      "typo": "sora",
+      "layout": "comfortable",
+      "style": "pill",
+      "motion": "cinematic",
+      "gridStyle": "featured",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#fff313",
+        "dark": {
+          "bg": "#000000",
+          "surface": "#0d0d0a",
+          "surface2": "#1a1a10",
+          "fg": "#f0f0e0",
+          "fg2": "#909080",
+          "fg3": "#505048"
+        },
+        "light": {
+          "bg": "#fafaf2",
+          "surface": "#ffffff",
+          "surface2": "#f0f0e4",
+          "fg": "#0a0a00",
+          "fg2": "#505040",
+          "fg3": "#909088"
+        }
+      },
+      "desc": "ON에너지. 테크 네온 옐로우.",
+      "typography": "sora",
+      "description": "형광 컬러, 미래적. on.energy 스타일.",
+      "tags": [
+        "neon",
+        "tech",
+        "futuristic",
+        "glow"
+      ],
+      "references": "on.energy",
+      "domainTags": [
+        "tech",
+        "neon",
+        "futuristic",
+        "energy"
+      ]
+    },
+    {
+      "id": "vintage-serif",
+      "name": "Vintage Serif",
+      "isClone": true,
+      "ref": "griflan.com",
+      "color": "autumn-red",
+      "typo": "dm-sans",
+      "layout": "spacious",
+      "style": "rounded",
+      "motion": "expressive",
+      "gridStyle": "editorial",
+      "heroAlign": "left",
+      "customColor": {
+        "src": "#FF3831",
+        "dark": {
+          "bg": "#181616",
+          "surface": "#221e1e",
+          "surface2": "#2c2626",
+          "fg": "#FFFDBB",
+          "fg2": "#b0a878",
+          "fg3": "#706a50"
+        },
+        "light": {
+          "bg": "#FFFDBB",
+          "surface": "#ffffff",
+          "surface2": "#f0eea8",
+          "fg": "#181616",
+          "fg2": "#605e40",
+          "fg3": "#908e70"
+        }
+      },
+      "desc": "그리플란. 빈티지 세리프.",
+      "typography": "dm-sans",
+      "description": "빈티지 톤, 세리프 느낌. griflan.com 스타일.",
+      "tags": [
+        "vintage",
+        "retro",
+        "warm",
+        "classic"
+      ],
+      "references": "griflan.com",
+      "domainTags": [
+        "vintage",
+        "serif",
+        "retro",
+        "classic"
+      ]
+    },
+    {
+      "id": "quantum-glow",
+      "name": "Quantum Glow",
+      "isClone": true,
+      "ref": "haiqu.ai",
+      "color": "deep-purple",
+      "typo": "sora",
+      "layout": "comfortable",
+      "style": "soft",
+      "motion": "cinematic",
+      "gridStyle": "default",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#4466cc",
+        "dark": {
+          "bg": "#000000",
+          "surface": "#060818",
+          "surface2": "#0c1030",
+          "fg": "#c4d5ff",
+          "fg2": "#7080aa",
+          "fg3": "#404870"
+        },
+        "light": {
+          "bg": "#f4f6ff",
+          "surface": "#ffffff",
+          "surface2": "#e8ecfa",
+          "fg": "#0a1040",
+          "fg2": "#405080",
+          "fg3": "#8090b0"
+        }
+      },
+      "desc": "하이큐. 퀀텀 글로우.",
+      "typography": "sora",
+      "description": "글로우 효과, 미래적. haiqu.ai 스타일.",
+      "tags": [
+        "quantum",
+        "glow",
+        "ai",
+        "futuristic"
+      ],
+      "references": "haiqu.ai",
+      "domainTags": [
+        "quantum",
+        "glow",
+        "futuristic",
+        "tech"
+      ]
+    },
+    {
+      "id": "museum-modern",
+      "name": "Museum Modern",
+      "isClone": true,
+      "ref": "rom.on.ca",
+      "color": "vercel",
+      "typo": "general-sans",
+      "layout": "spacious",
+      "style": "flat",
+      "motion": "expressive",
+      "gridStyle": "asymmetric",
+      "heroAlign": "left",
+      "customColor": {
+        "src": "#000000",
+        "dark": {
+          "bg": "#000000",
+          "surface": "#0a0a0a",
+          "surface2": "#151515",
+          "fg": "#ffffff",
+          "fg2": "#888888",
+          "fg3": "#555555"
+        },
+        "light": {
+          "bg": "#ffffff",
+          "surface": "#f8f8f8",
+          "surface2": "#eeeeee",
+          "fg": "#000000",
+          "fg2": "#555555",
+          "fg3": "#999999"
+        }
+      },
+      "desc": "ROM. 뮤지엄 모던.",
+      "typography": "general-sans",
+      "description": "박물관, 문화, 비대칭. rom.on.ca 스타일.",
+      "tags": [
+        "museum",
+        "culture",
+        "modern",
+        "art"
+      ],
+      "references": "rom.on.ca",
+      "domainTags": [
+        "museum",
+        "culture",
+        "modern",
+        "asymmetric"
+      ]
+    },
+    {
+      "id": "arch-luxury",
+      "name": "Arch Luxury",
+      "isClone": true,
+      "ref": "ssyenc.com",
+      "color": "navy-depth",
+      "typo": "general-sans",
+      "layout": "spacious",
+      "style": "sharp",
+      "motion": "cinematic",
+      "gridStyle": "editorial",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#2a4060",
+        "dark": {
+          "bg": "#0E1A2B",
+          "surface": "#162236",
+          "surface2": "#1e2a40",
+          "fg": "#e8eaf0",
+          "fg2": "#8090a8",
+          "fg3": "#506078"
+        },
+        "light": {
+          "bg": "#ffffff",
+          "surface": "#f6f7fa",
+          "surface2": "#eceef2",
+          "fg": "#0E1A2B",
+          "fg2": "#506078",
+          "fg3": "#8899aa"
+        }
+      },
+      "desc": "쌍용건설. 건축적 럭셔리.",
+      "typography": "general-sans",
+      "description": "건축, 럭셔리, 갈색 계열. luxuryarchitecture.com 스타일.",
+      "tags": [
+        "architecture",
+        "luxury",
+        "earth",
+        "brown"
+      ],
+      "references": "ssyenc.com",
+      "domainTags": [
+        "architecture",
+        "luxury",
+        "warm",
+        "premium"
+      ]
+    },
+    {
+      "id": "east-minimal",
+      "name": "East Minimal",
+      "isClone": true,
+      "ref": "tscent-tea.com",
+      "color": "earth",
+      "typo": "inter",
+      "layout": "spacious",
+      "style": "flat",
+      "motion": "subtle",
+      "gridStyle": "card-focus",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#8B7355",
+        "dark": {
+          "bg": "#0e0c0a",
+          "surface": "#1a1610",
+          "surface2": "#24201a",
+          "fg": "#e8e0d4",
+          "fg2": "#a09080",
+          "fg3": "#605848"
+        },
+        "light": {
+          "bg": "#FCFAF8",
+          "surface": "#ffffff",
+          "surface2": "#f4f0ea",
+          "fg": "#2a2420",
+          "fg2": "#706050",
+          "fg3": "#a09888"
+        }
+      },
+      "desc": "티센트. 동아시아 미니멀.",
+      "typography": "inter",
+      "description": "일본 미니멀, 거의 무채색. muji.com 스타일.",
+      "tags": [
+        "minimal",
+        "japanese",
+        "monochrome",
+        "zen"
+      ],
+      "references": "tscent-tea.com",
+      "domainTags": [
+        "minimal",
+        "japanese",
+        "zen",
+        "monochrome"
+      ]
+    },
+    {
+      "id": "dev-toolkit",
+      "name": "Dev Toolkit",
+      "isClone": true,
+      "ref": "osmo.supply",
+      "color": "electric-blue",
+      "typo": "space-grotesk",
+      "layout": "comfortable",
+      "style": "pill",
+      "motion": "smooth",
+      "gridStyle": "mosaic",
+      "heroAlign": "center",
+      "customColor": {
+        "src": "#6840ff",
+        "dark": {
+          "bg": "#201d1d",
+          "surface": "#2a2626",
+          "surface2": "#343030",
+          "fg": "#f4f4f4",
+          "fg2": "#a0a0a0",
+          "fg3": "#606060"
+        },
+        "light": {
+          "bg": "#f4f4f4",
+          "surface": "#ffffff",
+          "surface2": "#eaeaea",
+          "fg": "#201d1d",
+          "fg2": "#606060",
+          "fg3": "#a0a0a0"
+        }
+      },
+      "desc": "OSMO. 데브 툴킷.",
+      "typography": "space-grotesk",
+      "description": "개발 리소스, 다채로운 카드. osmo.supply gold standard.",
+      "tags": [
+        "developer",
+        "toolkit",
+        "resource",
+        "osmo"
+      ],
+      "references": "osmo.supply",
+      "domainTags": [
+        "developer",
+        "resource",
+        "tools",
+        "osmo"
+      ]
+    }
+  ],
+  "metadata": {
+    "presets": {
+      "color": {
+        "toss": {
+          "tags": [
+            "fintech",
+            "trust",
+            "clean"
+          ],
+          "mood": "professional",
+          "industry": [
+            "fintech",
+            "banking",
+            "saas"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "linear": {
+          "tags": [
+            "dev-tool",
+            "productivity",
+            "modern"
+          ],
+          "mood": "focused",
+          "industry": [
+            "dev-tool",
+            "saas",
+            "productivity"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "stripe": {
+          "tags": [
+            "payment",
+            "developer",
+            "premium"
+          ],
+          "mood": "premium",
+          "industry": [
+            "fintech",
+            "payment",
+            "api"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "apple": {
+          "tags": [
+            "minimal",
+            "premium",
+            "clean"
+          ],
+          "mood": "premium",
+          "industry": [
+            "tech",
+            "consumer",
+            "hardware"
+          ],
+          "audience": "b2c",
+          "warmth": "neutral",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "notion": {
+          "tags": [
+            "productivity",
+            "minimal",
+            "wiki"
+          ],
+          "mood": "neutral",
+          "industry": [
+            "saas",
+            "productivity",
+            "knowledge"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "github": {
+          "tags": [
+            "developer",
+            "open-source",
+            "code"
+          ],
+          "mood": "technical",
+          "industry": [
+            "dev-tool",
+            "open-source"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "spotify": {
+          "tags": [
+            "music",
+            "entertainment",
+            "bold"
+          ],
+          "mood": "energetic",
+          "industry": [
+            "entertainment",
+            "music",
+            "streaming"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "high",
+          "formality": "low"
+        },
+        "supabase": {
+          "tags": [
+            "developer",
+            "backend",
+            "modern"
+          ],
+          "mood": "friendly",
+          "industry": [
+            "dev-tool",
+            "database",
+            "api"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "figma": {
+          "tags": [
+            "design",
+            "creative",
+            "playful"
+          ],
+          "mood": "creative",
+          "industry": [
+            "design",
+            "creative-tool"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "high",
+          "formality": "low"
+        },
+        "airbnb": {
+          "tags": [
+            "travel",
+            "community",
+            "warm"
+          ],
+          "mood": "warm",
+          "industry": [
+            "travel",
+            "marketplace",
+            "hospitality"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "slack": {
+          "tags": [
+            "communication",
+            "team",
+            "corporate"
+          ],
+          "mood": "professional",
+          "industry": [
+            "saas",
+            "communication",
+            "enterprise"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "moderate",
+          "formality": "moderate"
+        },
+        "vercel": {
+          "tags": [
+            "developer",
+            "deploy",
+            "mono"
+          ],
+          "mood": "minimal",
+          "industry": [
+            "dev-tool",
+            "hosting",
+            "jamstack"
+          ],
+          "audience": "b2b",
+          "warmth": "neutral",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "sunny-beach": {
+          "tags": [
+            "nature",
+            "fresh",
+            "calm"
+          ],
+          "mood": "relaxed",
+          "industry": [
+            "health",
+            "travel",
+            "lifestyle"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "olive-garden": {
+          "tags": [
+            "natural",
+            "organic",
+            "earthy"
+          ],
+          "mood": "organic",
+          "industry": [
+            "food",
+            "organic",
+            "agriculture"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "summer-ocean": {
+          "tags": [
+            "ocean",
+            "trust",
+            "depth"
+          ],
+          "mood": "trustworthy",
+          "industry": [
+            "insurance",
+            "government",
+            "consulting"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "black-gold": {
+          "tags": [
+            "luxury",
+            "premium",
+            "elegant"
+          ],
+          "mood": "luxurious",
+          "industry": [
+            "luxury",
+            "fashion",
+            "jewelry"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "ocean-pearl": {
+          "tags": [
+            "health",
+            "clean",
+            "serene"
+          ],
+          "mood": "serene",
+          "industry": [
+            "healthcare",
+            "spa",
+            "wellness"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "earthy-forest": {
+          "tags": [
+            "nature",
+            "sustainable",
+            "grounded"
+          ],
+          "mood": "grounded",
+          "industry": [
+            "environment",
+            "sustainability",
+            "outdoor"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "arctic-blue": {
+          "tags": [
+            "tech",
+            "clean",
+            "precise"
+          ],
+          "mood": "clinical",
+          "industry": [
+            "medtech",
+            "science",
+            "data"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "warm-coral": {
+          "tags": [
+            "creative",
+            "bold",
+            "warm"
+          ],
+          "mood": "bold",
+          "industry": [
+            "marketing",
+            "agency",
+            "media"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "high",
+          "formality": "low"
+        },
+        "indigo-bloom": {
+          "tags": [
+            "creative",
+            "modern",
+            "digital"
+          ],
+          "mood": "creative",
+          "industry": [
+            "design",
+            "digital-agency",
+            "social"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "moderate",
+          "formality": "moderate"
+        },
+        "ocean": {
+          "tags": [
+            "depth",
+            "corporate",
+            "trust"
+          ],
+          "mood": "trustworthy",
+          "industry": [
+            "corporate",
+            "consulting",
+            "insurance"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "sunset": {
+          "tags": [
+            "warm",
+            "creative",
+            "editorial"
+          ],
+          "mood": "warm",
+          "industry": [
+            "media",
+            "editorial",
+            "food"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "forest": {
+          "tags": [
+            "nature",
+            "growth",
+            "trust"
+          ],
+          "mood": "trustworthy",
+          "industry": [
+            "finance",
+            "environment",
+            "education"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "royal": {
+          "tags": [
+            "premium",
+            "creative",
+            "bold"
+          ],
+          "mood": "premium",
+          "industry": [
+            "luxury",
+            "gaming",
+            "entertainment"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "high",
+          "formality": "moderate"
+        },
+        "midnight": {
+          "tags": [
+            "corporate",
+            "stable",
+            "deep"
+          ],
+          "mood": "stable",
+          "industry": [
+            "corporate",
+            "legal",
+            "government"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "lavender": {
+          "tags": [
+            "gentle",
+            "creative",
+            "feminine"
+          ],
+          "mood": "gentle",
+          "industry": [
+            "beauty",
+            "wellness",
+            "education"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "earth": {
+          "tags": [
+            "natural",
+            "rustic",
+            "authentic"
+          ],
+          "mood": "authentic",
+          "industry": [
+            "craft",
+            "coffee",
+            "artisan"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "low"
+        },
+        "rose": {
+          "tags": [
+            "feminine",
+            "soft",
+            "beauty"
+          ],
+          "mood": "soft",
+          "industry": [
+            "beauty",
+            "fashion",
+            "lifestyle"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "beach-teal": {
+          "tags": [
+            "sophisticated",
+            "deep",
+            "balanced"
+          ],
+          "mood": "sophisticated",
+          "industry": [
+            "consulting",
+            "education",
+            "architecture"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "warm-amber": {
+          "tags": [
+            "warm",
+            "inviting",
+            "friendly"
+          ],
+          "mood": "inviting",
+          "industry": [
+            "food",
+            "hospitality",
+            "retail"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "coral-red": {
+          "tags": [
+            "energetic",
+            "bold",
+            "action"
+          ],
+          "mood": "energetic",
+          "industry": [
+            "fitness",
+            "food",
+            "startup"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "high",
+          "formality": "low"
+        },
+        "sage-green": {
+          "tags": [
+            "calm",
+            "natural",
+            "balanced"
+          ],
+          "mood": "balanced",
+          "industry": [
+            "wellness",
+            "real-estate",
+            "interior"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "navy-depth": {
+          "tags": [
+            "authoritative",
+            "trust",
+            "corporate"
+          ],
+          "mood": "authoritative",
+          "industry": [
+            "law",
+            "finance",
+            "government"
+          ],
+          "audience": "b2b",
+          "warmth": "cool",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "sky-blue": {
+          "tags": [
+            "friendly",
+            "open",
+            "accessible"
+          ],
+          "mood": "friendly",
+          "industry": [
+            "education",
+            "nonprofit",
+            "saas"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "moderate",
+          "formality": "low"
+        },
+        "mauve-rose": {
+          "tags": [
+            "elegant",
+            "refined",
+            "feminine"
+          ],
+          "mood": "refined",
+          "industry": [
+            "wine",
+            "luxury",
+            "fashion"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "high"
+        },
+        "autumn-red": {
+          "tags": [
+            "bold",
+            "urgent",
+            "passionate"
+          ],
+          "mood": "passionate",
+          "industry": [
+            "sports",
+            "news",
+            "entertainment"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "high",
+          "formality": "moderate"
+        },
+        "golden-sun": {
+          "tags": [
+            "optimistic",
+            "energy",
+            "warmth"
+          ],
+          "mood": "optimistic",
+          "industry": [
+            "solar",
+            "startup",
+            "kids"
+          ],
+          "audience": "b2c",
+          "warmth": "warm",
+          "energy": "high",
+          "formality": "low"
+        },
+        "pine-forest": {
+          "tags": [
+            "mature",
+            "stable",
+            "natural"
+          ],
+          "mood": "mature",
+          "industry": [
+            "outdoor",
+            "real-estate",
+            "finance"
+          ],
+          "audience": "b2b",
+          "warmth": "warm",
+          "energy": "calm",
+          "formality": "moderate"
+        },
+        "electric-blue": {
+          "tags": [
+            "tech",
+            "dynamic",
+            "modern"
+          ],
+          "mood": "dynamic",
+          "industry": [
+            "tech",
+            "gaming",
+            "startup"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "high",
+          "formality": "low"
+        },
+        "deep-purple": {
+          "tags": [
+            "creative",
+            "bold",
+            "premium"
+          ],
+          "mood": "bold",
+          "industry": [
+            "gaming",
+            "music",
+            "creative"
+          ],
+          "audience": "b2c",
+          "warmth": "cool",
+          "energy": "high",
+          "formality": "moderate"
+        }
+      },
+      "typography": {
+        "pretendard": {
+          "tags": [
+            "korean",
+            "safe",
+            "clean"
+          ],
+          "mood": "neutral",
+          "readability": "high",
+          "personality": "invisible",
+          "bestFor": [
+            "korean-ui",
+            "data",
+            "dashboard"
+          ]
+        },
+        "inter": {
+          "tags": [
+            "universal",
+            "ui",
+            "readable"
+          ],
+          "mood": "neutral",
+          "readability": "high",
+          "personality": "invisible",
+          "bestFor": [
+            "saas",
+            "dashboard",
+            "data"
+          ]
+        },
+        "dm-sans": {
+          "tags": [
+            "geometric",
+            "modern",
+            "friendly"
+          ],
+          "mood": "friendly",
+          "readability": "high",
+          "personality": "approachable",
+          "bestFor": [
+            "startup",
+            "consumer",
+            "marketing"
+          ]
+        },
+        "space-grotesk": {
+          "tags": [
+            "tech",
+            "code",
+            "precise"
+          ],
+          "mood": "technical",
+          "readability": "medium",
+          "personality": "distinctive",
+          "bestFor": [
+            "dev-tool",
+            "portfolio",
+            "tech"
+          ]
+        },
+        "satoshi": {
+          "tags": [
+            "distinctive",
+            "balanced",
+            "premium"
+          ],
+          "mood": "premium",
+          "readability": "high",
+          "personality": "distinctive",
+          "bestFor": [
+            "agency",
+            "portfolio",
+            "creative"
+          ]
+        },
+        "general-sans": {
+          "tags": [
+            "soft",
+            "elegant",
+            "modern"
+          ],
+          "mood": "elegant",
+          "readability": "high",
+          "personality": "refined",
+          "bestFor": [
+            "luxury",
+            "fashion",
+            "editorial"
+          ]
+        },
+        "plus-jakarta": {
+          "tags": [
+            "warm",
+            "modern",
+            "friendly"
+          ],
+          "mood": "warm",
+          "readability": "high",
+          "personality": "approachable",
+          "bestFor": [
+            "consumer",
+            "social",
+            "marketplace"
+          ]
+        },
+        "outfit": {
+          "tags": [
+            "round",
+            "friendly",
+            "app"
+          ],
+          "mood": "playful",
+          "readability": "high",
+          "personality": "approachable",
+          "bestFor": [
+            "mobile-app",
+            "social",
+            "kids"
+          ]
+        },
+        "sora": {
+          "tags": [
+            "geometric",
+            "digital",
+            "modern"
+          ],
+          "mood": "digital",
+          "readability": "medium",
+          "personality": "futuristic",
+          "bestFor": [
+            "tech",
+            "crypto",
+            "ai"
+          ]
+        },
+        "manrope": {
+          "tags": [
+            "semi-mono",
+            "technical",
+            "friendly"
+          ],
+          "mood": "technical",
+          "readability": "high",
+          "personality": "balanced",
+          "bestFor": [
+            "dev-tool",
+            "fintech",
+            "saas"
+          ]
+        }
+      },
+      "style": {
+        "rounded": {
+          "tags": [
+            "modern",
+            "friendly",
+            "safe"
+          ],
+          "mood": "approachable",
+          "bestFor": [
+            "saas",
+            "consumer",
+            "general"
+          ]
+        },
+        "sharp": {
+          "tags": [
+            "precise",
+            "developer",
+            "minimal"
+          ],
+          "mood": "technical",
+          "bestFor": [
+            "dev-tool",
+            "dashboard",
+            "data"
+          ]
+        },
+        "pill": {
+          "tags": [
+            "playful",
+            "social",
+            "mobile"
+          ],
+          "mood": "playful",
+          "bestFor": [
+            "social",
+            "mobile-app",
+            "consumer"
+          ]
+        },
+        "soft": {
+          "tags": [
+            "gentle",
+            "premium",
+            "ios"
+          ],
+          "mood": "premium",
+          "bestFor": [
+            "health",
+            "luxury",
+            "lifestyle"
+          ]
+        },
+        "flat": {
+          "tags": [
+            "minimal",
+            "clean",
+            "editorial"
+          ],
+          "mood": "minimal",
+          "bestFor": [
+            "editorial",
+            "portfolio",
+            "minimal"
+          ]
+        },
+        "glass": {
+          "tags": [
+            "ios",
+            "modern",
+            "translucent"
+          ],
+          "mood": "modern",
+          "bestFor": [
+            "ios-app",
+            "dashboard",
+            "media"
+          ]
+        },
+        "brutalist": {
+          "tags": [
+            "raw",
+            "bold",
+            "anti-design"
+          ],
+          "mood": "aggressive",
+          "bestFor": [
+            "creative",
+            "art",
+            "editorial"
+          ]
+        },
+        "neo": {
+          "tags": [
+            "bold",
+            "expressive",
+            "dynamic"
+          ],
+          "mood": "expressive",
+          "bestFor": [
+            "gaming",
+            "entertainment",
+            "creative"
+          ]
+        }
+      },
+      "motion": {
+        "none": {
+          "tags": [
+            "accessibility",
+            "static",
+            "instant"
+          ],
+          "bestFor": [
+            "data",
+            "admin",
+            "accessibility"
+          ]
+        },
+        "subtle": {
+          "tags": [
+            "safe",
+            "professional",
+            "quiet"
+          ],
+          "bestFor": [
+            "corporate",
+            "dashboard",
+            "saas"
+          ]
+        },
+        "smooth": {
+          "tags": [
+            "polished",
+            "modern",
+            "spring"
+          ],
+          "bestFor": [
+            "consumer",
+            "portfolio",
+            "general"
+          ]
+        },
+        "expressive": {
+          "tags": [
+            "bold",
+            "creative",
+            "springy"
+          ],
+          "bestFor": [
+            "creative",
+            "portfolio",
+            "landing"
+          ]
+        },
+        "cinematic": {
+          "tags": [
+            "dramatic",
+            "reveal",
+            "fullscreen"
+          ],
+          "bestFor": [
+            "luxury",
+            "architecture",
+            "editorial"
+          ]
+        }
+      },
+      "gradient": {
+        "dawn": {
+          "tags": [
+            "warm",
+            "sunrise",
+            "soft"
+          ],
+          "mood": "warm",
+          "bestFor": [
+            "lifestyle",
+            "health",
+            "creative"
+          ]
+        },
+        "ocean-depth": {
+          "tags": [
+            "cool",
+            "deep",
+            "calm"
+          ],
+          "mood": "calm",
+          "bestFor": [
+            "corporate",
+            "tech",
+            "finance"
+          ]
+        },
+        "aurora": {
+          "tags": [
+            "vibrant",
+            "creative",
+            "magic"
+          ],
+          "mood": "creative",
+          "bestFor": [
+            "creative",
+            "gaming",
+            "ai"
+          ]
+        },
+        "ember": {
+          "tags": [
+            "warm",
+            "bold",
+            "energy"
+          ],
+          "mood": "bold",
+          "bestFor": [
+            "fitness",
+            "food",
+            "startup"
+          ]
+        },
+        "mist": {
+          "tags": [
+            "subtle",
+            "neutral",
+            "gentle"
+          ],
+          "mood": "neutral",
+          "bestFor": [
+            "minimal",
+            "editorial",
+            "corporate"
+          ]
+        },
+        "forest-glow": {
+          "tags": [
+            "nature",
+            "fresh",
+            "organic"
+          ],
+          "mood": "organic",
+          "bestFor": [
+            "environment",
+            "health",
+            "organic"
+          ]
+        },
+        "twilight": {
+          "tags": [
+            "purple",
+            "mystical",
+            "creative"
+          ],
+          "mood": "mystical",
+          "bestFor": [
+            "gaming",
+            "music",
+            "creative"
+          ]
+        },
+        "gold-dust": {
+          "tags": [
+            "luxury",
+            "warm",
+            "premium"
+          ],
+          "mood": "luxurious",
+          "bestFor": [
+            "luxury",
+            "finance",
+            "jewelry"
+          ]
+        },
+        "gradient-none": {
+          "tags": [
+            "clean",
+            "flat",
+            "minimal"
+          ],
+          "mood": "minimal",
+          "bestFor": [
+            "minimal",
+            "data",
+            "corporate"
+          ]
+        }
+      }
+    },
+    "templates": {
+      "saas": {
+        "tags": [
+          "saas",
+          "b2b",
+          "dashboard"
+        ],
+        "industry": [
+          "saas",
+          "tech"
+        ],
+        "audience": "b2b",
+        "complexity": "medium",
+        "mood": "professional"
+      },
+      "editorial": {
+        "tags": [
+          "editorial",
+          "blog",
+          "magazine"
+        ],
+        "industry": [
+          "media",
+          "publishing"
+        ],
+        "audience": "b2c",
+        "complexity": "low",
+        "mood": "warm"
+      },
+      "ecommerce": {
+        "tags": [
+          "shop",
+          "commerce",
+          "product"
+        ],
+        "industry": [
+          "retail",
+          "ecommerce"
+        ],
+        "audience": "b2c",
+        "complexity": "high",
+        "mood": "energetic"
+      },
+      "dashboard": {
+        "tags": [
+          "data",
+          "analytics",
+          "admin"
+        ],
+        "industry": [
+          "saas",
+          "enterprise"
+        ],
+        "audience": "b2b",
+        "complexity": "high",
+        "mood": "focused"
+      },
+      "portfolio": {
+        "tags": [
+          "portfolio",
+          "personal",
+          "creative"
+        ],
+        "industry": [
+          "creative",
+          "freelance"
+        ],
+        "audience": "b2c",
+        "complexity": "low",
+        "mood": "minimal"
+      },
+      "fintech": {
+        "tags": [
+          "finance",
+          "payment",
+          "banking"
+        ],
+        "industry": [
+          "fintech",
+          "banking"
+        ],
+        "audience": "b2b",
+        "complexity": "high",
+        "mood": "premium"
+      },
+      "creative": {
+        "tags": [
+          "agency",
+          "design",
+          "playful"
+        ],
+        "industry": [
+          "agency",
+          "design"
+        ],
+        "audience": "b2b",
+        "complexity": "medium",
+        "mood": "creative"
+      },
+      "dev-tool": {
+        "tags": [
+          "developer",
+          "code",
+          "api"
+        ],
+        "industry": [
+          "dev-tool",
+          "open-source"
+        ],
+        "audience": "b2b",
+        "complexity": "high",
+        "mood": "technical"
+      },
+      "health": {
+        "tags": [
+          "health",
+          "wellness",
+          "medical"
+        ],
+        "industry": [
+          "healthcare",
+          "wellness"
+        ],
+        "audience": "b2c",
+        "complexity": "low",
+        "mood": "serene"
+      },
+      "luxury": {
+        "tags": [
+          "luxury",
+          "premium",
+          "fashion"
+        ],
+        "industry": [
+          "luxury",
+          "fashion"
+        ],
+        "audience": "b2c",
+        "complexity": "medium",
+        "mood": "luxurious"
+      },
+      "nature": {
+        "tags": [
+          "nature",
+          "environment",
+          "green"
+        ],
+        "industry": [
+          "environment",
+          "outdoor"
+        ],
+        "audience": "b2c",
+        "complexity": "low",
+        "mood": "grounded"
+      },
+      "social": {
+        "tags": [
+          "social",
+          "community",
+          "chat"
+        ],
+        "industry": [
+          "social",
+          "community"
+        ],
+        "audience": "b2c",
+        "complexity": "medium",
+        "mood": "playful"
+      },
+      "pop-bold": {
+        "tags": [
+          "museum",
+          "bold",
+          "pop-art"
+        ],
+        "industry": [
+          "museum",
+          "cultural"
+        ],
+        "audience": "b2c",
+        "complexity": "medium",
+        "mood": "bold",
+        "ref": "museumofmoney.com"
+      },
+      "cinematic-dark": {
+        "tags": [
+          "cinematic",
+          "dark",
+          "portfolio"
+        ],
+        "industry": [
+          "film",
+          "photography"
+        ],
+        "audience": "b2c",
+        "complexity": "medium",
+        "mood": "dramatic",
+        "ref": "adambricker.com"
+      },
+      "editorial-brutalist": {
+        "tags": [
+          "brutalist",
+          "editorial",
+          "bold"
+        ],
+        "industry": [
+          "consulting",
+          "architecture"
+        ],
+        "audience": "b2b",
+        "complexity": "medium",
+        "mood": "aggressive",
+        "ref": "oci.madebybuzzworthy.com"
+      },
+      "tech-neon": {
+        "tags": [
+          "tech",
+          "neon",
+          "energy"
+        ],
+        "industry": [
+          "energy",
+          "deeptech"
+        ],
+        "audience": "b2b",
+        "complexity": "high",
+        "mood": "futuristic",
+        "ref": "on.energy"
+      },
+      "vintage-serif": {
+        "tags": [
+          "vintage",
+          "serif",
+          "brand"
+        ],
+        "industry": [
+          "branding",
+          "agency"
+        ],
+        "audience": "b2b",
+        "complexity": "low",
+        "mood": "vintage",
+        "ref": "griflan.com"
+      },
+      "quantum-glow": {
+        "tags": [
+          "quantum",
+          "ai",
+          "glow"
+        ],
+        "industry": [
+          "ai",
+          "quantum-computing"
+        ],
+        "audience": "b2b",
+        "complexity": "high",
+        "mood": "futuristic",
+        "ref": "haiqu.ai"
+      },
+      "museum-modern": {
+        "tags": [
+          "museum",
+          "modern",
+          "cultural"
+        ],
+        "industry": [
+          "museum",
+          "cultural"
+        ],
+        "audience": "b2c",
+        "complexity": "medium",
+        "mood": "modern",
+        "ref": "rom.on.ca"
+      },
+      "arch-luxury": {
+        "tags": [
+          "architecture",
+          "luxury",
+          "corporate"
+        ],
+        "industry": [
+          "architecture",
+          "construction"
+        ],
+        "audience": "b2b",
+        "complexity": "medium",
+        "mood": "luxurious",
+        "ref": "ssyenc.com"
+      },
+      "east-minimal": {
+        "tags": [
+          "asian",
+          "minimal",
+          "tea"
+        ],
+        "industry": [
+          "food",
+          "luxury",
+          "culture"
+        ],
+        "audience": "b2c",
+        "complexity": "low",
+        "mood": "serene",
+        "ref": "tscent-tea.com"
+      },
+      "dev-toolkit": {
+        "tags": [
+          "webflow",
+          "toolkit",
+          "resource"
+        ],
+        "industry": [
+          "dev-tool",
+          "design-resource"
+        ],
+        "audience": "b2b",
+        "complexity": "medium",
+        "mood": "dynamic",
+        "ref": "osmo.supply"
+      }
+    }
+  }
+}
