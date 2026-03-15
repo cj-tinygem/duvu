@@ -63,9 +63,8 @@ duvu install-skill --gemini   # Gemini CLI만
 
 | 에이전트 | 경로 |
 |---------|------|
-| Claude Code | `~/.claude/rules/duvu-design-system.md` |
+| Claude Code | `~/.claude/skills/duvu/SKILL.md` |
 | Codex CLI + Gemini CLI (공용) | `~/.agents/skills/duvu/SKILL.md` |
-| Gemini CLI (추가) | `~/.gemini/skills/duvu/SKILL.md` |
 
 설치 후 각 에이전트가 UI/프론트엔드 코드를 작성할 때 DUVU 디자인 시스템이 자동으로 적용된다.
 

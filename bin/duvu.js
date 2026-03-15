@@ -84,12 +84,11 @@ ${c.b}${c.cyan}── 확장 ──${c.r}
 
 ${c.b}${c.cyan}── 스킬 설치 ──${c.r}
   ${c.green}install-skill${c.r}          모든 AI 에이전트에 스킬 설치
-                          ${c.d}.agents/skills/ (Codex+Gemini 공용 표준)${c.r}
-                          ${c.d}.gemini/skills/ (Gemini 전용)${c.r}
-                          ${c.d}.claude/rules/ (Claude Code)${c.r}
+                          ${c.d}.claude/skills/duvu/ (Claude Code)${c.r}
+                          ${c.d}.agents/skills/duvu/ (Codex+Gemini 공용)${c.r}
   ${c.green}install-skill --claude${c.r}  Claude Code만
-  ${c.green}install-skill --codex${c.r}   Codex CLI만 (.agents/skills/)
-  ${c.green}install-skill --gemini${c.r}  Gemini CLI만 (.agents + .gemini)
+  ${c.green}install-skill --codex${c.r}   Codex CLI만
+  ${c.green}install-skill --gemini${c.r}  Gemini CLI만
 
 ${c.b}${c.cyan}── 기타 ──${c.r}
   ${c.green}help${c.r}                   이 도움말
@@ -384,80 +383,33 @@ function installSkill() {
   const installClaude = args.includes('--claude') || (!args.includes('--codex') && !args.includes('--gemini'));
   const installCodex = args.includes('--codex') || (!args.includes('--claude') && !args.includes('--gemini'));
   const installGemini = args.includes('--gemini') || (!args.includes('--claude') && !args.includes('--codex'));
-  
+
   banner();
   console.log(`${c.b}스킬 설치 중...${c.r}\n`);
-  
-  // Prepare skill content
+
+  // SKILL.md 원본 읽기
   const skillMd = readFileSync(join(SKILLS_DIR, 'SKILL.md'), 'utf8');
-  
-  // 공통 SKILL.md 내용 (CLI 사용법 + 데이터 경로 포함)
-  const skillContent = `${skillMd}
 
-# 데이터 경로
-DUVU 프리셋 데이터: \`${PRESETS_FILE}\`
+  // ━━━ 1. Claude Code: ~/.claude/skills/duvu/SKILL.md ━━━
+  if (installClaude) {
+    const claudeSkillDir = join(HOME, '.claude', 'skills', 'duvu');
+    mkdirSync(claudeSkillDir, { recursive: true });
+    writeFileSync(join(claudeSkillDir, 'SKILL.md'), skillMd);
+    console.log(`  ${c.green}✓${c.r} Claude Code`);
+    console.log(`    ${c.d}${claudeSkillDir}/SKILL.md${c.r}`);
+  }
 
-# CLI 사용법
-셸에서 다음 명령어로 데이터 조회/코드 생성 가능:
-- \`duvu list [colors|typo|layout|style|motion|gradient|templates]\`
-- \`duvu show <type> <id>\`
-- \`duvu generate <preset-id|#hex> [--platform css|tailwind|flutter|swiftui|compose|unity]\`
-- \`duvu template <id>\`
-- \`duvu add <type> '<json>'\` / \`duvu remove <type> <id>\` / \`duvu reset [type]\`
-`;
-  
-  // ━━━ 1. .agents/skills/duvu/ (Codex + Gemini 공용 표준) ━━━
+  // ━━━ 2. Codex CLI + Gemini CLI: ~/.agents/skills/duvu/SKILL.md ━━━
   if (installCodex || installGemini) {
     const agentsSkillDir = join(HOME, '.agents', 'skills', 'duvu');
     mkdirSync(agentsSkillDir, { recursive: true });
-    
-    writeFileSync(join(agentsSkillDir, 'SKILL.md'), skillContent);
-    
-    // 레퍼런스 데이터도 함께 복사
-    const agentsDataDir = join(agentsSkillDir, 'data');
-    mkdirSync(agentsDataDir, { recursive: true });
-    copyFileSync(PRESETS_FILE, join(agentsDataDir, 'presets.json'));
-    
-    console.log(`  ${c.green}✓${c.r} .agents/skills/duvu/ (Codex CLI + Gemini CLI 공용)`);
-    console.log(`    ${c.d}${agentsSkillDir}${c.r}`);
+    writeFileSync(join(agentsSkillDir, 'SKILL.md'), skillMd);
+    console.log(`  ${c.green}✓${c.r} Codex CLI + Gemini CLI`);
+    console.log(`    ${c.d}${agentsSkillDir}/SKILL.md${c.r}`);
   }
-  
-  // ━━━ 2. Gemini 전용 경로 (추가 호환성) ━━━
-  if (installGemini) {
-    const geminiSkillDir = join(HOME, '.gemini', 'skills', 'duvu');
-    mkdirSync(geminiSkillDir, { recursive: true });
-    writeFileSync(join(geminiSkillDir, 'SKILL.md'), skillContent);
-    console.log(`  ${c.green}✓${c.r} .gemini/skills/duvu/ (Gemini CLI 전용 경로)`);
-    console.log(`    ${c.d}${geminiSkillDir}${c.r}`);
-  }
-  
-  // ━━━ 3. Claude Code ━━━
-  if (installClaude) {
-    const claudeDir = join(HOME, '.claude');
-    const rulesDir = join(claudeDir, 'rules');
-    mkdirSync(rulesDir, { recursive: true });
-    
-    writeFileSync(join(rulesDir, 'duvu-design-system.md'), `---
-paths:
-  - "**/*.css"
-  - "**/*.html"
-  - "**/*.tsx"
-  - "**/*.jsx"
-  - "**/*.vue"
-  - "**/*.svelte"
-  - "**/*.dart"
-  - "**/*.swift"
-  - "**/*.kt"
-  - "**/*.cs"
----
-${skillContent}
-`);
-    console.log(`  ${c.green}✓${c.r} Claude Code: ${join(rulesDir, 'duvu-design-system.md')}`);
-  }
-  
+
   console.log(`\n${c.b}${c.green}설치 완료!${c.r}`);
-  console.log(`${c.d}스킬이 각 AI 에이전트의 컨텍스트에 자동 로드됩니다.${c.r}`);
-  console.log(`${c.d}프리셋 데이터 경로: ${PRESETS_FILE}${c.r}\n`);
+  console.log(`${c.d}스킬이 각 AI 에이전트의 컨텍스트에 자동 로드됩니다.${c.r}\n`);
 }
 
 // ─── Demo Server ───

@@ -1,10 +1,6 @@
 ---
 name: duvu
 description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 생성 시 자동 발동. 소스 색상 하나에서 WCAG AA/HIG/MD3를 동시 준수하는 완전한 디자인 토큰을 도출하고, 41개 컬러 프리셋 × 10개 타이포 × 4개 레이아웃 × 8개 스타일 × 5개 모션 × 9개 그라디언트를 조합하여 CSS, Tailwind, Flutter, SwiftUI, Compose, Unity 코드를 즉시 출력한다. 22개 종합 템플릿으로 SaaS부터 럭셔리까지 모든 도메인을 커버한다. Use when: UI 디자인, 프론트엔드 코드 생성, 디자인 시스템 적용, 컬러/타이포/레이아웃 결정, 디자인 토큰 생성, 컴포넌트 코드 작성, 페이지 레이아웃 구성."
-license: MIT
-metadata:
-  author: tinygem
-  version: '19.0'
 ---
 
 # DUVU — 범용 디자인 시스템 엔진
