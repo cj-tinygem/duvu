@@ -5209,6 +5209,7 @@
     "title-size": "clamp(28px, 5vw, 56px)",
     "subtitle-size": "clamp(16px, 2vw, 22px)",
     "body-size": "clamp(14px, 1.2vw, 16px)",
+    "content-max-width": "680px",
     "hero-title-line-height": "0.95",
     "hero-title-letter-spacing": "-0.045em",
     "section-title-line-height": "1.1",

@@ -334,9 +334,9 @@ function outputCode(preset, platform) {
 }
 
 /* Fluid Typography */
-.duvu-title { font-size: clamp(28px, 5vw, 56px); line-height: 1.15; font-weight: 700; }
+.duvu-title { font-size: clamp(28px, 5vw, 56px); line-height: 1.1; font-weight: 700; letter-spacing: -0.04em; }
 .duvu-subtitle { font-size: clamp(16px, 2vw, 22px); line-height: 1.5; }
-.duvu-body { font-size: clamp(14px, 1.2vw, 16px); line-height: 1.5; }
+.duvu-body { font-size: clamp(14px, 1.2vw, 16px); line-height: 1.5; max-width: var(--duvu-content-max-width, 680px); }
 
 /* Responsive Container */
 .duvu-container { width: 100%; max-width: var(--duvu-bp-wide); margin: 0 auto; padding: 0 24px; }
