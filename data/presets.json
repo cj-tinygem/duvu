@@ -2189,7 +2189,8 @@
             "author": "Steve Jobs"
           },
           {
-            "type": "buttons"
+            "type": "buttons",
+            "span": "full"
           }
         ]
       }
@@ -2254,7 +2255,8 @@
             "type": "metric",
             "label": "빌드 시간",
             "value": "1.2s",
-            "badge": "-40%"
+            "badge": "-40%",
+            "span": "full"
           }
         ]
       }
@@ -2484,7 +2486,8 @@
             "badge": "+124"
           },
           {
-            "type": "buttons"
+            "type": "buttons",
+            "span": "full"
           }
         ]
       }
@@ -2561,7 +2564,8 @@
           },
           {
             "type": "gallery",
-            "count": 4
+            "count": 4,
+            "span": "full"
           }
         ]
       }
@@ -2773,7 +2777,8 @@
             "badge": "peak"
           },
           {
-            "type": "buttons"
+            "type": "buttons",
+            "span": "full"
           }
         ]
       }
@@ -3230,7 +3235,8 @@
             "type": "metric",
             "label": "프리셋",
             "value": "99",
-            "badge": "v19"
+            "badge": "v19",
+            "span": "full"
           }
         ]
       }
