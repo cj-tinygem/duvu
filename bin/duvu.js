@@ -90,6 +90,10 @@ ${c.b}${c.cyan}── 스킬 설치 ──${c.r}
   ${c.green}install-skill --codex${c.r}   Codex CLI만
   ${c.green}install-skill --gemini${c.r}  Gemini CLI만
 
+${c.b}${c.cyan}── 검증 ──${c.r}
+  ${c.green}screenshot${c.r}            데모 페이지 시각적 검증용 스크린샷 캡처
+                          ${c.d}--all: 5종 화면비 / --out <경로>: 저장 위치${c.r}
+
 ${c.b}${c.cyan}── 기타 ──${c.r}
   ${c.green}help${c.r}                   이 도움말
   ${c.green}version${c.r}               버전 정보
@@ -509,6 +513,12 @@ switch(cmd) {
   case 'reset': reset(args[0]); break;
   case 'install-skill': case 'install': installSkill(); break;
   case 'demo': demo(); break;
+  case 'screenshot': case 'ss': {
+    const ssPath = join(__dirname, 'screenshot.js');
+    const ssArgs = args.join(' ');
+    import('child_process').then(cp => cp.execSync(`node ${ssPath} ${ssArgs}`, { stdio: 'inherit' }));
+    break;
+  }
   default: 
     console.log(`${c.red}알 수 없는 명령: ${cmd}${c.r}`);
     console.log(`'duvu help'로 사용법을 확인하세요.`);
