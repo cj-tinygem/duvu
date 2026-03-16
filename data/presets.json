@@ -344,8 +344,8 @@
         "fg": "#d1d2d3",
         "fg2": "#868789",
         "fg3": "#6b6d70",
-        "accent": "#611f69",
-        "accent-rgb": "97, 31, 105"
+        "accent": "#9b44a8",
+        "accent-rgb": "155, 68, 168"
       },
       "light": {
         "bg": "#ffffff",
