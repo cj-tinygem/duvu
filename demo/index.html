@@ -197,7 +197,7 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: 80px 0 24px;
+  padding: 120px 0 48px;
   text-align: center;
 }
 
@@ -209,7 +209,7 @@ section {
   font-family: var(--duvu-font-display), var(--duvu-font);
   text-wrap: balance;
   word-break: keep-all;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
 
@@ -218,11 +218,13 @@ section {
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
 
+.hero-title { position: relative; display: inline-block; }
 .hero-mark {
   color: var(--duvu-accent);
-  font-size: 0.5em;
-  vertical-align: super;
-  display: inline-block;
+  font-size: 0.35em;
+  position: absolute;
+  right: -1em;
+  top: 0.2em;
   animation: hero-mark-spin 8s linear infinite;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
@@ -235,7 +237,7 @@ section {
   font-size: clamp(15px, 2vw, 18px);
   color: var(--duvu-fg2);
   max-width: 560px;
-  margin: 0 auto 28px;
+  margin: 0 auto 40px;
   word-break: keep-all;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
@@ -271,7 +273,7 @@ section {
 
 /* ─── PRESET EXPLORER ─── */
 .explorer {
-  padding: 24px 0 32px;
+  padding: 48px 0 40px;
 }
 
 .section-label {
@@ -288,7 +290,7 @@ section {
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
   text-wrap: balance;
   word-break: keep-all;
   font-family: var(--duvu-font-display), var(--duvu-font);
@@ -495,7 +497,7 @@ section {
 
 /* ─── LIVE PREVIEW ─── */
 .preview-section {
-  padding: 48px 0;
+  padding: 64px 0;
 }
 
 /* preview-watermark CSS 제거됨 */
@@ -752,7 +754,7 @@ section {
 
 /* ─── TEMPLATES ─── */
 .templates-section {
-  padding: 40px 0;
+  padding: 64px 0;
 }
 
 .template-grid {
@@ -804,7 +806,7 @@ section {
 
 /* ─── CODE OUTPUT ─── */
 .code-section {
-  padding: 40px 0;
+  padding: 64px 0;
 }
 
 .code-tabs {
