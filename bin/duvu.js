@@ -74,7 +74,7 @@ ${c.b}${c.cyan}── 조회 ──${c.r}
   ${c.green}demo${c.r}                   데모 웹페이지 실행 (브라우저)
 
 ${c.b}${c.cyan}── 생성 ──${c.r}
-  ${c.green}generate${c.r} <preset|hex> [--platform css|tailwind|flutter|swiftui|compose|unity]
+  ${c.green}generate${c.r} <preset|hex> [--platform css|tailwind|flutter|swiftui|compose|unity|react-native]
                           디자인 토큰 코드 생성
   ${c.green}template${c.r} <id>          템플릿 조합 정보 + CSS 변수 생성
 
@@ -184,7 +184,7 @@ function show(type, id) {
 
 function generate(presetOrHex, platform = 'css') {
   if (!presetOrHex) {
-    console.log(`${c.red}사용법: duvu generate <preset-id|#hex> [--platform css|tailwind|flutter|swiftui|compose|unity]${c.r}`);
+    console.log(`${c.red}사용법: duvu generate <preset-id|#hex> [--platform css|tailwind|flutter|swiftui|compose|unity|react-native]${c.r}`);
     return;
   }
   const data = loadPresets();

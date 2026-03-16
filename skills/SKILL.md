@@ -144,13 +144,16 @@ CLI: `duvu list component`, `duvu show component <id>`
 
 타겟 플랫폼에 맞는 코드를 생성한다. `references/platforms.md`에서 플랫폼별 전체 코드 템플릿을 참조한다.
 
-**지원 플랫폼 6개:**
+**지원 플랫폼 7개:**
 - CSS (기본) — `:root` 변수 + 컴포넌트 클래스
 - Tailwind CSS — `tailwind.config.js` + CSS 변수 브리지
 - Flutter — `DuvuTheme.generate()` + ThemeData
 - SwiftUI — `DuvuTheme` struct + 컴포넌트 View
 - Jetpack Compose — `DuvuTheme` object + Composable
 - Unity C# — `DuvuTheme` ScriptableObject
+- React Native — `StyleSheet` + DuvuTheme 객체
+
+> **범용성**: 프리셋 데이터는 플랫폼 중립적(hex, px)으로 저장되므로, 위 7개 외의 플랫폼(React/Next.js는 CSS/Tailwind 사용, Android XML은 Compose 참조)으로도 변환 가능.
 
 ### 5단계: 자동 검증 (출력 전 필수)
 

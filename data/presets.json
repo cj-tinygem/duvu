@@ -27,7 +27,11 @@
         "accent": "#3182F6",
         "accent-rgb": "49, 130, 246"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "fintech"
+      ]
     },
     {
       "id": "linear",
@@ -55,7 +59,11 @@
         "accent": "#5E6AD2",
         "accent-rgb": "94, 106, 210"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "dev"
+      ]
     },
     {
       "id": "stripe",
@@ -83,7 +91,11 @@
         "accent": "#635BFF",
         "accent-rgb": "99, 91, 255"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "fintech",
+        "saas"
+      ]
     },
     {
       "id": "apple",
@@ -111,7 +123,11 @@
         "accent": "#007AFF",
         "accent-rgb": "0, 122, 255"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "enterprise",
+        "creative"
+      ]
     },
     {
       "id": "notion",
@@ -139,7 +155,12 @@
         "accent": "#2383E2",
         "accent-rgb": "35, 131, 226"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "dev",
+        "editorial"
+      ]
     },
     {
       "id": "github",
@@ -167,7 +188,10 @@
         "accent": "#238636",
         "accent-rgb": "35, 134, 54"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "dev"
+      ]
     },
     {
       "id": "spotify",
@@ -195,7 +219,11 @@
         "accent": "#1aa54b",
         "accent-rgb": "26, 165, 75"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "creative",
+        "social"
+      ]
     },
     {
       "id": "supabase",
@@ -223,7 +251,11 @@
         "accent": "#28a06a",
         "accent-rgb": "40, 160, 106"
       },
-      "btnText": "#000000"
+      "btnText": "#000000",
+      "domains": [
+        "dev",
+        "saas"
+      ]
     },
     {
       "id": "figma",
@@ -251,7 +283,11 @@
         "accent": "#A259FF",
         "accent-rgb": "162, 89, 255"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "creative",
+        "dev"
+      ]
     },
     {
       "id": "airbnb",
@@ -279,7 +315,11 @@
         "accent": "#FF385C",
         "accent-rgb": "255, 56, 92"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "ecommerce",
+        "social"
+      ]
     },
     {
       "id": "slack",
@@ -307,7 +347,11 @@
         "accent": "#4A154B",
         "accent-rgb": "74, 21, 75"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "enterprise"
+      ]
     },
     {
       "id": "vercel",
@@ -335,7 +379,11 @@
         "accent": "#0070F3",
         "accent-rgb": "0, 112, 243"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "dev",
+        "portfolio"
+      ]
     },
     {
       "id": "sunny-beach",
@@ -362,7 +410,11 @@
         "accent": "#2A9D8F",
         "accent-rgb": "42, 157, 143"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "ecommerce",
+        "health"
+      ]
     },
     {
       "id": "olive-garden",
@@ -389,7 +441,11 @@
         "accent": "#606C38",
         "accent-rgb": "96, 108, 56"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "nature",
+        "health"
+      ]
     },
     {
       "id": "summer-ocean",
@@ -416,7 +472,11 @@
         "accent": "#457B9D",
         "accent-rgb": "69, 123, 157"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "health",
+        "nature"
+      ]
     },
     {
       "id": "black-gold",
@@ -443,7 +503,10 @@
         "accent": "#cd8003",
         "accent-rgb": "205, 128, 3"
       },
-      "btnText": "#000000"
+      "btnText": "#000000",
+      "domains": [
+        "luxury"
+      ]
     },
     {
       "id": "ocean-pearl",
@@ -470,7 +533,11 @@
         "accent": "#006D77",
         "accent-rgb": "0, 109, 119"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "health",
+        "nature"
+      ]
     },
     {
       "id": "earthy-forest",
@@ -497,7 +564,11 @@
         "accent": "#588157",
         "accent-rgb": "88, 129, 87"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "nature",
+        "editorial"
+      ]
     },
     {
       "id": "arctic-blue",
@@ -524,7 +595,11 @@
         "accent": "#4A8CAE",
         "accent-rgb": "74, 140, 174"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "enterprise",
+        "saas"
+      ]
     },
     {
       "id": "warm-coral",
@@ -551,7 +626,11 @@
         "accent": "#D4594A",
         "accent-rgb": "212, 89, 74"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "editorial",
+        "creative"
+      ]
     },
     {
       "id": "indigo-bloom",
@@ -578,7 +657,11 @@
         "accent": "#5B5FE0",
         "accent-rgb": "91, 95, 224"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "social",
+        "creative"
+      ]
     },
     {
       "id": "ocean",
@@ -605,7 +688,11 @@
         "accent": "#0077B6",
         "accent-rgb": "0, 119, 182"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "enterprise"
+      ]
     },
     {
       "id": "sunset",
@@ -632,7 +719,11 @@
         "accent": "#C06030",
         "accent-rgb": "192, 96, 48"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "editorial",
+        "creative"
+      ]
     },
     {
       "id": "forest",
@@ -659,7 +750,11 @@
         "accent": "#2D6A4F",
         "accent-rgb": "45, 106, 79"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "nature",
+        "health"
+      ]
     },
     {
       "id": "royal",
@@ -686,7 +781,11 @@
         "accent": "#7C3AED",
         "accent-rgb": "124, 58, 237"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "luxury",
+        "fintech"
+      ]
     },
     {
       "id": "midnight",
@@ -713,7 +812,11 @@
         "accent": "#4A7FB5",
         "accent-rgb": "74, 127, 181"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "portfolio",
+        "dev"
+      ]
     },
     {
       "id": "lavender",
@@ -740,7 +843,11 @@
         "accent": "#7C6FA0",
         "accent-rgb": "124, 111, 160"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "creative",
+        "health"
+      ]
     },
     {
       "id": "earth",
@@ -767,7 +874,11 @@
         "accent": "#8B6E4F",
         "accent-rgb": "139, 110, 79"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "luxury",
+        "nature"
+      ]
     },
     {
       "id": "rose",
@@ -794,7 +905,11 @@
         "accent": "#D4547A",
         "accent-rgb": "212, 84, 122"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "ecommerce",
+        "health"
+      ]
     },
     {
       "id": "beach-teal",
@@ -821,7 +936,11 @@
         "accent": "#264653",
         "accent-rgb": "38, 70, 83"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "health",
+        "nature"
+      ]
     },
     {
       "id": "warm-amber",
@@ -848,7 +967,11 @@
         "accent": "#e26d10",
         "accent-rgb": "226, 109, 16"
       },
-      "btnText": "#000000"
+      "btnText": "#000000",
+      "domains": [
+        "editorial",
+        "luxury"
+      ]
     },
     {
       "id": "coral-red",
@@ -875,7 +998,11 @@
         "accent": "#e6694a",
         "accent-rgb": "230, 105, 74"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "ecommerce",
+        "creative"
+      ]
     },
     {
       "id": "sage-green",
@@ -902,7 +1029,11 @@
         "accent": "#6d9977",
         "accent-rgb": "109, 153, 119"
       },
-      "btnText": "#000000"
+      "btnText": "#000000",
+      "domains": [
+        "nature",
+        "health"
+      ]
     },
     {
       "id": "navy-depth",
@@ -929,7 +1060,11 @@
         "accent": "#1D3557",
         "accent-rgb": "29, 53, 87"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "fintech",
+        "enterprise"
+      ]
     },
     {
       "id": "sky-blue",
@@ -956,7 +1091,11 @@
         "accent": "#2099b5",
         "accent-rgb": "32, 153, 181"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "saas",
+        "education"
+      ]
     },
     {
       "id": "mauve-rose",
@@ -983,7 +1122,11 @@
         "accent": "#944454",
         "accent-rgb": "148, 68, 84"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "creative",
+        "luxury"
+      ]
     },
     {
       "id": "autumn-red",
@@ -1010,7 +1153,11 @@
         "accent": "#D62828",
         "accent-rgb": "214, 40, 40"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "editorial",
+        "nature"
+      ]
     },
     {
       "id": "golden-sun",
@@ -1037,7 +1184,11 @@
         "accent": "#e07300",
         "accent-rgb": "224, 115, 0"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "ecommerce",
+        "education"
+      ]
     },
     {
       "id": "pine-forest",
@@ -1064,7 +1215,11 @@
         "accent": "#52796F",
         "accent-rgb": "82, 121, 111"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "nature",
+        "editorial"
+      ]
     },
     {
       "id": "electric-blue",
@@ -1091,7 +1246,11 @@
         "accent": "#3A86FF",
         "accent-rgb": "58, 134, 255"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "dev",
+        "gaming"
+      ]
     },
     {
       "id": "deep-purple",
@@ -1118,7 +1277,11 @@
         "accent": "#8338EC",
         "accent-rgb": "131, 56, 236"
       },
-      "btnText": "#ffffff"
+      "btnText": "#ffffff",
+      "domains": [
+        "creative",
+        "gaming"
+      ]
     }
   ],
   "typography": [

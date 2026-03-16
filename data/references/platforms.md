@@ -496,3 +496,82 @@ public class DuvuTheme : ScriptableObject
     }
 }
 ```
+
+---
+
+## React Native
+
+```typescript
+import { StyleSheet } from 'react-native';
+
+const DuvuTheme = {
+  // Color — Toss Dark 프리셋
+  colors: {
+    bg: '#08080B',
+    surface: '#111115',
+    surface2: '#1B1B20',
+    fg: '#EAEAF0',
+    fg2: '#848490',
+    fg3: '#525258',
+    accent: '#3182F6',
+    btnText: '#FFFFFF',
+    success: '#2A9D8F',
+    warning: '#F4A261',
+    error: '#E76F51',
+  },
+
+  // Shape
+  radius: { xs: 6, sm: 10, md: 10, lg: 16, full: 9999 },
+  btnRadius: 10,
+  cardRadius: 16,
+
+  // Spacing
+  space: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32, xxl: 48 },
+
+  // Typography
+  font: { regular: 'Pretendard-Regular', medium: 'Pretendard-Medium', bold: 'Pretendard-Bold' },
+};
+
+// 사용법
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: DuvuTheme.colors.surface,
+    borderRadius: DuvuTheme.cardRadius,
+    padding: DuvuTheme.space.lg,
+  },
+  btnPrimary: {
+    backgroundColor: DuvuTheme.colors.accent,
+    borderRadius: DuvuTheme.btnRadius,
+    minHeight: 44, // HIG
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 22,
+  },
+  btnText: {
+    color: DuvuTheme.colors.btnText,
+    fontSize: 14,
+    fontWeight: '600',
+    fontFamily: DuvuTheme.font.medium,
+  },
+  text: { color: DuvuTheme.colors.fg, fontSize: 16, lineHeight: 24 },
+  textSecondary: { color: DuvuTheme.colors.fg2, fontSize: 14 },
+});
+```
+
+---
+
+## 플랫폼 범용성 가이드
+
+DUVU의 디자인 토큰은 **플랫폼에 독립적**이다. 모든 토큰은 다음 형식으로 변환 가능:
+
+| 플랫폼 | 색상 표현 | 간격 단위 | 모서리 | 모션 |
+|---|---|---|---|---|
+| CSS | `var(--duvu-*)` | px | border-radius | transition |
+| Tailwind | theme config | rem 변환 가능 | rounded-* | duration-* |
+| Flutter | `Color(0xFF...)` | dp | BorderRadius | Duration |
+| SwiftUI | `Color(hex:)` | pt | cornerRadius | Animation |
+| Compose | `Color(0xFF...)` | dp | RoundedCornerShape | animateAsState |
+| Unity | `Color` | float | cornerRadius | DOTween |
+| React Native | `'#hex'` | dp | borderRadius | Animated |
+
+**핵심**: 프리셋 데이터(`presets.json`)는 플랫폼 중립적인 값(hex, px)으로 저장되므로, 어떤 플랫폼으로든 변환 가능하다. AI 스킬이 위 표를 참조하여 타겟 플랫폼에 맞는 코드를 생성한다.
