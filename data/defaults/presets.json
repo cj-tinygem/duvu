@@ -1334,7 +1334,12 @@
       "cdn": "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css",
       "mood": "안전, 깔끔, 한국어 기본",
       "description": "한국어에 최적화된 네오 그로테스크. 본문과 UI 모두에 안정적.",
-      "fallback": "'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif"
+      "fallback": "'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif",
+      "domains": [
+        "saas",
+        "enterprise",
+        "editorial"
+      ]
     },
     {
       "id": "inter",
@@ -1352,7 +1357,13 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap",
       "mood": "중성적, 범용, 데이터 친화",
       "description": "가변 폰트의 표준. 숫자/데이터 표현에 탁월.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "saas",
+        "dev",
+        "fintech",
+        "dashboard"
+      ]
     },
     {
       "id": "dm-sans",
@@ -1369,7 +1380,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap",
       "mood": "기하학적, 현대적, 친근",
       "description": "둥근 기하학적 산세리프. 따뜻하면서 현대적인 톤.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "ecommerce",
+        "health",
+        "social"
+      ]
     },
     {
       "id": "space-grotesk",
@@ -1387,7 +1403,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
       "mood": "기술적, 코드 친화",
       "description": "모노스페이스에서 파생된 프로포셔널 산세리프. 개발자 도구에 최적.",
-      "fallback": "'SF Mono', 'Consolas', monospace"
+      "fallback": "'SF Mono', 'Consolas', monospace",
+      "domains": [
+        "dev",
+        "portfolio",
+        "creative"
+      ]
     },
     {
       "id": "satoshi",
@@ -1405,7 +1426,11 @@
       "cdn": "https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap",
       "mood": "독특, 균형, 크리에이티브",
       "description": "Fontshare 대표 폰트. 독특한 글자꼴로 차별화된 느낌.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "creative",
+        "portfolio"
+      ]
     },
     {
       "id": "general-sans",
@@ -1423,7 +1448,11 @@
       "cdn": "https://api.fontshare.com/v2/css?f[]=general-sans@300,400,500,600,700&display=swap",
       "mood": "부드럽고 세련",
       "description": "곡선이 부드러운 현대 산세리프. 럭셔리/프리미엄 톤에 적합.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "luxury",
+        "editorial"
+      ]
     },
     {
       "id": "plus-jakarta",
@@ -1442,7 +1471,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap",
       "mood": "따뜻하고 현대적",
       "description": "인간적인 터치의 기하학적 산세리프. 커머스/소셜에 적합.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "ecommerce",
+        "social",
+        "health"
+      ]
     },
     {
       "id": "outfit",
@@ -1460,7 +1494,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap",
       "mood": "둥글고 친근, 앱 UI",
       "description": "라운드 산세리프. 웰니스/헬스/앱 UI에 자연스러운 톤.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "health",
+        "social",
+        "nature"
+      ]
     },
     {
       "id": "sora",
@@ -1478,7 +1517,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap",
       "mood": "기하학적 모던, 디지털 네이티브",
       "description": "정밀한 기하학적 구조. 핀테크/디지털 서비스에 최적.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "fintech",
+        "dev",
+        "enterprise"
+      ]
     },
     {
       "id": "manrope",
@@ -1497,7 +1541,12 @@
       "cdn": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap",
       "mood": "세미 모노, 기술적이면서 친근",
       "description": "모노스페이스와 산세리프의 중간. 기술적이면서 접근성 좋음.",
-      "fallback": "'Helvetica Neue', Arial, sans-serif"
+      "fallback": "'Helvetica Neue', Arial, sans-serif",
+      "domains": [
+        "dev",
+        "saas",
+        "education"
+      ]
     }
   ],
   "layout": [
@@ -1509,7 +1558,12 @@
       "padding": 24,
       "desc": "기본. 충분한 여백.",
       "multiplier": 1,
-      "description": "기본 간격. 대부분의 UI에 적합한 균형잡힌 여백."
+      "description": "기본 간격. 대부분의 UI에 적합한 균형잡힌 여백.",
+      "domains": [
+        "saas",
+        "ecommerce",
+        "editorial"
+      ]
     },
     {
       "id": "compact",
@@ -1519,7 +1573,12 @@
       "padding": 16,
       "desc": "밀도 높음. 대시보드에 적합.",
       "multiplier": 0.75,
-      "description": "밀도 높은 레이아웃. 대시보드/데이터 테이블에 적합."
+      "description": "밀도 높은 레이아웃. 대시보드/데이터 테이블에 적합.",
+      "domains": [
+        "dashboard",
+        "dev",
+        "fintech"
+      ]
     },
     {
       "id": "spacious",
@@ -1529,7 +1588,12 @@
       "padding": 32,
       "desc": "넓은 여백. 에디토리얼.",
       "multiplier": 1.25,
-      "description": "넓은 여백. 에디토리얼/럭셔리/포트폴리오에 적합."
+      "description": "넓은 여백. 에디토리얼/럭셔리/포트폴리오에 적합.",
+      "domains": [
+        "luxury",
+        "editorial",
+        "portfolio"
+      ]
     },
     {
       "id": "dense",
@@ -1539,7 +1603,11 @@
       "padding": 12,
       "desc": "최소 간격. 데이터 테이블.",
       "multiplier": 0.6,
-      "description": "최소 간격. 극도로 밀도 높은 데이터 인터페이스용."
+      "description": "최소 간격. 극도로 밀도 높은 데이터 인터페이스용.",
+      "domains": [
+        "dashboard",
+        "dev"
+      ]
     }
   ],
   "style": [
@@ -1554,7 +1622,12 @@
       "motion": 1,
       "gradient": "none",
       "desc": "부드럽고 현대적. 기본.",
-      "description": "부드러운 곡선(16px). 현대적 SaaS/앱의 기본."
+      "description": "부드러운 곡선(16px). 현대적 SaaS/앱의 기본.",
+      "domains": [
+        "saas",
+        "fintech",
+        "health"
+      ]
     },
     {
       "id": "sharp",
@@ -1567,7 +1640,12 @@
       "motion": 0.6,
       "gradient": "none",
       "desc": "각진 미니멀. 개발자 도구.",
-      "description": "직선적(4px). 데이터/개발자 도구 느낌."
+      "description": "직선적(4px). 데이터/개발자 도구 느낌.",
+      "domains": [
+        "dev",
+        "portfolio",
+        "enterprise"
+      ]
     },
     {
       "id": "pill",
@@ -1580,7 +1658,12 @@
       "motion": 1,
       "gradient": "none",
       "desc": "완전한 라운드. 소셜/앱.",
-      "description": "완전 라운드(100px). 버튼/칩에 소셜/크리에이티브 느낌."
+      "description": "완전 라운드(100px). 버튼/칩에 소셜/크리에이티브 느낌.",
+      "domains": [
+        "social",
+        "creative",
+        "ecommerce"
+      ]
     },
     {
       "id": "soft",
@@ -1593,7 +1676,12 @@
       "motion": 1.2,
       "gradient": "subtle",
       "desc": "둥글고 깊은 그림자.",
-      "description": "큰 곡선(24px). 부드럽고 고급스러운 인상."
+      "description": "큰 곡선(24px). 부드럽고 고급스러운 인상.",
+      "domains": [
+        "luxury",
+        "editorial",
+        "health"
+      ]
     },
     {
       "id": "flat",
@@ -1606,7 +1694,11 @@
       "motion": 0.4,
       "gradient": "none",
       "desc": "그림자 없음. 미니멀.",
-      "description": "중간 곡선(8px). 미니멀 플랫 디자인."
+      "description": "중간 곡선(8px). 미니멀 플랫 디자인.",
+      "domains": [
+        "dev",
+        "portfolio"
+      ]
     },
     {
       "id": "glass",
@@ -1619,7 +1711,11 @@
       "motion": 1,
       "gradient": "subtle",
       "desc": "글래스모피즘. iOS 스타일.",
-      "description": "글래스모피즘(16px). 반투명 블러 효과와 함께."
+      "description": "글래스모피즘(16px). 반투명 블러 효과와 함께.",
+      "domains": [
+        "creative",
+        "luxury"
+      ]
     },
     {
       "id": "brutalist",
@@ -1632,7 +1728,11 @@
       "motion": 0,
       "gradient": "none",
       "desc": "날 것 그대로. 강렬한 대비.",
-      "description": "각진 모서리(0px). 강렬하고 실험적인 디자인."
+      "description": "각진 모서리(0px). 강렬하고 실험적인 디자인.",
+      "domains": [
+        "creative",
+        "portfolio"
+      ]
     },
     {
       "id": "neo",
@@ -1645,7 +1745,11 @@
       "motion": 1.5,
       "gradient": "vibrant",
       "desc": "큰 라운드 + 강한 모션.",
-      "description": "뉴모피즘(20px). 볼록/오목한 표면 효과."
+      "description": "뉴모피즘(20px). 볼록/오목한 표면 효과.",
+      "domains": [
+        "creative",
+        "gaming"
+      ]
     }
   ],
   "motion": [
@@ -1658,7 +1762,11 @@
       "durSlow": "0.01s",
       "desc": "애니메이션 없음. 접근성 우선.",
       "duration": 0,
-      "description": "모션 없음. prefers-reduced-motion 또는 정적 UI용."
+      "description": "모션 없음. prefers-reduced-motion 또는 정적 UI용.",
+      "domains": [
+        "enterprise",
+        "dev"
+      ]
     },
     {
       "id": "subtle",
@@ -1669,7 +1777,12 @@
       "durSlow": "0.4s",
       "desc": "은은한 페이드. 기본.",
       "duration": 0.2,
-      "description": "최소 모션. 상태 전환만 표시. 대시보드/데이터 도구용."
+      "description": "최소 모션. 상태 전환만 표시. 대시보드/데이터 도구용.",
+      "domains": [
+        "saas",
+        "fintech",
+        "editorial"
+      ]
     },
     {
       "id": "smooth",
@@ -1680,7 +1793,12 @@
       "durSlow": "0.7s",
       "desc": "스프링 이징. osmo.supply 수준.",
       "duration": 0.4,
-      "description": "부드러운 감속. 대부분의 UI에 적합한 기본 모션."
+      "description": "부드러운 감속. 대부분의 UI에 적합한 기본 모션.",
+      "domains": [
+        "saas",
+        "ecommerce",
+        "health"
+      ]
     },
     {
       "id": "expressive",
@@ -1691,7 +1809,12 @@
       "durSlow": "0.9s",
       "desc": "과감한 스프링. 페이지 전환.",
       "duration": 0.5,
-      "description": "오버슈팅 스프링. 크리에이티브/소셜/포트폴리오에 적합."
+      "description": "오버슈팅 스프링. 크리에이티브/소셜/포트폴리오에 적합.",
+      "domains": [
+        "creative",
+        "social",
+        "portfolio"
+      ]
     },
     {
       "id": "cinematic",
@@ -1702,7 +1825,12 @@
       "durSlow": "1.2s",
       "desc": "드라마틱 리빌. 풀스크린.",
       "duration": 0.7,
-      "description": "영화적 연출. 럭셔리/에디토리얼의 극적 효과용."
+      "description": "영화적 연출. 럭셔리/에디토리얼의 극적 효과용.",
+      "domains": [
+        "luxury",
+        "portfolio",
+        "editorial"
+      ]
     }
   ],
   "gradient": [

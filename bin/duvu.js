@@ -80,6 +80,8 @@ ${c.b}${c.cyan}── 생성 ──${c.r}
   ${c.green}template${c.r} <id>          템플릿 조합 정보 + CSS 변수 생성
 
 ${c.b}${c.cyan}── 확장 ──${c.r}
+  ${c.green}match${c.r} <domain>          도메인에 맞는 프리셋 자동 매칭
+                          ${c.d}saas, fintech, ecommerce, luxury, dev, creative...${c.r}
   ${c.green}add${c.r} <type> <json>      프리셋/템플릿 추가
   ${c.green}remove${c.r} <type> <id>     프리셋/템플릿 삭제 (기본값 보호)
   ${c.green}reset${c.r} [type]           기본값으로 복원
@@ -646,6 +648,35 @@ function templateCmd(id) {
   if (colorPreset) outputCode(colorPreset, 'css');
 }
 
+// ─── Domain Match ───
+function matchDomain(domain) {
+  if (!domain) {
+    console.log(`${c.red}사용법: duvu match <domain>${c.r}`);
+    console.log(`도메인: saas, fintech, ecommerce, portfolio, health, luxury, creative, dev, editorial, social, nature, education, gaming, enterprise`);
+    return;
+  }
+  const data = loadPresets();
+  const find = (arr) => (arr || []).filter(p => p.domains?.includes(domain)).map(p => p.id);
+
+  banner();
+  console.log(`${c.b}도메인: ${c.cyan}${domain}${c.r}에 맞는 프리셋 조합\n`);
+  console.log(`  ${c.cyan}컬러${c.r}      ${find(data.color).join(', ') || '—'}`);
+  console.log(`  ${c.cyan}타이포${c.r}    ${find(data.typography).join(', ') || '—'}`);
+  console.log(`  ${c.cyan}레이아웃${c.r}  ${find(data.layout).join(', ') || '—'}`);
+  console.log(`  ${c.cyan}스타일${c.r}    ${find(data.style).join(', ') || '—'}`);
+  console.log(`  ${c.cyan}모션${c.r}      ${find(data.motion).join(', ') || '—'}`);
+
+  // 매칭되는 템플릿
+  const tpls = data.templates.filter(t => {
+    const colorP = data.color.find(cc => cc.id === t.color);
+    return colorP?.domains?.includes(domain);
+  });
+  if (tpls.length) {
+    console.log(`\n  ${c.cyan}추천 템플릿${c.r}  ${tpls.map(t => t.id).join(', ')}`);
+  }
+  console.log('');
+}
+
 // ═══════════════════════════════════════════════
 // ROUTER
 // ═══════════════════════════════════════════════
@@ -667,6 +698,7 @@ switch(cmd) {
   case 'show': show(args[0], args[1]); break;
   case 'generate': case 'gen': generate(args[0]); break;
   case 'template': case 'tmpl': templateCmd(args[0]); break;
+  case 'match': matchDomain(args[0]); break;
   case 'add': addPreset(args[0], args.slice(1).join(' ')); break;
   case 'remove': case 'rm': removePreset(args[0], args[1]); break;
   case 'reset': reset(args[0]); break;
