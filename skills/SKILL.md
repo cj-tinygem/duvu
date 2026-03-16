@@ -97,6 +97,29 @@ WCAG/HIG/MD3 자동 체크 (references/compliance.md)
 
 또는 22개 종합 템플릿(`references/templates.md`) 중 하나를 바로 적용할 수 있다.
 
+### 2.5단계: 컴포넌트 선택
+
+`presets.json`의 `components` 배열(14종)과 각 템플릿의 `preview` 필드를 참조하여, 도메인에 적합한 컴포넌트 조합을 결정한다.
+
+| 컴포넌트 | 용도 | 적합 도메인 |
+|---|---|---|
+| metric | KPI/통계 카드 | SaaS, 대시보드, 핀테크 |
+| buttons | 버튼/폼 | 범용 |
+| table | 데이터 테이블 | SaaS, 대시보드, 개발 |
+| article | 아티클/블로그 | 에디토리얼, 블로그 |
+| hero | 히어로 섹션 | 랜딩, 럭셔리, 커머스 |
+| gallery | 이미지 그리드 | 포트폴리오, 크리에이티브 |
+| code | 코드 블록 | 개발 도구 |
+| chat | 채팅 UI | 소셜, 메신저 |
+| wellness | 건강/활동 | 헬스, 웰니스 |
+| product | 상품 카드 | 커머스 |
+| stat-row | 통계 나열 | 범용 |
+| quote | 인용구 | 에디토리얼, 럭셔리 |
+| task-list | 체크리스트 | SaaS, 개발 |
+| profile | 프로필 | 소셜 |
+
+CLI: `duvu list component`, `duvu show component <id>`
+
 ### 3단계: 토큰 생성
 
 선택된 프리셋에서 디자인 토큰을 생성한다. **모든 토큰은 `--duvu-` 접두사를 사용.**
@@ -143,6 +166,12 @@ WCAG/HIG/MD3 자동 체크 (references/compliance.md)
 - [ ] 다크/라이트 모드 둘 다 작동하는가?
 - [ ] `prefers-reduced-motion` 지원하는가?
 - [ ] 모든 결정에 방어 가능한 의도가 있는가?
+- [ ] 같은 레벨의 요소는 같은 주목도를 가지는가?
+- [ ] 레이아웃의 그리드에 orphan(빈 칸)이 없는가?
+- [ ] 컴포넌트 간 통일성이 유지되는가? (같은 padding/radius/shadow)
+- [ ] 불통일이 있다면 그것은 의도된 것인가?
+
+**의도 2중 질문**: 모든 요소 배치 전 "이건 왜 좋은가?", "정말 좋은가?"를 자문한다.
 
 하나라도 실패하면 수정 후 재출력.
 
