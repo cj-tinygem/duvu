@@ -45,6 +45,7 @@ const TYPE_MAP = {
   layout: 'layout', style: 'style', motion: 'motion',
   gradient: 'gradient', gradients: 'gradient',
   template: 'templates', templates: 'templates',
+  component: 'components', components: 'components',
 };
 
 function banner() {

@@ -1619,7 +1619,48 @@
         "b2b",
         "webapp",
         "admin"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "metric",
+            "label": "총 매출",
+            "value": "₩284,732,000",
+            "badge": "+12.4%",
+            "chart": true,
+            "sub": "목표 대비 78% 달성"
+          },
+          {
+            "type": "buttons"
+          },
+          {
+            "type": "table",
+            "span": "full",
+            "label": "최근 거래",
+            "rows": [
+              [
+                "김서진",
+                "Pro 플랜",
+                "₩49,000",
+                "완료"
+              ],
+              [
+                "이현우",
+                "Team 플랜",
+                "₩149,000",
+                "진행중"
+              ],
+              [
+                "박도윤",
+                "Enterprise",
+                "₩490,000",
+                "대기"
+              ]
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "editorial",
@@ -1647,7 +1688,27 @@
         "magazine",
         "media",
         "content"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "article",
+            "span": "full",
+            "title": "디자인 시스템의 미래",
+            "excerpt": "일관성과 유연성 사이에서 균형을 찾는 법. 좋은 시스템은 제약이 아니라 자유를 준다.",
+            "meta": "2026.03.14 · 8분"
+          },
+          {
+            "type": "quote",
+            "text": "좋은 디자인은 보이지 않는다.",
+            "author": "Dieter Rams"
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "ecommerce",
@@ -1674,7 +1735,39 @@
         "marketplace",
         "product",
         "shop"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "hero",
+            "title": "봄 신상",
+            "sub": "최대 40% 할인",
+            "cta": "지금 쇼핑하기"
+          },
+          {
+            "type": "product",
+            "span": "full",
+            "items": [
+              {
+                "name": "캐시미어 니트",
+                "price": "₩89,000"
+              },
+              {
+                "name": "코튼 셔츠",
+                "price": "₩49,000"
+              },
+              {
+                "name": "린넨 팬츠",
+                "price": "₩69,000"
+              }
+            ]
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "dashboard",
@@ -1701,7 +1794,56 @@
         "data",
         "monitoring",
         "admin"
-      ]
+      ],
+      "preview": {
+        "layout": "dense",
+        "cards": [
+          {
+            "type": "metric",
+            "label": "활성 사용자",
+            "value": "12,847",
+            "badge": "+8.2%"
+          },
+          {
+            "type": "metric",
+            "label": "전환율",
+            "value": "3.24%",
+            "badge": "+0.5%"
+          },
+          {
+            "type": "metric",
+            "label": "수익",
+            "value": "₩48.2M",
+            "badge": "+15.1%",
+            "chart": true
+          },
+          {
+            "type": "table",
+            "span": "full",
+            "label": "최근 이벤트",
+            "rows": [
+              [
+                "배포 완료",
+                "v2.4.1",
+                "2분 전",
+                "성공"
+              ],
+              [
+                "빌드 실패",
+                "main",
+                "12분 전",
+                "실패"
+              ],
+              [
+                "PR 병합",
+                "#847",
+                "1시간 전",
+                "완료"
+              ]
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "portfolio",
@@ -1728,7 +1870,35 @@
         "agency",
         "creative",
         "showcase"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "gallery",
+            "span": "full",
+            "count": 6
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "47",
+                "label": "프로젝트"
+              },
+              {
+                "value": "12",
+                "label": "수상"
+              },
+              {
+                "value": "8",
+                "label": "연차"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "fintech",
@@ -1755,7 +1925,43 @@
         "payment",
         "investment",
         "banking"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "metric",
+            "label": "총 자산",
+            "value": "₩1,247,832,000",
+            "badge": "+5.8%",
+            "chart": true
+          },
+          {
+            "type": "metric",
+            "label": "수익률",
+            "value": "+12.4%",
+            "badge": "연간"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "₩48.2M",
+                "label": "일 거래량"
+              },
+              {
+                "value": "247",
+                "label": "보유 종목"
+              },
+              {
+                "value": "AA+",
+                "label": "신용등급"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "creative",
@@ -1783,7 +1989,24 @@
         "creative",
         "tool",
         "art"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "gallery",
+            "count": 4
+          },
+          {
+            "type": "quote",
+            "text": "창의성은 연결하는 것이다.",
+            "author": "Steve Jobs"
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "dev-tool",
@@ -1811,7 +2034,44 @@
         "cli",
         "code",
         "api"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "code",
+            "language": "javascript",
+            "code": "const theme = duvu.generate({\n  preset: 'toss',\n  platform: 'css'\n});"
+          },
+          {
+            "type": "task-list",
+            "items": [
+              {
+                "text": "디자인 토큰 생성",
+                "done": true
+              },
+              {
+                "text": "WCAG AA 검증",
+                "done": true
+              },
+              {
+                "text": "다크모드 출력",
+                "status": "진행중"
+              },
+              {
+                "text": "Flutter 테마 변환",
+                "done": false
+              }
+            ]
+          },
+          {
+            "type": "metric",
+            "label": "빌드 시간",
+            "value": "1.2s",
+            "badge": "-40%"
+          }
+        ]
+      }
     },
     {
       "id": "health",
@@ -1839,7 +2099,43 @@
         "medical",
         "care",
         "fitness"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "wellness",
+            "label": "오늘의 활동",
+            "progress": 72,
+            "goal": "10,000보",
+            "current": "7,200보"
+          },
+          {
+            "type": "metric",
+            "label": "심박수",
+            "value": "72 bpm",
+            "badge": "정상"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "7.5h",
+                "label": "수면"
+              },
+              {
+                "value": "2.1L",
+                "label": "수분"
+              },
+              {
+                "value": "1,850",
+                "label": "칼로리"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "luxury",
@@ -1868,7 +2164,37 @@
         "brand",
         "fashion",
         "exclusive"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "NOIR",
+            "sub": "2026 Spring/Summer Collection",
+            "cta": "컬렉션 보기"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "1954",
+                "label": "Since"
+              },
+              {
+                "value": "48",
+                "label": "Countries"
+              },
+              {
+                "value": "∞",
+                "label": "Legacy"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "nature",
@@ -1896,7 +2222,27 @@
         "organic",
         "eco",
         "green"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "자연과 함께",
+            "sub": "지속가능한 삶을 위한 선택"
+          },
+          {
+            "type": "article",
+            "title": "숲에서 배우는 디자인",
+            "excerpt": "자연의 패턴은 가장 완벽한 디자인 시스템이다.",
+            "meta": "에세이 · 5분"
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "social",
@@ -1924,7 +2270,38 @@
         "chat",
         "messaging",
         "network"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "chat",
+            "messages": [
+              {
+                "from": "김서진",
+                "text": "디자인 시안 확인해주세요!",
+                "time": "2분 전",
+                "incoming": true
+              },
+              {
+                "from": "나",
+                "text": "확인했어요, 컬러 조합이 좋네요 👍",
+                "time": "방금",
+                "incoming": false
+              }
+            ]
+          },
+          {
+            "type": "metric",
+            "label": "팔로워",
+            "value": "2,847",
+            "badge": "+124"
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "pop-bold",
@@ -1972,7 +2349,24 @@
         "pop",
         "motion",
         "experimental"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "hero",
+            "title": "POP",
+            "sub": "Bold & Beautiful"
+          },
+          {
+            "type": "buttons"
+          },
+          {
+            "type": "gallery",
+            "count": 4
+          }
+        ]
+      }
     },
     {
       "id": "cinematic-dark",
@@ -2020,7 +2414,36 @@
         "dark",
         "minimal",
         "film"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "CINEMA",
+            "sub": "Where light meets shadow"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "4K",
+                "label": "Resolution"
+              },
+              {
+                "value": "HDR",
+                "label": "Dynamic"
+              },
+              {
+                "value": "60fps",
+                "label": "Smooth"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "editorial-brutalist",
@@ -2068,7 +2491,27 @@
         "editorial",
         "experimental",
         "contrast"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "article",
+            "span": "full",
+            "title": "BRUTALISM",
+            "excerpt": "Raw. Honest. Uncompromising. 장식을 거부하고 구조를 드러낸다.",
+            "meta": "Manifesto"
+          },
+          {
+            "type": "quote",
+            "text": "Less decoration, more structure.",
+            "author": ""
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "tech-neon",
@@ -2116,7 +2559,26 @@
         "neon",
         "futuristic",
         "energy"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "code",
+            "language": "typescript",
+            "code": "interface Quantum {\n  state: 'superposition';\n  observe(): void;\n}"
+          },
+          {
+            "type": "metric",
+            "label": "처리량",
+            "value": "1.2M/s",
+            "badge": "peak"
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "vintage-serif",
@@ -2164,7 +2626,42 @@
         "serif",
         "retro",
         "classic"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "article",
+            "span": "full",
+            "title": "타이포그래피의 힘",
+            "excerpt": "활자는 단순한 글자가 아니다. 그것은 목소리이며, 감정이며, 시대의 기록이다.",
+            "meta": "1924 · 에세이"
+          },
+          {
+            "type": "quote",
+            "text": "Typography is the voice of the printed word.",
+            "author": "Robert Bringhurst"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "1440",
+                "label": "활자"
+              },
+              {
+                "value": "∞",
+                "label": "이야기"
+              },
+              {
+                "value": "100+",
+                "label": "연도"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "quantum-glow",
@@ -2212,7 +2709,40 @@
         "glow",
         "futuristic",
         "tech"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "metric",
+            "label": "양자 상태",
+            "value": "Ψ(x,t)",
+            "badge": "active"
+          },
+          {
+            "type": "gallery",
+            "count": 4
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "99.7%",
+                "label": "정확도"
+              },
+              {
+                "value": "0.3ms",
+                "label": "지연"
+              },
+              {
+                "value": "∞",
+                "label": "가능성"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "museum-modern",
@@ -2260,7 +2790,23 @@
         "culture",
         "modern",
         "asymmetric"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "MUSEUM",
+            "sub": "Contemporary Art & Design"
+          },
+          {
+            "type": "gallery",
+            "span": "full",
+            "count": 6
+          }
+        ]
+      }
     },
     {
       "id": "arch-luxury",
@@ -2308,7 +2854,36 @@
         "luxury",
         "warm",
         "premium"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "ARCHITECTURE",
+            "sub": "Form follows function"
+          },
+          {
+            "type": "stat-row",
+            "span": "full",
+            "stats": [
+              {
+                "value": "1962",
+                "label": "Founded"
+              },
+              {
+                "value": "340",
+                "label": "Projects"
+              },
+              {
+                "value": "28",
+                "label": "Awards"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "id": "east-minimal",
@@ -2356,7 +2931,26 @@
         "japanese",
         "zen",
         "monochrome"
-      ]
+      ],
+      "preview": {
+        "layout": "single",
+        "cards": [
+          {
+            "type": "hero",
+            "span": "full",
+            "title": "無",
+            "sub": "Less is more. Nothing is everything."
+          },
+          {
+            "type": "quote",
+            "text": "侘寂 — 불완전함 속의 아름다움",
+            "author": ""
+          },
+          {
+            "type": "buttons"
+          }
+        ]
+      }
     },
     {
       "id": "dev-toolkit",
@@ -2404,7 +2998,130 @@
         "resource",
         "tools",
         "osmo"
-      ]
+      ],
+      "preview": {
+        "layout": "2col",
+        "cards": [
+          {
+            "type": "code",
+            "language": "bash",
+            "code": "$ duvu generate toss\n$ duvu template saas\n$ duvu list colors"
+          },
+          {
+            "type": "task-list",
+            "items": [
+              {
+                "text": "토큰 시스템 구축",
+                "done": true
+              },
+              {
+                "text": "프리셋 41종 검증",
+                "done": true
+              },
+              {
+                "text": "멀티플랫폼 출력",
+                "status": "진행중"
+              },
+              {
+                "text": "Picasso 연동",
+                "done": false
+              }
+            ]
+          },
+          {
+            "type": "metric",
+            "label": "프리셋",
+            "value": "99",
+            "badge": "v19"
+          }
+        ]
+      }
+    }
+  ],
+  "components": [
+    {
+      "id": "metric",
+      "name": "Metric Card",
+      "description": "KPI 카드. 숫자 값, 배지, 차트를 표시.",
+      "category": "data"
+    },
+    {
+      "id": "buttons",
+      "name": "Button Group",
+      "description": "3단계 강조 계층(Primary/Secondary/Ghost) 버튼과 폼.",
+      "category": "interaction"
+    },
+    {
+      "id": "table",
+      "name": "Data Table",
+      "description": "데이터 테이블. 행 구분은 색차로(보더 아님).",
+      "category": "data"
+    },
+    {
+      "id": "task-list",
+      "name": "Task List",
+      "description": "체크리스트. 상태별 색상 시맨틱.",
+      "category": "data"
+    },
+    {
+      "id": "article",
+      "name": "Article",
+      "description": "아티클 헤더+본문. 읽기 최적 65ch.",
+      "category": "content"
+    },
+    {
+      "id": "quote",
+      "name": "Quote",
+      "description": "인용구. accent 좌측 보더.",
+      "category": "content"
+    },
+    {
+      "id": "hero",
+      "name": "Hero Section",
+      "description": "히어로. 큰 제목, CTA 1개.",
+      "category": "layout"
+    },
+    {
+      "id": "stat-row",
+      "name": "Stat Row",
+      "description": "통계 나열. 같은 레벨 = 같은 주목도.",
+      "category": "data"
+    },
+    {
+      "id": "product",
+      "name": "Product Card",
+      "description": "상품 카드. 가격 강조, CTA 버튼.",
+      "category": "commerce"
+    },
+    {
+      "id": "gallery",
+      "name": "Gallery Grid",
+      "description": "이미지 그리드. SVG 플레이스홀더.",
+      "category": "media"
+    },
+    {
+      "id": "code",
+      "name": "Code Block",
+      "description": "코드 블록. 모노스페이스, 구문 강조.",
+      "category": "dev"
+    },
+    {
+      "id": "chat",
+      "name": "Chat Bubble",
+      "description": "채팅 UI. 좌우 정렬 대화.",
+      "category": "social"
+    },
+    {
+      "id": "wellness",
+      "name": "Wellness Card",
+      "description": "건강/활동 카드. 원형 진행률.",
+      "category": "health"
+    },
+    {
+      "id": "profile",
+      "name": "Profile Card",
+      "description": "프로필. 아바타 + 이름 + 역할.",
+      "category": "social"
     }
   ],
   "metadata": {
