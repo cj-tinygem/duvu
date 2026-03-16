@@ -278,6 +278,7 @@ section {
   gap: 4px;
   margin-bottom: 32px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .tab-btn {
@@ -1474,10 +1475,17 @@ const CARD_RENDERERS = {
       (c.sub ? `<span class="dc-sub">${escapeHtml(c.sub)}</span>` : '');
   },
   'buttons': () => {
-    return `<div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">` +
-      `<div class="btn-row"><button class="btn btn-primary">시작하기</button><button class="btn btn-secondary">자세히 보기</button><button class="btn btn-ghost">취소</button></div>` +
-      `<div style="margin-top:8px;"><div class="form-label">이메일</div><div class="form-input">hello@duvu.dev</div>` +
-      `<button class="btn btn-primary" style="width:100%">로그인</button></div></div>`;
+    return `<div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">` +
+      `<button class="btn btn-primary" style="width:100%">시작하기</button>` +
+      `<button class="btn btn-secondary" style="width:100%">자세히 보기</button>` +
+      `<button class="btn btn-ghost" style="width:100%;min-height:44px">취소</button>` +
+      `</div>`;
+  },
+  'buttons-form': () => {
+    return `<div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">` +
+      `<div class="form-label">이메일</div><div class="form-input">hello@duvu.dev</div>` +
+      `<div class="form-label">비밀번호</div><div class="form-input">••••••••</div>` +
+      `<button class="btn btn-primary" style="width:100%">로그인</button></div>`;
   },
   'table': (c) => {
     const rows = c.rows || [];
@@ -1580,9 +1588,10 @@ const CARD_RENDERERS = {
 const DEFAULT_PREVIEW = {
   layout: '2col',
   cards: [
-    { type: 'metric', label: '총 매출', value: '₩284,732,000', badge: '+12.4%', chart: true, sub: '목표 대비 78% 달성' },
+    { type: 'metric', label: 'Dashboard', value: '₩284,732,000', badge: '+12.4%', chart: true, sub: '목표 대비 78% 달성' },
     { type: 'buttons', label: 'Emphasis' },
-    { type: 'task-list', span: 'full', items: [
+    { type: 'buttons-form', label: 'Form' },
+    { type: 'task-list', label: 'Task List', items: [
       { text: '디자인 토큰 생성', done: true },
       { text: 'WCAG AA 검증', done: true },
       { text: '다크모드 출력', status: '진행중' },
