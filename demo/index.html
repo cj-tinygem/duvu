@@ -1101,21 +1101,39 @@ function adaptiveGrid(itemCount, maxCols) {
 
 // ─── Chart Rendering ───
 const CHART_DATA = [35, 28, 30, 22, 18, 24, 14, 10, 12, 6, 2];
+const BAR_DATA = [65, 45, 80, 55, 70, 40, 90];
 
-function renderChart() {
-  const container = document.getElementById('chartContainer');
-  if (!container) return;
+function renderCharts() {
   const accent = getComputedStyle(document.documentElement).getPropertyValue('--duvu-accent').trim();
-  container.innerHTML = `<svg viewBox="0 0 200 40" preserveAspectRatio="none">
-    <defs><linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="${accent}" stop-opacity="0.2"/>
-      <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
-    </linearGradient></defs>
-    <polygon fill="url(#sparkGrad)" points="0,${CHART_DATA[0]} ${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')} 200,40 0,40"/>
-    <polyline fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-      points="${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')}"/>
-  </svg>`;
+  const uid = Math.random().toString(36).slice(2, 8);
+
+  // 스파크라인 차트
+  document.querySelectorAll('.chart-spark').forEach(container => {
+    container.innerHTML = `<svg viewBox="0 0 200 40" preserveAspectRatio="none">
+      <defs><linearGradient id="sg${uid}" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="${accent}" stop-opacity="0.2"/>
+        <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+      </linearGradient></defs>
+      <polygon fill="url(#sg${uid})" points="0,${CHART_DATA[0]} ${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')} 200,40 0,40"/>
+      <polyline fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        points="${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')}"/>
+    </svg>`;
+  });
+
+  // 바 차트
+  document.querySelectorAll('.chart-bar').forEach(container => {
+    const barW = 200 / BAR_DATA.length;
+    container.innerHTML = `<svg viewBox="0 0 200 40" preserveAspectRatio="none">
+      ${BAR_DATA.map((v, i) => {
+        const h = v * 0.4;
+        return `<rect x="${i * barW + 2}" y="${40 - h}" width="${barW - 4}" height="${h}" rx="2" fill="${accent}" opacity="${0.4 + (v / 100) * 0.6}"/>`;
+      }).join('')}
+    </svg>`;
+  });
 }
+
+// 하위 호환
+function renderChart() { renderCharts(); }
 
 // ═══════════════════════════════════════
 // STATE & DATA
@@ -1427,7 +1445,7 @@ const CARD_RENDERERS = {
   'metric': (c) => {
     return `<div class="dc-row"><span class="dc-label">${escapeHtml(c.label)}</span>${c.badge ? `<span class="dc-badge">${escapeHtml(c.badge)}</span>` : ''}</div>` +
       `<span class="dc-value">${escapeHtml(c.value)}</span>` +
-      (c.chart ? '<div class="chart-container" id="chartContainer"></div>' : '') +
+      (c.chart ? `<div class="chart-container ${c.chartType === 'bar' ? 'chart-bar' : 'chart-spark'}"></div>` : '') +
       (c.sub ? `<span class="dc-sub">${escapeHtml(c.sub)}</span>` : '');
   },
   'buttons': () => {

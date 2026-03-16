@@ -1815,7 +1815,8 @@
             "label": "수익",
             "value": "₩48.2M",
             "badge": "+15.1%",
-            "chart": true
+            "chart": true,
+            "chartType": "bar"
           },
           {
             "type": "table",
