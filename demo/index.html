@@ -234,10 +234,11 @@ section {
 }
 
 .hero-sub {
-  font-size: clamp(15px, 2vw, 18px);
+  font-size: 15px;
+  letter-spacing: 0.04em;
   color: var(--duvu-fg2);
   max-width: 560px;
-  margin: 0 auto 40px;
+  margin: 0 auto 24px;
   word-break: keep-all;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
@@ -245,7 +246,7 @@ section {
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 48px;
+  gap: 64px;
   flex-wrap: wrap;
   margin-bottom: 32px;
 }
@@ -266,7 +267,7 @@ section {
   font-size: 13px;
   font-weight: 500;
   color: var(--duvu-fg3);
-  margin-top: 6px;
+  margin-top: 4px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -282,7 +283,7 @@ section {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--duvu-fg3);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .section-title {
@@ -625,6 +626,7 @@ section {
 .dc-sub {
   font-size: 13px;
   color: var(--duvu-fg3);
+  margin-top: 12px;
 }
 
 /* Buttons Card */
@@ -898,15 +900,13 @@ section {
 
 /* ─── FOOTER ─── */
 footer {
-  padding: 32px var(--duvu-space-lg) 48px;
+  padding: 32px var(--px) 48px;
   text-align: center;
   font-size: 14px;
   color: var(--duvu-fg3);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
   position: relative;
   z-index: 1;
 }
@@ -1349,7 +1349,8 @@ function applyColorPreset(preset, customOverride) {
   }
   accentColor = ensureContrast(accentColor, colors.bg, 3);
 
-  const btnText = readableOnAccent(accentColor);
+  // 프리셋에 저장된 btnText를 우선 사용 (브랜드 의도), 없으면 자동 계산
+  const btnText = preset.btnText || readableOnAccent(accentColor);
   const S = document.documentElement.style;
   S.setProperty('--duvu-accent', accentColor);
   S.setProperty('--duvu-accent-rgb', hexToRGB(accentColor));
@@ -1649,7 +1650,7 @@ const CARD_RENDERERS = {
       rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};">${row.map((cell, ci) => {
         const isLast = ci === row.length - 1;
         const color = isLast ? statusColor(cell) : 'var(--duvu-fg)';
-        return `<td style="padding:10px 12px;color:${color};${isLast ? 'font-weight:500' : ''}">${escapeHtml(cell)}</td>`;
+        return `<td style="padding:10px 12px;color:${color};${isLast ? 'font-weight:500;text-align:right' : ''}">${escapeHtml(cell)}</td>`;
       }).join('')}</tr>`).join('') +
       `</table></div>`;
   },
@@ -2163,19 +2164,19 @@ document.addEventListener('DOMContentLoaded', init);
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
-    <h1 class="hero-title reveal">하나의 결정이<br><span class="hero-accent">시스템</span>을 만든다 <span class="hero-mark">✦</span></h1>
     <p class="hero-sub reveal">디자인 토큰 · 프리셋 · 템플릿 — 하나의 명령으로 모든 플랫폼</p>
+    <h1 class="hero-title reveal">하나의 결정이<br><span class="hero-accent">시스템</span>을 만든다 <span class="hero-mark">✦</span></h1>
     <div class="hero-stats reveal">
       <div class="hero-stat"><div class="hero-stat-val" data-count="99">0</div><div class="hero-stat-label">프리셋</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="41">0</div><div class="hero-stat-label">컬러</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="22">0</div><div class="hero-stat-label">템플릿</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="7">0</div><div class="hero-stat-label">플랫폼</div></div>
     </div>
-    <div class="hero-actions reveal" style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
-      <a href="#panel-color" class="btn btn-primary" style="text-decoration:none;padding:12px 28px;font-size:15px;">프리셋 탐색하기</a>
-      <a href="#codeTabs" class="btn btn-secondary" style="text-decoration:none;padding:12px 28px;font-size:15px;">코드 출력 보기</a>
+    <div class="hero-cmd reveal" style="margin:32px auto 24px;max-width:480px;"><span class="prompt">$</span> <code id="cmdLine" style="font-size:15px;">npx duvu generate toss</code></div>
+    <div class="hero-actions reveal" style="display:flex;gap:12px;justify-content:center;">
+      <a href="#panel-color" class="btn btn-primary" style="text-decoration:none;padding:14px 32px;font-size:16px;width:auto;">프리셋 탐색하기</a>
+      <a href="#codeTabs" class="btn btn-secondary" style="text-decoration:none;padding:14px 32px;font-size:16px;width:auto;">코드 출력 보기</a>
     </div>
-    <div class="hero-cmd reveal"><span class="prompt">$</span> <code id="cmdLine">npx duvu generate toss</code></div>
   </div>
 </section>
 
@@ -2253,8 +2254,7 @@ document.addEventListener('DOMContentLoaded', init);
 </section>
 
 <footer>
-  <span>DUVU v19</span>
-  <a href="https://tinygem.ai" target="_blank" rel="noopener noreferrer">tinygem</a>
+  <span>DUVU v19 · tinygem</span>
 </footer>
 
 </body>
