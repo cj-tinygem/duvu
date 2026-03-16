@@ -506,7 +506,7 @@ section {
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--duvu-space-md);
+  gap: var(--duvu-preview-grid-gap, 20px);
   position: relative;
   z-index: 1;
   transition: gap 0.3s var(--duvu-ease);
@@ -1310,13 +1310,13 @@ function renderCharts() {
 
   // 스파크라인 차트
   document.querySelectorAll('.chart-spark').forEach(container => {
-    container.innerHTML = `<svg viewBox="0 0 200 40" preserveAspectRatio="none">
+    container.innerHTML = `<svg viewBox="0 0 200 50" preserveAspectRatio="none">
       <defs><linearGradient id="sg${uid}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0%" stop-color="${accent}" stop-opacity="0.2"/>
-        <stop offset="100%" stop-color="${accent}" stop-opacity="0"/>
+        <stop offset="0%" stop-color="${accent}" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="${accent}" stop-opacity="0.02"/>
       </linearGradient></defs>
-      <polygon fill="url(#sg${uid})" points="0,${CHART_DATA[0]} ${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')} 200,40 0,40"/>
-      <polyline fill="none" stroke="${accent}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+      <polygon fill="url(#sg${uid})" points="0,${CHART_DATA[0]} ${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')} 200,50 0,50"/>
+      <polyline fill="none" stroke="${accent}" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
         points="${CHART_DATA.map((v,i) => `${i*20},${v}`).join(' ')}"/>
     </svg>`;
   });
