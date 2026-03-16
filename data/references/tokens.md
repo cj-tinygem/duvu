@@ -99,6 +99,19 @@ accent가 bg 대비 3:1 미만이면 자동으로 밝기를 조정한다:
 | `--duvu-space-2xl` | 48px | 대형 섹션 간격 |
 | `--duvu-space-3xl` | 64px | 페이지 레벨 간격 |
 
+### 레이아웃 레벨 토큰 (presets.json layout_tokens)
+
+| 토큰 | 기본값 | 역할 |
+|---|---|---|
+| `--duvu-space-hero` | 160px | 히어로 섹션 상단 여백 |
+| `--duvu-space-section` | 96px | 섹션 간 여백 |
+| `--duvu-space-title-margin` | 48px | 제목 하단 여백 |
+| `--duvu-space-subtitle-margin` | 40px | 부제목 하단 여백 |
+| `--duvu-space-stats-gap` | 64px | 통계 그룹 간 간격 |
+| `--duvu-space-stat-label-gap` | 4px | 통계 숫자-라벨 간격 |
+
+이 토큰들은 `presets.json`의 `layout_tokens` 객체에 정의되며, 데모가 JS로 읽어서 CSS 변수로 적용한다.
+
 **레이아웃 프리셋에 따른 배율:**
 - Compact: ×0.75
 - Comfortable: ×1 (기본)

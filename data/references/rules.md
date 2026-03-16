@@ -49,11 +49,20 @@
 
 ## 레이아웃 규칙
 
-### Spacing
+### Spacing (시스템 토큰 기반)
 - 관련 요소 그룹은 가까이 (근접성 원칙)
 - 다른 그룹은 멀리 (그룹 간 spacing은 그룹 내의 2배 이상)
-- 모든 spacing은 토큰에서 파생 (4, 8, 16, 24, 32, 48, 64px)
-- 임의의 spacing 값 금지
+- 모든 spacing은 `--duvu-space-*` 토큰에서 파생 — 하드코딩 px 금지
+- 히어로 주변: `--duvu-space-hero`(160px) — 타이틀에 충분한 호흡 공간
+- 섹션 간: `--duvu-space-section`(96px) — 시원시원한 구분
+- 통계 그룹: 숫자↔라벨은 `--duvu-space-stat-label-gap`(4px)으로 밀착, 그룹 간은 `--duvu-space-stats-gap`(64px)
+- **모든 수치는 presets.json의 layout_tokens에서 정의** — CSS에 직접 쓰지 않음
+
+### 의도 시스템 (Spacing에 적용)
+- 모든 간격에 "왜 이 값인가?"를 답할 수 있어야 한다
+- 숫자와 라벨이 가까운 이유: 같은 그룹이므로 (근접성)
+- 그룹 간 간격이 넓은 이유: 다른 정보이므로 (분리)
+- 히어로 여백이 넓은 이유: 가장 중요한 메시지이므로 (주목도)
 
 ### 카드/컨테이너
 - padding: 최소 16px (compact), 기본 24px, 넉넉 32px

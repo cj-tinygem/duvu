@@ -4839,5 +4839,25 @@
         "ref": "osmo.supply"
       }
     }
+  },
+  "layout_tokens": {
+    "space-hero": "160px",
+    "space-section": "96px",
+    "space-title-margin": "48px",
+    "space-subtitle-margin": "40px",
+    "space-stats-gap": "64px",
+    "space-stat-label-gap": "4px",
+    "stat-val-size": "48px",
+    "stat-label-size": "14px",
+    "hero-title-size": "clamp(52px, 9vw, 112px)",
+    "hero-title-weight": "700",
+    "hero-subtitle-size": "clamp(16px, 1.5vw, 20px)",
+    "section-title-size": "clamp(32px, 5vw, 56px)",
+    "section-title-weight": "600",
+    "card-padding": "32px",
+    "color-grid-cols": "7",
+    "color-grid-cols-tablet": "5",
+    "color-grid-cols-mobile": "3",
+    "color-grid-gap": "10px"
   }
 }

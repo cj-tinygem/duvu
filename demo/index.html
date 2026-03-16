@@ -196,19 +196,19 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: var(--duvu-space-hero, 120px) 0 var(--duvu-space-2xl, 48px);
+  padding: var(--duvu-space-hero, 160px) 0 var(--duvu-space-section, 96px);
   text-align: center;
 }
 
 .hero-title {
-  font-size: clamp(52px, 9vw, 112px);
-  font-weight: 700;
+  font-size: var(--duvu-hero-title-size, clamp(52px, 9vw, 112px));
+  font-weight: var(--duvu-hero-title-weight, 700);
   line-height: 1.0;
   letter-spacing: -0.04em;
   font-family: var(--duvu-font-display), var(--duvu-font);
   text-wrap: balance;
   word-break: keep-all;
-  margin-bottom: 32px;
+  margin-bottom: var(--duvu-space-title-margin, 48px);
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
 
@@ -219,11 +219,11 @@ section {
 
 
 .hero-sub {
-  font-size: clamp(16px, 1.5vw, 20px);
+  font-size: var(--duvu-hero-subtitle-size, clamp(16px, 1.5vw, 20px));
   letter-spacing: 0.04em;
   color: var(--duvu-fg2);
   max-width: 560px;
-  margin: 0 auto 32px;
+  margin: 0 auto var(--duvu-space-subtitle-margin, 40px);
   word-break: keep-all;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
@@ -231,7 +231,7 @@ section {
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: var(--duvu-space-3xl, 64px);
+  gap: var(--duvu-space-stats-gap, 64px);
   flex-wrap: wrap;
   margin-bottom: var(--duvu-space-2xl, 48px);
 }
@@ -242,7 +242,7 @@ section {
 }
 
 .hero-stat-val {
-  font-size: 48px;
+  font-size: var(--duvu-stat-val-size, 48px);
   font-weight: 700;
   color: var(--duvu-accent);
   font-variant-numeric: tabular-nums;
@@ -251,10 +251,10 @@ section {
 }
 
 .hero-stat-label {
-  font-size: 14px;
+  font-size: var(--duvu-stat-label-size, 14px);
   font-weight: 500;
   color: var(--duvu-fg2);
-  margin-top: var(--duvu-space-xs, 4px);
+  margin-top: var(--duvu-space-stat-label-gap, 4px);
   text-transform: uppercase;
   letter-spacing: 0.06em;
   display: block;
@@ -276,11 +276,11 @@ section {
 }
 
 .section-title {
-  font-size: clamp(32px, 5vw, 56px);
-  font-weight: 600;
+  font-size: var(--duvu-section-title-size, clamp(32px, 5vw, 56px));
+  font-weight: var(--duvu-section-title-weight, 600);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: 48px;
+  margin-bottom: var(--duvu-space-title-margin, 48px);
   text-wrap: balance;
   word-break: keep-all;
   font-family: var(--duvu-font-display), var(--duvu-font);
@@ -2081,6 +2081,14 @@ async function init() {
       console.error('Failed to load presets');
       return;
     }
+  }
+
+  // 시스템 레이아웃 토큰 적용 — presets.json에서 읽어서 CSS 변수로
+  if (DATA.layout_tokens) {
+    const S = document.documentElement.style;
+    Object.entries(DATA.layout_tokens).forEach(([key, value]) => {
+      S.setProperty('--duvu-' + key, value);
+    });
   }
 
   // Set defaults
