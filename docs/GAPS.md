@@ -45,9 +45,9 @@ DUVU의 핵심 가치는 **"세계 최고의 디자인을 해체해서 재사용
 - **현재**: 색상/분위기만 가져온 수준. 레이아웃/구조 클론이 아님.
 - **참고**: ssyenc.com은 arch-luxury, tscent-tea.com은 east-minimal로 구현됨. 단, 실제 사이트와의 유사도는 Picasso 연동으로 개선 필요.
 
-### G-05: CSS 외 플랫폼 코드 생성 미구현 — **부분 해결**
+### G-05: CSS 외 플랫폼 코드 생성 미구현 — **해결됨**
 - **요구**: 모든 플랫폼에서 코드 생성
-- **현재**: CSS 직접 출력 + 7개 플랫폼 코드 템플릿(CSS/Tailwind/Flutter/SwiftUI/Compose/Unity/React Native). AI 스킬이 platforms.md를 참조하여 변환. 플랫폼 범용성 가이드 테이블 추가.
+- **해결**: CSS 직접 출력 + 7개 플랫폼 코드 템플릿 + 6개 핵심 컴포넌트의 4개 플랫폼(CSS/React Native/Flutter/SwiftUI) 프로덕션 코드. platforms.md 2455줄.
 
 ### G-06: 그리드 orphan 방지 미완성
 - **요구**: 그리드 마지막 행에 빈 칸이 절대 생기면 안 됨. 시스템화 필수.
