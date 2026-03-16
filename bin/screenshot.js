@@ -80,6 +80,7 @@ async function run() {
   });
   demoProc.unref();
   // 서버가 뜰 때까지 대기
+  let serverReady = false;
   for (let i = 0; i < 20; i++) {
     try {
       const { default: http } = await import('http');
@@ -88,10 +89,16 @@ async function run() {
         req.on('error', fail);
         req.setTimeout(500, () => { req.destroy(); fail(); });
       });
+      serverReady = true;
       break;
     } catch {
       await new Promise(r => setTimeout(r, 500));
     }
+  }
+  if (!serverReady) {
+    try { process.kill(-demoProc.pid); } catch {}
+    console.error(`데모 서버가 10초 내에 시작되지 않았습니다 (포트 ${PORT}).`);
+    process.exit(1);
   }
 
   const browser = await puppeteer.launch({

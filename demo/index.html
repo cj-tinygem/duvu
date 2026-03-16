@@ -374,7 +374,7 @@ section {
 }
 
 .color-cat {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--duvu-fg3);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -442,8 +442,7 @@ section {
   padding: 60px 0;
 }
 
-/* preview-watermark CSS 제거됨 — 동적 프리뷰에서는 사용하지 않음 */
-}
+/* preview-watermark CSS 제거됨 */
 
 .preview-area {
   position: relative;
@@ -718,7 +717,7 @@ section {
   white-space: nowrap;
   border-radius: var(--duvu-btn-radius) var(--duvu-btn-radius) 0 0;
   transition: all 0.2s;
-  min-height: 40px;
+  min-height: 44px;
 }
 
 .code-tab:hover { color: var(--duvu-fg); }
@@ -756,6 +755,8 @@ section {
   position: absolute;
   top: 12px; right: 12px;
   padding: 8px;
+  min-width: 44px;
+  min-height: 44px;
   background: var(--duvu-surface2);
   border: none;
   border-radius: 8px;
@@ -1094,24 +1095,6 @@ function deriveTheme(sourceHex) {
   };
 }
 
-// ─── Orphan-Aware Grid ───
-function adaptiveGrid(itemCount, maxCols) {
-  if (itemCount <= 0) return 1;
-  if (itemCount <= maxCols) return itemCount;
-  for (let cols = maxCols; cols >= 2; cols--) {
-    if (itemCount % cols === 0) return cols;
-  }
-  let bestCols = maxCols, bestRemainder = maxCols;
-  for (let cols = maxCols; cols >= 2; cols--) {
-    const rem = itemCount % cols;
-    if (rem === 0) return cols;
-    if (rem >= Math.ceil(cols / 2) && rem < bestRemainder) {
-      bestRemainder = rem;
-      bestCols = cols;
-    }
-  }
-  return bestCols;
-}
 
 // ─── Chart Rendering ───
 const CHART_DATA = [35, 28, 30, 22, 18, 24, 14, 10, 12, 6, 2];
@@ -1146,8 +1129,6 @@ function renderCharts() {
   });
 }
 
-// 하위 호환
-function renderChart() { renderCharts(); }
 
 // ═══════════════════════════════════════
 // STATE & DATA
@@ -1213,8 +1194,7 @@ function applyColorPreset(preset, customOverride) {
   updateTabBtnColors();
   updateCodeOutput();
   updateCmdLine();
-  updateWatermark(preset.name);
-  renderChart();
+  renderCharts();
 }
 
 function applyTypoPreset(preset) {
@@ -1349,8 +1329,6 @@ function updateTabBtnColors() {
   });
 }
 
-function updateWatermark(name) {
-  // 워터마크 제거됨 — 동적 프리뷰에서는 사용하지 않음
 }
 
 function updateCmdLine() {
@@ -1596,7 +1574,7 @@ function renderPreview(tpl) {
 
   // Re-render chart if metric card with chart exists
   if (preview.cards.some(c => c.type === 'metric' && c.chart)) {
-    renderChart();
+    renderCharts();
   }
 }
 
@@ -1656,8 +1634,8 @@ function buildColorCards() {
         <span class="color-swatch-hex" style="color:${textColor}">${preset.src}</span>
       </div>
       <div class="color-info">
-        <div class="color-name">${preset.name}</div>
-        <div class="color-cat">${preset.cat}</div>
+        <div class="color-name">${escapeHtml(preset.name)}</div>
+        <div class="color-cat">${escapeHtml(preset.cat)}</div>
       </div>`;
 
     if (currentColor && preset.id === currentColor.id) card.classList.add('active');
@@ -1691,7 +1669,7 @@ function buildPillGrid(containerId, presets, type) {
     }
 
     const descText = preset.desc || preset.description || '';
-    pill.innerHTML = `<span>${preset.name}</span>${descText ? `<span class="pill-desc">${descText}</span>` : ''}`;
+    pill.innerHTML = `<span>${escapeHtml(preset.name)}</span>${descText ? `<span class="pill-desc">${escapeHtml(descText)}</span>` : ''}`;
     if (preset.id === currentId) pill.classList.add('active');
 
     pill.addEventListener('click', () => {
@@ -1754,8 +1732,8 @@ function buildTemplateCards() {
 
     card.innerHTML = `
       <span class="tpl-dot" style="background:${dotColor}"></span>
-      <span class="tpl-name">${tpl.name}</span>
-      ${tpl.isClone ? `<span class="tpl-ref">${tpl.ref || ''}</span>` : ''}`;
+      <span class="tpl-name">${escapeHtml(tpl.name)}</span>
+      ${tpl.isClone ? `<span class="tpl-ref">${escapeHtml(tpl.ref || '')}</span>` : ''}`;
 
     card.addEventListener('click', () => applyTemplate(tpl));
     container.appendChild(card);

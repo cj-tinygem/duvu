@@ -156,7 +156,7 @@ DUVU가 생산하는 모든 디자인은 다음을 **시스템적으로 강제**
 
 ## 6. 플랫폼 지원
 
-6개 플랫폼에서 코드를 생성할 수 있어야 한다: CSS, Tailwind CSS, Flutter, SwiftUI, Jetpack Compose, Unity C#.
+7개 플랫폼에서 코드를 생성할 수 있어야 한다: CSS, Tailwind CSS, Flutter, SwiftUI, Jetpack Compose, Unity C#, React Native.
 
 > 현재 설계: CLI는 CSS를 직접 출력하고, 나머지 5개 플랫폼은 AI 스킬이 references/platforms.md의 코드 템플릿을 참조하여 변환하는 구조. 이 간접 방식이 유효한지, 직접 출력이 필요한지는 열린 질문.
 

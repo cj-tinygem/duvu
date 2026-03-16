@@ -186,7 +186,7 @@ CLI: `duvu list component`, `duvu show component <id>`
 |---|---|---|
 | `presets.json` | 41 컬러 + 10 타이포 + 4 레이아웃 + 8 스타일 + 5 모션 + 9 그라디언트 + 14 컴포넌트 + 22 템플릿. 각 템플릿에 `preview` 필드(layout + cards)가 있어 도메인별 컴포넌트 조합을 알 수 있다. CLI: `duvu list`, `duvu show <type> <id>` | **항상** (프리셋 데이터 조회) |
 | `references/tokens.md` | 10개 카테고리 디자인 토큰 정의 | **항상** (토큰 구조 참조) |
-| `references/platforms.md` | 6개 플랫폼 코드 생성 템플릿 (CSS, Tailwind, Flutter, SwiftUI, Compose, Unity) | 코드 생성 시 |
+| `references/platforms.md` | 7개 플랫폼 코드 생성 템플릿 (CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native) | 코드 생성 시 |
 | `references/templates.md` | 22개 종합 템플릿 정의 (도메인별 최적 조합) | 템플릿 매칭 시 |
 | `references/rules.md` | 디자인 규칙, 금지사항, 품질 기준, 자가 평가 체크리스트 | **항상** (품질 검증) |
 | `references/compliance.md` | WCAG/HIG/MD3 준수 가이드, 알고리즘 (ensureContrast, readableOnAccent, 상태 레이어) | 접근성 검증 시 |
