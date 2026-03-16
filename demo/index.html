@@ -1487,10 +1487,8 @@ function applyTemplate(tpl) {
   if (typoP) applyTypoPreset(typoP);
 
   // Gradient
-  if (tpl.gradient && tpl.gradient !== 'none') {
-    const gradientMap = { 'subtle': 'dawn', 'vibrant': 'aurora' };
-    const gradientId = gradientMap[tpl.gradient] || 'gradient-none';
-    const gradientP = d.gradient.find(g => g.id === gradientId);
+  if (tpl.gradient && tpl.gradient !== 'gradient-none') {
+    const gradientP = d.gradient.find(g => g.id === tpl.gradient);
     if (gradientP) applyGradientPreset(gradientP);
   } else {
     const noneG = d.gradient.find(g => g.id === 'gradient-none');
@@ -1802,14 +1800,34 @@ function renderPreview(tpl) {
   // Apply layout class
   grid.className = 'preview-grid preview-layout-' + layout;
 
-  // Render cards
+  // Apply restraint from layout preset
+  if (tpl?.layout && DATA.layout) {
+    const layoutPreset = DATA.layout.find(l => l.id === tpl.layout);
+    if (layoutPreset?.restraint) {
+      const densityMap = { minimal: 0.6, low: 0.75, medium: 1, high: 1.25 };
+      document.documentElement.style.setProperty('--duvu-spacing-density', densityMap[layoutPreset.restraint] || 1);
+    }
+  }
+
+  // Get component metadata for level-based rendering
+  const components = DATA.components || [];
+  const getLevel = (type) => {
+    const comp = components.find(c => c.id === type);
+    return comp?.level || 3;
+  };
+
+  // Render cards with level-aware styling
   grid.innerHTML = (preview.cards || []).map(card => {
     const renderer = CARD_RENDERERS[card.type];
     if (!renderer) return '';
-    const spanStyle = card.span === 'full' ? ' style="grid-column:1/-1"' : '';
-    const showLabel = card.label && card.type !== 'metric'; // metric은 내부에서 label 처리
+    const spanStyle = card.span === 'full' ? 'grid-column:1/-1;' : '';
+    const level = getLevel(card.type);
+    // Level 5: most visual weight, Level 1: least
+    const levelPadding = level >= 5 ? 'var(--duvu-space-2xl)' : level >= 4 ? 'var(--duvu-space-xl)' : 'var(--duvu-card-padding, 36px)';
+    const style = `${spanStyle}padding:${levelPadding}`;
+    const showLabel = card.label && card.type !== 'metric';
     const label = showLabel ? `<div class="p-card-label">${escapeHtml(card.label)}</div>` : '';
-    return `<div class="p-card reveal visible"${spanStyle}>${label}${renderer(card)}</div>`;
+    return `<div class="p-card reveal visible" style="${style}" data-level="${level}">${label}${renderer(card)}</div>`;
   }).join('');
 
   // Re-render chart if metric card with chart exists
