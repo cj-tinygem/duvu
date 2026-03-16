@@ -1456,8 +1456,19 @@ const CARD_RENDERERS = {
   },
   'table': (c) => {
     const rows = c.rows || [];
+    const statusColor = (text) => {
+      const t = text.toLowerCase();
+      if (['성공','완료','success','complete'].some(k => t.includes(k))) return 'var(--duvu-success, #2A9D8F)';
+      if (['실패','오류','error','fail'].some(k => t.includes(k))) return 'var(--duvu-error, #E76F51)';
+      if (['진행','pending','progress'].some(k => t.includes(k))) return 'var(--duvu-accent)';
+      return 'var(--duvu-fg)';
+    };
     return `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">` +
-      rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};">${row.map(cell => `<td style="padding:10px 12px;color:var(--duvu-fg)">${escapeHtml(cell)}</td>`).join('')}</tr>`).join('') +
+      rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};">${row.map((cell, ci) => {
+        const isLast = ci === row.length - 1;
+        const color = isLast ? statusColor(cell) : 'var(--duvu-fg)';
+        return `<td style="padding:10px 12px;color:${color};${isLast ? 'font-weight:500' : ''}">${escapeHtml(cell)}</td>`;
+      }).join('')}</tr>`).join('') +
       `</table></div>`;
   },
   'task-list': (c) => {
