@@ -515,8 +515,8 @@ switch(cmd) {
   case 'demo': demo(); break;
   case 'screenshot': case 'ss': {
     const ssPath = join(__dirname, 'screenshot.js');
-    const ssArgs = args.join(' ');
-    import('child_process').then(cp => cp.execSync(`node ${ssPath} ${ssArgs}`, { stdio: 'inherit' }));
+    const safeArgs = args.filter(a => /^[a-zA-Z0-9_.\/\-]+$/.test(a));
+    import('child_process').then(cp => cp.execFileSync('node', [ssPath, ...safeArgs], { stdio: 'inherit' }));
     break;
   }
   default: 

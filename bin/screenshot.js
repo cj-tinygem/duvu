@@ -56,20 +56,17 @@ async function run() {
     process.exit(1);
   }
 
-  // puppeteer는 /tmp/node_modules에 설치되어 있다고 가정
+  // puppeteer 로드: 표준 경로 → /tmp fallback
   let puppeteer;
-  try {
-    puppeteer = (await import('/tmp/node_modules/puppeteer/lib/esm/puppeteer/puppeteer.js')).default;
-  } catch {
-    try {
-      // CJS fallback
-      const { createRequire } = await import('module');
-      const require = createRequire(import.meta.url);
-      puppeteer = require('/tmp/node_modules/puppeteer');
-    } catch (e) {
-      console.error('puppeteer를 찾을 수 없습니다. /tmp에서 npm install puppeteer를 실행하세요.');
-      process.exit(1);
-    }
+  const { createRequire } = await import('module');
+  const require = createRequire(import.meta.url);
+  const tryPaths = ['puppeteer', '/tmp/node_modules/puppeteer'];
+  for (const p of tryPaths) {
+    try { puppeteer = require(p); break; } catch {}
+  }
+  if (!puppeteer) {
+    console.error('puppeteer를 찾을 수 없습니다. npm install puppeteer를 실행하세요.');
+    process.exit(1);
   }
 
   mkdirSync(OUT_DIR, { recursive: true });
@@ -187,16 +184,18 @@ async function run() {
     }
   }
 
-  await browser.close();
+  try {
+    await browser.close();
+  } finally {
+    // 데모 서버 종료 (에러 경로에서도 반드시 실행)
+    try { process.kill(-demoProc.pid); } catch {}
+  }
 
   // 매니페스트 저장
   writeFileSync(
     join(OUT_DIR, 'manifest.json'),
     JSON.stringify({ capturedAt: new Date().toISOString(), port: PORT, screenshots: manifest }, null, 2)
   );
-
-  // 데모 서버 종료
-  try { process.kill(-demoProc.pid); } catch {}
 
   console.log(`\n✓ ${manifest.length}장 캡처 완료 → ${OUT_DIR}`);
   console.log(`  매니페스트: ${join(OUT_DIR, 'manifest.json')}`);
