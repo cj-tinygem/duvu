@@ -3539,136 +3539,153 @@
       "name": "Metric Card",
       "description": "KPI 카드. 숫자 값, 배지, 차트를 표시.",
       "category": "data",
-      "intent": "핵심 지표를 즉시 인지. 숫자가 주인공, 나머지는 맥락.",
-      "level": 4
+      "intent": "시선을 숫자에 고정. 주변 요소보다 크기와 무게를 압도적으로.",
+      "level": 4,
+      "meaning": "이 숫자가 지금 가장 중요한 정보다."
     },
     {
       "id": "buttons",
       "name": "Button Group",
       "description": "3단계 강조 계층(Primary/Secondary/Ghost) 버튼과 폼.",
       "category": "interaction",
-      "intent": "사용자 행동을 유도. Primary는 단 하나, 나머지는 대안.",
-      "level": 5
+      "intent": "행동을 유도하되, Primary는 하나만. 시각 계층으로 선택지의 무게를 다르게.",
+      "level": 5,
+      "meaning": "이것을 누르면 다음 단계로 간다."
     },
     {
       "id": "table",
       "name": "Data Table",
       "description": "데이터 테이블. 행 구분은 색차로(보더 아님).",
       "category": "data",
-      "intent": "구조화된 데이터를 스캔 가능하게. 행 구분은 색차로.",
-      "level": 3
+      "intent": "비교와 스캔을 위해 정렬. 행 구분은 색차로, 보더 없이.",
+      "level": 3,
+      "meaning": "이 데이터들의 패턴과 차이를 발견할 수 있다."
     },
     {
       "id": "task-list",
       "name": "Task List",
       "description": "체크리스트. 상태별 색상 시맨틱.",
       "category": "data",
-      "intent": "진행 상태를 한눈에. 완료/진행/대기의 시각적 구분.",
-      "level": 3
+      "intent": "진행 상태를 색상 시맨틱으로 즉시 구분. 체크/진행/대기의 시각적 무게 차이.",
+      "level": 3,
+      "meaning": "무엇이 끝났고, 무엇이 남았는지 한눈에 안다."
     },
     {
       "id": "article",
       "name": "Article",
       "description": "아티클 헤더+본문. 읽기 최적 65ch.",
       "category": "content",
-      "intent": "깊이 있는 읽기. 65ch 최적 폭, 충분한 줄간격.",
-      "level": 3
+      "intent": "읽기 몰입을 위해 65ch 폭 + 1.5 줄간격. 주변 요소를 최소화.",
+      "level": 3,
+      "meaning": "여기에 집중해서 읽어야 할 내용이 있다."
     },
     {
       "id": "quote",
       "name": "Quote",
       "description": "인용구. accent 좌측 보더.",
       "category": "content",
-      "intent": "인용은 멈춤. 흐름을 끊고 인상을 남기는 역할.",
-      "level": 2
+      "intent": "흐름을 의도적으로 끊는다. accent 좌측선으로 시각적 멈춤을 만든다.",
+      "level": 2,
+      "meaning": "누군가의 말이 여기에 인용되어 있다. 기억할 만하다."
     },
     {
       "id": "hero",
       "name": "Hero Section",
       "description": "히어로. 큰 제목, CTA 1개.",
       "category": "layout",
-      "intent": "첫인상이자 핵심 메시지. 가장 큰 타이포, 가장 넓은 여백.",
-      "level": 5
+      "intent": "페이지에서 가장 먼저 시선을 잡는다. 최대 크기 + 최대 여백 + 최소 요소.",
+      "level": 5,
+      "meaning": "이것이 이 페이지의 핵심 메시지다."
     },
     {
       "id": "stat-row",
       "name": "Stat Row",
       "description": "통계 나열. 같은 레벨 = 같은 주목도.",
       "category": "data",
-      "intent": "동급 지표를 균등 배치. 같은 레벨 = 같은 주목도.",
-      "level": 3
+      "intent": "동급 지표는 동일한 시각적 무게로. 하나도 다른 것보다 크거나 눈에 띄면 안 됨.",
+      "level": 3,
+      "meaning": "이 숫자들은 같은 중요도의 정보다."
     },
     {
       "id": "product",
       "name": "Product Card",
       "description": "상품 카드. 가격 강조, CTA 버튼.",
       "category": "commerce",
-      "intent": "구매 결정 유도. 이미지 > 이름 > 가격 순서의 시각 계층.",
-      "level": 4
+      "intent": "이미지가 욕구를 만들고, 가격이 결정을 만든다. 이미지 > 이름 > 가격 순서.",
+      "level": 4,
+      "meaning": "이 물건을 살 수 있다."
     },
     {
       "id": "gallery",
       "name": "Gallery Grid",
       "description": "이미지 그리드. SVG 플레이스홀더.",
       "category": "media",
-      "intent": "비주얼 임팩트. 이미지가 스스로 말하게. 텍스트 최소.",
-      "level": 3
+      "intent": "이미지가 스스로 말하게. 텍스트를 최소화하고 비주얼 임팩트를 극대화.",
+      "level": 3,
+      "meaning": "여기에 볼 것들이 있다. 눈으로 탐색하라."
     },
     {
       "id": "code",
       "name": "Code Block",
       "description": "코드 블록. 모노스페이스, 구문 강조.",
       "category": "dev",
-      "intent": "코드는 정확해야. 모노스페이스, 구문 강조, 복사 가능.",
-      "level": 2
+      "intent": "코드는 정확해야 한다. 모노스페이스 + 구문 강조 + 복사 가능. 장식 금지.",
+      "level": 2,
+      "meaning": "이것은 실행 가능한 코드다."
     },
     {
       "id": "chat",
       "name": "Chat Bubble",
       "description": "채팅 UI. 좌우 정렬 대화.",
       "category": "social",
-      "intent": "대화의 흐름. 좌우 정렬로 화자 구분, 시간순 배치.",
-      "level": 3
+      "intent": "좌우 정렬로 화자 구분. 시간순 흐름. 말풍선 radius로 방향감.",
+      "level": 3,
+      "meaning": "두 사람이 대화하고 있다."
     },
     {
       "id": "wellness",
       "name": "Wellness Card",
       "description": "건강/활동 카드. 원형 진행률.",
       "category": "health",
-      "intent": "목표 대비 현재. 원형 진행률로 직관적 달성도.",
-      "level": 4
+      "intent": "목표 대비 현재를 원형으로. 달성률이 즉시 인지되어야 한다.",
+      "level": 4,
+      "meaning": "내가 목표에 얼마나 가까운지 본다."
     },
     {
       "id": "profile",
       "name": "Profile Card",
       "description": "프로필. 아바타 + 이름 + 역할.",
       "category": "social",
-      "intent": "사람을 인지. 아바타가 첫째, 이름이 둘째, 역할이 셋째.",
-      "level": 2
+      "intent": "아바타가 첫째, 이름이 둘째. 사람을 인지하는 순서를 따른다.",
+      "level": 2,
+      "meaning": "이 사람이 누구인지 안다."
     },
     {
       "id": "marquee",
       "name": "Marquee Banner",
       "description": "흐르는 텍스트 배너. 공지, 프로모션, 브랜드 메시지에 사용.",
       "category": "layout",
-      "intent": "흐르는 정보. 주의를 가볍게 끌되 방해하지 않음.",
-      "level": 1
+      "intent": "주의를 가볍게 끌되 방해하지 않는다. 배경 레벨의 정보 전달.",
+      "level": 1,
+      "meaning": "지나가는 정보가 있다. 급하지 않다."
     },
     {
       "id": "nav-bar",
       "name": "Navigation Bar",
       "description": "상단 네비게이션. 로고, 메뉴, CTA 포함.",
       "category": "layout",
-      "intent": "현재 위치와 이동 경로. 항상 접근 가능하되 콘텐츠보다 낮은 주목도.",
-      "level": 1
+      "intent": "항상 접근 가능하되 콘텐츠를 가리지 않는다. 배경 레벨.",
+      "level": 1,
+      "meaning": "다른 곳으로 갈 수 있다."
     },
     {
       "id": "divider",
       "name": "Divider",
       "description": "섹션 구분선. 간격으로 구분하는 것이 우선이나, 필요 시 사용.",
       "category": "layout",
-      "intent": "구분은 간격이 우선. 선은 최후 수단. 있어도 최대한 안 보이게.",
-      "level": 1
+      "intent": "간격으로 구분이 안 될 때의 최후 수단. 최대한 안 보이게.",
+      "level": 1,
+      "meaning": "여기서 내용이 구분된다."
     }
   ],
   "metadata": {
