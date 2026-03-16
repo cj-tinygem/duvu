@@ -6,7 +6,7 @@
       "name": "Toss",
       "cat": "brand",
       "src": "#3182F6",
-      "radius": 16,
+      "radius": 22,
       "dark": {
         "bg": "#08080b",
         "surface": "#111115",
@@ -344,8 +344,8 @@
         "fg": "#d1d2d3",
         "fg2": "#868789",
         "fg3": "#6b6d70",
-        "accent": "#ae31b1",
-        "accent-rgb": "174, 49, 177"
+        "accent": "#611f69",
+        "accent-rgb": "97, 31, 105"
       },
       "light": {
         "bg": "#ffffff",
