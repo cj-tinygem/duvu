@@ -241,7 +241,7 @@ section {
 
 /* ─── PRESET EXPLORER ─── */
 .explorer {
-  padding: 60px 0 40px;
+  padding: 40px 0 40px;
 }
 
 .section-label {
@@ -748,8 +748,8 @@ section {
 .code-block .hl-str { color: #7ec8a4; }
 
 [data-theme="light"] .code-block .hl-str { color: #2d7a5a; }
-[data-theme="light"] .code-block { background: #f5f5f5; }
-[data-theme="light"] .code-tab.active { background: #f5f5f5; }
+[data-theme="light"] .code-block { background: #ffffff; border: 1px solid rgba(0,0,0,0.06); }
+[data-theme="light"] .code-tab.active { background: #ffffff; }
 
 .copy-btn {
   position: absolute;
@@ -1576,7 +1576,7 @@ const DEFAULT_PREVIEW = {
   layout: '2col',
   cards: [
     { type: 'metric', label: '총 매출', value: '₩284,732,000', badge: '+12.4%', chart: true, sub: '목표 대비 78% 달성' },
-    { type: 'buttons' },
+    { type: 'buttons', label: 'Emphasis' },
     { type: 'task-list', span: 'full', items: [
       { text: '디자인 토큰 생성', done: true },
       { text: 'WCAG AA 검증', done: true },
@@ -2006,7 +2006,7 @@ document.addEventListener('DOMContentLoaded', init);
       <div class="hero-stat"><div class="hero-stat-val" data-count="99">0</div><div class="hero-stat-label">프리셋</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="41">0</div><div class="hero-stat-label">컬러</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="22">0</div><div class="hero-stat-label">템플릿</div></div>
-      <div class="hero-stat"><div class="hero-stat-val" data-count="6">0</div><div class="hero-stat-label">플랫폼</div></div>
+      <div class="hero-stat"><div class="hero-stat-val" data-count="7">0</div><div class="hero-stat-label">플랫폼</div></div>
     </div>
     <div class="hero-cmd reveal"><span class="prompt">$</span> <code id="cmdLine">npx duvu generate --preset toss --template saas</code></div>
   </div>
@@ -2064,7 +2064,7 @@ document.addEventListener('DOMContentLoaded', init);
 <section class="templates-section">
   <div class="wrap">
     <div class="section-label reveal">종합 템플릿</div>
-    <h2 class="section-title reveal">컬러 + 타이포 + 스타일을<br>한 번에 적용</h2>
+    <h2 class="section-title reveal">모든 프리셋을 <span class="section-accent">한 번에</span></h2>
     <div class="template-grid" id="templateGrid"></div>
   </div>
 </section>
