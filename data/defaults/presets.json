@@ -1282,6 +1282,39 @@
         "creative",
         "gaming"
       ]
+    },
+    {
+      "id": "charcoal",
+      "name": "Charcoal",
+      "cat": "popular",
+      "src": "#36454F",
+      "radius": 16,
+      "dark": {
+        "bg": "#0a0b0c",
+        "surface": "#12131a",
+        "surface2": "#1c1d24",
+        "fg": "#eaeaec",
+        "fg2": "#8a8a92",
+        "fg3": "#626268",
+        "accent": "#36454F",
+        "accent-rgb": "54, 69, 79"
+      },
+      "light": {
+        "bg": "#f4f4f6",
+        "surface": "#ffffff",
+        "surface2": "#eaeaee",
+        "fg": "#0e0f11",
+        "fg2": "#60616c",
+        "fg3": "#9a9ba2",
+        "accent": "#36454F",
+        "accent-rgb": "54, 69, 79"
+      },
+      "btnText": "#ffffff",
+      "domains": [
+        "enterprise",
+        "editorial",
+        "portfolio"
+      ]
     }
   ],
   "typography": [
