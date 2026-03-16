@@ -121,12 +121,9 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── NAV ─── */
 .nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
+  position: relative;
   z-index: 100;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(8, 8, 11, 0.6);
+  background: var(--duvu-bg);
   transition: background var(--duvu-dur) var(--duvu-ease);
 }
 
@@ -173,7 +170,7 @@ a { color: inherit; text-decoration: none; }
 
 [data-theme="dark"] .ico-sun { display: none; }
 [data-theme="light"] .ico-moon { display: none; }
-[data-theme="light"] .nav { background: rgba(242, 241, 238, 0.7); box-shadow: var(--duvu-shadow-sm); }
+[data-theme="light"] .nav { background: var(--duvu-bg); box-shadow: var(--duvu-shadow-sm); }
 
 [data-theme="light"] .color-card { background: #f8f8f8; }
 [data-theme="light"] .color-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
@@ -197,13 +194,13 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: 160px 0 80px;
+  padding: 80px 0 80px;
   text-align: center;
 }
 
 .hero-title {
   font-size: clamp(52px, 9vw, 112px);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.0;
   letter-spacing: -0.04em;
   font-family: var(--duvu-font-display), var(--duvu-font);
@@ -218,20 +215,6 @@ section {
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
 
-.hero-title { position: relative; display: inline-block; }
-.hero-mark {
-  color: var(--duvu-accent);
-  font-size: 0.35em;
-  position: absolute;
-  right: -1em;
-  top: 0.2em;
-  animation: hero-mark-spin 8s linear infinite;
-  transition: color var(--duvu-dur) var(--duvu-ease);
-}
-@keyframes hero-mark-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
 
 .hero-sub {
   font-size: clamp(16px, 1.5vw, 20px);
@@ -246,7 +229,7 @@ section {
 .hero-stats {
   display: flex;
   justify-content: center;
-  gap: 64px;
+  gap: 48px;
   flex-wrap: wrap;
   margin-bottom: 48px;
 }
@@ -256,7 +239,7 @@ section {
 }
 
 .hero-stat-val {
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   color: var(--duvu-accent);
   font-variant-numeric: tabular-nums;
@@ -267,7 +250,7 @@ section {
   font-size: 13px;
   font-weight: 500;
   color: var(--duvu-fg3);
-  margin-top: 4px;
+  margin-top: 2px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -284,6 +267,7 @@ section {
   text-transform: uppercase;
   color: var(--duvu-fg3);
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .section-title {
@@ -295,6 +279,7 @@ section {
   text-wrap: balance;
   word-break: keep-all;
   font-family: var(--duvu-font-display), var(--duvu-font);
+  text-align: center;
 }
 
 .section-accent {
@@ -359,13 +344,12 @@ section {
 
 /* ─── COLOR CARDS ─── */
 .color-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
 }
 
 .color-card {
-  flex: 0 0 auto;
   cursor: pointer;
   border-radius: var(--duvu-card-radius);
   background: var(--duvu-surface);
@@ -626,7 +610,7 @@ section {
 .dc-sub {
   font-size: 13px;
   color: var(--duvu-fg3);
-  margin-top: 12px;
+  margin-top: 16px;
 }
 
 /* Buttons Card */
@@ -1109,7 +1093,9 @@ footer a:hover { color: var(--duvu-fg2); }
 @media (max-width: 640px) {
   .hero { padding: 60px 0 16px; }
   .hero-stats { gap: 20px; }
-  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-actions { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
+  .hero-actions .btn { width: 100% !important; text-align: center; }
+  .color-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
   .tab-bar { gap: 4px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .tab-bar::-webkit-scrollbar { display: none; }
   .tab-btn { padding: 10px 16px; font-size: 14px; flex-shrink: 0; min-height: 44px; }
@@ -1370,12 +1356,10 @@ function applyColorPreset(preset, customOverride) {
   S.setProperty('--duvu-emphasis-3-bg', 'transparent');
   S.setProperty('--duvu-emphasis-3-text', colors.fg3);
 
-  // Update nav background opacity
+  // Update nav background
   const navEl = document.querySelector('.nav');
   if (navEl) {
-    navEl.style.background = isDark
-      ? `rgba(${hexToRGB(colors.bg)}, 0.6)`
-      : `rgba(${hexToRGB(colors.bg)}, 0.7)`;
+    navEl.style.background = colors.bg;
   }
 
   syncActive('colorGrid', preset.id);
@@ -1807,25 +1791,11 @@ function buildColorCards() {
   container.innerHTML = '';
 
   const colors = DATA.color;
-  const containerW = container.clientWidth;
-  if (containerW < 10) {
-    // Not rendered yet — schedule a retry
-    requestAnimationFrame(() => buildColorCards());
-    return;
-  }
-  const { cols, width } = calcColorGrid(containerW, colors.length);
-  const lastRowCount = colors.length % cols || cols;
-  const lastRowStart = colors.length - lastRowCount;
-  // Last row items should stretch to fill remaining space
-  const lastRowItemW = lastRowCount < cols
-    ? Math.floor((containerW - (lastRowCount - 1) * 12) / lastRowCount)
-    : width;
 
   colors.forEach((preset, i) => {
     const card = document.createElement('button');
     card.className = 'color-card';
     card.dataset.id = preset.id;
-    card.style.width = (i >= lastRowStart ? lastRowItemW : width) + 'px';
     card.setAttribute('aria-label', preset.name);
 
     const textColor = readableOnAccent(preset.src);
@@ -2166,8 +2136,8 @@ document.addEventListener('DOMContentLoaded', init);
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
+    <h1 class="hero-title reveal">하나의 결정이<br><span class="hero-accent">시스템</span>을 만든다</h1>
     <p class="hero-sub reveal">디자인 토큰 · 프리셋 · 템플릿 — 하나의 명령으로 모든 플랫폼</p>
-    <h1 class="hero-title reveal">하나의 결정이<br><span class="hero-accent">시스템</span>을 만든다 <span class="hero-mark">✦</span></h1>
     <div class="hero-stats reveal">
       <div class="hero-stat"><div class="hero-stat-val" data-count="99">0</div><div class="hero-stat-label">프리셋</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="41">0</div><div class="hero-stat-label">컬러</div></div>
