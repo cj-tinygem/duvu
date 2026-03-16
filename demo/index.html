@@ -1402,11 +1402,13 @@ function applyColorPreset(preset, customOverride) {
 
 function applyTypoPreset(preset) {
   currentTypo = preset;
-  const fontStack = `${preset.family}, 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif`;
+  // 한글 폰트 결정: 프리셋에 koreanFamily가 있으면 사용, 없으면 Pretendard
+  const koreanFamily = preset.koreanFamily || '"Pretendard"';
+  const fontStack = `${preset.family}, ${koreanFamily}, -apple-system, BlinkMacSystemFont, system-ui, sans-serif`;
   document.documentElement.style.setProperty('--duvu-font', fontStack);
   document.documentElement.style.setProperty('--duvu-font-display', preset.family);
 
-  // 폰트 CDN 동적 로드 (시스템 데이터의 cdn 필드 사용)
+  // 영문 폰트 CDN 로드
   if (preset.cdn) {
     const existingLink = document.querySelector(`link[data-duvu-font="${preset.id}"]`);
     if (!existingLink) {
@@ -1414,6 +1416,19 @@ function applyTypoPreset(preset) {
       link.rel = 'stylesheet';
       link.href = preset.cdn;
       link.dataset.duvuFont = preset.id;
+      document.head.appendChild(link);
+    }
+  }
+
+  // 한글 폰트 CDN 로드 (Pretendard 외의 한글 폰트가 있을 때)
+  if (preset.koreanCdn) {
+    const koreanId = 'kr-' + (preset.koreanFont || '').toLowerCase().replace(/\s+/g, '-');
+    const existingLink = document.querySelector(`link[data-duvu-font="${koreanId}"]`);
+    if (!existingLink) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = preset.koreanCdn;
+      link.dataset.duvuFont = koreanId;
       document.head.appendChild(link);
     }
   }

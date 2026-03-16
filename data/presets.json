@@ -1383,7 +1383,10 @@
         "saas",
         "enterprise",
         "editorial"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "한국어 기본. 산세리프의 표준."
     },
     {
       "id": "inter",
@@ -1407,7 +1410,10 @@
         "dev",
         "fintech",
         "dashboard"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "Inter와 Pretendard는 동일한 기하학적 구조. 최적 페어링."
     },
     {
       "id": "dm-sans",
@@ -1429,7 +1435,10 @@
         "ecommerce",
         "health",
         "social"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "DM Sans의 둥근 느낌과 Pretendard의 깔끔함이 조화."
     },
     {
       "id": "space-grotesk",
@@ -1453,7 +1462,10 @@
         "portfolio",
         "creative",
         "gaming"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "기술적 느낌을 위해 Pretendard의 정밀한 기하학적 구조 활용."
     },
     {
       "id": "satoshi",
@@ -1475,7 +1487,11 @@
       "domains": [
         "creative",
         "portfolio"
-      ]
+      ],
+      "koreanFont": "SUIT",
+      "koreanFamily": "\"SUIT\"",
+      "koreanCdn": "https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css",
+      "koreanDesc": "크리에이티브 컨텍스트에 어울리는 현대적 한글 가변 폰트."
     },
     {
       "id": "general-sans",
@@ -1497,7 +1513,11 @@
       "domains": [
         "luxury",
         "editorial"
-      ]
+      ],
+      "koreanFont": "Noto Serif KR",
+      "koreanFamily": "\"Noto Serif KR\"",
+      "koreanCdn": "https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;600;700&display=swap",
+      "koreanDesc": "럭셔리/에디토리얼에 세리프 한글. 부드럽고 고급스러운 한글 표현."
     },
     {
       "id": "plus-jakarta",
@@ -1521,7 +1541,10 @@
         "ecommerce",
         "social",
         "health"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "Plus Jakarta의 따뜻함과 Pretendard의 안정감."
     },
     {
       "id": "outfit",
@@ -1544,7 +1567,11 @@
         "health",
         "social",
         "nature"
-      ]
+      ],
+      "koreanFont": "SUIT",
+      "koreanFamily": "\"SUIT\"",
+      "koreanCdn": "https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/woff2/SUIT-Variable.css",
+      "koreanDesc": "둥근 Outfit과 SUIT의 현대적 한글이 앱 UI에 적합."
     },
     {
       "id": "sora",
@@ -1567,7 +1594,10 @@
         "fintech",
         "dev",
         "enterprise"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "Sora의 기하학적 구조와 Pretendard의 정밀함."
     },
     {
       "id": "manrope",
@@ -1591,7 +1621,10 @@
         "dev",
         "saas",
         "education"
-      ]
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "Manrope의 세미 모노 느낌과 Pretendard의 깔끔함."
     }
   ],
   "layout": [
