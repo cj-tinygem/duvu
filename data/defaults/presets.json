@@ -1603,6 +1603,19 @@
       "padding": 24,
       "desc": "기본. 충분한 여백.",
       "multiplier": 1,
+      "restraint": "medium",
+      "intent": "사용자가 콘텐츠에 집중하되 여유를 느끼게. 정보 밀도와 호흡의 균형.",
+      "harmonizes_with": {
+        "style": [
+          "rounded",
+          "soft",
+          "pill"
+        ],
+        "motion": [
+          "smooth",
+          "subtle"
+        ]
+      },
       "description": "기본 간격. 대부분의 UI에 적합한 균형잡힌 여백.",
       "domains": [
         "saas",
@@ -1623,6 +1636,18 @@
       "padding": 16,
       "desc": "밀도 높음. 대시보드에 적합.",
       "multiplier": 0.75,
+      "restraint": "low",
+      "intent": "최대한 많은 정보를 한 화면에. 데이터 의사결정 속도를 높이는 밀도.",
+      "harmonizes_with": {
+        "style": [
+          "sharp",
+          "flat"
+        ],
+        "motion": [
+          "subtle",
+          "none"
+        ]
+      },
       "description": "밀도 높은 레이아웃. 대시보드/데이터 테이블에 적합.",
       "domains": [
         "dashboard",
@@ -1640,6 +1665,18 @@
       "padding": 32,
       "desc": "넓은 여백. 에디토리얼.",
       "multiplier": 1.25,
+      "restraint": "high",
+      "intent": "여백이 콘텐츠만큼 중요. 비움으로 프리미엄을 표현. osmo.supply 수준.",
+      "harmonizes_with": {
+        "style": [
+          "soft",
+          "glass"
+        ],
+        "motion": [
+          "cinematic",
+          "smooth"
+        ]
+      },
       "description": "넓은 여백. 에디토리얼/럭셔리/포트폴리오에 적합.",
       "domains": [
         "luxury",
@@ -1658,6 +1695,19 @@
       "padding": 12,
       "desc": "최소 간격. 데이터 테이블.",
       "multiplier": 0.6,
+      "restraint": "minimal",
+      "intent": "공간 낭비 제로. 모든 픽셀이 정보를 전달. 관제 센터 수준의 밀도.",
+      "harmonizes_with": {
+        "style": [
+          "sharp",
+          "flat",
+          "brutalist"
+        ],
+        "motion": [
+          "none",
+          "subtle"
+        ]
+      },
       "description": "최소 간격. 극도로 밀도 높은 데이터 인터페이스용.",
       "domains": [
         "dashboard",
@@ -3488,103 +3538,137 @@
       "id": "metric",
       "name": "Metric Card",
       "description": "KPI 카드. 숫자 값, 배지, 차트를 표시.",
-      "category": "data"
+      "category": "data",
+      "intent": "핵심 지표를 즉시 인지. 숫자가 주인공, 나머지는 맥락.",
+      "level": 4
     },
     {
       "id": "buttons",
       "name": "Button Group",
       "description": "3단계 강조 계층(Primary/Secondary/Ghost) 버튼과 폼.",
-      "category": "interaction"
+      "category": "interaction",
+      "intent": "사용자 행동을 유도. Primary는 단 하나, 나머지는 대안.",
+      "level": 5
     },
     {
       "id": "table",
       "name": "Data Table",
       "description": "데이터 테이블. 행 구분은 색차로(보더 아님).",
-      "category": "data"
+      "category": "data",
+      "intent": "구조화된 데이터를 스캔 가능하게. 행 구분은 색차로.",
+      "level": 3
     },
     {
       "id": "task-list",
       "name": "Task List",
       "description": "체크리스트. 상태별 색상 시맨틱.",
-      "category": "data"
+      "category": "data",
+      "intent": "진행 상태를 한눈에. 완료/진행/대기의 시각적 구분.",
+      "level": 3
     },
     {
       "id": "article",
       "name": "Article",
       "description": "아티클 헤더+본문. 읽기 최적 65ch.",
-      "category": "content"
+      "category": "content",
+      "intent": "깊이 있는 읽기. 65ch 최적 폭, 충분한 줄간격.",
+      "level": 3
     },
     {
       "id": "quote",
       "name": "Quote",
       "description": "인용구. accent 좌측 보더.",
-      "category": "content"
+      "category": "content",
+      "intent": "인용은 멈춤. 흐름을 끊고 인상을 남기는 역할.",
+      "level": 2
     },
     {
       "id": "hero",
       "name": "Hero Section",
       "description": "히어로. 큰 제목, CTA 1개.",
-      "category": "layout"
+      "category": "layout",
+      "intent": "첫인상이자 핵심 메시지. 가장 큰 타이포, 가장 넓은 여백.",
+      "level": 5
     },
     {
       "id": "stat-row",
       "name": "Stat Row",
       "description": "통계 나열. 같은 레벨 = 같은 주목도.",
-      "category": "data"
+      "category": "data",
+      "intent": "동급 지표를 균등 배치. 같은 레벨 = 같은 주목도.",
+      "level": 3
     },
     {
       "id": "product",
       "name": "Product Card",
       "description": "상품 카드. 가격 강조, CTA 버튼.",
-      "category": "commerce"
+      "category": "commerce",
+      "intent": "구매 결정 유도. 이미지 > 이름 > 가격 순서의 시각 계층.",
+      "level": 4
     },
     {
       "id": "gallery",
       "name": "Gallery Grid",
       "description": "이미지 그리드. SVG 플레이스홀더.",
-      "category": "media"
+      "category": "media",
+      "intent": "비주얼 임팩트. 이미지가 스스로 말하게. 텍스트 최소.",
+      "level": 3
     },
     {
       "id": "code",
       "name": "Code Block",
       "description": "코드 블록. 모노스페이스, 구문 강조.",
-      "category": "dev"
+      "category": "dev",
+      "intent": "코드는 정확해야. 모노스페이스, 구문 강조, 복사 가능.",
+      "level": 2
     },
     {
       "id": "chat",
       "name": "Chat Bubble",
       "description": "채팅 UI. 좌우 정렬 대화.",
-      "category": "social"
+      "category": "social",
+      "intent": "대화의 흐름. 좌우 정렬로 화자 구분, 시간순 배치.",
+      "level": 3
     },
     {
       "id": "wellness",
       "name": "Wellness Card",
       "description": "건강/활동 카드. 원형 진행률.",
-      "category": "health"
+      "category": "health",
+      "intent": "목표 대비 현재. 원형 진행률로 직관적 달성도.",
+      "level": 4
     },
     {
       "id": "profile",
       "name": "Profile Card",
       "description": "프로필. 아바타 + 이름 + 역할.",
-      "category": "social"
+      "category": "social",
+      "intent": "사람을 인지. 아바타가 첫째, 이름이 둘째, 역할이 셋째.",
+      "level": 2
     },
     {
       "id": "marquee",
       "name": "Marquee Banner",
       "description": "흐르는 텍스트 배너. 공지, 프로모션, 브랜드 메시지에 사용.",
-      "category": "layout"
+      "category": "layout",
+      "intent": "흐르는 정보. 주의를 가볍게 끌되 방해하지 않음.",
+      "level": 1
     },
     {
       "id": "nav-bar",
       "name": "Navigation Bar",
       "description": "상단 네비게이션. 로고, 메뉴, CTA 포함.",
-      "category": "layout"
+      "category": "layout",
+      "intent": "현재 위치와 이동 경로. 항상 접근 가능하되 콘텐츠보다 낮은 주목도.",
+      "level": 1
     },
     {
       "id": "divider",
       "name": "Divider",
       "description": "섹션 구분선. 간격으로 구분하는 것이 우선이나, 필요 시 사용.",
-      "category": "layout"
+      "category": "layout",
+      "intent": "구분은 간격이 우선. 선은 최후 수단. 있어도 최대한 안 보이게.",
+      "level": 1
     }
   ],
   "metadata": {

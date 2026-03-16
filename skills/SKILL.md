@@ -224,7 +224,30 @@ CLI: `duvu list component`, `duvu show component <id>`, `duvu match <domain>`
 - [ ] 컴포넌트 간 통일성이 유지되는가? (같은 padding/radius/shadow)
 - [ ] 불통일이 있다면 그것은 의도된 것인가?
 
-**의도 2중 질문**: 모든 요소 배치 전 "이건 왜 좋은가?", "정말 좋은가?"를 자문한다.
+**의도 5층 질문**: 모든 요소 배치 전 5가지 의도를 확인한다:
+
+1. **자기 의도**: 이 요소는 왜 존재하는가? (없으면 안 되는가?)
+2. **계층 의도**: 부모/형제 요소와의 관계에서 이 요소의 역할은? (주목도 레벨은?)
+3. **레이어 의도**: 시각적으로 다른 레이어의 요소들과 충돌하지 않는가?
+4. **전체 의도**: 페이지 전체에서 이 요소가 차지하는 비중은 적절한가?
+5. **사용자 의도**: 사용자가 이것을 보면 무엇을 느끼고 무엇을 하게 되는가?
+
+**컴포넌트 주목도 시스템**: 각 컴포넌트에 `level`(1-5) 필드가 있다:
+- **Level 5**: hero, buttons — 가장 먼저 눈에 띄어야 함
+- **Level 4**: metric, product, wellness — 핵심 정보
+- **Level 3**: table, task-list, article, stat-row, gallery, chat — 상세 콘텐츠
+- **Level 2**: quote, code, profile — 보조 콘텐츠
+- **Level 1**: marquee, nav-bar, divider — 배경/구조
+
+같은 level의 컴포넌트는 같은 시각적 무게를 가져야 한다. 다른 level은 크기/색상/여백으로 차이를 만든다.
+
+**절제 시스템**: layout 프리셋에 `restraint` 필드(minimal/low/medium/high)가 있다:
+- `restraint: "high"` (spacious) → 여백이 콘텐츠만큼 중요. 프리미엄.
+- `restraint: "medium"` (comfortable) → 균형. 범용.
+- `restraint: "low"` (compact) → 정보 밀도 우선.
+- `restraint: "minimal"` (dense) → 공간 낭비 제로.
+
+**조화 보장**: layout 프리셋에 `harmonizes_with` 필드가 있어 어울리는 style/motion 조합을 명시한다.
 
 하나라도 실패하면 수정 후 재출력.
 
