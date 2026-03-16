@@ -940,6 +940,36 @@ footer a:hover { color: var(--duvu-fg2); }
 .profile-name { font-size: 15px; font-weight: 600; color: var(--duvu-fg); }
 .profile-role { font-size: 13px; color: var(--duvu-fg3); }
 
+/* ─── MARQUEE ─── */
+.marquee-track {
+  overflow: hidden;
+  white-space: nowrap;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+.marquee-inner {
+  display: inline-block;
+  animation: marquee-scroll 20s linear infinite;
+}
+.marquee-item {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--duvu-fg2);
+  letter-spacing: 0.02em;
+}
+.marquee-sep {
+  color: var(--duvu-accent);
+  margin: 0 16px;
+  font-size: 10px;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-inner { animation: none; }
+}
+
 /* ─── RESPONSIVE ─── */
 @media (max-width: 640px) {
   .hero { padding: 100px 0 60px; }
@@ -1329,8 +1359,6 @@ function updateTabBtnColors() {
   });
 }
 
-}
-
 function updateCmdLine() {
   const el = document.getElementById('cmdLine');
   if (!el || !currentColor) return;
@@ -1534,6 +1562,12 @@ const CARD_RENDERERS = {
   'profile': (c) => {
     const initial = (c.name || '?')[0];
     return `<div class="profile-row"><div class="profile-avatar">${escapeHtml(initial)}</div><div><div class="profile-name">${escapeHtml(c.name)}</div><div class="profile-role">${escapeHtml(c.role || '')}</div></div></div>`;
+  },
+  'marquee': (c) => {
+    const items = c.items || [];
+    const sep = c.separator || '✦';
+    const content = items.map(t => `<span class="marquee-item">${escapeHtml(t)}</span><span class="marquee-sep">${escapeHtml(sep)}</span>`).join('');
+    return `<div class="marquee-track"><div class="marquee-inner">${content}${content}</div></div>`;
   },
 };
 

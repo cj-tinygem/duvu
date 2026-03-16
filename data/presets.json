@@ -1903,6 +1903,16 @@
         "layout": "2col",
         "cards": [
           {
+            "type": "marquee",
+            "span": "full",
+            "items": [
+              "봄 세일 최대 40% 할인",
+              "전 상품 무료 배송",
+              "신규 회원 15% 쿠폰"
+            ],
+            "separator": "✦"
+          },
+          {
             "type": "hero",
             "title": "봄 신상",
             "sub": "최대 40% 할인",
@@ -2157,6 +2167,18 @@
       "preview": {
         "layout": "2col",
         "cards": [
+          {
+            "type": "marquee",
+            "span": "full",
+            "items": [
+              "Design",
+              "Create",
+              "Inspire",
+              "Build",
+              "Dream"
+            ],
+            "separator": "·"
+          },
           {
             "type": "gallery",
             "count": 4
@@ -2517,6 +2539,18 @@
       "preview": {
         "layout": "2col",
         "cards": [
+          {
+            "type": "marquee",
+            "span": "full",
+            "items": [
+              "POP",
+              "BOLD",
+              "FRESH",
+              "NEW",
+              "WOW"
+            ],
+            "separator": "★"
+          },
           {
             "type": "hero",
             "title": "POP",
@@ -3286,6 +3320,24 @@
       "name": "Profile Card",
       "description": "프로필. 아바타 + 이름 + 역할.",
       "category": "social"
+    },
+    {
+      "id": "marquee",
+      "name": "Marquee Banner",
+      "description": "흐르는 텍스트 배너. 공지, 프로모션, 브랜드 메시지에 사용.",
+      "category": "layout"
+    },
+    {
+      "id": "nav-bar",
+      "name": "Navigation Bar",
+      "description": "상단 네비게이션. 로고, 메뉴, CTA 포함.",
+      "category": "layout"
+    },
+    {
+      "id": "divider",
+      "name": "Divider",
+      "description": "섹션 구분선. 간격으로 구분하는 것이 우선이나, 필요 시 사용.",
+      "category": "layout"
     }
   ],
   "metadata": {
