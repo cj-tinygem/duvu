@@ -1339,8 +1339,8 @@
         "fg": "#eaeaec",
         "fg2": "#8a8a92",
         "fg3": "#626268",
-        "accent": "#36454F",
-        "accent-rgb": "54, 69, 79"
+        "accent": "#5a7080",
+        "accent-rgb": "90, 112, 128"
       },
       "light": {
         "bg": "#f4f4f6",
