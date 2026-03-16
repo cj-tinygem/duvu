@@ -812,7 +812,7 @@ footer a:hover { color: var(--duvu-fg2); }
 
 /* ─── QUOTE CARD ─── */
 .quote-text {
-  font-size: 18px; font-style: italic; color: var(--duvu-fg); line-height: 1.6;
+  font-size: clamp(18px, 2.5vw, 22px); font-style: italic; color: var(--duvu-fg); line-height: 1.6;
   padding-left: var(--duvu-space-lg, 24px);
   border-left: 3px solid var(--duvu-accent);
 }
@@ -822,9 +822,16 @@ footer a:hover { color: var(--duvu-fg2); }
 }
 
 /* ─── HERO CARD ─── */
+.p-card:has(.hero-card-title) {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--duvu-surface) 0%, rgba(var(--duvu-accent-rgb), 0.04) 100%);
+}
 .hero-card-title {
   font-size: clamp(28px, 5vw, 48px); font-weight: 800; color: var(--duvu-fg);
-  line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;
+  line-height: 1.1; letter-spacing: -0.03em; text-wrap: balance;
 }
 .hero-card-sub {
   font-size: 16px; color: var(--duvu-fg2); margin-top: var(--duvu-space-sm, 8px);
@@ -1466,7 +1473,10 @@ const CARD_RENDERERS = {
   },
   'gallery': (c) => {
     const count = c.count || 6;
-    return `<div class="gallery-grid">${Array.from({length: count}, () => '<div class="gallery-item"></div>').join('')}</div>`;
+    const opacities = [0.06, 0.12, 0.08, 0.15, 0.05, 0.10, 0.14, 0.07, 0.11];
+    return `<div class="gallery-grid">${Array.from({length: count}, (_, i) =>
+      `<div class="gallery-item" style="background:linear-gradient(${120 + i * 30}deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb),${opacities[i % opacities.length]}) 50%, var(--duvu-surface2) 100%)"></div>`
+    ).join('')}</div>`;
   },
   'code': (c) => {
     const code = escapeHtml(c.code || '');
