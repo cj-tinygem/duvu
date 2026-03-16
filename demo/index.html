@@ -220,9 +220,10 @@ section {
 }
 
 .hero-stat-label {
-  font-size: 13px;
-  color: var(--duvu-fg3);
-  margin-top: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--duvu-fg2);
+  margin-top: 4px;
 }
 
 /* ─── PRESET EXPLORER ─── */
@@ -1575,7 +1576,8 @@ function renderPreview(tpl) {
     const renderer = CARD_RENDERERS[card.type];
     if (!renderer) return '';
     const spanStyle = card.span === 'full' ? ' style="grid-column:1/-1"' : '';
-    const label = card.label ? `<div class="p-card-label">${escapeHtml(card.label)}</div>` : '';
+    const showLabel = card.label && card.type !== 'metric'; // metric은 내부에서 label 처리
+    const label = showLabel ? `<div class="p-card-label">${escapeHtml(card.label)}</div>` : '';
     return `<div class="p-card reveal visible"${spanStyle}>${label}${renderer(card)}</div>`;
   }).join('');
 
