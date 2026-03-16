@@ -6,7 +6,7 @@
 |---|---|
 | [PRD.md](PRD.md) | 제품 요구사항 정의 — IDEA.md에서 도출한 전체 요구사항 |
 | [GAPS.md](GAPS.md) | 현재 구현과 요구사항 사이의 갭 분석 |
-| [DESIGN-PHILOSOPHY.md](DESIGN-PHILOSOPHY.md) | 디자인 철학과 원칙 — DUVU의 핵심 사상 |
+| [DESIGN-PHILOSOPHY.md](DESIGN-PHILOSOPHY.md) | 디자인 철학과 원칙 — 의도/의미 시스템, 비움의 미학, 단순함은 도착점 |
 
 ## 참조 문서 (data/references/)
 

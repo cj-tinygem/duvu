@@ -1,5 +1,5 @@
 schema_version: 1
-fact_source: mixed
+fact_source: implementation
 entrypoints:
   - docs/README.md
 canonical_paths:
@@ -7,7 +7,7 @@ canonical_paths:
   - docs/GAPS.md
   - docs/DESIGN-PHILOSOPHY.md
   - README.md
+  - skills/SKILL.md
 non_canonical_zones:
   - data/references/
-untriaged_paths:
-  - IDEA.md
+untriaged_paths: []
