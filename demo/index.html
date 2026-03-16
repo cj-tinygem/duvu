@@ -181,6 +181,17 @@ a { color: inherit; text-decoration: none; }
 [data-theme="light"] .pill:hover { background: rgba(0,0,0,0.07); }
 [data-theme="light"] .tpl-card { background: rgba(0,0,0,0.03); }
 [data-theme="light"] .tpl-card:hover { background: rgba(0,0,0,0.06); }
+[data-theme="light"] .btn-secondary { background: rgba(0,0,0,0.05); }
+[data-theme="light"] .btn-secondary:hover { background: rgba(0,0,0,0.08); }
+[data-theme="light"] .btn-ghost:hover { background: rgba(0,0,0,0.04); }
+[data-theme="light"] .form-input { background: var(--duvu-surface); border: 1px solid rgba(0,0,0,0.1); }
+[data-theme="light"] .form-input:focus { border-color: var(--duvu-accent); }
+[data-theme="light"] .dc-badge { background: rgba(0,0,0,0.05); }
+[data-theme="light"] .list-tag { background: rgba(0,0,0,0.05); }
+[data-theme="light"] .chart-sw-btn { background: rgba(0,0,0,0.04); }
+[data-theme="light"] .chart-sw-btn.active { background: rgba(0,0,0,0.08); }
+[data-theme="light"] .hero-cmd { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); }
+[data-theme="light"] .chat-msg.chat-incoming { background: rgba(0,0,0,0.04); }
 
 /* ─── SECTIONS ─── */
 .wrap {
@@ -203,8 +214,8 @@ section {
 .hero-title {
   font-size: var(--duvu-hero-title-size, clamp(52px, 9vw, 112px));
   font-weight: var(--duvu-hero-title-weight, 700);
-  line-height: 1.0;
-  letter-spacing: -0.04em;
+  line-height: var(--duvu-hero-title-line-height, 0.95);
+  letter-spacing: var(--duvu-hero-title-letter-spacing, -0.045em);
   font-family: var(--duvu-font-display), var(--duvu-font);
   text-wrap: balance;
   word-break: keep-all;
@@ -244,6 +255,7 @@ section {
 .hero-stat-val {
   font-size: var(--duvu-stat-val-size, 48px);
   font-weight: 700;
+  letter-spacing: var(--duvu-stat-val-letter-spacing, -0.03em);
   color: var(--duvu-accent);
   font-variant-numeric: tabular-nums;
   transition: color var(--duvu-dur) var(--duvu-ease);
@@ -278,8 +290,8 @@ section {
 .section-title {
   font-size: var(--duvu-section-title-size, clamp(32px, 5vw, 56px));
   font-weight: var(--duvu-section-title-weight, 600);
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+  line-height: var(--duvu-section-title-line-height, 1.1);
+  letter-spacing: var(--duvu-section-title-letter-spacing, -0.035em);
   margin-bottom: var(--duvu-space-title-margin, 48px);
   text-wrap: balance;
   word-break: keep-all;
@@ -366,8 +378,8 @@ section {
 }
 
 .color-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
 }
 
 .color-card.active {
@@ -395,9 +407,6 @@ section {
 .color-card:hover .color-swatch-hex {
   opacity: 1;
 }
-
-[data-theme="light"] .color-card { background: #f8f8f8; }
-[data-theme="light"] .color-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 
 .color-info {
   padding: 8px 12px;
@@ -454,8 +463,6 @@ section {
   box-shadow: 0 2px 10px rgba(var(--duvu-accent-rgb), 0.25);
   transform: scale(1.04);
 }
-[data-theme="light"] .pill { background: rgba(0,0,0,0.04); }
-[data-theme="light"] .pill:hover { background: rgba(0,0,0,0.07); }
 
 .pill-desc {
   font-size: 12px;
@@ -517,7 +524,7 @@ section {
   z-index: 1;
   background: var(--duvu-surface);
   border-radius: var(--duvu-card-radius);
-  padding: var(--duvu-space-xl);
+  padding: var(--duvu-card-padding, 32px);
   box-shadow: var(--duvu-card-shadow);
   transition:
     background 0.5s var(--duvu-ease-spring),
@@ -528,10 +535,13 @@ section {
   overflow: hidden;
 }
 .p-card:hover {
-  transform: translateY(calc(-2px * var(--duvu-motion-scale)));
+  transform: translateY(calc(-3px * var(--duvu-motion-scale))) scale(calc(1 + 0.01 * var(--duvu-motion-scale)));
   box-shadow: var(--duvu-shadow-lg);
 }
-[data-theme="light"] .p-card { box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.p-card:active {
+  transform: scale(0.98);
+  transition-duration: 0.1s;
+}
 
 .p-card-label {
   display: block;
@@ -592,9 +602,9 @@ section {
 }
 
 .dc-value {
-  font-size: 32px;
+  font-size: var(--duvu-metric-val-size, 36px);
   font-weight: 700;
-  letter-spacing: -0.02em;
+  letter-spacing: var(--duvu-stat-val-letter-spacing, -0.03em);
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
   color: var(--duvu-fg);
@@ -602,9 +612,9 @@ section {
 
 .chart-container {
   width: 100%;
-  height: 48px;
+  height: var(--duvu-chart-height, 64px);
   position: relative;
-  margin: 4px 0 2px;
+  margin: 8px 0 4px;
 }
 
 .chart-container svg {
@@ -646,12 +656,15 @@ section {
 }
 
 .btn:hover { transform: translateY(-1px); }
-.btn:active { transform: scale(0.97); }
+.btn:active { transform: scale(0.97); transition-duration: 0.08s; }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn-primary {
   background: var(--duvu-emphasis-1-bg);
   color: var(--duvu-emphasis-1-text);
+}
+.btn-primary:hover {
+  box-shadow: 0 4px 16px rgba(var(--duvu-accent-rgb), 0.35);
 }
 
 .btn-secondary {
@@ -693,6 +706,14 @@ section {
 }
 .form-pw { letter-spacing: 0.15em; color: var(--duvu-fg3); }
 .form-btn { margin-top: 4px; }
+
+/* Table Card */
+.dc-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dc-table tr:nth-child(even) { background: var(--duvu-surface); }
+.dc-table tr:nth-child(odd) { background: var(--duvu-surface2); }
+.dc-table td { padding: 10px 12px; color: var(--duvu-fg); }
+.dc-table td:last-child { font-weight: 500; text-align: right; }
+.dc-table-wrap { overflow-x: auto; border-radius: var(--duvu-radius-sm, 10px); }
 
 /* List Card */
 .card-list { display: flex; flex-direction: column; gap: 2px; }
@@ -772,8 +793,6 @@ section {
   background: var(--duvu-surface2);
   transform: translateY(-2px);
 }
-[data-theme="light"] .tpl-card { background: rgba(0,0,0,0.03); }
-[data-theme="light"] .tpl-card:hover { background: rgba(0,0,0,0.06); }
 
 .tpl-card.active {
   box-shadow: 0 0 0 2px var(--duvu-accent);
@@ -1003,9 +1022,8 @@ footer a:hover { color: var(--duvu-fg2); }
 .product-item { text-align: center; }
 .product-thumb {
   width: 100%; aspect-ratio: 1;
-  background: linear-gradient(135deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb), 0.12) 100%);
+  background: linear-gradient(135deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb), 0.25) 100%);
   border-radius: var(--duvu-radius-sm, 10px); margin-bottom: 8px;
-  border: 1px solid rgba(var(--duvu-accent-rgb), 0.06);
 }
 .product-name { font-size: 13px; font-weight: 500; color: var(--duvu-fg); }
 .product-price { font-size: 15px; font-weight: 700; color: var(--duvu-accent); margin-top: 4px; }
@@ -1015,7 +1033,7 @@ footer a:hover { color: var(--duvu-fg2); }
 @media (max-width: 640px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
 .gallery-item {
   aspect-ratio: 4/3;
-  background: linear-gradient(135deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb), 0.15) 100%);
+  background: var(--duvu-surface2);
   border-radius: var(--duvu-radius-sm, 10px);
   border: 1px solid rgba(var(--duvu-accent-rgb), 0.08);
   transition: transform var(--duvu-dur-fast, 0.2s) var(--duvu-ease);
@@ -1043,7 +1061,7 @@ footer a:hover { color: var(--duvu-fg2); }
 .chat-outgoing { align-self: flex-end; background: var(--duvu-accent); color: var(--duvu-btn-text); border-bottom-right-radius: 4px; }
 .chat-meta { font-size: 11px; color: var(--duvu-fg3); margin-top: 2px; }
 .chat-incoming .chat-meta { text-align: left; }
-.chat-outgoing .chat-meta { text-align: right; }
+.chat-outgoing .chat-meta { text-align: right; color: var(--duvu-btn-text); opacity: 0.7; }
 
 /* ─── WELLNESS ─── */
 .wellness-ring-container { display: flex; align-items: center; gap: var(--duvu-space-lg, 24px); }
@@ -1073,7 +1091,8 @@ footer a:hover { color: var(--duvu-fg2); }
   -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
 }
 .marquee-inner {
-  display: inline-block;
+  display: inline-flex;
+  width: max-content;
   animation: marquee-scroll 20s linear infinite;
 }
 .marquee-item {
@@ -1128,6 +1147,12 @@ footer a:hover { color: var(--duvu-fg2); }
     scroll-behavior: auto !important;
   }
   .reveal { opacity: 1; transform: none; }
+  .color-card:hover,
+  .p-card:hover,
+  .tpl-card:hover,
+  .btn:hover,
+  .gallery-item:hover,
+  .pill.active { transform: none !important; }
 }
 
 /* ─── PRINT ─── */
@@ -1598,6 +1623,31 @@ function updateCodeOutput() {
         `  <span class="hl-key">medium =</span>\n    <span class="hl-val">RoundedCornerShape(${radius}.dp)</span>\n` +
         `)`;
       break;
+    case 'unity':
+      code =
+        `<span class="hl-key">public class</span> <span class="hl-val">DuvuTheme</span> {\n` +
+        `  <span class="hl-key">public Color</span> primary =\n    <span class="hl-val">ColorUtility.TryParseHtmlString("${accent}")</span>;\n` +
+        `  <span class="hl-key">public Color</span> background =\n    <span class="hl-val">ColorUtility.TryParseHtmlString("${bg}")</span>;\n` +
+        `  <span class="hl-key">public Color</span> foreground =\n    <span class="hl-val">ColorUtility.TryParseHtmlString("${fg}")</span>;\n` +
+        `  <span class="hl-key">public Color</span> surface =\n    <span class="hl-val">ColorUtility.TryParseHtmlString("${surface}")</span>;\n` +
+        `  <span class="hl-key">public float</span> radius = <span class="hl-val">${radius}f</span>;\n` +
+        `}`;
+      break;
+    case 'react-native':
+      code =
+        `<span class="hl-key">const</span> theme = {\n` +
+        `  <span class="hl-key">colors:</span> {\n` +
+        `    <span class="hl-key">primary:</span> <span class="hl-str">'${accent}'</span>,\n` +
+        `    <span class="hl-key">background:</span> <span class="hl-str">'${bg}'</span>,\n` +
+        `    <span class="hl-key">text:</span> <span class="hl-str">'${fg}'</span>,\n` +
+        `    <span class="hl-key">card:</span> <span class="hl-str">'${surface}'</span>,\n` +
+        `  },\n` +
+        `  <span class="hl-key">roundness:</span> <span class="hl-val">${radius}</span>,\n` +
+        `  <span class="hl-key">fonts:</span> {\n` +
+        `    <span class="hl-key">regular:</span> <span class="hl-str">'${fontName}'</span>,\n` +
+        `  },\n` +
+        `};`;
+      break;
   }
   block.innerHTML = code;
 }
@@ -1631,18 +1681,18 @@ const CARD_RENDERERS = {
   },
   'table': (c) => {
     const rows = c.rows || [];
-    const statusColor = (text) => {
+    const statusClass = (text) => {
       const t = text.toLowerCase();
-      if (['성공','완료','success','complete'].some(k => t.includes(k))) return 'var(--duvu-success, #2A9D8F)';
-      if (['실패','오류','error','fail'].some(k => t.includes(k))) return 'var(--duvu-error, #E76F51)';
-      if (['진행','pending','progress'].some(k => t.includes(k))) return 'var(--duvu-accent)';
-      return 'var(--duvu-fg)';
+      if (['성공','완료','success','complete'].some(k => t.includes(k))) return ' style="color:var(--duvu-success,#2A9D8F)"';
+      if (['실패','오류','error','fail'].some(k => t.includes(k))) return ' style="color:var(--duvu-error,#E76F51)"';
+      if (['진행','pending','progress'].some(k => t.includes(k))) return ' style="color:var(--duvu-accent)"';
+      return '';
     };
-    return `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">` +
-      rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};">${row.map((cell, ci) => {
+    return `<div class="dc-table-wrap"><table class="dc-table">` +
+      rows.map(row => `<tr>${row.map((cell, ci) => {
         const isLast = ci === row.length - 1;
-        const color = isLast ? statusColor(cell) : 'var(--duvu-fg)';
-        return `<td style="padding:10px 12px;color:${color};${isLast ? 'font-weight:500;text-align:right' : ''}">${escapeHtml(cell)}</td>`;
+        const attr = isLast ? statusClass(cell) : '';
+        return `<td${attr}>${escapeHtml(cell)}</td>`;
       }).join('')}</tr>`).join('') +
       `</table></div>`;
   },
@@ -1682,9 +1732,9 @@ const CARD_RENDERERS = {
   },
   'gallery': (c) => {
     const count = c.count || 6;
-    const opacities = [0.06, 0.12, 0.08, 0.15, 0.05, 0.10, 0.14, 0.07, 0.11];
+    const opacities = [0.18, 0.28, 0.22, 0.32, 0.15, 0.25, 0.30, 0.20, 0.26];
     return `<div class="gallery-grid">${Array.from({length: count}, (_, i) =>
-      `<div class="gallery-item" style="background:linear-gradient(${120 + i * 30}deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb),${opacities[i % opacities.length]}) 50%, var(--duvu-surface2) 100%)"></div>`
+      `<div class="gallery-item" style="background:linear-gradient(${120 + i * 30}deg, var(--duvu-surface2) 0%, rgba(var(--duvu-accent-rgb),${opacities[i % opacities.length]}) 50%, var(--duvu-surface) 100%)"></div>`
     ).join('')}</div>`;
   },
   'code': (c) => {
@@ -1919,8 +1969,8 @@ function buildTemplateCards() {
 function buildCodeTabs() {
   const tabs = document.getElementById('codeTabs');
   if (!tabs) return;
-  ['CSS', 'Tailwind', 'Flutter', 'SwiftUI', 'Compose'].forEach(name => {
-    const key = name.toLowerCase();
+  ['CSS', 'Tailwind', 'Flutter', 'SwiftUI', 'Compose', 'Unity', 'React Native'].forEach(name => {
+    const key = name.toLowerCase().replace(' ', '-');
     const btn = document.createElement('button');
     btn.className = 'code-tab' + (key === 'css' ? ' active' : '');
     btn.textContent = name;

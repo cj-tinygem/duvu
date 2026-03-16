@@ -27,6 +27,7 @@ const PORT = portIdx >= 0 ? parseInt(args[portIdx + 1]) : 3399;
 const outIdx = args.indexOf('--out');
 const OUT_DIR = outIdx >= 0 ? resolve(args[outIdx + 1]) : '/tmp/duvu-screenshots';
 const ALL = args.includes('--all');
+const LIGHT = args.includes('--light');
 
 const VIEWPORTS = ALL ? [
   { name: 'desktop-wide', width: 1920, height: 1080 },
@@ -115,6 +116,15 @@ async function run() {
     await page.setViewport({ width: vp.width, height: vp.height });
     await page.goto(`http://localhost:${PORT}`, { waitUntil: 'networkidle0', timeout: 15000 });
     await new Promise(r => setTimeout(r, 3000));
+
+    // 라이트 모드 전환
+    if (LIGHT) {
+      await page.evaluate(() => {
+        const btn = document.querySelector('.nav-theme');
+        if (btn) btn.click();
+      });
+      await new Promise(r => setTimeout(r, 500));
+    }
 
     // 페이지 내 모든 링크 수집 (다른 페이지가 있을 경우)
     const links = await page.evaluate(() => {

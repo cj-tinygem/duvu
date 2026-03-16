@@ -31,7 +31,8 @@
       "domains": [
         "saas",
         "fintech"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "linear",
@@ -63,7 +64,8 @@
       "domains": [
         "saas",
         "dev"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "stripe",
@@ -95,7 +97,8 @@
       "domains": [
         "fintech",
         "saas"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "apple",
@@ -127,7 +130,8 @@
       "domains": [
         "enterprise",
         "creative"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "notion",
@@ -160,7 +164,8 @@
         "saas",
         "dev",
         "editorial"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "github",
@@ -191,7 +196,8 @@
       "btnText": "#ffffff",
       "domains": [
         "dev"
-      ]
+      ],
+      "tone": "neutral"
     },
     {
       "id": "spotify",
@@ -219,11 +225,12 @@
         "accent": "#1aa54b",
         "accent-rgb": "26, 165, 75"
       },
-      "btnText": "#ffffff",
+      "btnText": "#000000",
       "domains": [
         "creative",
         "social"
-      ]
+      ],
+      "tone": "neutral"
     },
     {
       "id": "supabase",
@@ -255,7 +262,8 @@
       "domains": [
         "dev",
         "saas"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "figma",
@@ -287,7 +295,8 @@
       "domains": [
         "creative",
         "dev"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "airbnb",
@@ -319,7 +328,8 @@
       "domains": [
         "ecommerce",
         "social"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "slack",
@@ -351,7 +361,8 @@
       "domains": [
         "saas",
         "enterprise"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "vercel",
@@ -383,7 +394,8 @@
       "domains": [
         "dev",
         "portfolio"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "sunny-beach",
@@ -414,7 +426,8 @@
       "domains": [
         "ecommerce",
         "health"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "olive-garden",
@@ -445,7 +458,8 @@
       "domains": [
         "nature",
         "health"
-      ]
+      ],
+      "tone": "neutral"
     },
     {
       "id": "summer-ocean",
@@ -476,7 +490,8 @@
       "domains": [
         "health",
         "nature"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "black-gold",
@@ -506,7 +521,8 @@
       "btnText": "#000000",
       "domains": [
         "luxury"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "ocean-pearl",
@@ -537,7 +553,8 @@
       "domains": [
         "health",
         "nature"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "earthy-forest",
@@ -568,7 +585,8 @@
       "domains": [
         "nature",
         "editorial"
-      ]
+      ],
+      "tone": "neutral"
     },
     {
       "id": "arctic-blue",
@@ -598,8 +616,10 @@
       "btnText": "#ffffff",
       "domains": [
         "enterprise",
-        "saas"
-      ]
+        "saas",
+        "dashboard"
+      ],
+      "tone": "cool"
     },
     {
       "id": "warm-coral",
@@ -630,7 +650,8 @@
       "domains": [
         "editorial",
         "creative"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "indigo-bloom",
@@ -661,7 +682,8 @@
       "domains": [
         "social",
         "creative"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "ocean",
@@ -692,7 +714,8 @@
       "domains": [
         "saas",
         "enterprise"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "sunset",
@@ -723,7 +746,8 @@
       "domains": [
         "editorial",
         "creative"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "forest",
@@ -754,7 +778,8 @@
       "domains": [
         "nature",
         "health"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "royal",
@@ -785,7 +810,8 @@
       "domains": [
         "luxury",
         "fintech"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "midnight",
@@ -815,8 +841,10 @@
       "btnText": "#ffffff",
       "domains": [
         "portfolio",
-        "dev"
-      ]
+        "dev",
+        "dashboard"
+      ],
+      "tone": "cool"
     },
     {
       "id": "lavender",
@@ -847,7 +875,8 @@
       "domains": [
         "creative",
         "health"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "earth",
@@ -878,7 +907,8 @@
       "domains": [
         "luxury",
         "nature"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "rose",
@@ -909,7 +939,8 @@
       "domains": [
         "ecommerce",
         "health"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "beach-teal",
@@ -940,7 +971,8 @@
       "domains": [
         "health",
         "nature"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "warm-amber",
@@ -971,7 +1003,8 @@
       "domains": [
         "editorial",
         "luxury"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "coral-red",
@@ -1002,7 +1035,8 @@
       "domains": [
         "ecommerce",
         "creative"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "sage-green",
@@ -1033,7 +1067,8 @@
       "domains": [
         "nature",
         "health"
-      ]
+      ],
+      "tone": "neutral"
     },
     {
       "id": "navy-depth",
@@ -1064,7 +1099,8 @@
       "domains": [
         "fintech",
         "enterprise"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "sky-blue",
@@ -1095,7 +1131,8 @@
       "domains": [
         "saas",
         "education"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "mauve-rose",
@@ -1126,7 +1163,8 @@
       "domains": [
         "creative",
         "luxury"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "autumn-red",
@@ -1157,7 +1195,8 @@
       "domains": [
         "editorial",
         "nature"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "golden-sun",
@@ -1184,11 +1223,12 @@
         "accent": "#e07300",
         "accent-rgb": "224, 115, 0"
       },
-      "btnText": "#ffffff",
+      "btnText": "#000000",
       "domains": [
         "ecommerce",
         "education"
-      ]
+      ],
+      "tone": "warm"
     },
     {
       "id": "pine-forest",
@@ -1219,7 +1259,8 @@
       "domains": [
         "nature",
         "editorial"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "electric-blue",
@@ -1250,7 +1291,8 @@
       "domains": [
         "dev",
         "gaming"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "deep-purple",
@@ -1281,7 +1323,8 @@
       "domains": [
         "creative",
         "gaming"
-      ]
+      ],
+      "tone": "cool"
     },
     {
       "id": "charcoal",
@@ -1314,7 +1357,8 @@
         "enterprise",
         "editorial",
         "portfolio"
-      ]
+      ],
+      "tone": "cool"
     }
   ],
   "typography": [
@@ -1407,7 +1451,8 @@
       "domains": [
         "dev",
         "portfolio",
-        "creative"
+        "creative",
+        "gaming"
       ]
     },
     {
@@ -1562,8 +1607,13 @@
       "domains": [
         "saas",
         "ecommerce",
-        "editorial"
-      ]
+        "editorial",
+        "education",
+        "enterprise",
+        "health",
+        "social"
+      ],
+      "mood": "균형잡힌, 범용"
     },
     {
       "id": "compact",
@@ -1577,8 +1627,10 @@
       "domains": [
         "dashboard",
         "dev",
-        "fintech"
-      ]
+        "fintech",
+        "gaming"
+      ],
+      "mood": "밀도 높은, 효율적"
     },
     {
       "id": "spacious",
@@ -1592,8 +1644,11 @@
       "domains": [
         "luxury",
         "editorial",
-        "portfolio"
-      ]
+        "portfolio",
+        "creative",
+        "nature"
+      ],
+      "mood": "여유로운, 호흡 넓은"
     },
     {
       "id": "dense",
@@ -1607,7 +1662,8 @@
       "domains": [
         "dashboard",
         "dev"
-      ]
+      ],
+      "mood": "극밀도, 데이터 집약"
     }
   ],
   "style": [
@@ -1615,18 +1671,20 @@
       "id": "rounded",
       "name": "Rounded",
       "radius": 16,
+      "mood": "친근하고 안정적",
       "radiusSm": 10,
       "btnRadius": 10,
       "cardRadius": 16,
       "shadow": "md",
       "motion": 1,
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "부드럽고 현대적. 기본.",
       "description": "부드러운 곡선(16px). 현대적 SaaS/앱의 기본.",
       "domains": [
         "saas",
         "fintech",
-        "health"
+        "health",
+        "education"
       ]
     },
     {
@@ -1638,14 +1696,16 @@
       "cardRadius": 4,
       "shadow": "sm",
       "motion": 0.6,
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "각진 미니멀. 개발자 도구.",
       "description": "직선적(4px). 데이터/개발자 도구 느낌.",
       "domains": [
         "dev",
         "portfolio",
-        "enterprise"
-      ]
+        "enterprise",
+        "dashboard"
+      ],
+      "mood": "정밀하고 전문적"
     },
     {
       "id": "pill",
@@ -1656,14 +1716,15 @@
       "cardRadius": 28,
       "shadow": "md",
       "motion": 1,
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "완전한 라운드. 소셜/앱.",
       "description": "완전 라운드(100px). 버튼/칩에 소셜/크리에이티브 느낌.",
       "domains": [
         "social",
         "creative",
         "ecommerce"
-      ]
+      ],
+      "mood": "캐주얼하고 활기찬"
     },
     {
       "id": "soft",
@@ -1674,14 +1735,17 @@
       "cardRadius": 24,
       "shadow": "lg",
       "motion": 1.2,
-      "gradient": "subtle",
+      "gradient": "mist",
       "desc": "둥글고 깊은 그림자.",
       "description": "큰 곡선(24px). 부드럽고 고급스러운 인상.",
       "domains": [
         "luxury",
         "editorial",
-        "health"
-      ]
+        "health",
+        "nature",
+        "education"
+      ],
+      "mood": "부드럽고 고급스러운"
     },
     {
       "id": "flat",
@@ -1692,13 +1756,14 @@
       "cardRadius": 8,
       "shadow": "none",
       "motion": 0.4,
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "그림자 없음. 미니멀.",
       "description": "중간 곡선(8px). 미니멀 플랫 디자인.",
       "domains": [
         "dev",
         "portfolio"
-      ]
+      ],
+      "mood": "깔끔하고 실용적"
     },
     {
       "id": "glass",
@@ -1709,13 +1774,14 @@
       "cardRadius": 16,
       "shadow": "md",
       "motion": 1,
-      "gradient": "subtle",
+      "gradient": "mist",
       "desc": "글래스모피즘. iOS 스타일.",
       "description": "글래스모피즘(16px). 반투명 블러 효과와 함께.",
       "domains": [
         "creative",
         "luxury"
-      ]
+      ],
+      "mood": "투명하고 미래적"
     },
     {
       "id": "brutalist",
@@ -1726,13 +1792,14 @@
       "cardRadius": 0,
       "shadow": "none",
       "motion": 0,
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "날 것 그대로. 강렬한 대비.",
       "description": "각진 모서리(0px). 강렬하고 실험적인 디자인.",
       "domains": [
         "creative",
         "portfolio"
-      ]
+      ],
+      "mood": "거칠고 실험적"
     },
     {
       "id": "neo",
@@ -1743,13 +1810,14 @@
       "cardRadius": 20,
       "shadow": "lg",
       "motion": 1.5,
-      "gradient": "vibrant",
+      "gradient": "aurora",
       "desc": "큰 라운드 + 강한 모션.",
       "description": "뉴모피즘(20px). 볼록/오목한 표면 효과.",
       "domains": [
         "creative",
         "gaming"
-      ]
+      ],
+      "mood": "대담하고 미래적"
     }
   ],
   "motion": [
@@ -1766,7 +1834,8 @@
       "domains": [
         "enterprise",
         "dev"
-      ]
+      ],
+      "mood": "절제, 데이터 중심"
     },
     {
       "id": "subtle",
@@ -1781,8 +1850,11 @@
       "domains": [
         "saas",
         "fintech",
-        "editorial"
-      ]
+        "editorial",
+        "dashboard",
+        "enterprise"
+      ],
+      "mood": "은은, 전문적"
     },
     {
       "id": "smooth",
@@ -1797,8 +1869,11 @@
       "domains": [
         "saas",
         "ecommerce",
-        "health"
-      ]
+        "health",
+        "education",
+        "nature"
+      ],
+      "mood": "부드럽고 자연스러운"
     },
     {
       "id": "expressive",
@@ -1813,8 +1888,10 @@
       "domains": [
         "creative",
         "social",
-        "portfolio"
-      ]
+        "portfolio",
+        "gaming"
+      ],
+      "mood": "활발하고 역동적"
     },
     {
       "id": "cinematic",
@@ -1830,7 +1907,8 @@
         "luxury",
         "portfolio",
         "editorial"
-      ]
+      ],
+      "mood": "극적이고 고급스러운"
     }
   ],
   "gradient": [
@@ -1927,7 +2005,7 @@
       "motion": "smooth",
       "gridStyle": "default",
       "heroAlign": "center",
-      "gradient": "none",
+      "gradient": "gradient-none",
       "desc": "클린 SaaS. 안정감 있는 파란색 + 부드러운 라운드.",
       "typography": "inter",
       "description": "B2B SaaS, 관리 도구, 웹앱. 클린하고 안정적인 전문 톤.",
@@ -1996,7 +2074,7 @@
       "motion": "smooth",
       "gridStyle": "editorial",
       "heroAlign": "left",
-      "gradient": "subtle",
+      "gradient": "mist",
       "desc": "에디토리얼. 따뜻한 톤 + 넓은 여백.",
       "typography": "dm-sans",
       "description": "블로그, 매거진, 미디어. 따뜻하고 읽기 편한 여백.",
@@ -2075,6 +2153,7 @@
           },
           {
             "type": "hero",
+            "span": "full",
             "title": "봄 신상",
             "sub": "최대 40% 할인",
             "cta": "지금 쇼핑하기"
@@ -2098,7 +2177,8 @@
             ]
           },
           {
-            "type": "buttons"
+            "type": "buttons",
+            "span": "full"
           }
         ]
       }
@@ -2308,7 +2388,7 @@
       "motion": "expressive",
       "gridStyle": "mosaic",
       "heroAlign": "center",
-      "gradient": "vibrant",
+      "gradient": "aurora",
       "desc": "크리에이티브. 모자이크.",
       "typography": "satoshi",
       "description": "디자인 도구, 크리에이티브. 대담.",
@@ -2342,7 +2422,7 @@
           },
           {
             "type": "gallery",
-            "count": 4
+            "count": 6
           },
           {
             "type": "quote",
@@ -2496,7 +2576,7 @@
       "motion": "cinematic",
       "gridStyle": "editorial",
       "heroAlign": "center",
-      "gradient": "subtle",
+      "gradient": "mist",
       "desc": "럭셔리. 블랙&골드.",
       "typography": "general-sans",
       "description": "프리미엄 브랜드, 럭셔리. 블랙 & 골드.",
@@ -2725,7 +2805,7 @@
           },
           {
             "type": "gallery",
-            "count": 4,
+            "count": 6,
             "span": "full"
           }
         ]
@@ -4986,6 +5066,21 @@
     "color-grid-cols": "7",
     "color-grid-cols-tablet": "5",
     "color-grid-cols-mobile": "3",
-    "color-grid-gap": "10px"
+    "color-grid-gap": "10px",
+    "bp-mobile": "640px",
+    "bp-tablet": "768px",
+    "bp-desktop": "1024px",
+    "bp-wide": "1440px",
+    "container-padding": "clamp(16px, 3vw, 24px)",
+    "title-size": "clamp(28px, 5vw, 56px)",
+    "subtitle-size": "clamp(16px, 2vw, 22px)",
+    "body-size": "clamp(14px, 1.2vw, 16px)",
+    "hero-title-line-height": "0.95",
+    "hero-title-letter-spacing": "-0.045em",
+    "section-title-line-height": "1.1",
+    "section-title-letter-spacing": "-0.035em",
+    "stat-val-letter-spacing": "-0.03em",
+    "metric-val-size": "36px",
+    "chart-height": "64px"
   }
 }

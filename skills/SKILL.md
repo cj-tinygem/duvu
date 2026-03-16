@@ -1,6 +1,6 @@
 ---
 name: duvu
-description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 생성 시 자동 발동. 소스 색상 하나에서 WCAG AA/HIG/MD3를 동시 준수하는 완전한 디자인 토큰을 도출하고, 41개 컬러 프리셋 × 10개 타이포 × 4개 레이아웃 × 8개 스타일 × 5개 모션 × 9개 그라디언트를 조합하여 CSS, Tailwind, Flutter, SwiftUI, Compose, Unity 코드를 즉시 출력한다. 22개 종합 템플릿으로 SaaS부터 럭셔리까지 모든 도메인을 커버한다. Use when: UI 디자인, 프론트엔드 코드 생성, 디자인 시스템 적용, 컬러/타이포/레이아웃 결정, 디자인 토큰 생성, 컴포넌트 코드 작성, 페이지 레이아웃 구성."
+description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 생성 시 자동 발동. 소스 색상 하나에서 WCAG AA/HIG/MD3를 동시 준수하는 완전한 디자인 토큰을 도출하고, 42개 컬러 프리셋 × 10개 타이포 × 4개 레이아웃 × 8개 스타일 × 5개 모션 × 9개 그라디언트 × 17개 컴포넌트를 조합하여 CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native 코드를 즉시 출력한다. 22개 종합 템플릿과 15개 도메인 매칭으로 SaaS부터 럭셔리까지 모든 도메인을 커버한다. Use when: UI 디자인, 프론트엔드 코드 생성, 디자인 시스템 적용, 컬러/타이포/레이아웃 결정, 디자인 토큰 생성, 컴포넌트 코드 작성, 페이지 레이아웃 구성."
 ---
 
 # DUVU — 범용 디자인 시스템 엔진
@@ -97,9 +97,33 @@ WCAG/HIG/MD3 자동 체크 (references/compliance.md)
 
 또는 22개 종합 템플릿(`references/templates.md`) 중 하나를 바로 적용할 수 있다.
 
+**도메인 + 톤 매칭**: `duvu match <domain> [--tone warm|cool|neutral]`
+
+지원 도메인 (15개): `saas`, `fintech`, `ecommerce`, `portfolio`, `health`, `luxury`, `creative`, `dev`, `editorial`, `social`, `nature`, `education`, `gaming`, `enterprise`, `dashboard`
+
+톤 (3종): `warm`(따뜻한 — 빨강, 주황, 노랑 계열), `cool`(차가운 — 파랑, 보라, 청록 계열), `neutral`(중성적 — 회색, 녹색 계열)
+
+```
+→ duvu match fintech --tone cool
+컬러: toss (cool), stripe (cool), royal (cool), navy-depth (cool)
+타이포: inter (중성적, 범용), sora (기하학적 모던)
+레이아웃: compact (밀도 높은, 효율적)
+스타일: rounded (친근하고 안정적)
+모션: subtle (은은, 전문적)
+```
+
+**조화 메타데이터**: 모든 프리셋에 AI가 조합을 판단할 수 있는 메타데이터가 있다:
+- **컬러**: `domains`(용도) + `tone`(warm/cool/neutral) — 감성 방향
+- **타이포**: `domains` + `mood`(감성 설명) — "기술적, 코드 친화", "둥글고 친근" 등
+- **레이아웃**: `domains` + `mood` — "밀도 높은, 효율적", "여유로운, 호흡 넓은" 등
+- **스타일**: `domains` + `mood` — "친근하고 안정적", "정밀하고 전문적" 등
+- **모션**: `domains` + `mood` — "은은, 전문적", "활발하고 역동적" 등
+
+**조화 원칙**: 같은 도메인 + 같은 톤에서 선택하면 자동으로 조화됨. 의도적 대비를 원하면 톤을 교차할 수 있음.
+
 ### 2.5단계: 컴포넌트 선택
 
-`presets.json`의 `components` 배열(14종)과 각 템플릿의 `preview` 필드를 참조하여, 도메인에 적합한 컴포넌트 조합을 결정한다.
+`presets.json`의 `components` 배열(17종)과 각 템플릿의 `preview` 필드를 참조하여, 도메인에 적합한 컴포넌트 조합을 결정한다.
 
 | 컴포넌트 | 용도 | 적합 도메인 |
 |---|---|---|
@@ -117,8 +141,11 @@ WCAG/HIG/MD3 자동 체크 (references/compliance.md)
 | quote | 인용구 | 에디토리얼, 럭셔리 |
 | task-list | 체크리스트 | SaaS, 개발 |
 | profile | 프로필 | 소셜 |
+| marquee | 스크롤 텍스트 | 크리에이티브, 럭셔리 |
+| nav-bar | 네비게이션 바 | 범용 |
+| divider | 구분선 | 범용 |
 
-CLI: `duvu list component`, `duvu show component <id>`
+CLI: `duvu list component`, `duvu show component <id>`, `duvu match <domain>`
 
 ### 3단계: 토큰 생성
 
@@ -139,6 +166,29 @@ CLI: `duvu list component`, `duvu show component <id>`
 10. **인터랙션** — hover-lift, active-scale, focus-ring
 
 상세 정의는 `references/tokens.md` 참조.
+
+### 3.5단계: 반응형 설계 (필수)
+
+모든 UI 출력은 **모든 화면비에서 동작**해야 한다. DUVU가 생성하는 CSS에는 반응형 유틸리티가 포함된다:
+
+**브레이크포인트 (layout_tokens)**:
+- `--duvu-bp-mobile`: 640px
+- `--duvu-bp-tablet`: 768px
+- `--duvu-bp-desktop`: 1024px
+- `--duvu-bp-wide`: 1440px
+
+**반응형 원칙:**
+- 타이포: `clamp(최소, 뷰포트비율, 최대)` 사용 — 모든 화면에서 자동 스케일
+- 그리드: 4열(데스크톱) → 2열(태블릿) → 1열(모바일) 자동 전환
+- 컨테이너: `max-width: 1440px` + `padding: clamp(16px, 3vw, 24px)`
+- 터치 타겟: 데스크톱 44px → 모바일 48px (더 큰 손가락 대응)
+- 이미지: `width: 100%; height: auto;` 기본
+
+**CSS 출력에 포함되는 유틸리티:**
+- `.duvu-container` — 반응형 컨테이너
+- `.duvu-grid-2/3/4` — 자동 반응형 그리드
+- `.duvu-title/subtitle/body` — 유동 타이포
+- `.duvu-btn/input` — 터치 타겟 보장
 
 ### 4단계: 코드 출력
 
@@ -184,7 +234,7 @@ CLI: `duvu list component`, `duvu show component <id>`
 
 | 파일 | 용도 | 언제 읽나 |
 |---|---|---|
-| `presets.json` | 41 컬러 + 10 타이포 + 4 레이아웃 + 8 스타일 + 5 모션 + 9 그라디언트 + 14 컴포넌트 + 22 템플릿. 각 템플릿에 `preview` 필드(layout + cards)가 있어 도메인별 컴포넌트 조합을 알 수 있다. CLI: `duvu list`, `duvu show <type> <id>` | **항상** (프리셋 데이터 조회) |
+| `presets.json` | 42 컬러 + 10 타이포 + 4 레이아웃 + 8 스타일 + 5 모션 + 9 그라디언트 + 17 컴포넌트 + 22 템플릿. 각 템플릿에 `preview` 필드(layout + cards)가 있어 도메인별 컴포넌트 조합을 알 수 있다. `layout_tokens`로 18개 레이아웃 토큰 정의. CLI: `duvu list`, `duvu show <type> <id>`, `duvu match <domain>` | **항상** (프리셋 데이터 조회) |
 | `references/tokens.md` | 10개 카테고리 디자인 토큰 정의 | **항상** (토큰 구조 참조) |
 | `references/platforms.md` | 7개 플랫폼 코드 생성 템플릿 (CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native) | 코드 생성 시 |
 | `references/templates.md` | 22개 종합 템플릿 정의 (도메인별 최적 조합) | 템플릿 매칭 시 |

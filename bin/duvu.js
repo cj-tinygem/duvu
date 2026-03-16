@@ -80,8 +80,10 @@ ${c.b}${c.cyan}── 생성 ──${c.r}
   ${c.green}template${c.r} <id>          템플릿 조합 정보 + CSS 변수 생성
 
 ${c.b}${c.cyan}── 확장 ──${c.r}
-  ${c.green}match${c.r} <domain>          도메인에 맞는 프리셋 자동 매칭
-                          ${c.d}saas, fintech, ecommerce, luxury, dev, creative...${c.r}
+  ${c.green}match${c.r} <domain> [--tone warm|cool|neutral]
+                          도메인 + 톤 기반 프리셋 매칭
+                          ${c.d}도메인: saas, fintech, ecommerce, luxury, dev, creative...${c.r}
+                          ${c.d}톤: warm(따뜻한), cool(차가운), neutral(중성적)${c.r}
   ${c.green}add${c.r} <type> <json>      프리셋/템플릿 추가
   ${c.green}remove${c.r} <type> <id>     프리셋/템플릿 삭제 (기본값 보호)
   ${c.green}reset${c.r} [type]           기본값으로 복원
@@ -96,7 +98,7 @@ ${c.b}${c.cyan}── 스킬 설치 ──${c.r}
 
 ${c.b}${c.cyan}── 검증 ──${c.r}
   ${c.green}screenshot${c.r}            데모 페이지 시각적 검증용 스크린샷 캡처
-                          ${c.d}--all: 5종 화면비 / --out <경로>: 저장 위치${c.r}
+                          ${c.d}--all: 5종 화면비 / --light: 라이트 모드 / --out <경로>: 저장 위치${c.r}
 
 ${c.b}${c.cyan}── 기타 ──${c.r}
   ${c.green}help${c.r}                   이 도움말
@@ -121,6 +123,8 @@ function info() {
   ${c.cyan}컴포넌트${c.r}         ${data.components?.length || 0}개
   ${c.cyan}템플릿${c.r}           ${data.templates?.length || 0}개
   ${c.cyan}레이아웃 토큰${c.r}   ${Object.keys(data.layout_tokens || {}).length}개
+  ${c.cyan}도메인${c.r}           ${new Set([...(data.color||[]),...(data.typography||[]),...(data.layout||[]),...(data.style||[]),...(data.motion||[])].flatMap(p=>p.domains||[])).size}개
+  ${c.cyan}톤${c.r}               warm:${(data.color||[]).filter(c=>c.tone==='warm').length} cool:${(data.color||[]).filter(c=>c.tone==='cool').length} neutral:${(data.color||[]).filter(c=>c.tone==='neutral').length}
 
   ${c.d}총 프리셋: ${(data.color?.length||0) + (data.typography?.length||0) + (data.layout?.length||0) + (data.style?.length||0) + (data.motion?.length||0) + (data.gradient?.length||0) + (data.components?.length||0) + (data.templates?.length||0)}개${c.r}
   ${c.d}데이터: ${PRESETS_FILE}${c.r}
@@ -316,6 +320,44 @@ function outputCode(preset, platform) {
   --duvu-surface2: ${l.surface2}; --duvu-fg: ${l.fg};
   --duvu-fg2: ${l.fg2}; --duvu-fg3: ${l.fg3};
   --duvu-accent: ${l.accent}; --duvu-accent-rgb: ${l['accent-rgb']};
+}
+
+/* Responsive Breakpoints */
+:root {
+  --duvu-bp-mobile: 640px;
+  --duvu-bp-tablet: 768px;
+  --duvu-bp-desktop: 1024px;
+  --duvu-bp-wide: 1440px;
+}
+
+/* Fluid Typography */
+.duvu-title { font-size: clamp(28px, 5vw, 56px); line-height: 1.15; font-weight: 700; }
+.duvu-subtitle { font-size: clamp(16px, 2vw, 22px); line-height: 1.5; }
+.duvu-body { font-size: clamp(14px, 1.2vw, 16px); line-height: 1.5; }
+
+/* Responsive Container */
+.duvu-container { width: 100%; max-width: var(--duvu-bp-wide); margin: 0 auto; padding: 0 24px; }
+@media (max-width: 640px) { .duvu-container { padding: 0 16px; } }
+
+/* Responsive Grid */
+.duvu-grid { display: grid; gap: var(--duvu-space-md); }
+.duvu-grid-2 { grid-template-columns: repeat(2, 1fr); }
+.duvu-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.duvu-grid-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 768px) {
+  .duvu-grid-3, .duvu-grid-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .duvu-grid-2, .duvu-grid-3, .duvu-grid-4 { grid-template-columns: 1fr; }
+}
+
+/* Touch Target (HIG 44px) */
+.duvu-btn, .duvu-input { min-height: 44px; }
+@media (max-width: 640px) { .duvu-btn, .duvu-input { min-height: 48px; font-size: 16px; } }
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }`);
   } else if (platform === 'tailwind') {
     console.log(`\n${c.b}/* DUVU Tailwind Config — ${preset.name || preset.id} */${c.r}\n`);
@@ -345,6 +387,20 @@ module.exports = {
       fontFamily: {
         sans: ['Pretendard', 'system-ui', 'sans-serif'],
       },
+      spacing: {
+        'duvu-xs': '4px', 'duvu-sm': '8px', 'duvu-md': '16px',
+        'duvu-lg': '24px', 'duvu-xl': '32px', 'duvu-2xl': '48px',
+      },
+      screens: {
+        'mobile': '640px',
+        'tablet': '768px',
+        'desktop': '1024px',
+        'wide': '1440px',
+      },
+      minHeight: {
+        'touch': '44px',
+        'touch-mobile': '48px',
+      },
     }
   }
 }`);
@@ -360,7 +416,10 @@ final duvuTheme = ThemeData(
     primary: Color(0xFF${hex(d.accent)}),
     onPrimary: Color(0xFF${hex(preset.btnText)}),
     surface: Color(0xFF${hex(d.surface)}),
+    surfaceContainerHighest: Color(0xFF${hex(d.surface2)}),
     onSurface: Color(0xFF${hex(d.fg)}),
+    onSurfaceVariant: Color(0xFF${hex(d.fg2)}),
+    outline: Color(0xFF${hex(d.fg3)}),
     error: Color(0xFFE76F51),
   ),
   cardTheme: CardTheme(
@@ -428,8 +487,12 @@ public class DuvuTheme : ScriptableObject
 {
     public Color bg = ColorUtility.TryParseHtmlString("${d.bg}", out var _bg) ? _bg : Color.black;
     public Color surface = ColorUtility.TryParseHtmlString("${d.surface}", out var _s) ? _s : Color.black;
+    public Color surface2 = ColorUtility.TryParseHtmlString("${d.surface2}", out var _s2) ? _s2 : Color.black;
     public Color fg = ColorUtility.TryParseHtmlString("${d.fg}", out var _fg) ? _fg : Color.white;
+    public Color fg2 = ColorUtility.TryParseHtmlString("${d.fg2}", out var _fg2) ? _fg2 : Color.gray;
+    public Color fg3 = ColorUtility.TryParseHtmlString("${d.fg3}", out var _fg3) ? _fg3 : Color.gray;
     public Color accent = ColorUtility.TryParseHtmlString("${d.accent}", out var _a) ? _a : Color.blue;
+    public Color btnText = ColorUtility.TryParseHtmlString("${preset.btnText}", out var _bt) ? _bt : Color.white;
     public float cornerRadius = ${preset.radius || 16}f;
     public float btnRadius = 10f;
 }`);
@@ -651,25 +714,45 @@ function templateCmd(id) {
 // ─── Domain Match ───
 function matchDomain(domain) {
   if (!domain) {
-    console.log(`${c.red}사용법: duvu match <domain>${c.r}`);
-    console.log(`도메인: saas, fintech, ecommerce, portfolio, health, luxury, creative, dev, editorial, social, nature, education, gaming, enterprise`);
+    console.log(`${c.red}사용법: duvu match <domain> [--tone warm|cool|neutral]${c.r}`);
+    console.log(`도메인: saas, fintech, ecommerce, portfolio, health, luxury, creative, dev, editorial, social, nature, education, gaming, enterprise, dashboard`);
+    console.log(`톤:     warm (따뜻한), cool (차가운), neutral (중성적)`);
     return;
   }
   const data = loadPresets();
-  const find = (arr) => (arr || []).filter(p => p.domains?.includes(domain)).map(p => p.id);
+  const toneIdx = args.indexOf('--tone');
+  const tone = toneIdx >= 0 ? args[toneIdx + 1] : null;
+
+  const find = (arr, key = 'domains') => (arr || []).filter(p => {
+    if (!p.domains?.includes(domain)) return false;
+    if (tone && p.tone && p.tone !== tone) return false;
+    return true;
+  });
+  const ids = (arr) => arr.map(p => p.id).join(', ') || '—';
+  const withMood = (arr) => arr.map(p => `${p.id}${p.mood ? ` ${c.d}(${p.mood})${c.r}` : ''}`).join(', ') || '—';
 
   banner();
-  console.log(`${c.b}도메인: ${c.cyan}${domain}${c.r}에 맞는 프리셋 조합\n`);
-  console.log(`  ${c.cyan}컬러${c.r}      ${find(data.color).join(', ') || '—'}`);
-  console.log(`  ${c.cyan}타이포${c.r}    ${find(data.typography).join(', ') || '—'}`);
-  console.log(`  ${c.cyan}레이아웃${c.r}  ${find(data.layout).join(', ') || '—'}`);
-  console.log(`  ${c.cyan}스타일${c.r}    ${find(data.style).join(', ') || '—'}`);
-  console.log(`  ${c.cyan}모션${c.r}      ${find(data.motion).join(', ') || '—'}`);
+  const toneLabel = tone ? ` + 톤: ${tone}` : '';
+  console.log(`${c.b}도메인: ${c.cyan}${domain}${c.r}${toneLabel}에 맞는 프리셋 조합\n`);
+
+  const colors = find(data.color);
+  const typos = find(data.typography);
+  const layouts = find(data.layout);
+  const styles = find(data.style);
+  const motions = find(data.motion);
+
+  console.log(`  ${c.cyan}컬러${c.r}      ${colors.map(p => `${p.id} ${c.d}(${p.tone})${c.r}`).join(', ') || '—'}`);
+  console.log(`  ${c.cyan}타이포${c.r}    ${withMood(typos)}`);
+  console.log(`  ${c.cyan}레이아웃${c.r}  ${withMood(layouts)}`);
+  console.log(`  ${c.cyan}스타일${c.r}    ${withMood(styles)}`);
+  console.log(`  ${c.cyan}모션${c.r}      ${withMood(motions)}`);
 
   // 매칭되는 템플릿
   const tpls = data.templates.filter(t => {
     const colorP = data.color.find(cc => cc.id === t.color);
-    return colorP?.domains?.includes(domain);
+    if (!colorP?.domains?.includes(domain)) return false;
+    if (tone && colorP.tone !== tone) return false;
+    return true;
   });
   if (tpls.length) {
     console.log(`\n  ${c.cyan}추천 템플릿${c.r}  ${tpls.map(t => t.id).join(', ')}`);
