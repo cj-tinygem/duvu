@@ -168,6 +168,23 @@ function show(type, id) {
     return;
   }
   const data = loadPresets();
+
+  // layout_tokens 특별 처리
+  if (type === 'tokens' || type === 'layout-tokens') {
+    if (!data.layout_tokens) return console.log(`${c.red}layout_tokens가 없습니다.${c.r}`);
+    if (id === 'all') {
+      console.log(`\n${c.b}${c.cyan}layout_tokens${c.r}\n`);
+      Object.entries(data.layout_tokens).forEach(([k, v]) => {
+        console.log(`  ${c.green}${k.padEnd(28)}${c.r} ${v}`);
+      });
+    } else {
+      const val = data.layout_tokens[id];
+      if (!val) return console.log(`${c.red}토큰 '${id}'을(를) 찾을 수 없습니다.${c.r}`);
+      console.log(`${c.cyan}${id}${c.r}: ${val}`);
+    }
+    return;
+  }
+
   const key = TYPE_MAP[type];
   if (!key || !data[key]) {
     console.log(`${c.red}알 수 없는 타입: ${type}${c.r}`);
@@ -295,9 +312,146 @@ function outputCode(preset, platform) {
   --duvu-fg2: ${l.fg2}; --duvu-fg3: ${l.fg3};
   --duvu-accent: ${l.accent}; --duvu-accent-rgb: ${l['accent-rgb']};
 }`);
+  } else if (platform === 'tailwind') {
+    console.log(`\n${c.b}/* DUVU Tailwind Config — ${preset.name || preset.id} */${c.r}\n`);
+    console.log(`// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        duvu: {
+          bg: '${d.bg}',
+          surface: '${d.surface}',
+          surface2: '${d.surface2}',
+          fg: '${d.fg}',
+          fg2: '${d.fg2}',
+          fg3: '${d.fg3}',
+          accent: '${d.accent}',
+          success: '#2A9D8F',
+          warning: '#F4A261',
+          error: '#E76F51',
+        }
+      },
+      borderRadius: {
+        'duvu': '${preset.radius || 16}px',
+        'duvu-sm': '10px',
+        'duvu-full': '9999px',
+      },
+      fontFamily: {
+        sans: ['Pretendard', 'system-ui', 'sans-serif'],
+      },
+    }
+  }
+}`);
+  } else if (platform === 'flutter') {
+    const hex = (h) => h.slice(1).toUpperCase();
+    console.log(`\n${c.b}// DUVU Flutter Theme — ${preset.name || preset.id}${c.r}\n`);
+    console.log(`import 'package:flutter/material.dart';
+
+final duvuTheme = ThemeData(
+  brightness: Brightness.dark,
+  scaffoldBackgroundColor: const Color(0xFF${hex(d.bg)}),
+  colorScheme: const ColorScheme.dark(
+    primary: Color(0xFF${hex(d.accent)}),
+    onPrimary: Color(0xFF${hex(preset.btnText)}),
+    surface: Color(0xFF${hex(d.surface)}),
+    onSurface: Color(0xFF${hex(d.fg)}),
+    error: Color(0xFFE76F51),
+  ),
+  cardTheme: CardTheme(
+    color: const Color(0xFF${hex(d.surface)}),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(${preset.radius || 16})),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: const Color(0xFF${hex(d.accent)}),
+      foregroundColor: const Color(0xFF${hex(preset.btnText)}),
+      minimumSize: const Size(44, 44),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    ),
+  ),
+);`);
+  } else if (platform === 'swiftui') {
+    console.log(`\n${c.b}// DUVU SwiftUI Theme — ${preset.name || preset.id}${c.r}\n`);
+    console.log(`import SwiftUI
+
+struct DuvuTheme {
+    static let bg = Color(hex: "${d.bg}")
+    static let surface = Color(hex: "${d.surface}")
+    static let surface2 = Color(hex: "${d.surface2}")
+    static let fg = Color(hex: "${d.fg}")
+    static let fg2 = Color(hex: "${d.fg2}")
+    static let fg3 = Color(hex: "${d.fg3}")
+    static let accent = Color(hex: "${d.accent}")
+    static let btnText = Color(hex: "${preset.btnText}")
+    static let cornerRadius: CGFloat = ${preset.radius || 16}
+    static let btnRadius: CGFloat = 10
+    static let success = Color(hex: "#2A9D8F")
+    static let warning = Color(hex: "#F4A261")
+    static let error = Color(hex: "#E76F51")
+}`);
+  } else if (platform === 'compose') {
+    const hex = (h) => h.slice(1).toUpperCase();
+    console.log(`\n${c.b}// DUVU Compose Theme — ${preset.name || preset.id}${c.r}\n`);
+    console.log(`import androidx.compose.ui.graphics.Color
+
+object DuvuColors {
+    val bg = Color(0xFF${hex(d.bg)})
+    val surface = Color(0xFF${hex(d.surface)})
+    val surface2 = Color(0xFF${hex(d.surface2)})
+    val fg = Color(0xFF${hex(d.fg)})
+    val fg2 = Color(0xFF${hex(d.fg2)})
+    val fg3 = Color(0xFF${hex(d.fg3)})
+    val accent = Color(0xFF${hex(d.accent)})
+    val btnText = Color(0xFF${hex(preset.btnText)})
+    val success = Color(0xFF2A9D8F)
+    val warning = Color(0xFFF4A261)
+    val error = Color(0xFFE76F51)
+}
+
+val DuvuShapes = Shapes(
+    small = RoundedCornerShape(10.dp),
+    medium = RoundedCornerShape(${preset.radius || 16}.dp),
+    large = RoundedCornerShape(${preset.radius || 16}.dp),
+)`);
+  } else if (platform === 'unity') {
+    console.log(`\n${c.b}// DUVU Unity Theme — ${preset.name || preset.id}${c.r}\n`);
+    console.log(`using UnityEngine;
+
+[CreateAssetMenu(menuName = "DUVU/Theme")]
+public class DuvuTheme : ScriptableObject
+{
+    public Color bg = ColorUtility.TryParseHtmlString("${d.bg}", out var _bg) ? _bg : Color.black;
+    public Color surface = ColorUtility.TryParseHtmlString("${d.surface}", out var _s) ? _s : Color.black;
+    public Color fg = ColorUtility.TryParseHtmlString("${d.fg}", out var _fg) ? _fg : Color.white;
+    public Color accent = ColorUtility.TryParseHtmlString("${d.accent}", out var _a) ? _a : Color.blue;
+    public float cornerRadius = ${preset.radius || 16}f;
+    public float btnRadius = 10f;
+}`);
+  } else if (platform === 'react-native') {
+    console.log(`\n${c.b}// DUVU React Native Theme — ${preset.name || preset.id}${c.r}\n`);
+    console.log(`const DuvuTheme = {
+  colors: {
+    bg: '${d.bg}',
+    surface: '${d.surface}',
+    surface2: '${d.surface2}',
+    fg: '${d.fg}',
+    fg2: '${d.fg2}',
+    fg3: '${d.fg3}',
+    accent: '${d.accent}',
+    btnText: '${preset.btnText}',
+    success: '#2A9D8F',
+    warning: '#F4A261',
+    error: '#E76F51',
+  },
+  radius: { sm: 10, md: ${preset.radius || 16}, full: 9999 },
+  spacing: { xs: 4, sm: 8, md: 16, lg: 24, xl: 32 },
+};
+
+export default DuvuTheme;`);
   } else {
-    console.log(`${c.yellow}플랫폼 '${platform}'의 코드 생성은 references/platforms.md를 참조하세요.${c.r}`);
-    console.log(`CSS 변수 기반으로 ${platform}용 코드를 수동 변환하거나, AI 에이전트에게 요청하세요.`);
+    console.log(`${c.red}지원하지 않는 플랫폼: ${platform}${c.r}`);
+    console.log(`지원 플랫폼: css, tailwind, flutter, swiftui, compose, unity, react-native`);
   }
 }
 
