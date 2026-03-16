@@ -345,8 +345,8 @@ section {
 /* ─── COLOR CARDS ─── */
 .color-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  gap: 12px;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
 }
 
 .color-card {
@@ -361,8 +361,8 @@ section {
 }
 
 .color-card:hover {
-  transform: translateY(-4px) rotate(-0.5deg);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
 }
 
 .color-card.active {
@@ -504,6 +504,7 @@ section {
   .preview-grid {
     grid-template-columns: 1fr;
   }
+  .color-grid { grid-template-columns: repeat(5, 1fr); }
 }
 
 .p-card {
@@ -1095,7 +1096,7 @@ footer a:hover { color: var(--duvu-fg2); }
   .hero-stats { gap: 20px; }
   .hero-actions { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
   .hero-actions .btn { width: 100% !important; text-align: center; }
-  .color-grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .color-grid { grid-template-columns: repeat(3, 1fr); }
   .tab-bar { gap: 4px; overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   .tab-bar::-webkit-scrollbar { display: none; }
   .tab-btn { padding: 10px 16px; font-size: 14px; flex-shrink: 0; min-height: 44px; }
