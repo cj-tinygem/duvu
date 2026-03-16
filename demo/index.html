@@ -2091,6 +2091,13 @@ async function init() {
     });
   }
 
+  // 히어로 통계를 시스템 데이터에서 자동 계산
+  const totalPresets = (DATA.color?.length||0) + (DATA.typography?.length||0) + (DATA.layout?.length||0) + (DATA.style?.length||0) + (DATA.motion?.length||0) + (DATA.gradient?.length||0) + (DATA.components?.length||0) + (DATA.templates?.length||0);
+  const statEls = document.querySelectorAll('.hero-stat-val[data-count]');
+  if (statEls[0]) statEls[0].dataset.count = totalPresets;
+  if (statEls[1]) statEls[1].dataset.count = DATA.color?.length || 0;
+  if (statEls[2]) statEls[2].dataset.count = DATA.templates?.length || 0;
+
   // Set defaults
   currentColor = DATA.color[0];
   currentTypo = DATA.typography[0];

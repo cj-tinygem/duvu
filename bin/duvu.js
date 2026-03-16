@@ -71,6 +71,7 @@ ${c.b}${c.cyan}── 조회 ──${c.r}
                           프리셋 목록 조회
   ${c.green}show${c.r} <type> <id>       프리셋 상세 정보
   ${c.green}info${c.r}                   시스템 전체 통계
+  ${c.green}show tokens all${c.r}        레이아웃 토큰 전체 조회
   ${c.green}demo${c.r}                   데모 웹페이지 실행 (브라우저)
 
 ${c.b}${c.cyan}── 생성 ──${c.r}
@@ -117,7 +118,9 @@ function info() {
   ${c.cyan}그라디언트${c.r}       ${data.gradient?.length || 0}개
   ${c.cyan}컴포넌트${c.r}         ${data.components?.length || 0}개
   ${c.cyan}템플릿${c.r}           ${data.templates?.length || 0}개
-  
+  ${c.cyan}레이아웃 토큰${c.r}   ${Object.keys(data.layout_tokens || {}).length}개
+
+  ${c.d}총 프리셋: ${(data.color?.length||0) + (data.typography?.length||0) + (data.layout?.length||0) + (data.style?.length||0) + (data.motion?.length||0) + (data.gradient?.length||0) + (data.components?.length||0) + (data.templates?.length||0)}개${c.r}
   ${c.d}데이터: ${PRESETS_FILE}${c.r}
   ${c.d}기본값: ${DEFAULTS_DIR}/presets.json${c.r}
 `);
