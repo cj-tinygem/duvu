@@ -197,13 +197,13 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: 120px 0 48px;
+  padding: 160px 0 80px;
   text-align: center;
 }
 
 .hero-title {
-  font-size: clamp(40px, 7vw, 84px);
-  font-weight: 800;
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: -0.03em;
   font-family: var(--duvu-font-display), var(--duvu-font);
@@ -234,11 +234,11 @@ section {
 }
 
 .hero-sub {
-  font-size: 15px;
+  font-size: clamp(16px, 1.5vw, 20px);
   letter-spacing: 0.04em;
   color: var(--duvu-fg2);
   max-width: 560px;
-  margin: 0 auto 24px;
+  margin: 0 auto 32px;
   word-break: keep-all;
   transition: color var(--duvu-dur) var(--duvu-ease);
 }
@@ -248,7 +248,7 @@ section {
   justify-content: center;
   gap: 64px;
   flex-wrap: wrap;
-  margin-bottom: 32px;
+  margin-bottom: 48px;
 }
 
 .hero-stat {
@@ -257,7 +257,7 @@ section {
 
 .hero-stat-val {
   font-size: 36px;
-  font-weight: 800;
+  font-weight: 700;
   color: var(--duvu-accent);
   font-variant-numeric: tabular-nums;
   transition: color var(--duvu-dur) var(--duvu-ease);
@@ -274,7 +274,7 @@ section {
 
 /* ─── PRESET EXPLORER ─── */
 .explorer {
-  padding: 48px 0 40px;
+  padding: 64px 0 48px;
 }
 
 .section-label {
@@ -283,15 +283,15 @@ section {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--duvu-fg3);
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .section-title {
-  font-size: clamp(26px, 4.5vw, 48px);
-  font-weight: 700;
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 600;
   line-height: 1.15;
   letter-spacing: -0.02em;
-  margin-bottom: 40px;
+  margin-bottom: 48px;
   text-wrap: balance;
   word-break: keep-all;
   font-family: var(--duvu-font-display), var(--duvu-font);
@@ -319,8 +319,8 @@ section {
 }
 
 .tab-btn {
-  padding: 10px 20px;
-  font-size: 14px;
+  padding: 12px 24px;
+  font-size: 15px;
   font-weight: 500;
   font-family: var(--duvu-font);
   border: none;
@@ -415,14 +415,14 @@ section {
 }
 
 .color-name {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   color: var(--duvu-fg);
   line-height: 1.3;
 }
 
 .color-cat {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--duvu-fg3);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -498,7 +498,7 @@ section {
 
 /* ─── LIVE PREVIEW ─── */
 .preview-section {
-  padding: 64px 0;
+  padding: 80px 0;
 }
 
 /* preview-watermark CSS 제거됨 */
@@ -527,7 +527,7 @@ section {
   z-index: 1;
   background: var(--duvu-surface);
   border-radius: var(--duvu-card-radius);
-  padding: var(--duvu-space-lg);
+  padding: var(--duvu-space-xl);
   box-shadow: var(--duvu-card-shadow);
   transition:
     background 0.5s var(--duvu-ease-spring),
@@ -756,7 +756,7 @@ section {
 
 /* ─── TEMPLATES ─── */
 .templates-section {
-  padding: 64px 0;
+  padding: 80px 0;
 }
 
 .template-grid {
@@ -808,7 +808,7 @@ section {
 
 /* ─── CODE OUTPUT ─── */
 .code-section {
-  padding: 64px 0;
+  padding: 80px 0;
 }
 
 .code-tabs {
@@ -900,7 +900,7 @@ section {
 
 /* ─── FOOTER ─── */
 footer {
-  padding: 32px var(--px) 48px;
+  padding: 64px 0 48px;
   text-align: center;
   font-size: 14px;
   color: var(--duvu-fg3);
@@ -1150,9 +1150,9 @@ footer a:hover { color: var(--duvu-fg2); }
   align-items: center;
   background: var(--duvu-surface);
   border-radius: var(--duvu-card-radius);
-  padding: 12px 20px;
+  padding: 16px 28px;
   font-family: var(--duvu-font-mono);
-  font-size: 13px;
+  font-size: 16px;
   color: var(--duvu-fg2);
   margin-top: 24px;
   transition: background var(--duvu-dur) var(--duvu-ease);
@@ -2220,7 +2220,7 @@ document.addEventListener('DOMContentLoaded', init);
 <section class="preview-section">
   <div class="wrap">
     <div class="section-label reveal">라이브 프리뷰</div>
-    <h2 class="section-title reveal">현재 설정이 적용된 UI</h2>
+    <h2 class="section-title reveal" style="font-size: clamp(28px, 4vw, 48px); font-weight: 600;">현재 설정이 적용된 UI</h2>
 
     <div class="preview-area">
       <div class="preview-grid"></div>
