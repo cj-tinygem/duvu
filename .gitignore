@@ -4,4 +4,4 @@ node_modules/
 *.tgz
 .DS_Store
 duvu-v18.6-source/
-demo/clones/*/assets/
+demo/clones/
