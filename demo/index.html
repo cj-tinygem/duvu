@@ -427,19 +427,7 @@ section {
   padding: 60px 0;
 }
 
-.preview-watermark {
-  position: absolute;
-  font-size: clamp(60px, 12vw, 140px);
-  font-weight: 900;
-  opacity: 0.04;
-  pointer-events: none;
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  letter-spacing: 0.05em;
-  transition: opacity 0.4s;
-  z-index: 0;
-  user-select: none;
+/* preview-watermark CSS 제거됨 — 동적 프리뷰에서는 사용하지 않음 */
 }
 
 .preview-area {
@@ -1315,8 +1303,7 @@ function updateTabBtnColors() {
 }
 
 function updateWatermark(name) {
-  const wm = document.getElementById('previewWatermark');
-  if (wm) wm.textContent = name.toUpperCase();
+  // 워터마크 제거됨 — 동적 프리뷰에서는 사용하지 않음
 }
 
 function updateCmdLine() {
@@ -1437,7 +1424,7 @@ const CARD_RENDERERS = {
   'table': (c) => {
     const rows = c.rows || [];
     return `<div style="overflow-x:auto;"><table style="width:100%;border-collapse:collapse;font-size:14px;">` +
-      rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};"><td style="padding:10px 12px;color:var(--duvu-fg)">${row.map(cell => `<td style="padding:10px 12px;color:var(--duvu-fg)">${escapeHtml(cell)}</td>`).join('')}</tr>`).join('') +
+      rows.map((row, i) => `<tr style="background:${i % 2 === 0 ? 'var(--duvu-surface)' : 'var(--duvu-surface2)'};">${row.map(cell => `<td style="padding:10px 12px;color:var(--duvu-fg)">${escapeHtml(cell)}</td>`).join('')}</tr>`).join('') +
       `</table></div>`;
   },
   'task-list': (c) => {

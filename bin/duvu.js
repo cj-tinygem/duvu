@@ -115,6 +115,7 @@ function info() {
   ${c.cyan}스타일 프리셋${c.r}    ${data.style?.length || 0}개
   ${c.cyan}모션 프리셋${c.r}      ${data.motion?.length || 0}개
   ${c.cyan}그라디언트${c.r}       ${data.gradient?.length || 0}개
+  ${c.cyan}컴포넌트${c.r}         ${data.components?.length || 0}개
   ${c.cyan}템플릿${c.r}           ${data.templates?.length || 0}개
   
   ${c.d}데이터: ${PRESETS_FILE}${c.r}
