@@ -1,0 +1,13 @@
+schema_version: 1
+fact_source: mixed
+entrypoints:
+  - docs/README.md
+canonical_paths:
+  - docs/PRD.md
+  - docs/GAPS.md
+  - docs/DESIGN-PHILOSOPHY.md
+  - README.md
+non_canonical_zones:
+  - data/references/
+untriaged_paths:
+  - IDEA.md
