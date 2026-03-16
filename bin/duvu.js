@@ -67,7 +67,7 @@ function help() {
   console.log(`${c.b}사용법:${c.r}  duvu <명령> [옵션]
 
 ${c.b}${c.cyan}── 조회 ──${c.r}
-  ${c.green}list${c.r} [colors|typo|layout|style|motion|gradient|templates]
+  ${c.green}list${c.r} [colors|typo|layout|style|motion|gradient|component|templates]
                           프리셋 목록 조회
   ${c.green}show${c.r} <type> <id>       프리셋 상세 정보
   ${c.green}info${c.r}                   시스템 전체 통계
