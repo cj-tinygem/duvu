@@ -14,7 +14,7 @@
  */
 
 import { execSync } from 'child_process';
-import { mkdirSync, existsSync, writeFileSync } from 'fs';
+import { mkdirSync, writeFileSync } from 'fs';
 import { resolve, join } from 'path';
 import { fileURLToPath } from 'url';
 
