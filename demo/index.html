@@ -170,7 +170,7 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: 120px 0 60px;
+  padding: 100px 0 40px;
   text-align: center;
 }
 
@@ -2008,7 +2008,11 @@ document.addEventListener('DOMContentLoaded', init);
       <div class="hero-stat"><div class="hero-stat-val" data-count="22">0</div><div class="hero-stat-label">템플릿</div></div>
       <div class="hero-stat"><div class="hero-stat-val" data-count="7">0</div><div class="hero-stat-label">플랫폼</div></div>
     </div>
-    <div class="hero-cmd reveal"><span class="prompt">$</span> <code id="cmdLine">npx duvu generate --preset toss --template saas</code></div>
+    <div class="hero-actions reveal" style="display:flex;gap:12px;justify-content:center;margin-bottom:24px;">
+      <a href="#panel-color" class="btn btn-primary" style="text-decoration:none;padding:12px 28px;font-size:15px;">프리셋 탐색하기</a>
+      <a href="#codeTabs" class="btn btn-secondary" style="text-decoration:none;padding:12px 28px;font-size:15px;">코드 출력 보기</a>
+    </div>
+    <div class="hero-cmd reveal"><span class="prompt">$</span> <code id="cmdLine">npx duvu generate toss</code></div>
   </div>
 </section>
 
