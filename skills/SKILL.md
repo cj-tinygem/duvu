@@ -222,6 +222,7 @@ CLI: `duvu list component`, `duvu show component <id>`, `duvu match <domain>`
 - [ ] 같은 레벨의 요소는 같은 주목도를 가지는가?
 - [ ] 레이아웃의 그리드에 orphan(빈 칸)이 없는가?
 - [ ] 컴포넌트 간 통일성이 유지되는가? (같은 padding/radius/shadow)
+- [ ] **5개 화면비에서 모두 정상인가?** (와이드 1920, 데스크톱 1440, 태블릿 가로 1024, 태블릿 세로 768, 모바일 390) — `duvu screenshot`이 기본으로 5개 전부 캡처
 - [ ] 불통일이 있다면 그것은 의도된 것인가?
 
 **의도(Intent)와 의미(Meaning)는 다르다:**

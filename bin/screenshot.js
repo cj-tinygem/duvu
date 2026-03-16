@@ -26,17 +26,19 @@ const portIdx = args.indexOf('--port');
 const PORT = portIdx >= 0 ? parseInt(args[portIdx + 1]) : 3399;
 const outIdx = args.indexOf('--out');
 const OUT_DIR = outIdx >= 0 ? resolve(args[outIdx + 1]) : '/tmp/duvu-screenshots';
-const ALL = args.includes('--all');
+const QUICK = args.includes('--quick');
 const LIGHT = args.includes('--light');
 
-const VIEWPORTS = ALL ? [
+// 기본: 5개 뷰포트 전부. --quick: 데스크톱+모바일만.
+// 모든 화면비를 항상 검증하는 것이 시스템 기본.
+const VIEWPORTS = QUICK ? [
+  { name: 'desktop', width: 1440, height: 900 },
+  { name: 'mobile', width: 390, height: 844 },
+] : [
   { name: 'desktop-wide', width: 1920, height: 1080 },
   { name: 'desktop', width: 1440, height: 900 },
   { name: 'tablet-landscape', width: 1024, height: 768 },
   { name: 'tablet-portrait', width: 768, height: 1024 },
-  { name: 'mobile', width: 390, height: 844 },
-] : [
-  { name: 'desktop', width: 1440, height: 900 },
   { name: 'mobile', width: 390, height: 844 },
 ];
 

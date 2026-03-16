@@ -98,7 +98,8 @@ ${c.b}${c.cyan}── 스킬 설치 ──${c.r}
 
 ${c.b}${c.cyan}── 검증 ──${c.r}
   ${c.green}screenshot${c.r}            데모 페이지 시각적 검증용 스크린샷 캡처
-                          ${c.d}--all: 5종 화면비 / --light: 라이트 모드 / --out <경로>: 저장 위치${c.r}
+                          ${c.d}기본: 5종 화면비 전부 / --quick: 데스크톱+모바일만${c.r}
+                          ${c.d}--light: 라이트 모드 / --out <경로>: 저장 위치${c.r}
 
 ${c.b}${c.cyan}── 기타 ──${c.r}
   ${c.green}help${c.r}                   이 도움말
