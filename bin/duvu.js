@@ -316,6 +316,12 @@ function outputCode(preset, platform) {
   /* Semantic */
   --duvu-success: #2A9D8F; --duvu-warning: #F4A261;
   --duvu-error: #E76F51; --duvu-info: var(--duvu-accent);
+
+  /* Border — 선은 최후 수단. 여백→색차→그림자→선 순서. */
+  --duvu-border-width: 1px;
+  --duvu-border-color: rgba(255,255,255,0.08);
+  --duvu-divider-color: rgba(255,255,255,0.06);
+  --duvu-focus-ring: 0 0 0 2px var(--duvu-accent);
 }
 
 [data-theme="light"] {
@@ -323,6 +329,8 @@ function outputCode(preset, platform) {
   --duvu-surface2: ${l.surface2}; --duvu-fg: ${l.fg};
   --duvu-fg2: ${l.fg2}; --duvu-fg3: ${l.fg3};
   --duvu-accent: ${l.accent}; --duvu-accent-rgb: ${l['accent-rgb']};
+  --duvu-border-color: rgba(0,0,0,0.08);
+  --duvu-divider-color: rgba(0,0,0,0.06);
 }
 
 /* Responsive Breakpoints */
