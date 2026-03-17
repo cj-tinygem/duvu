@@ -1365,7 +1365,7 @@
       "name": "Osmo",
       "cat": "clone",
       "src": "#a1ff62",
-      "radius": 12,
+      "radius": 6,
       "dark": {
         "bg": "#0a0a0a",
         "surface": "#151313",
@@ -1660,6 +1660,32 @@
       "koreanFont": "Pretendard",
       "koreanFamily": "\"Pretendard\"",
       "koreanDesc": "Manrope의 세미 모노 느낌과 Pretendard의 깔끔함."
+    },
+    {
+      "id": "haffer",
+      "name": "Haffer VF",
+      "family": "\"Haffer VF\"",
+      "desc": "osmo.supply 기반. 기하학적 현대 산세리프.",
+      "category": "sans-serif",
+      "weights": [
+        300,
+        400,
+        500,
+        600,
+        700
+      ],
+      "cdn": null,
+      "mood": "정밀하고 현대적, 개발자 도구 느낌",
+      "description": "osmo.supply에서 사용. 기하학적 구조의 가변 폰트. 상용이라 fallback으로 Inter 사용.",
+      "fallback": "\"Inter\", \"Pretendard\", Arial, sans-serif",
+      "domains": [
+        "creative",
+        "dev",
+        "portfolio"
+      ],
+      "koreanFont": "Pretendard",
+      "koreanFamily": "\"Pretendard\"",
+      "koreanDesc": "Haffer의 기하학적 구조와 Pretendard의 정밀함."
     }
   ],
   "layout": [
@@ -2027,6 +2053,23 @@
         "editorial"
       ],
       "mood": "극적이고 고급스러운"
+    },
+    {
+      "id": "osmo-precise",
+      "name": "Osmo Precise",
+      "scale": 1,
+      "ease": "ease",
+      "dur": "0.6s",
+      "durSlow": "1.2s",
+      "desc": "osmo.supply 기반. 정밀한 ease + 0.6s 기본.",
+      "duration": 0.6,
+      "description": "osmo.supply 스타일. ease 커브 + 0.6s 기본, 0.3s 빠른, 1.2s 느린. 정밀하고 절제된 모션.",
+      "domains": [
+        "creative",
+        "dev",
+        "portfolio"
+      ],
+      "mood": "정밀하고 절제된"
     }
   ],
   "gradient": [
@@ -5278,7 +5321,19 @@
         "fonts": 10
       },
       "integrated": true,
-      "presetId": "osmo"
+      "presetId": "osmo",
+      "extractedTokens": {
+        "color": "osmo",
+        "typography": "haffer",
+        "layout": "spacious",
+        "style": "flat",
+        "motion": "osmo-precise",
+        "radius": "6px",
+        "spacingScale": "em 기반 (1em=16px, gap-sm=1.25em=20px)",
+        "fontBase": "14px"
+      },
+      "mood": "정밀, 현대적, 개발자 도구, 프리미엄 미니멀",
+      "restraint": "high"
     }
   ]
 }
