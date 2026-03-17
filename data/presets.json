@@ -1708,7 +1708,11 @@
         "motion": [
           "smooth",
           "subtle"
-        ]
+        ],
+        "why": {
+          "style": "균형잡힌 여백에는 부드러운 곡선이 자연스럽다. 날카로운 모서리는 여유로운 공간에서 긴장감을 만든다.",
+          "motion": "기본 밀도에서 과한 모션은 산만. 부드럽거나 은은한 전환이 콘텐츠에 집중하게 한다."
+        }
       },
       "description": "기본 간격. 대부분의 UI에 적합한 균형잡힌 여백.",
       "domains": [
@@ -1740,7 +1744,11 @@
         "motion": [
           "subtle",
           "none"
-        ]
+        ],
+        "why": {
+          "style": "밀도 높은 UI에서 둥근 모서리는 공간을 낭비한다. 직선이 정보 밀도를 극대화한다.",
+          "motion": "데이터 대시보드에서 모션은 방해. 정보 파악 속도가 우선이다."
+        }
       },
       "description": "밀도 높은 레이아웃. 대시보드/데이터 테이블에 적합.",
       "domains": [
@@ -1769,7 +1777,11 @@
         "motion": [
           "cinematic",
           "smooth"
-        ]
+        ],
+        "why": {
+          "style": "넓은 여백에서 큰 radius와 깊은 그림자가 공간을 채운다. 프리미엄 느낌의 핵심.",
+          "motion": "여유로운 공간은 모션이 보일 여지를 준다. 극적인 전환이 빈 공간에서 빛난다."
+        }
       },
       "description": "넓은 여백. 에디토리얼/럭셔리/포트폴리오에 적합.",
       "domains": [
@@ -1800,7 +1812,11 @@
         "motion": [
           "none",
           "subtle"
-        ]
+        ],
+        "why": {
+          "style": "극밀도에서 장식은 노이즈. 0px~4px radius와 최소 그림자가 데이터를 살린다.",
+          "motion": "관제 센터 수준의 밀도에서 모션은 인지 과부하. 즉각 반응만 허용한다."
+        }
       },
       "description": "최소 간격. 극도로 밀도 높은 데이터 인터페이스용.",
       "domains": [
@@ -5335,5 +5351,93 @@
       "mood": "정밀, 현대적, 개발자 도구, 프리미엄 미니멀",
       "restraint": "high"
     }
-  ]
+  ],
+  "page_patterns": {
+    "saas": {
+      "flow": [
+        "hero",
+        "social-proof",
+        "features",
+        "pricing",
+        "cta"
+      ],
+      "why": "SaaS는 첫인상(hero)으로 가치를 전달하고, 신뢰(social-proof)를 쌓은 뒤, 기능을 보여주고, 가격으로 결정을 유도한다.",
+      "intent": "가입/전환 유도. 스크롤할수록 확신이 쌓이는 구조."
+    },
+    "ecommerce": {
+      "flow": [
+        "hero-promo",
+        "featured-products",
+        "categories",
+        "reviews",
+        "cta"
+      ],
+      "why": "커머스는 프로모션으로 관심을 끌고, 상품을 보여주고, 리뷰로 신뢰를 만들고, 구매를 유도한다.",
+      "intent": "구매 유도. 욕구→탐색→확신→행동 순서."
+    },
+    "portfolio": {
+      "flow": [
+        "hero-statement",
+        "work-gallery",
+        "about",
+        "contact"
+      ],
+      "why": "포트폴리오는 임팩트 있는 선언(hero)으로 시작하고, 작업물이 증거이며, 인물 소개 후 연락처.",
+      "intent": "의뢰 유도. 작업물이 주인공, 나머지는 맥락."
+    },
+    "editorial": {
+      "flow": [
+        "hero-article",
+        "content-body",
+        "related",
+        "author"
+      ],
+      "why": "에디토리얼은 제목으로 끌어들이고, 본문에 몰입시키고, 관련 글로 체류를 늘린다.",
+      "intent": "읽기 몰입. 방해 요소 최소, 콘텐츠 최대."
+    },
+    "dashboard": {
+      "flow": [
+        "kpi-overview",
+        "charts",
+        "data-table",
+        "actions"
+      ],
+      "why": "대시보드는 핵심 지표를 먼저, 추세를 다음, 상세 데이터를 그 다음, 행동을 마지막으로.",
+      "intent": "의사결정 지원. 요약→상세→행동 순서."
+    },
+    "landing": {
+      "flow": [
+        "hero",
+        "benefits",
+        "how-it-works",
+        "testimonials",
+        "pricing",
+        "faq",
+        "cta"
+      ],
+      "why": "랜딩은 가치 제안→혜택→작동 방식→사회적 증거→가격→의문 해소→최종 행동의 설득 구조.",
+      "intent": "전환 극대화. 의문을 하나씩 해소하며 스크롤."
+    },
+    "luxury": {
+      "flow": [
+        "hero-immersive",
+        "story",
+        "gallery",
+        "details"
+      ],
+      "why": "럭셔리는 몰입적 첫인상, 브랜드 스토리, 비주얼 갤러리, 마지막에 상세. 서두르지 않는다.",
+      "intent": "감성 전달. 정보보다 경험이 우선."
+    },
+    "dev-tool": {
+      "flow": [
+        "hero-code",
+        "features",
+        "docs-preview",
+        "integration",
+        "pricing"
+      ],
+      "why": "개발 도구는 코드 예시로 즉시 가치를 보여주고, 기능→문서→통합 순서로 기술적 신뢰를 쌓는다.",
+      "intent": "기술적 확신. 코드가 증거, 문서가 보증."
+    }
+  }
 }

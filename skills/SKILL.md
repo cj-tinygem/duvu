@@ -74,6 +74,12 @@ WCAG/HIG/MD3 자동 체크 (references/compliance.md)
 
 **분위기가 명시되지 않으면 도메인에서 추론한다.**
 
+**페이지 흐름**: `presets.json`의 `page_patterns`에 도메인별 페이지 구조가 정의되어 있다. 각 패턴에 `flow`(섹션 순서), `why`(이 순서인 이유), `intent`(전체 목적)가 있다. 페이지를 구성할 때 반드시 참조하라.
+
+예: SaaS → hero → social-proof → features → pricing → cta (why: "스크롤할수록 확신이 쌓이는 구조")
+
+**조합 근거**: layout 프리셋의 `harmonizes_with.why`에 "왜 이 style/motion과 어울리는가"의 근거가 있다. 조합을 결정할 때 근거를 읽고 맥락에 맞는지 판단하라.
+
 ### 2단계: 프리셋 선택
 
 `references/presets.json`에서 자동 매칭한다. 매칭 우선순위:
