@@ -1359,6 +1359,41 @@
         "portfolio"
       ],
       "tone": "cool"
+    },
+    {
+      "id": "osmo",
+      "name": "Osmo",
+      "cat": "clone",
+      "src": "#a1ff62",
+      "radius": 12,
+      "dark": {
+        "bg": "#0a0a0a",
+        "surface": "#151313",
+        "surface2": "#201d1d",
+        "fg": "#f4f4f4",
+        "fg2": "#b8b8b8",
+        "fg3": "#817f7f",
+        "accent": "#a1ff62",
+        "accent-rgb": "161, 255, 98"
+      },
+      "light": {
+        "bg": "#f4f4f4",
+        "surface": "#ffffff",
+        "surface2": "#eaeaea",
+        "fg": "#000000",
+        "fg2": "#4f4c4c",
+        "fg3": "#817f7f",
+        "accent": "#6840ff",
+        "accent-rgb": "104, 64, 255"
+      },
+      "btnText": "#000000",
+      "tone": "neutral",
+      "domains": [
+        "creative",
+        "dev",
+        "portfolio"
+      ],
+      "cloneOf": "osmo.supply"
     }
   ],
   "typography": [
@@ -5229,11 +5264,20 @@
       "url": "https://osmo.supply",
       "path": "clones/osmo/index.html",
       "description": "Dev Toolkit Built to Flex. Webflow & HTML 리소스 플랫폼.",
-      "domains": ["creative", "dev", "portfolio"],
+      "domains": [
+        "creative",
+        "dev",
+        "portfolio"
+      ],
       "tone": "neutral",
       "source": "picasso",
       "fidelity": 75,
-      "tokens_extracted": { "colors": 19, "fonts": 10 }
+      "tokens_extracted": {
+        "colors": 19,
+        "fonts": 10
+      },
+      "integrated": true,
+      "presetId": "osmo"
     }
   ]
 }
