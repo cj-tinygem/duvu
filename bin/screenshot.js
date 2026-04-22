@@ -15,17 +15,34 @@
 
 import { execSync } from 'child_process';
 import { mkdirSync, writeFileSync } from 'fs';
-import { resolve, join } from 'path';
+import { dirname, resolve, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = resolve(__filename, '..');
+const __dirname = dirname(__filename);
 
 const args = process.argv.slice(2);
-const portIdx = args.indexOf('--port');
-const PORT = portIdx >= 0 ? parseInt(args[portIdx + 1]) : 3399;
-const outIdx = args.indexOf('--out');
-const OUT_DIR = outIdx >= 0 ? resolve(args[outIdx + 1]) : '/tmp/duvu-screenshots';
+
+function readFlagValue(flag) {
+  const idx = args.indexOf(flag);
+  if (idx < 0) return null;
+  const value = args[idx + 1];
+  if (!value || value.startsWith('--')) {
+    console.error(`${flag} 옵션에는 값이 필요합니다.`);
+    process.exit(1);
+  }
+  return value;
+}
+
+const portValue = readFlagValue('--port');
+const PORT = portValue ? Number.parseInt(portValue, 10) : 3399;
+if (!Number.isInteger(PORT) || PORT < 1 || PORT > 65535) {
+  console.error('--port 옵션에는 1~65535 사이의 정수가 필요합니다.');
+  process.exit(1);
+}
+
+const outValue = readFlagValue('--out');
+const OUT_DIR = outValue ? resolve(outValue) : '/tmp/duvu-screenshots';
 const QUICK = args.includes('--quick');
 const LIGHT = args.includes('--light');
 
@@ -59,16 +76,16 @@ async function run() {
     process.exit(1);
   }
 
-  // puppeteer 로드: 표준 경로 → /tmp fallback
+  // puppeteer-core는 기존 시스템 Chromium을 사용하므로 패키지 설치 시 브라우저를 내려받지 않는다.
   let puppeteer;
   const { createRequire } = await import('module');
   const require = createRequire(import.meta.url);
-  const tryPaths = ['puppeteer', '/tmp/node_modules/puppeteer'];
+  const tryPaths = ['puppeteer-core', 'puppeteer', '/tmp/node_modules/puppeteer-core', '/tmp/node_modules/puppeteer'];
   for (const p of tryPaths) {
     try { puppeteer = require(p); break; } catch {}
   }
   if (!puppeteer) {
-    console.error('puppeteer를 찾을 수 없습니다. npm install puppeteer를 실행하세요.');
+    console.error('puppeteer-core를 찾을 수 없습니다. npm install을 실행하세요.');
     process.exit(1);
   }
 
@@ -128,10 +145,21 @@ async function run() {
       await new Promise(r => setTimeout(r, 500));
     }
 
-    // 페이지 내 모든 링크 수집 (다른 페이지가 있을 경우)
+    // 페이지 내에서 실제 사용자에게 보이는 내부 링크만 수집한다.
     const links = await page.evaluate(() => {
       const anchors = [...document.querySelectorAll('a[href]')];
       return anchors
+        .filter(a => {
+          const style = window.getComputedStyle(a);
+          const rect = a.getBoundingClientRect();
+          return style.display !== 'none'
+            && style.visibility !== 'hidden'
+            && style.opacity !== '0'
+            && rect.width > 0
+            && rect.height > 0
+            && !a.hidden
+            && a.getAttribute('aria-hidden') !== 'true';
+        })
         .map(a => a.href)
         .filter(href => href.startsWith(location.origin) && !href.includes('#'))
         .filter((v, i, arr) => arr.indexOf(v) === i);
@@ -143,7 +171,11 @@ async function run() {
 
       if (pageUrl !== `http://localhost:${PORT}/`) {
         try {
-          await page.goto(pageUrl, { waitUntil: 'networkidle0', timeout: 10000 });
+          const response = await page.goto(pageUrl, { waitUntil: 'networkidle0', timeout: 10000 });
+          if (!response || !response.ok()) {
+            console.log(`  건너뜀: ${pageUrl}`);
+            continue;
+          }
           await new Promise(r => setTimeout(r, 2000));
         } catch {
           console.log(`  건너뜀: ${pageUrl}`);

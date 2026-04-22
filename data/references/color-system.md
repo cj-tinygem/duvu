@@ -126,9 +126,8 @@ function readableOnAccent(hex) {
 5. **surface vs bg 구분**: 1.08:1 미만이면 warning (구분 부족)
 6. **색온도 대비**: accent와 bg의 색온도(warm/cool)가 충돌하면 info
 
-## 41개 프리셋 전수조사 결과 (v18.6)
+## 43개 프리셋 전수조사 결과 (v19.0)
 
-- ✅ 다크 모드 41/41: 핵심 대비(fg/bg, fg/surface, accent/bg) 전체 통과
-- ✅ 라이트 모드 41/41: 핵심 대비 전체 통과
-- ⚠ 버튼 텍스트 대비 경고 22개: 브랜드 고유 색상의 트레이드오프 (Toss, Apple, Spotify 등)
-  → 실제 해당 브랜드 앱에서도 동일한 선택. WCAG AA large text(3:1) 기준은 모두 충족.
+- ✅ 다크 모드 43/43: 핵심 대비(fg/bg, fg/surface, accent/bg, btn/accent 3:1) 전체 통과
+- ✅ 라이트 모드 43/43: 핵심 대비 전체 통과
+- `duvu audit`와 별도 구조 검증 스크립트로 현재 `data/presets.json` 기준 확인.

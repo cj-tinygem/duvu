@@ -1,11 +1,13 @@
 schema_version: 1
 fact_source: implementation
 entrypoints:
+  - .docsys/STATUS.md
   - docs/README.md
 canonical_paths:
   - docs/PRD.md
   - docs/GAPS.md
   - docs/DESIGN-PHILOSOPHY.md
+  - docs/WRONG-ANSWER-LOG.md
   - README.md
   - skills/SKILL.md
 non_canonical_zones:

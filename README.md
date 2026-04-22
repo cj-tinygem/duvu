@@ -3,7 +3,7 @@
 > 소스 색상 하나에서 WCAG AA · Apple HIG · Material Design 3를 동시 준수하는 완전한 디자인 토큰을 도출한다.
 
 ```
-41 컬러 × 10 타이포 × 4 레이아웃 × 8 스타일 × 5 모션 × 9 그라디언트 × 22 템플릿
+43 컬러 × 11 타이포 × 4 레이아웃 × 8 스타일 × 6 모션 × 9 그라디언트 × 17 컴포넌트 × 7 인터랙션 × 22 템플릿
 ```
 
 ## 설치
@@ -33,11 +33,11 @@ duvu info                    # 시스템 통계
 ```bash
 duvu generate toss                       # CSS 변수 출력
 duvu generate "#3182F6"                  # 커스텀 HEX에서 테마 도출
-duvu generate toss --platform tailwind   # 플랫폼별 안내 (CSS만 직접 출력)
+duvu generate toss --platform tailwind   # 플랫폼별 기본 토큰 코드 출력
 duvu template saas                       # 템플릿 기반 코드 생성
 ```
 
-지원 플랫폼: `css` · `tailwind` · `flutter` · `swiftui` · `compose` · `unity`
+지원 플랫폼: `css` · `tailwind` · `flutter` · `swiftui` · `compose` · `unity` · `react-native`
 
 ### 확장
 
@@ -76,6 +76,15 @@ duvu demo 8080               # 포트 지정
 ```
 
 인터랙티브 데모 웹페이지에서 모든 프리셋을 시각적으로 탐색하고, 라이브 프리뷰로 조합 결과를 확인할 수 있다.
+
+### 검증
+
+```bash
+npm test                     # 데이터/감사/기본 생성 스모크 테스트
+duvu screenshot --quick      # 데모 스크린샷 캡처 (시스템 Chromium 필요)
+```
+
+`duvu screenshot`은 패키지 의존성 `puppeteer-core`로 설치된 API를 사용하고, 로컬 시스템의 Chromium/Chrome 실행 파일을 찾아 캡처한다.
 
 ## 디렉토리 구조
 
@@ -116,6 +125,8 @@ duvu-cli/
 `demo/clones/`에는 Picasso로 생성한 레퍼런스 사이트 클론이 저장된다. 이 클론들은 **로컬 개발/학습 전용**이며, 원본 사이트의 저작권이 있는 콘텐츠를 포함한다.
 
 **배포 시 반드시 배제한다.** `.gitignore`와 `.npmignore` 모두에서 `demo/clones/`를 제외하고 있다. npm publish, Docker 빌드, CI/CD 파이프라인 등 어떤 배포 경로에서도 클론 디렉토리가 포함되어서는 안 된다.
+
+단, `data/presets.json`의 클론 메타데이터는 패키지에 포함된다. npm 설치 환경에서는 `duvu show clone <id>`가 `archive.status: "metadata-only"`와 `archive.available: false`를 표시하며, 실제 로컬 경로는 출력하지 않는다. 로컬 개발 환경에서 `demo/clones/<id>/index.html`이 존재할 때만 CLI가 `archive.demoPath`, `archive.localPath`, `archive.absolutePath`를 동적으로 붙인다.
 
 ## 라이선스
 

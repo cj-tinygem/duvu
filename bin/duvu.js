@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'url';
-import { dirname, join, resolve } from 'path';
-import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync, statSync } from 'fs';
+import { dirname, join, resolve, relative, isAbsolute } from 'path';
+import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync, statSync, appendFileSync, renameSync, unlinkSync, readdirSync } from 'fs';
 import { execSync } from 'child_process';
 import { createServer } from 'http';
+import { homedir } from 'os';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -17,7 +18,12 @@ const DEMO_DIR = join(ROOT, 'demo');
 
 // ─── Helpers ───
 function loadPresets() {
-  return JSON.parse(readFileSync(PRESETS_FILE, 'utf8'));
+  try {
+    return JSON.parse(readFileSync(PRESETS_FILE, 'utf8'));
+  } catch (e) {
+    console.error(`\x1b[31mpresets.json 로드 실패: ${e.message}\x1b[0m`);
+    process.exit(1);
+  }
 }
 function savePresets(data) {
   writeFileSync(PRESETS_FILE, JSON.stringify(data, null, 2));
@@ -37,7 +43,223 @@ const c = {
   cyan: '\x1b[36m', green: '\x1b[32m', yellow: '\x1b[33m', red: '\x1b[31m', magenta: '\x1b[35m',
 };
 
-const PKG_VERSION = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version;
+let PKG_VERSION = '0.0.0';
+try { PKG_VERSION = JSON.parse(readFileSync(join(ROOT, 'package.json'), 'utf8')).version; } catch {}
+
+// ─── Usage Log ───
+// 프로젝트별 .duvu/usage.jsonl에 사용 이력 기록
+// 글로벌 ~/.duvu/logs/usage.jsonl에도 복제 (통합 분석용)
+const LOG_MAX_BYTES = 1024 * 1024; // 1MB 로테이션
+
+function getProjectLogDir() {
+  // cwd에서 가장 가까운 git root 또는 package.json이 있는 디렉토리를 프로젝트 루트로 판단
+  let dir = process.cwd();
+  for (let i = 0; i < 20; i++) {
+    if (existsSync(join(dir, '.git')) || existsSync(join(dir, 'package.json'))) {
+      return join(dir, '.duvu');
+    }
+    const parent = dirname(dir);
+    if (parent === dir) break;
+    dir = parent;
+  }
+  // 프로젝트 루트를 못 찾으면 cwd 사용
+  return join(process.cwd(), '.duvu');
+}
+
+function getGlobalLogDir() {
+  return join(homedir(), '.duvu', 'logs');
+}
+
+function rotateIfNeeded(logFile) {
+  try {
+    if (!existsSync(logFile)) return;
+    const size = statSync(logFile).size;
+    if (size < LOG_MAX_BYTES) return;
+    // usage.jsonl → usage.1.jsonl, 기존 .1 → .2, ..., .4 → 삭제
+    for (let i = 4; i >= 1; i--) {
+      const old = logFile.replace('.jsonl', `.${i}.jsonl`);
+      const next = logFile.replace('.jsonl', `.${i + 1}.jsonl`);
+      if (i === 4 && existsSync(old)) { try { unlinkSync(old); } catch {} }
+      else if (existsSync(old)) { try { renameSync(old, next); } catch {} }
+    }
+    try { renameSync(logFile, logFile.replace('.jsonl', '.1.jsonl')); } catch {}
+  } catch {}
+}
+
+function writeLog(entry) {
+  const record = {
+    ts: new Date().toISOString(),
+    v: PKG_VERSION,
+    cwd: process.cwd(),
+    ...entry,
+  };
+  const line = JSON.stringify(record) + '\n';
+
+  // 프로젝트별 로그
+  try {
+    const projDir = getProjectLogDir();
+    mkdirSync(projDir, { recursive: true });
+    const projLog = join(projDir, 'usage.jsonl');
+    rotateIfNeeded(projLog);
+    appendFileSync(projLog, line);
+  } catch {}
+
+  // 글로벌 로그 (통합 분석용)
+  try {
+    const globalDir = getGlobalLogDir();
+    mkdirSync(globalDir, { recursive: true });
+    const globalLog = join(globalDir, 'usage.jsonl');
+    rotateIfNeeded(globalLog);
+    appendFileSync(globalLog, line);
+  } catch {}
+}
+
+function readLogs(logFile, limit = 20) {
+  if (!existsSync(logFile)) return [];
+  const lines = readFileSync(logFile, 'utf8').trim().split('\n').filter(Boolean);
+  return lines.slice(-limit).map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+}
+
+function logCmd() {
+  // duvu log '{"type":"decision","domain":"saas",...}'
+  const input = args.join(' ');
+  if (!input) {
+    console.log(`${c.yellow}사용법:${c.r} duvu log '<JSON>'`);
+    console.log(`${c.d}AI 설계 결정을 기록합니다.${c.r}`);
+    console.log(`\n${c.cyan}예시:${c.r}`);
+    console.log(`  duvu log '{"type":"decision","domain":"saas","presets":{"color":"toss","typo":"inter"},"intent":"전문적 톤"}'`);
+    console.log(`  duvu log '{"type":"eval","quality":"good","issues":[]}'`);
+    return;
+  }
+  try {
+    const data = JSON.parse(input);
+    writeLog({ cmd: 'log', ...data });
+    console.log(`${c.green}✓${c.r} 기록 완료`);
+  } catch (e) {
+    console.log(`${c.red}JSON 파싱 오류:${c.r} ${e.message}`);
+  }
+}
+
+function logsCmd() {
+  const flag = args[0];
+
+  if (flag === '--clear') {
+    const projLog = join(getProjectLogDir(), 'usage.jsonl');
+    if (existsSync(projLog)) {
+      writeFileSync(projLog, '');
+      console.log(`${c.green}✓${c.r} 프로젝트 로그 초기화`);
+    } else {
+      console.log(`${c.d}로그 없음${c.r}`);
+    }
+    return;
+  }
+
+  if (flag === '--all') {
+    // 글로벌 로그에서 통합 조회
+    const globalLog = join(getGlobalLogDir(), 'usage.jsonl');
+    const entries = readLogs(globalLog, 50);
+    if (entries.length === 0) { console.log(`${c.d}글로벌 로그 없음${c.r}`); return; }
+    console.log(`${c.cyan}── 글로벌 사용 이력 (최근 ${entries.length}건) ──${c.r}\n`);
+    for (const e of entries) printLogEntry(e);
+    return;
+  }
+
+  if (flag === '--stats') {
+    const globalLog = join(getGlobalLogDir(), 'usage.jsonl');
+    if (!existsSync(globalLog)) { console.log(`${c.d}로그 없음${c.r}`); return; }
+    const all = readLogs(globalLog, 10000);
+    printStats(all);
+    return;
+  }
+
+  // 기본: 프로젝트 로그 조회
+  const projLog = join(getProjectLogDir(), 'usage.jsonl');
+  const entries = readLogs(projLog, parseInt(flag) || 20);
+  if (entries.length === 0) { console.log(`${c.d}이 프로젝트의 로그 없음${c.r}`); return; }
+  console.log(`${c.cyan}── 프로젝트 사용 이력 (최근 ${entries.length}건) ──${c.r}\n`);
+  for (const e of entries) printLogEntry(e);
+}
+
+function printLogEntry(e) {
+  const time = e.ts ? e.ts.replace('T', ' ').slice(0, 19) : '?';
+  const cmd = e.cmd || '?';
+
+  if (cmd === 'log') {
+    const type = e.type || 'note';
+    const domain = e.domain ? ` [${e.domain}]` : '';
+    const presets = e.presets ? ` ${c.d}${JSON.stringify(e.presets)}${c.r}` : '';
+    const intent = e.intent ? ` — ${e.intent}` : '';
+    const quality = e.quality ? ` ${e.quality === 'good' ? c.green : c.yellow}${e.quality}${c.r}` : '';
+    console.log(`  ${c.d}${time}${c.r} ${c.magenta}${type}${c.r}${domain}${presets}${intent}${quality}`);
+  } else {
+    const detail = e.args ? ` ${e.args.join(' ')}` : '';
+    const result = e.result ? ` → ${c.d}${typeof e.result === 'string' ? e.result : JSON.stringify(e.result)}${c.r}` : '';
+    const err = e.error ? ` ${c.red}✗ ${e.error}${c.r}` : '';
+    console.log(`  ${c.d}${time}${c.r} ${c.cyan}${cmd}${c.r}${detail}${result}${err}`);
+  }
+}
+
+function printStats(entries) {
+  console.log(`${c.cyan}── DUVU 사용 통계 ──${c.r}\n`);
+  console.log(`  총 기록: ${c.b}${entries.length}${c.r}건\n`);
+
+  // 명령 빈도
+  const cmds = {};
+  entries.forEach(e => { cmds[e.cmd] = (cmds[e.cmd] || 0) + 1; });
+  console.log(`  ${c.b}명령 빈도:${c.r}`);
+  Object.entries(cmds).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => {
+    console.log(`    ${k}: ${v}회`);
+  });
+
+  // 프리셋 사용 빈도 (generate, template, log 중 presets 필드)
+  const presetUsage = { color: {}, typo: {}, style: {}, motion: {}, layout: {} };
+  entries.forEach(e => {
+    const p = e.presets || {};
+    for (const [cat, id] of Object.entries(p)) {
+      if (presetUsage[cat]) presetUsage[cat][id] = (presetUsage[cat][id] || 0) + 1;
+    }
+    // generate의 첫 번째 arg는 color
+    if (e.cmd === 'generate' && e.args?.[0]) {
+      presetUsage.color[e.args[0]] = (presetUsage.color[e.args[0]] || 0) + 1;
+    }
+  });
+  for (const [cat, usage] of Object.entries(presetUsage)) {
+    const sorted = Object.entries(usage).sort((a, b) => b[1] - a[1]);
+    if (sorted.length > 0) {
+      console.log(`\n  ${c.b}${cat} 사용:${c.r}`);
+      sorted.slice(0, 5).forEach(([k, v]) => console.log(`    ${k}: ${v}회`));
+    }
+  }
+
+  // 도메인 분포
+  const domains = {};
+  entries.filter(e => e.domain).forEach(e => { domains[e.domain] = (domains[e.domain] || 0) + 1; });
+  if (Object.keys(domains).length > 0) {
+    console.log(`\n  ${c.b}도메인:${c.r}`);
+    Object.entries(domains).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`    ${k}: ${v}회`));
+  }
+
+  // 프로젝트 분포
+  const projects = {};
+  entries.forEach(e => {
+    const p = e.cwd || '?';
+    const name = p.split('/').pop() || p.split('\\').pop() || p;
+    projects[name] = (projects[name] || 0) + 1;
+  });
+  if (Object.keys(projects).length > 1) {
+    console.log(`\n  ${c.b}프로젝트:${c.r}`);
+    Object.entries(projects).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`    ${k}: ${v}회`));
+  }
+
+  // 에러 통계
+  const errors = entries.filter(e => e.error);
+  if (errors.length > 0) {
+    const errTypes = {};
+    errors.forEach(e => { const key = `${e.cmd}: ${e.error}`; errTypes[key] = (errTypes[key] || 0) + 1; });
+    console.log(`\n  ${c.b}${c.red}에러:${c.r}`);
+    Object.entries(errTypes).sort((a, b) => b[1] - a[1]).forEach(([k, v]) => console.log(`    ${k}: ${v}회`));
+  }
+}
 
 const TYPE_MAP = {
   color: 'color', colors: 'color',
@@ -46,6 +268,8 @@ const TYPE_MAP = {
   gradient: 'gradient', gradients: 'gradient',
   template: 'templates', templates: 'templates',
   component: 'components', components: 'components',
+  clone: 'clones', clones: 'clones',
+  interaction: 'interaction_patterns', interactions: 'interaction_patterns', pattern: 'interaction_patterns', patterns: 'interaction_patterns',
 };
 
 function banner() {
@@ -67,7 +291,7 @@ function help() {
   console.log(`${c.b}사용법:${c.r}  duvu <명령> [옵션]
 
 ${c.b}${c.cyan}── 조회 ──${c.r}
-  ${c.green}list${c.r} [colors|typo|layout|style|motion|gradient|component|templates]
+  ${c.green}list${c.r} [colors|typo|layout|style|motion|gradient|component|templates|clones]
                           프리셋 목록 조회
   ${c.green}show${c.r} <type> <id>       프리셋 상세 정보
   ${c.green}info${c.r}                   시스템 전체 통계
@@ -101,7 +325,14 @@ ${c.b}${c.cyan}── 검증 ──${c.r}
                           ${c.d}기본: 5종 화면비 전부 / --quick: 데스크톱+모바일만${c.r}
                           ${c.d}--light: 라이트 모드 / --out <경로>: 저장 위치${c.r}
   ${c.green}audit${c.r}                 HIG + MD3 + WCAG AA 컴플라이언스 자동 감사
-                          ${c.d}42개 컬러 대비, 터치 타겟, 타이포 스케일, 도메인 커버리지${c.r}
+                          ${c.d}컬러 대비, 터치 타겟, 타이포 스케일, 도메인 커버리지, orphan, 줄바꿈${c.r}
+
+${c.b}${c.cyan}── 사용 이력 ──${c.r}
+  ${c.green}log${c.r} '<JSON>'           AI 설계 결정 기록 (프리셋 선택 근거, 평가 등)
+  ${c.green}logs${c.r}                   프로젝트 사용 이력 조회 (최근 20건)
+  ${c.green}logs${c.r} --all             글로벌 사용 이력 (모든 프로젝트)
+  ${c.green}logs${c.r} --stats           통계 (프리셋 빈도, 도메인 분포)
+  ${c.green}logs${c.r} --clear           프로젝트 로그 초기화
 
 ${c.b}${c.cyan}── 기타 ──${c.r}
   ${c.green}help${c.r}                   이 도움말
@@ -124,6 +355,7 @@ function info() {
   ${c.cyan}모션 프리셋${c.r}      ${data.motion?.length || 0}개
   ${c.cyan}그라디언트${c.r}       ${data.gradient?.length || 0}개
   ${c.cyan}컴포넌트${c.r}         ${data.components?.length || 0}개
+  ${c.cyan}인터랙션 패턴${c.r}   ${data.interaction_patterns?.length || 0}개
   ${c.cyan}템플릿${c.r}           ${data.templates?.length || 0}개
   ${c.cyan}레이아웃 토큰${c.r}   ${Object.keys(data.layout_tokens || {}).length}개
   ${c.cyan}도메인${c.r}           ${new Set([...(data.color||[]),...(data.typography||[]),...(data.layout||[]),...(data.style||[]),...(data.motion||[])].flatMap(p=>p.domains||[])).size}개
@@ -149,13 +381,14 @@ function list(type) {
         }
       }
     }
+    writeLog({ cmd: 'list', args: ['all'] });
     return;
   }
-  
+
   const key = TYPE_MAP[type];
   if (!key || !data[key]) {
     console.log(`${c.red}알 수 없는 타입: ${type}${c.r}`);
-    console.log(`사용 가능: colors, typo, layout, style, motion, gradient, templates`);
+    console.log(`사용 가능: colors, typo, layout, style, motion, gradient, component, interaction, templates, clones`);
     return;
   }
 
@@ -167,11 +400,17 @@ function list(type) {
       console.log(`  ${c.green}${item.id.padEnd(22)}${c.r} ${item.family}  ${c.d}${item.mood || ''}${c.r}`);
     } else if (key === 'templates') {
       console.log(`  ${c.green}${item.id.padEnd(22)}${c.r} ${c.yellow}${item.color || ''}${c.r} + ${item.typography || ''}  ${c.d}${(item.description || '').substring(0, 40)}${c.r}`);
+    } else if (key === 'clones') {
+      const clone = withCloneArchiveStatus(item);
+      const status = clone.archive.available ? 'local-archive' : clone.archive.status;
+      const desc = item.description || item.name || '';
+      console.log(`  ${c.green}${item.id.padEnd(22)}${c.r} ${c.yellow}${status.padEnd(14)}${c.r} ${c.d}${desc.substring(0, 50)}${c.r}`);
     } else {
       const desc = item.description || item.name || '';
       console.log(`  ${c.green}${item.id.padEnd(22)}${c.r} ${c.d}${desc.substring(0, 50)}${c.r}`);
     }
   }
+  writeLog({ cmd: 'list', args: [type] });
 }
 
 function show(type, id) {
@@ -205,10 +444,46 @@ function show(type, id) {
   const item = data[key].find(i => i.id === id);
   if (!item) {
     console.log(`${c.red}'${id}'을(를) 찾을 수 없습니다.${c.r}`);
+    writeLog({ cmd: 'show', args: [type, id], error: 'not found' });
     return;
   }
+  const output = key === 'clones' ? withCloneArchiveStatus(item) : item;
   console.log(`\n${c.b}${c.cyan}${key}/${id}${c.r}\n`);
-  console.log(JSON.stringify(item, null, 2));
+  console.log(JSON.stringify(output, null, 2));
+  writeLog({ cmd: 'show', args: [type, id] });
+}
+
+function withCloneArchiveStatus(item) {
+  const archive = item.archive || {};
+  const inferredDemoPath = join('clones', item.id, 'index.html');
+  const absolutePath = join(DEMO_DIR, inferredDemoPath);
+  const archiveAvailable = Boolean(absolutePath && existsSync(absolutePath));
+  const baseArchive = {
+    localOnly: true,
+    packageIncluded: false,
+    available: archiveAvailable,
+    status: archiveAvailable ? 'local-archive' : 'metadata-only',
+  };
+  if (!archiveAvailable) {
+    return {
+      ...item,
+      archive: {
+        ...baseArchive,
+        note: 'npm 패키지에는 클론 아카이브가 포함되지 않습니다. extractedTokens와 presetId만 사용하세요.',
+      },
+    };
+  }
+  return {
+    ...item,
+    archive: {
+      ...archive,
+      ...baseArchive,
+      demoPath: inferredDemoPath,
+      localPath: join('demo', inferredDemoPath),
+      absolutePath,
+      note: '로컬 demo/clones 아카이브를 사용할 수 있습니다.',
+    },
+  };
 }
 
 function generate(presetOrHex, platform = 'css') {
@@ -222,6 +497,7 @@ function generate(presetOrHex, platform = 'css') {
   if (presetOrHex.startsWith('#')) {
     if (!/^#[0-9a-fA-F]{6}$/.test(presetOrHex)) {
       console.log(`${c.red}6자리 HEX 코드가 필요합니다 (예: #3182F6)${c.r}`);
+      writeLog({ cmd: 'generate', args: [presetOrHex], error: 'invalid hex' });
       return;
     }
     console.log(`${c.cyan}커스텀 색상 ${presetOrHex}에서 테마 도출 중...${c.r}`);
@@ -230,12 +506,14 @@ function generate(presetOrHex, platform = 'css') {
     colorPreset = data.color.find(c => c.id === presetOrHex);
     if (!colorPreset) {
       console.log(`${c.red}'${presetOrHex}' 컬러 프리셋을 찾을 수 없습니다.${c.r}`);
+      writeLog({ cmd: 'generate', args: [presetOrHex], error: 'preset not found' });
       return;
     }
   }
   
   const platformArg = args.includes('--platform') ? args[args.indexOf('--platform') + 1] : platform;
   outputCode(colorPreset, platformArg);
+  writeLog({ cmd: 'generate', args: [presetOrHex, platformArg], presets: { color: colorPreset.id || presetOrHex } });
 }
 
 function readableOnAccent(hex) {
@@ -551,6 +829,7 @@ function addPreset(type, jsonStr) {
   let newItem;
   try { newItem = JSON.parse(jsonStr); } catch(e) {
     console.log(`${c.red}JSON 파싱 실패: ${e.message}${c.r}`);
+    writeLog({ cmd: 'add', args: [type], error: 'json parse: ' + e.message });
     return;
   }
   
@@ -568,6 +847,7 @@ function addPreset(type, jsonStr) {
     console.log(`${c.green}${key}/${newItem.id} 추가됨${c.r}`);
   }
   savePresets(data);
+  writeLog({ cmd: 'add', args: [type, newItem.id], result: existing >= 0 ? 'updated' : 'added' });
 }
 
 function removePreset(type, id) {
@@ -593,6 +873,7 @@ function removePreset(type, id) {
   data[key].splice(idx, 1);
   savePresets(data);
   console.log(`${c.green}${key}/${id} 삭제됨${c.r}`);
+  writeLog({ cmd: 'remove', args: [type, id] });
 }
 
 function reset(type) {
@@ -605,16 +886,18 @@ function reset(type) {
   if (!type) {
     copyFileSync(join(DEFAULTS_DIR, 'presets.json'), PRESETS_FILE);
     console.log(`${c.green}전체 프리셋이 기본값으로 복원되었습니다.${c.r}`);
+    writeLog({ cmd: 'reset', args: ['all'] });
     return;
   }
-  
+
   const data = loadPresets();
   const key = TYPE_MAP[type];
   if (!key) return console.log(`${c.red}알 수 없는 타입: ${type}${c.r}`);
-  
+
   data[key] = defaults[key];
   savePresets(data);
   console.log(`${c.green}${key} 프리셋이 기본값으로 복원되었습니다.${c.r}`);
+  writeLog({ cmd: 'reset', args: [type] });
 }
 
 // ─── Install Skills ───
@@ -629,32 +912,53 @@ function installSkill() {
   // SKILL.md 원본 읽기
   const skillMd = readFileSync(join(SKILLS_DIR, 'SKILL.md'), 'utf8');
 
-  // ━━━ 1. Claude Code: ~/.claude/skills/duvu/SKILL.md ━━━
-  if (installClaude) {
-    const claudeSkillDir = join(HOME, '.claude', 'skills', 'duvu');
-    mkdirSync(claudeSkillDir, { recursive: true });
-    writeFileSync(join(claudeSkillDir, 'SKILL.md'), skillMd);
-    console.log(`  ${c.green}✓${c.r} Claude Code`);
-    console.log(`    ${c.d}${claudeSkillDir}/SKILL.md${c.r}`);
+  function copyDir(src, dest) {
+    mkdirSync(dest, { recursive: true });
+    for (const entry of readdirSync(src, { withFileTypes: true })) {
+      const from = join(src, entry.name);
+      const to = join(dest, entry.name);
+      if (entry.isDirectory()) copyDir(from, to);
+      else if (entry.isFile()) copyFileSync(from, to);
+    }
   }
 
-  // ━━━ 2. Codex CLI + Gemini CLI: ~/.agents/skills/duvu/SKILL.md ━━━
+  function installSkillBundle(targetDir) {
+    mkdirSync(targetDir, { recursive: true });
+    writeFileSync(join(targetDir, 'SKILL.md'), skillMd);
+    copyFileSync(PRESETS_FILE, join(targetDir, 'presets.json'));
+    copyDir(join(DATA_DIR, 'references'), join(targetDir, 'references'));
+  }
+
+  // ━━━ 1. Claude Code: ~/.claude/skills/duvu/ ━━━
+  if (installClaude) {
+    const claudeSkillDir = join(HOME, '.claude', 'skills', 'duvu');
+    installSkillBundle(claudeSkillDir);
+    console.log(`  ${c.green}✓${c.r} Claude Code`);
+    console.log(`    ${c.d}${claudeSkillDir}${c.r}`);
+  }
+
+  // ━━━ 2. Codex CLI + Gemini CLI: ~/.agents/skills/duvu/ ━━━
   if (installCodex || installGemini) {
     const agentsSkillDir = join(HOME, '.agents', 'skills', 'duvu');
-    mkdirSync(agentsSkillDir, { recursive: true });
-    writeFileSync(join(agentsSkillDir, 'SKILL.md'), skillMd);
+    installSkillBundle(agentsSkillDir);
     console.log(`  ${c.green}✓${c.r} Codex CLI + Gemini CLI`);
-    console.log(`    ${c.d}${agentsSkillDir}/SKILL.md${c.r}`);
+    console.log(`    ${c.d}${agentsSkillDir}${c.r}`);
   }
 
   console.log(`\n${c.b}${c.green}설치 완료!${c.r}`);
-  console.log(`${c.d}스킬이 각 AI 에이전트의 컨텍스트에 자동 로드됩니다.${c.r}\n`);
+  console.log(`${c.d}SKILL.md, presets.json, references/가 함께 설치됩니다.${c.r}\n`);
 }
 
 // ─── Demo Server ───
 function demo() {
-  const port = args[0] && !isNaN(args[0]) ? parseInt(args[0]) : 3333;
+  const portArg = args[0];
+  const port = portArg === undefined ? 3333 : Number.parseInt(portArg, 10);
+  if (!Number.isInteger(port) || String(port) !== String(portArg ?? port) || port < 1 || port > 65535) {
+    console.error(`${c.red}demo 포트는 1~65535 사이의 정수여야 합니다.${c.r}`);
+    process.exit(1);
+  }
   const demoHtml = join(DEMO_DIR, 'index.html');
+  const demoRoot = resolve(DEMO_DIR);
   
   if (!existsSync(demoHtml)) {
     console.log(`${c.red}데모 파일이 없습니다: ${demoHtml}${c.r}`);
@@ -667,15 +971,56 @@ function demo() {
       res.end(readFileSync(PRESETS_FILE, 'utf8'));
       return;
     }
+
+    // 데모 인터랙션 로그 수신
+    if (req.url === '/api/log' && req.method === 'POST') {
+      let body = '';
+      req.on('data', chunk => { body += chunk; if (body.length > 8192) { req.destroy(); return; } });
+      req.on('end', () => {
+        try {
+          const data = JSON.parse(body);
+          writeLog({ cmd: 'demo-interaction', ...data });
+        } catch {}
+        res.writeHead(200, { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' });
+        res.end('{"ok":true}');
+      });
+      return;
+    }
     
-    const reqPath = req.url === '/' ? 'index.html' : decodeURIComponent(req.url.split('?')[0]);
-    const filePath = resolve(DEMO_DIR, reqPath.replace(/^\/+/, ''));
-    if (!filePath.startsWith(resolve(DEMO_DIR)) || !existsSync(filePath) || statSync(filePath).isDirectory()) {
+    let reqPath;
+    try {
+      reqPath = new URL(req.url || '/', `http://localhost:${port}`).pathname;
+      reqPath = reqPath === '/' ? 'index.html' : decodeURIComponent(reqPath).replace(/^\/+/, '');
+    } catch {
+      res.writeHead(400); res.end('Bad Request'); return;
+    }
+
+    const filePath = resolve(demoRoot, reqPath);
+    const relPath = relative(demoRoot, filePath);
+    const isInsideDemo = relPath === '' || (!relPath.startsWith('..') && !isAbsolute(relPath));
+    if (!isInsideDemo || !existsSync(filePath) || statSync(filePath).isDirectory()) {
       res.writeHead(404); res.end('Not Found'); return;
     }
     
     const ext = filePath.split('.').pop();
-    const types = { html: 'text/html', css: 'text/css', js: 'application/javascript', json: 'application/json', svg: 'image/svg+xml' };
+    const types = {
+      html: 'text/html; charset=utf-8',
+      css: 'text/css; charset=utf-8',
+      js: 'application/javascript; charset=utf-8',
+      json: 'application/json; charset=utf-8',
+      svg: 'image/svg+xml',
+      png: 'image/png',
+      jpg: 'image/jpeg',
+      jpeg: 'image/jpeg',
+      webp: 'image/webp',
+      avif: 'image/avif',
+      gif: 'image/gif',
+      ico: 'image/x-icon',
+      woff: 'font/woff',
+      woff2: 'font/woff2',
+      ttf: 'font/ttf',
+      mp4: 'video/mp4',
+    };
     res.writeHead(200, { 'Content-Type': types[ext] || 'text/plain', 'Access-Control-Allow-Origin': '*' });
     res.end(readFileSync(filePath));
   });
@@ -683,6 +1028,7 @@ function demo() {
   server.listen(port, () => {
     console.log(`\n${c.cyan}${c.b}DUVU Demo${c.r} 실행 중: ${c.green}http://localhost:${port}${c.r}`);
     console.log(`${c.d}Ctrl+C로 종료${c.r}\n`);
+    writeLog({ cmd: 'demo', args: [String(port)] });
     
     // Try to open browser
     try {
@@ -702,6 +1048,7 @@ function templateCmd(id) {
   const tmpl = data.templates.find(t => t.id === id);
   if (!tmpl) {
     console.log(`${c.red}'${id}' 템플릿을 찾을 수 없습니다.${c.r}`);
+    writeLog({ cmd: 'template', args: [id], error: 'not found' });
     return;
   }
   
@@ -720,6 +1067,7 @@ function templateCmd(id) {
   console.log(`  모션:     ${tmpl.motion} (${motionPreset?.duration || '?'}s)\n`);
   
   if (colorPreset) outputCode(colorPreset, 'css');
+  writeLog({ cmd: 'template', args: [id], presets: { color: tmpl.color, typo: tmpl.typography, layout: tmpl.layout, style: tmpl.style, motion: tmpl.motion } });
 }
 
 // ─── Domain Match ───
@@ -758,6 +1106,12 @@ function matchDomain(domain) {
   console.log(`  ${c.cyan}스타일${c.r}    ${withMood(styles)}`);
   console.log(`  ${c.cyan}모션${c.r}      ${withMood(motions)}`);
 
+  // 매칭되는 인터랙션 패턴
+  const interactions = (data.interaction_patterns || []).filter(p => p.domains?.includes(domain));
+  if (interactions.length) {
+    console.log(`  ${c.cyan}인터랙션${c.r}  ${interactions.map(p => p.id).join(', ')}`);
+  }
+
   // 매칭되는 템플릿
   const tpls = data.templates.filter(t => {
     const colorP = data.color.find(cc => cc.id === t.color);
@@ -769,6 +1123,7 @@ function matchDomain(domain) {
     console.log(`\n  ${c.cyan}추천 템플릿${c.r}  ${tpls.map(t => t.id).join(', ')}`);
   }
   console.log('');
+  writeLog({ cmd: 'match', args: [domain, ...(tone ? ['--tone', tone] : [])], domain, result: { colors: colors.map(p => p.id), templates: tpls.map(t => t.id) } });
 }
 
 // ═══════════════════════════════════════════════
@@ -797,8 +1152,8 @@ function audit() {
 
   let pass = 0, fail = 0;
 
-  // 1. WCAG: 42개 컬러 프리셋 대비 검사
-  console.log(`${c.cyan}── WCAG AA 대비 검사 (42개 컬러) ──${c.r}`);
+  // 1. WCAG: 컬러 프리셋 대비 검사
+  console.log(`${c.cyan}── WCAG AA 대비 검사 (${data.color.length}개 컬러) ──${c.r}`);
   for (const color of data.color) {
     const modes = [
       { name: 'dark', theme: color.dark },
@@ -836,15 +1191,19 @@ function audit() {
     }
   }
 
-  // 2. HIG: 터치 타겟 44px 검사 (CSS 출력 기반)
+  // 2. HIG: 터치 타겟 44px 검사 (생성 CSS와 데모 CSS 모두 실제 소스 검사)
   console.log(`\n${c.cyan}── HIG 터치 타겟 검사 ──${c.r}`);
-  const cssOutput = [];
-  // duvu generate의 CSS에 min-height: 44px가 있는지
-  const hasMinHeight = true; // duvu generate CSS에 .duvu-btn { min-height: 44px } 포함
-  if (hasMinHeight) {
-    console.log(`  ${c.green}✓${c.r} duvu generate CSS: .duvu-btn/.duvu-input min-height 44px`);
-    console.log(`  ${c.green}✓${c.r} 모바일: min-height 48px + font-size 16px`);
-    pass += 2;
+  const cliSource = readFileSync(__filename, 'utf8');
+  const demoSource = existsSync(join(DEMO_DIR, 'index.html')) ? readFileSync(join(DEMO_DIR, 'index.html'), 'utf8') : '';
+  const touchChecks = [
+    ['duvu generate CSS: .duvu-btn/.duvu-input min-height 44px', cliSource.includes('.duvu-btn, .duvu-input { min-height: 44px; }')],
+    ['duvu generate CSS 모바일: min-height 48px + font-size 16px', cliSource.includes('min-height: 48px; font-size: 16px;')],
+    ['demo CSS: --duvu-touch-min 44px', demoSource.includes('--duvu-touch-min: 44px;')],
+    ['demo CSS 모바일 버튼 min-height 48px', demoSource.includes('min-height: 48px;')],
+  ];
+  for (const [label, ok] of touchChecks) {
+    if (ok) { console.log(`  ${c.green}✓${c.r} ${label}`); pass++; }
+    else { console.log(`  ${c.red}✗${c.r} ${label}`); fail++; }
   }
 
   // 3. MD3: 타이포 스케일 존재 확인
@@ -863,9 +1222,15 @@ function audit() {
 
   // 4. 접근성: reduced-motion, 색상만으로 정보 전달 금지
   console.log(`\n${c.cyan}── 접근성 검사 ──${c.r}`);
-  console.log(`  ${c.green}✓${c.r} prefers-reduced-motion: CSS에 포함`);
-  console.log(`  ${c.green}✓${c.r} 시맨틱 색상(success/warning/error): 토큰 정의됨`);
-  pass += 2;
+  const accessibilityChecks = [
+    ['generate CSS: prefers-reduced-motion 포함', cliSource.includes('prefers-reduced-motion: reduce')],
+    ['demo CSS: prefers-reduced-motion 포함', demoSource.includes('prefers-reduced-motion: reduce')],
+    ['시맨틱 색상(success/warning/error): 토큰 정의됨', ['--duvu-success', '--duvu-warning', '--duvu-error'].every(t => cliSource.includes(t) && demoSource.includes(t))],
+  ];
+  for (const [label, ok] of accessibilityChecks) {
+    if (ok) { console.log(`  ${c.green}✓${c.r} ${label}`); pass++; }
+    else { console.log(`  ${c.red}✗${c.r} ${label}`); fail++; }
+  }
 
   // 5. 도메인 커버리지
   console.log(`\n${c.cyan}── 도메인 완전성 검사 ──${c.r}`);
@@ -881,8 +1246,79 @@ function audit() {
   console.log(`  ${c.green}✓${c.r} ${domainPass}/${allDomains.size} 도메인 완전 커버리지`);
   pass += domainPass;
 
+  // 6. Orphan 검사: 그리드 마지막 줄에 1개만 남는 경우
+  console.log(`\n${c.cyan}── Orphan 검사 (그리드 마지막 줄 고립 방지) ──${c.r}`);
+  let orphanPass = 0, orphanFail = 0;
+  for (const tpl of (data.templates || [])) {
+    const preview = tpl.preview;
+    if (!preview || !preview.cards) continue;
+    for (const card of preview.cards) {
+      if (card.type === 'gallery') {
+        const count = card.count || 6;
+        const cols = 3; // gallery-grid 기본 3열
+        const remainder = count % cols;
+        if (remainder === 1) {
+          console.log(`  ${c.red}✗${c.r} ${tpl.id}: gallery count=${count}, 3열 마지막 줄 1개 (orphan)`);
+          orphanFail++;
+        }
+      }
+      if (card.type === 'product') {
+        const items = card.items || [];
+        const cols = 3; // product-grid 기본 3열
+        const remainder = items.length % cols;
+        if (remainder === 1 && items.length > 1) {
+          console.log(`  ${c.red}✗${c.r} ${tpl.id}: product items=${items.length}, 3열 마지막 줄 1개 (orphan)`);
+          orphanFail++;
+        }
+      }
+      if (card.type === 'stat-row') {
+        const stats = card.stats || [];
+        // stat-row는 flex row이므로 홀수면 불균형
+        if (stats.length === 1) {
+          console.log(`  ${c.red}✗${c.r} ${tpl.id}: stat-row 1개만 (의미 부족)`);
+          orphanFail++;
+        }
+      }
+    }
+  }
+  if (orphanFail === 0) {
+    console.log(`  ${c.green}✓${c.r} 모든 템플릿 그리드에 orphan 없음`);
+    orphanPass++;
+  }
+  pass += orphanPass; fail += orphanFail;
+
+  // 7. 반응형 줄바꿈 토큰 검사
+  console.log(`\n${c.cyan}── 반응형 줄바꿈 시스템 검사 ──${c.r}`);
+  const wrapTokens = ['hero-sub-max-width', 'content-max-width'];
+  for (const t of wrapTokens) {
+    if (tokens[t]) {
+      console.log(`  ${c.green}✓${c.r} ${t}: ${tokens[t]}`);
+      pass++;
+    } else {
+      console.log(`  ${c.red}✗${c.r} ${t}: 누락 — 줄바꿈 제어 불가`);
+      fail++;
+    }
+  }
+
+  // 8. 반응형 생략 규칙 검사
+  console.log(`\n${c.cyan}── 반응형 콘텐츠 계층 검사 ──${c.r}`);
+  const components = data.components || [];
+  let hasLevelAll = true;
+  for (const comp of components) {
+    if (typeof comp.level !== 'number') {
+      console.log(`  ${c.red}✗${c.r} ${comp.id}: level 누락 — 반응형 우선순위 판단 불가`);
+      fail++;
+      hasLevelAll = false;
+    }
+  }
+  if (hasLevelAll && components.length > 0) {
+    console.log(`  ${c.green}✓${c.r} 모든 컴포넌트(${components.length}개)에 level 정의됨 — 반응형 생략 우선순위 판단 가능`);
+    pass++;
+  }
+
   // Summary
   console.log(`\n${c.b}결과: ${c.green}${pass} 통과${c.r}, ${fail > 0 ? c.red : c.green}${fail} 실패${c.r}`);
+  writeLog({ cmd: 'audit', result: { pass, fail } });
   if (fail === 0) {
     console.log(`${c.green}✓ HIG + MD3 + WCAG AA 모두 통과${c.r}\n`);
   } else {
@@ -919,13 +1355,16 @@ switch(cmd) {
   case 'install-skill': case 'install': installSkill(); break;
   case 'demo': demo(); break;
   case 'audit': audit(); break;
+  case 'log': logCmd(); break;
+  case 'logs': logsCmd(); break;
   case 'screenshot': case 'ss': {
     const ssPath = join(__dirname, 'screenshot.js');
-    const safeArgs = args.filter(a => /^[a-zA-Z0-9_.\/\-]+$/.test(a));
-    import('child_process').then(cp => cp.execFileSync('node', [ssPath, ...safeArgs], { stdio: 'inherit' }));
+    writeLog({ cmd: 'screenshot', args });
+    import('child_process').then(cp => cp.execFileSync('node', [ssPath, ...args], { stdio: 'inherit' }));
     break;
   }
-  default: 
+  default:
     console.log(`${c.red}알 수 없는 명령: ${cmd}${c.r}`);
     console.log(`'duvu help'로 사용법을 확인하세요.`);
+    writeLog({ cmd: 'error', args: [cmd, ...args], error: 'unknown command' });
 }

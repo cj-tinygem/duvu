@@ -3433,7 +3433,7 @@
       "id": "arch-luxury",
       "name": "Arch Luxury",
       "isClone": true,
-      "ref": "ssyenc.com",
+      "ref": "luxuryarchitecture.com",
       "color": "navy-depth",
       "typo": "general-sans",
       "layout": "spacious",
@@ -3460,7 +3460,7 @@
           "fg3": "#8899aa"
         }
       },
-      "desc": "쌍용건설. 건축적 럭셔리.",
+      "desc": "럭셔리 건축 포트폴리오. 건축적 럭셔리.",
       "typography": "general-sans",
       "description": "건축, 럭셔리, 갈색 계열. luxuryarchitecture.com 스타일.",
       "tags": [
@@ -3469,7 +3469,7 @@
         "earth",
         "brown"
       ],
-      "references": "ssyenc.com",
+      "references": "luxuryarchitecture.com",
       "domainTags": [
         "architecture",
         "luxury",
@@ -3510,7 +3510,7 @@
       "id": "east-minimal",
       "name": "East Minimal",
       "isClone": true,
-      "ref": "tscent-tea.com",
+      "ref": "muji.com/eastminimal",
       "color": "earth",
       "typo": "inter",
       "layout": "spacious",
@@ -3537,7 +3537,7 @@
           "fg3": "#a09888"
         }
       },
-      "desc": "티센트. 동아시아 미니멀.",
+      "desc": "MUJI East Minimal 계열. 동아시아 미니멀.",
       "typography": "inter",
       "description": "일본 미니멀, 거의 무채색. muji.com 스타일.",
       "tags": [
@@ -3546,7 +3546,7 @@
         "monochrome",
         "zen"
       ],
-      "references": "tscent-tea.com",
+      "references": "muji.com/eastminimal",
       "domainTags": [
         "minimal",
         "japanese",
@@ -5241,23 +5241,23 @@
         "audience": "b2b",
         "complexity": "medium",
         "mood": "luxurious",
-        "ref": "ssyenc.com"
+        "ref": "luxuryarchitecture.com"
       },
       "east-minimal": {
         "tags": [
           "asian",
           "minimal",
-          "tea"
+          "lifestyle"
         ],
         "industry": [
-          "food",
+          "retail",
           "luxury",
           "culture"
         ],
         "audience": "b2c",
         "complexity": "low",
         "mood": "serene",
-        "ref": "tscent-tea.com"
+        "ref": "muji.com/eastminimal"
       },
       "dev-toolkit": {
         "tags": [
@@ -5322,22 +5322,56 @@
     "border-color-accent": "var(--duvu-accent)",
     "divider-color-dark": "rgba(255,255,255,0.06)",
     "divider-color-light": "rgba(0,0,0,0.06)",
-    "focus-ring": "0 0 0 2px var(--duvu-accent)"
+    "focus-ring": "0 0 0 2px var(--duvu-accent)",
+    "hero-sub-max-width": "600px",
+    "pill-grid-gap": "8px",
+    "hero-cta-width": "200px"
   },
   "border_system": {
     "philosophy": "선은 최후 수단. 구분이 필요하면 여백→색차→그림자→선 순서로 시도한다.",
     "hierarchy": [
-      {"method": "spacing", "desc": "간격으로 구분. 가장 우선.", "when": "대부분의 경우"},
-      {"method": "color", "desc": "bg/surface/surface2 색차로 구분.", "when": "간격만으로 부족할 때"},
-      {"method": "shadow", "desc": "미세한 그림자로 부유감.", "when": "카드/모달 등 레이어 분리"},
-      {"method": "border", "desc": "얇고 투명한 선. 최후 수단.", "when": "입력창 경계, 포커스 표시, 테이블 셀 등 기능적으로 필수인 경우만"}
+      {
+        "method": "spacing",
+        "desc": "간격으로 구분. 가장 우선.",
+        "when": "대부분의 경우"
+      },
+      {
+        "method": "color",
+        "desc": "bg/surface/surface2 색차로 구분.",
+        "when": "간격만으로 부족할 때"
+      },
+      {
+        "method": "shadow",
+        "desc": "미세한 그림자로 부유감.",
+        "when": "카드/모달 등 레이어 분리"
+      },
+      {
+        "method": "border",
+        "desc": "얇고 투명한 선. 최후 수단.",
+        "when": "입력창 경계, 포커스 표시, 테이블 셀 등 기능적으로 필수인 경우만"
+      }
     ],
     "allowed": {
-      "input-field": {"why": "입력 영역의 경계를 사용자가 인지해야 클릭/탭 가능", "style": "1px solid border-color"},
-      "focus-ring": {"why": "접근성(WCAG) 필수. 키보드 사용자가 포커스 위치를 알아야 함", "style": "focus-ring 토큰"},
-      "quote-accent": {"why": "인용구의 시각적 멈춤. accent 색상 좌측 3px", "style": "3px solid accent"},
-      "tab-indicator": {"why": "활성 탭 표시. 기능적 피드백", "style": "2px solid accent"},
-      "divider": {"why": "여백+색차로도 구분이 안 될 때의 최종 수단", "style": "1px solid divider-color"}
+      "input-field": {
+        "why": "입력 영역의 경계를 사용자가 인지해야 클릭/탭 가능",
+        "style": "1px solid border-color"
+      },
+      "focus-ring": {
+        "why": "접근성(WCAG) 필수. 키보드 사용자가 포커스 위치를 알아야 함",
+        "style": "focus-ring 토큰"
+      },
+      "quote-accent": {
+        "why": "인용구의 시각적 멈춤. accent 색상 좌측 3px",
+        "style": "3px solid accent"
+      },
+      "tab-indicator": {
+        "why": "활성 탭 표시. 기능적 피드백",
+        "style": "2px solid accent"
+      },
+      "divider": {
+        "why": "여백+색차로도 구분이 안 될 때의 최종 수단",
+        "style": "1px solid divider-color"
+      }
     },
     "forbidden": {
       "card-border": "카드는 surface 색차 또는 shadow로 구분. 테두리 금지.",
@@ -5354,7 +5388,11 @@
       "id": "osmo",
       "name": "osmo.supply",
       "url": "https://osmo.supply",
-      "path": "clones/osmo/index.html",
+      "archive": {
+        "localOnly": true,
+        "packageIncluded": false,
+        "status": "metadata-only"
+      },
       "description": "Dev Toolkit Built to Flex. Webflow & HTML 리소스 플랫폼.",
       "domains": [
         "creative",
@@ -5471,5 +5509,389 @@
       "why": "개발 도구는 코드 예시로 즉시 가치를 보여주고, 기능→문서→통합 순서로 기술적 신뢰를 쌓는다.",
       "intent": "기술적 확신. 코드가 증거, 문서가 보증."
     }
-  }
+  },
+  "text_system": {
+    "philosophy": "텍스트 줄바꿈은 의도적이어야 한다. 넓은 화면에서 1줄인 텍스트가 좁은 화면에서 2줄이 되는 것은 자연스럽다. 그 반대(넓은 화면에서 2줄, 좁은 화면에서 1줄)는 의도적 근거가 필요하다.",
+    "principles": [
+      "text-wrap: balance — 한국어/영어 모두 줄바꿈 균형. 마지막 줄이 극단적으로 짧지 않도록.",
+      "word-break: keep-all — 한국어 단어 중간 줄바꿈 방지. 영어에는 불필요.",
+      "max-width 토큰으로 줄바꿈 제어 — hero-sub-max-width, content-max-width 등.",
+      "clamp() 폰트 크기 — 뷰포트에 따라 자연스럽게 스케일. 줄바꿈 시점도 자동 조절."
+    ],
+    "rules": {
+      "hero_title": {
+        "wrap": "text-wrap: balance",
+        "break": "word-break: keep-all",
+        "why": "히어로 제목은 시각적 중심. 줄바꿈이 균형 잡혀야 한다."
+      },
+      "hero_subtitle": {
+        "max_width": "var(--duvu-hero-sub-max-width, 600px)",
+        "wrap": "text-wrap: balance",
+        "break": "word-break: keep-all",
+        "why": "PC에서 1줄, 모바일에서 자연스럽게 2줄. max-width가 이 전환점을 결정."
+      },
+      "section_title": {
+        "wrap": "text-wrap: balance",
+        "break": "word-break: keep-all",
+        "why": "섹션 제목도 줄바꿈 균형 필요."
+      },
+      "body_text": {
+        "max_width": "var(--duvu-content-max-width, 680px)",
+        "why": "최적 읽기 너비 65ch ≈ 680px. 이 이상 넓으면 가독성 저하."
+      }
+    },
+    "mobile_overrides": {
+      "hero_sub_max_width": "90%",
+      "why": "모바일에서는 절대값 대신 상대값(%)으로 전환하여 좌우 여백 보장."
+    }
+  },
+  "responsive_system": {
+    "philosophy": "반응형은 축소가 아니라 적응이다. 모바일에서 정보를 숨기는 것은 축소. 모바일에 맞게 재구성하는 것은 적응. DUVU는 적응을 추구한다.",
+    "content_hierarchy": {
+      "description": "컴포넌트 level이 높을수록 모든 뷰포트에서 반드시 표시. level이 낮을수록 좁은 화면에서 생략 가능.",
+      "rules": [
+        {
+          "level": "5 (hero)",
+          "rule": "모든 뷰포트에서 표시. 절대 숨기지 않음."
+        },
+        {
+          "level": "4 (metric, nav)",
+          "rule": "모든 뷰포트에서 표시. 크기/배치만 변경."
+        },
+        {
+          "level": "3 (card, table)",
+          "rule": "모든 뷰포트에서 표시. 레이아웃 재배치 가능 (2열→1열)."
+        },
+        {
+          "level": "2 (badge, tag)",
+          "rule": "모바일에서 보조 설명 텍스트 생략 가능. 핵심 라벨은 유지."
+        },
+        {
+          "level": "1 (divider)",
+          "rule": "좁은 화면에서 생략 가능. 간격으로 대체."
+        }
+      ]
+    },
+    "allowed_omissions": {
+      "description": "모바일에서 생략이 허용되는 요소와 그 근거.",
+      "items": [
+        {
+          "element": "pill-desc (프리셋 설명 텍스트)",
+          "breakpoint": "640px",
+          "reason": "프리셋 이름만으로 식별 가능. 설명은 level 2 보조 정보.",
+          "css": ".pill-desc { display: none; }"
+        },
+        {
+          "element": "tpl-ref (템플릿 참조 URL)",
+          "breakpoint": "640px",
+          "reason": "참조 URL은 부가 정보. 템플릿 이름으로 충분.",
+          "css": ".tpl-ref { display: none; }"
+        },
+        {
+          "element": "color-cat (컬러 카테고리 라벨)",
+          "breakpoint": "390px",
+          "reason": "극소 화면에서 카드 크기가 작아 카테고리까지 표시하면 가독성 저하.",
+          "css": ".color-cat { display: none; }"
+        }
+      ]
+    },
+    "grid_adaptation": {
+      "description": "그리드 열 수 변환 규칙.",
+      "rules": [
+        {
+          "grid": "color-grid",
+          "desktop": "7열",
+          "tablet": "5열",
+          "mobile": "3열"
+        },
+        {
+          "grid": "preview-grid",
+          "desktop": "2열/3열",
+          "tablet": "2열",
+          "mobile": "1열"
+        },
+        {
+          "grid": "product-grid",
+          "desktop": "3열",
+          "mobile": "2열"
+        },
+        {
+          "grid": "gallery-grid",
+          "desktop": "3열",
+          "mobile": "2열"
+        }
+      ],
+      "orphan_prevention": "grid 열 수 변경 시 마지막 줄에 1개만 남지 않도록 count를 조정. duvu audit이 자동 검사."
+    }
+  },
+  "interaction_patterns": [
+    {
+      "id": "carousel",
+      "name": "Carousel",
+      "description": "콘텐츠를 수평 슬라이드로 순차 표시. 히어로, 상품, 후기 등.",
+      "intent": "한정된 공간에 여러 콘텐츠를 보여준다. 사용자의 능동적 탐색을 유도.",
+      "meaning": "이 영역에 더 많은 콘텐츠가 있다.",
+      "level": 4,
+      "domains": [
+        "ecommerce",
+        "landing",
+        "portfolio",
+        "editorial"
+      ],
+      "responsive": {
+        "mobile": {
+          "visible": 1,
+          "snap": true
+        },
+        "tablet": {
+          "visible": 2,
+          "snap": true
+        },
+        "desktop": {
+          "visible": 3,
+          "snap": false
+        }
+      },
+      "accessibility": {
+        "aria": "region + group, aria-roledescription=carousel",
+        "keyboard": "좌우 화살표 또는 이전/다음 버튼",
+        "reduced_motion": "자동 스크롤 비활성화"
+      },
+      "css_tokens": [
+        "--duvu-dur",
+        "--duvu-ease",
+        "--duvu-space-md"
+      ],
+      "picasso_detect": [
+        ".flick-panel",
+        ".swiper-slide",
+        ".slick-slide",
+        "overflow-x: auto + snap"
+      ]
+    },
+    {
+      "id": "masonry",
+      "name": "Masonry Grid",
+      "description": "불균일 높이 카드를 빈 공간 없이 다단 배치. 갤러리, 포트폴리오.",
+      "intent": "다양한 크기의 콘텐츠를 공간 효율적으로 배치. 탐색 경험 극대화.",
+      "meaning": "이 영역은 자유로운 탐색 갤러리다.",
+      "level": 3,
+      "domains": [
+        "portfolio",
+        "creative",
+        "ecommerce",
+        "social"
+      ],
+      "responsive": {
+        "mobile": {
+          "columns": 1
+        },
+        "tablet": {
+          "columns": 2
+        },
+        "desktop": {
+          "columns": 3
+        }
+      },
+      "accessibility": {
+        "aria": "list + listitem",
+        "keyboard": "Tab으로 카드 간 이동",
+        "reduced_motion": "진입 애니메이션 비활성화"
+      },
+      "css_tokens": [
+        "--duvu-space-md",
+        "--duvu-card-radius"
+      ],
+      "css_approach": "CSS columns (현재) → CSS masonry (표준 확정 시)",
+      "picasso_detect": [
+        "같은 클래스 자식이 한 컨테이너에 몰림",
+        "float:left 패턴"
+      ]
+    },
+    {
+      "id": "infinite-scroll",
+      "name": "Infinite Scroll",
+      "description": "스크롤 하단 도달 시 콘텐츠 자동 추가. 피드, 뉴스, SNS.",
+      "intent": "끊김 없는 콘텐츠 소비. 사용자를 몰입시킨다.",
+      "meaning": "아래로 스크롤하면 더 많은 콘텐츠가 나타난다.",
+      "level": 3,
+      "domains": [
+        "social",
+        "editorial",
+        "ecommerce",
+        "dashboard"
+      ],
+      "responsive": {
+        "mobile": {
+          "columns": 1,
+          "trigger": "200px from bottom"
+        },
+        "tablet": {
+          "columns": 2,
+          "trigger": "300px from bottom"
+        },
+        "desktop": {
+          "columns": 3,
+          "trigger": "400px from bottom"
+        }
+      },
+      "accessibility": {
+        "aria": "feed role, aria-busy during load",
+        "keyboard": "focus management on new items",
+        "reduced_motion": "skeleton 대신 instant render"
+      },
+      "css_tokens": [
+        "--duvu-space-md"
+      ],
+      "picasso_detect": [
+        "IntersectionObserver 패턴",
+        "scroll 이벤트 + DOM 추가"
+      ]
+    },
+    {
+      "id": "sticky",
+      "name": "Sticky Section",
+      "description": "스크롤 시 특정 요소가 화면에 고정. 헤더, 사이드바, CTA.",
+      "intent": "중요한 네비게이션이나 행동 유도를 항상 접근 가능하게.",
+      "meaning": "이 요소는 언제든 사용할 수 있다.",
+      "level": 4,
+      "domains": [
+        "saas",
+        "dashboard",
+        "ecommerce",
+        "editorial"
+      ],
+      "responsive": {
+        "mobile": {
+          "position": "fixed bottom (CTA) 또는 숨김"
+        },
+        "tablet": {
+          "position": "sticky top"
+        },
+        "desktop": {
+          "position": "sticky top 또는 sticky sidebar"
+        }
+      },
+      "accessibility": {
+        "aria": "navigation role if nav, complementary if sidebar",
+        "keyboard": "skip link 제공",
+        "reduced_motion": "부착/분리 시 transition 비활성화"
+      },
+      "css_tokens": [
+        "--duvu-bg",
+        "--duvu-shadow-sm"
+      ],
+      "picasso_detect": [
+        "position: fixed",
+        "position: sticky"
+      ]
+    },
+    {
+      "id": "lazy-load",
+      "name": "Lazy Load",
+      "description": "뷰포트 진입 시 이미지/콘텐츠 로드. 성능 최적화.",
+      "intent": "초기 로딩 속도를 높이고 대역폭을 절약.",
+      "meaning": "사용자에게 보이지 않는 것은 아직 로드하지 않는다.",
+      "level": 2,
+      "domains": [
+        "ecommerce",
+        "editorial",
+        "portfolio",
+        "social"
+      ],
+      "responsive": {
+        "all": {
+          "threshold": "200px before viewport"
+        }
+      },
+      "accessibility": {
+        "aria": "alt 텍스트 필수, 로딩 중 placeholder",
+        "reduced_motion": "fade-in 대신 instant 표시"
+      },
+      "css_tokens": [],
+      "html_approach": "loading=\"lazy\" (네이티브) 또는 IntersectionObserver",
+      "picasso_detect": [
+        "data-src",
+        "data-original",
+        "loading=lazy"
+      ]
+    },
+    {
+      "id": "tabs",
+      "name": "Tabs",
+      "description": "같은 영역에서 콘텐츠를 전환. 설정, 카테고리, 필터.",
+      "intent": "관련 콘텐츠를 공간 효율적으로 정리. 선택적 탐색.",
+      "meaning": "이 영역에 여러 관점/카테고리가 있다.",
+      "level": 3,
+      "domains": [
+        "saas",
+        "dashboard",
+        "dev",
+        "ecommerce"
+      ],
+      "responsive": {
+        "mobile": {
+          "overflow": "horizontal scroll",
+          "indicator": "bottom border"
+        },
+        "desktop": {
+          "overflow": "visible",
+          "indicator": "bottom border 또는 background"
+        }
+      },
+      "accessibility": {
+        "aria": "tablist + tab + tabpanel, aria-selected",
+        "keyboard": "좌우 화살표로 탭 전환, Tab으로 패널 진입",
+        "reduced_motion": "패널 전환 시 transition 비활성화"
+      },
+      "css_tokens": [
+        "--duvu-accent",
+        "--duvu-radius-sm",
+        "--duvu-dur-fast"
+      ],
+      "picasso_detect": [
+        "role=tablist",
+        "aria-selected",
+        ".tab-active 패턴"
+      ]
+    },
+    {
+      "id": "modal",
+      "name": "Modal / Dialog",
+      "description": "오버레이로 콘텐츠 표시. 확인, 폼, 상세 보기.",
+      "intent": "현재 맥락을 유지하면서 추가 정보나 행동을 요청.",
+      "meaning": "이것은 즉시 주목해야 하는 내용이다.",
+      "level": 5,
+      "domains": [
+        "saas",
+        "ecommerce",
+        "dashboard",
+        "social"
+      ],
+      "responsive": {
+        "mobile": {
+          "style": "bottom sheet (하단에서 올라옴)"
+        },
+        "desktop": {
+          "style": "centered overlay"
+        }
+      },
+      "accessibility": {
+        "aria": "dialog role, aria-modal=true, aria-labelledby",
+        "keyboard": "Escape로 닫기, focus trap (Tab이 모달 밖으로 나가지 않음)",
+        "reduced_motion": "열기/닫기 transition 비활성화"
+      },
+      "css_tokens": [
+        "--duvu-bg",
+        "--duvu-surface",
+        "--duvu-card-radius",
+        "--duvu-shadow-lg"
+      ],
+      "picasso_detect": [
+        "role=dialog",
+        ".modal",
+        ".overlay + z-index 높은 요소"
+      ]
+    }
+  ]
 }
