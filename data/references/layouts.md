@@ -35,7 +35,7 @@
   gap: var(--duvu-space-sm);
   padding: var(--duvu-space-sm) var(--duvu-space-md);
   border-radius: var(--duvu-radius-sm);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   text-decoration: none;
@@ -69,7 +69,7 @@
   padding: var(--duvu-space-lg);
 }
 .duvu-kpi-label {
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg3);
   text-transform: uppercase;
@@ -123,7 +123,7 @@
   color: var(--duvu-fg);
   line-height: 1.1;
   max-width: 800px;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .duvu-hero-subtitle {
@@ -169,7 +169,7 @@
   margin-bottom: var(--duvu-space-sm);
 }
 .duvu-feature-desc {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg2);
   line-height: 1.6;
 }
@@ -218,7 +218,7 @@
   color: var(--duvu-fg);
 }
 .duvu-form-header p {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg2);
   margin-top: var(--duvu-space-sm);
 }
@@ -265,12 +265,12 @@
 }
 
 .duvu-feed-item-meta {
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
 }
 
 .duvu-feed-item-body {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg);
   line-height: 1.6;
 }
@@ -308,7 +308,7 @@
 .duvu-settings-nav-item {
   padding: var(--duvu-space-sm) var(--duvu-space-md);
   border-radius: var(--duvu-radius-sm);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   text-decoration: none;
@@ -393,17 +393,17 @@
   padding: var(--duvu-space-md);
 }
 .duvu-gallery-title {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   color: var(--duvu-fg);
 }
 .duvu-gallery-subtitle {
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
   margin-top: var(--duvu-space-xs);
 }
 
-/* 최대 4열, orphan 방지 */
+/* 최대 4열, singleton 마지막 줄 방지 */
 @media (min-width: 1200px) {
   .duvu-gallery-grid {
     grid-template-columns: repeat(4, 1fr);
@@ -435,11 +435,11 @@
   font-weight: 700;
   color: var(--duvu-fg);
   line-height: 1.15;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .duvu-article-meta {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
   margin-top: var(--duvu-space-md);
   display: flex;
@@ -539,12 +539,12 @@
   font-variant-numeric: tabular-nums;
 }
 .duvu-pricing-price span {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 400;
   color: var(--duvu-fg2);
 }
 .duvu-pricing-desc {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg2);
   margin-top: var(--duvu-space-sm);
 }
@@ -556,7 +556,7 @@
 }
 .duvu-pricing-features li {
   padding: var(--duvu-space-sm) 0;
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   display: flex;
   align-items: center;
   gap: var(--duvu-space-sm);
@@ -592,7 +592,7 @@
   font-size: clamp(32px, 6vw, 72px);
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 .duvu-text-title {
   font-size: clamp(24px, 4vw, 36px);
@@ -607,6 +607,6 @@
 
 1. **최대 너비**: 콘텐츠 1200px, 텍스트 65ch, 폼 420px
 2. **간격**: 섹션 간 `--duvu-space-3xl`(64px), 섹션 내 `--duvu-space-xl`(32px)
-3. **그리드**: 최대 4열, 모바일 1~2열, orphan row 방지
+3. **그리드**: 최대 4열, 모바일 1~2열, singleton 마지막 줄 방지
 4. **중첩**: 최대 3단계 (bg → surface → surface2)
 5. **반응형**: 768px 브레이크포인트 필수, `clamp()` 활용

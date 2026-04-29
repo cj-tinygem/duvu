@@ -151,7 +151,7 @@
       },
       "light": {
         "bg": "#ffffff",
-        "surface": "#ffffff",
+        "surface": "#f7f7f7",
         "surface2": "#f7f6f3",
         "fg": "#0e0f11",
         "fg2": "#60666c",
@@ -217,7 +217,7 @@
       },
       "light": {
         "bg": "#f8f8f8",
-        "surface": "#ffffff",
+        "surface": "#f5f0e0",
         "surface2": "#f0f0f0",
         "fg": "#0e110f",
         "fg2": "#606c64",
@@ -250,7 +250,7 @@
       },
       "light": {
         "bg": "#f8f9fa",
-        "surface": "#ffffff",
+        "surface": "#f8f0e4",
         "surface2": "#f0f2f4",
         "fg": "#0e110f",
         "fg2": "#606c67",
@@ -316,7 +316,7 @@
       },
       "light": {
         "bg": "#ffffff",
-        "surface": "#ffffff",
+        "surface": "#f7f7f7",
         "surface2": "#f7f7f7",
         "fg": "#110e0f",
         "fg2": "#6c6062",
@@ -382,7 +382,7 @@
       },
       "light": {
         "bg": "#ffffff",
-        "surface": "#fafafa",
+        "surface": "#f5f5f5",
         "surface2": "#f5f5f5",
         "fg": "#0e0f11",
         "fg2": "#60666c",
@@ -414,7 +414,7 @@
       },
       "light": {
         "bg": "#f5f9f8",
-        "surface": "#ffffff",
+        "surface": "#f5f0e0",
         "surface2": "#e8f2f0",
         "fg": "#0e1110",
         "fg2": "#606c6b",
@@ -446,7 +446,7 @@
       },
       "light": {
         "bg": "#fafaf0",
-        "surface": "#ffffff",
+        "surface": "#f8f0e4",
         "surface2": "#f0f0e4",
         "fg": "#10110e",
         "fg2": "#696c60",
@@ -478,7 +478,7 @@
       },
       "light": {
         "bg": "#f4f8fb",
-        "surface": "#ffffff",
+        "surface": "#f8efe0",
         "surface2": "#e8f0f6",
         "fg": "#0e1011",
         "fg2": "#60676c",
@@ -510,7 +510,7 @@
       },
       "light": {
         "bg": "#fdfbf5",
-        "surface": "#ffffff",
+        "surface": "#f5f0e0",
         "surface2": "#f5f0e0",
         "fg": "#11100e",
         "fg2": "#6c6760",
@@ -991,7 +991,7 @@
       },
       "light": {
         "bg": "#fefaf4",
-        "surface": "#ffffff",
+        "surface": "#f8f0e4",
         "surface2": "#f8f0e4",
         "fg": "#110f0e",
         "fg2": "#6c6560",
@@ -1215,7 +1215,7 @@
       },
       "light": {
         "bg": "#fefaf2",
-        "surface": "#ffffff",
+        "surface": "#f8efe0",
         "surface2": "#f8efe0",
         "fg": "#110f0e",
         "fg2": "#6c6660",
@@ -1227,6 +1227,74 @@
       "domains": [
         "ecommerce",
         "education"
+      ],
+      "tone": "warm"
+    },
+    {
+      "id": "graphite-cyan",
+      "name": "Graphite Cyan",
+      "cat": "curated",
+      "src": "#0891B2",
+      "radius": 12,
+      "dark": {
+        "bg": "#061014",
+        "surface": "#0d1a20",
+        "surface2": "#13252c",
+        "fg": "#e7f2f5",
+        "fg2": "#88a4ad",
+        "fg3": "#5e737b",
+        "accent": "#22D3EE",
+        "accent-rgb": "34, 211, 238"
+      },
+      "light": {
+        "bg": "#edf8fb",
+        "surface": "#ffffff",
+        "surface2": "#dff1f6",
+        "fg": "#0b1214",
+        "fg2": "#53686f",
+        "fg3": "#879aa0",
+        "accent": "#0891B2",
+        "accent-rgb": "8, 145, 178"
+      },
+      "btnText": "#001014",
+      "domains": [
+        "dev",
+        "saas",
+        "enterprise"
+      ],
+      "tone": "cool"
+    },
+    {
+      "id": "rose-quartz",
+      "name": "Rose Quartz",
+      "cat": "curated",
+      "src": "#E11D48",
+      "radius": 18,
+      "dark": {
+        "bg": "#13070a",
+        "surface": "#211015",
+        "surface2": "#321820",
+        "fg": "#f5e8eb",
+        "fg2": "#b38b96",
+        "fg3": "#7c6269",
+        "accent": "#FB7185",
+        "accent-rgb": "251, 113, 133"
+      },
+      "light": {
+        "bg": "#fff1f4",
+        "surface": "#ffffff",
+        "surface2": "#ffe1e8",
+        "fg": "#160b0e",
+        "fg2": "#704e57",
+        "fg3": "#a88991",
+        "accent": "#E11D48",
+        "accent-rgb": "225, 29, 72"
+      },
+      "btnText": "#000000",
+      "domains": [
+        "ecommerce",
+        "social",
+        "creative"
       ],
       "tone": "warm"
     },
@@ -2350,6 +2418,18 @@
               {
                 "name": "린넨 팬츠",
                 "price": "₩69,000"
+              },
+              {
+                "name": "레더 토트",
+                "price": "₩129,000"
+              },
+              {
+                "name": "울 재킷",
+                "price": "₩189,000"
+              },
+              {
+                "name": "실크 스카프",
+                "price": "₩59,000"
               }
             ]
           },
@@ -2391,23 +2471,47 @@
         "cards": [
           {
             "type": "metric",
+            "span": "third",
             "label": "활성 사용자",
             "value": "12,847",
             "badge": "+8.2%"
           },
           {
             "type": "metric",
+            "span": "third",
             "label": "전환율",
             "value": "3.24%",
-            "badge": "+0.5%"
+            "badge": "+0.5%",
+            "chart": true,
+            "chartType": "donut"
           },
           {
             "type": "metric",
+            "span": "third",
             "label": "수익",
             "value": "₩48.2M",
             "badge": "+15.1%",
             "chart": true,
             "chartType": "bar"
+          },
+          {
+            "type": "task-list",
+            "span": "full",
+            "label": "품질 점검",
+            "items": [
+              {
+                "text": "실시간 지표 이상 감지",
+                "done": true
+              },
+              {
+                "text": "핵심 퍼널 리포트",
+                "status": "자동"
+              },
+              {
+                "text": "배포 영향 분석",
+                "done": true
+              }
+            ]
           },
           {
             "type": "table",
@@ -2467,6 +2571,12 @@
         "layout": "2col",
         "cards": [
           {
+            "type": "hero",
+            "span": "full",
+            "title": "Selected Works",
+            "sub": "정체성과 인터랙션을 하나의 경험으로 엮는 포트폴리오 시스템."
+          },
+          {
             "type": "gallery",
             "span": "full",
             "count": 6
@@ -2523,6 +2633,7 @@
         "cards": [
           {
             "type": "metric",
+            "span": "half",
             "label": "총 자산",
             "value": "₩1,247,832,000",
             "badge": "+5.8%",
@@ -2530,9 +2641,32 @@
           },
           {
             "type": "metric",
+            "span": "half",
             "label": "수익률",
             "value": "+12.4%",
             "badge": "연간"
+          },
+          {
+            "type": "table",
+            "span": "full",
+            "label": "리스크 신호",
+            "rows": [
+              [
+                "현금 비중",
+                "18.4%",
+                "안정"
+              ],
+              [
+                "변동성",
+                "낮음",
+                "정상"
+              ],
+              [
+                "리밸런싱",
+                "D-3",
+                "예약"
+              ]
+            ]
           },
           {
             "type": "stat-row",
@@ -2586,6 +2720,12 @@
         "layout": "2col",
         "cards": [
           {
+            "type": "hero",
+            "span": "full",
+            "title": "Creative Systems",
+            "sub": "아이디어, 제작, 배포를 하나의 시각 언어로 묶는 디자인 도구."
+          },
+          {
             "type": "marquee",
             "span": "full",
             "items": [
@@ -2599,10 +2739,12 @@
           },
           {
             "type": "gallery",
+            "span": "half",
             "count": 6
           },
           {
             "type": "quote",
+            "span": "half",
             "text": "창의성은 연결하는 것이다.",
             "author": "Steve Jobs"
           },
@@ -2780,6 +2922,12 @@
             "title": "NOIR",
             "sub": "2026 Spring/Summer Collection",
             "cta": "컬렉션 보기"
+          },
+          {
+            "type": "quote",
+            "span": "full",
+            "text": "Silence is the highest form of rarity.",
+            "author": "NOIR Atelier"
           },
           {
             "type": "stat-row",
@@ -3141,7 +3289,7 @@
       "color": "golden-sun",
       "typo": "sora",
       "layout": "comfortable",
-      "style": "pill",
+      "style": "sharp",
       "motion": "cinematic",
       "gridStyle": "featured",
       "heroAlign": "center",
@@ -3833,7 +3981,18 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Toss brand-inspired blue",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "linear": {
           "tags": [
@@ -3850,7 +4009,18 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Linear brand-inspired indigo",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "stripe": {
           "tags": [
@@ -3867,7 +4037,18 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Stripe brand-inspired violet",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "apple": {
           "tags": [
@@ -3884,7 +4065,18 @@
           "audience": "b2c",
           "warmth": "neutral",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Apple system-blue inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "notion": {
           "tags": [
@@ -3901,7 +4093,18 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Notion product-blue inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "github": {
           "tags": [
@@ -3917,7 +4120,18 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "GitHub success-green inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "spotify": {
           "tags": [
@@ -3934,7 +4148,18 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Spotify brand-green inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "supabase": {
           "tags": [
@@ -3951,7 +4176,18 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Supabase brand-green inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "figma": {
           "tags": [
@@ -3967,7 +4203,18 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Figma brand-purple inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "airbnb": {
           "tags": [
@@ -3984,7 +4231,18 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Airbnb brand-coral inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "slack": {
           "tags": [
@@ -4001,7 +4259,18 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "moderate",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Slack brand-plum inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "vercel": {
           "tags": [
@@ -4018,7 +4287,18 @@
           "audience": "b2b",
           "warmth": "neutral",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "brand-inspired",
+            "source": "Vercel product-blue inspired accent",
+            "rationale": "기존 제품/브랜드에서 인지되는 대표 accent를 DUVU의 dark/light 역할 토큰으로 재해석했다. 실제 출력은 WCAG/HIG/MD3 감사로 보정된 팔레트를 사용한다.",
+            "references": [
+              "https://brand.toss.im/",
+              "https://stripe.com/",
+              "https://developer.apple.com/design/human-interface-guidelines/color",
+              "https://brand.github.com/foundations/color"
+            ]
+          }
         },
         "sunny-beach": {
           "tags": [
@@ -4035,7 +4315,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Sunny Beach palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "olive-garden": {
           "tags": [
@@ -4052,7 +4342,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Olive Garden palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "summer-ocean": {
           "tags": [
@@ -4069,7 +4369,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Summer Ocean palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "black-gold": {
           "tags": [
@@ -4086,7 +4396,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "curated-color-harmony",
+            "source": "Black & Gold palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/feature/design/color-palette"
+            ]
+          }
         },
         "ocean-pearl": {
           "tags": [
@@ -4103,7 +4423,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Ocean Pearl palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "earthy-forest": {
           "tags": [
@@ -4120,7 +4450,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Earthy Forest palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "arctic-blue": {
           "tags": [
@@ -4137,7 +4477,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Arctic Blue palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "warm-coral": {
           "tags": [
@@ -4154,7 +4504,17 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Warm Coral palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "indigo-bloom": {
           "tags": [
@@ -4171,7 +4531,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "moderate",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Indigo Bloom palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "ocean": {
           "tags": [
@@ -4188,7 +4558,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Ocean palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "sunset": {
           "tags": [
@@ -4205,7 +4585,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Sunset palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "forest": {
           "tags": [
@@ -4222,7 +4612,17 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Forest palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "royal": {
           "tags": [
@@ -4239,7 +4639,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "high",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "curated-color-harmony",
+            "source": "Royal palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/feature/design/color-palette"
+            ]
+          }
         },
         "midnight": {
           "tags": [
@@ -4256,7 +4666,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Midnight palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "lavender": {
           "tags": [
@@ -4273,7 +4693,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Lavender palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "earth": {
           "tags": [
@@ -4290,7 +4720,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Earth palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "rose": {
           "tags": [
@@ -4307,7 +4747,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "curated-natural-harmony",
+            "source": "Rose palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends",
+              "https://www.adobe.com/express/feature/design/color-palette",
+              "https://colorhunt.co/"
+            ]
+          }
         },
         "beach-teal": {
           "tags": [
@@ -4324,7 +4774,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Beach Teal palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "warm-amber": {
           "tags": [
@@ -4341,7 +4801,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Warm Amber palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "coral-red": {
           "tags": [
@@ -4358,7 +4828,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Coral Red palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "sage-green": {
           "tags": [
@@ -4375,7 +4855,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "popular-natural-harmony",
+            "source": "Sage Green palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends"
+            ]
+          }
         },
         "navy-depth": {
           "tags": [
@@ -4392,7 +4882,17 @@
           "audience": "b2b",
           "warmth": "cool",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Navy Depth palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "sky-blue": {
           "tags": [
@@ -4409,7 +4909,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "moderate",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Sky Blue palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "mauve-rose": {
           "tags": [
@@ -4426,7 +4936,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "high"
+          "formality": "high",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Mauve Rose palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "autumn-red": {
           "tags": [
@@ -4443,7 +4963,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "high",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Autumn Red palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "golden-sun": {
           "tags": [
@@ -4460,7 +4990,17 @@
           "audience": "b2c",
           "warmth": "warm",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Golden Sun palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "pine-forest": {
           "tags": [
@@ -4477,7 +5017,17 @@
           "audience": "b2b",
           "warmth": "warm",
           "energy": "calm",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "popular-natural-harmony",
+            "source": "Pine Forest palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends"
+            ]
+          }
         },
         "electric-blue": {
           "tags": [
@@ -4494,7 +5044,17 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "high",
-          "formality": "low"
+          "formality": "low",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Electric Blue palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
         },
         "deep-purple": {
           "tags": [
@@ -4511,7 +5071,64 @@
           "audience": "b2c",
           "warmth": "cool",
           "energy": "high",
-          "formality": "moderate"
+          "formality": "moderate",
+          "provenance": {
+            "type": "popular-color-harmony",
+            "source": "Deep Purple palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/what-trending-color-palettes-mean"
+            ]
+          }
+        },
+        "graphite-cyan": {
+          "provenance": {
+            "type": "curated-color-harmony",
+            "source": "Graphite Cyan palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/feature/design/color-palette"
+            ]
+          }
+        },
+        "rose-quartz": {
+          "provenance": {
+            "type": "curated-color-harmony",
+            "source": "Rose Quartz palette from established color-harmony pattern",
+            "rationale": "보색/유사색/명도 대비 같은 색채 조화 패턴을 DUVU의 action/background/surface 역할로 변환하고 접근성 감사 기준을 통과하도록 조정했다.",
+            "references": [
+              "https://colorhunt.co/",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/feature/design/color-palette"
+            ]
+          }
+        },
+        "charcoal": {
+          "provenance": {
+            "type": "popular-natural-harmony",
+            "source": "Charcoal palette from natural/material color harmony",
+            "rationale": "자연물, 재료감, 환경적 색온도에서 출발해 화면 배경/표면/전경 계층이 과도하게 튀지 않도록 채도와 명도를 제한했다.",
+            "references": [
+              "https://colorhunt.co/palettes/popular",
+              "https://coolors.co/palettes/trending/popular",
+              "https://www.adobe.com/express/learn/blog/color-of-year-trends"
+            ]
+          }
+        },
+        "osmo": {
+          "provenance": {
+            "type": "clone-extracted",
+            "source": "Picasso local clone token extraction: osmo.supply",
+            "rationale": "로컬 Picasso 클론 아카이브에서 추출한 시각 신호를 재사용 가능한 DUVU 토큰으로 환원했다. 원본 HTML/CSS 아카이브는 로컬 전용이며 패키지에는 포함하지 않는다.",
+            "references": [
+              "https://www.osmo.supply/",
+              "demo/clones/osmo/index.html"
+            ]
+          }
         }
       },
       "typography": {
@@ -5284,16 +5901,17 @@
     "space-stats-gap": "64px",
     "space-stat-label-gap": "4px",
     "stat-val-size": "48px",
-    "stat-label-size": "14px",
+    "stat-label-size": "16px",
     "hero-title-size": "clamp(52px, 9vw, 112px)",
     "hero-title-weight": "700",
     "hero-subtitle-size": "clamp(17px, 2vw, 24px)",
-    "section-label-size": "14px",
-    "section-title-size": "clamp(32px, 5vw, 56px)",
-    "section-title-weight": "600",
+    "section-label-size": "17px",
+    "section-label-gap": "20px",
+    "section-title-size": "clamp(44px, 6vw, 72px)",
+    "section-title-weight": "760",
     "card-padding": "36px",
     "color-grid-cols": "7",
-    "color-grid-cols-tablet": "5",
+    "color-grid-cols-tablet": "3",
     "color-grid-cols-mobile": "3",
     "color-grid-gap": "10px",
     "bp-mobile": "640px",
@@ -5303,13 +5921,13 @@
     "container-padding": "clamp(16px, 3vw, 24px)",
     "title-size": "clamp(28px, 5vw, 56px)",
     "subtitle-size": "clamp(16px, 2vw, 22px)",
-    "body-size": "clamp(14px, 1.2vw, 16px)",
+    "body-size": "clamp(17px, 1.2vw, 18px)",
     "content-max-width": "680px",
     "hero-title-line-height": "0.95",
-    "hero-title-letter-spacing": "-0.045em",
-    "section-title-line-height": "1.1",
-    "section-title-letter-spacing": "-0.035em",
-    "stat-val-letter-spacing": "-0.03em",
+    "hero-title-letter-spacing": "0",
+    "section-title-line-height": "0.98",
+    "section-title-letter-spacing": "0",
+    "stat-val-letter-spacing": "0",
     "metric-val-size": "36px",
     "chart-height": "64px",
     "preview-grid-gap": "20px",
@@ -5621,7 +6239,7 @@
           "mobile": "2열"
         }
       ],
-      "orphan_prevention": "grid 열 수 변경 시 마지막 줄에 1개만 남지 않도록 count를 조정. duvu audit이 자동 검사."
+      "singleton_last_row_prevention": "grid 열 수 변경 시 마지막 줄에 1개만 남지 않도록 count를 조정. duvu audit이 자동 검사."
     }
   },
   "interaction_patterns": [

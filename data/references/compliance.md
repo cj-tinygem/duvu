@@ -31,18 +31,17 @@ function ensureContrast(accentHex, bgHex, minRatio = 3):
 
 ### 버튼 텍스트 가독성
 
+DUVU는 `accent`와 `primary action fill`을 구분한다. 브랜드 색상 자체는 유지하되, 버튼처럼 작은 텍스트가 올라가는 면은 `action fill`로 약간 보정할 수 있다.
+
 ```
-function readableOnAccent(accentHex):
-  luminance = relativeLuminance(accent)
-  if luminance >= 0.4: return #000000  // 밝은 accent → 검은 텍스트
-  if luminance < 0.4 && saturation >= 50: return #ffffff
-  // 보라색 계열 특별 처리 (230° ~ 320°)
-  if isPurplish && lightness <= 60: return #ffffff
-  // 기본: 대비가 더 높은 쪽
-  return whiteContrast >= blackContrast ? #ffffff : #000000
+function resolveActionSurface(accentHex, preferredText):
+  text = preferredText ?? readableOnAccent(accentHex)
+  if contrastRatio(text, accentHex) >= 4.5: return { bg: accentHex, text }
+  // preferred text를 유지한 채 action fill만 명도 보정
+  return shiftLightnessUntilContrast(accentHex, text, 4.5)
 ```
 
-**알려진 한계**: Toss(#3182F6), Apple(#007AFF), Spotify(#1DB954) 등 브랜드 고유 색상은 흰 텍스트와 4.5:1 미달 가능. 이는 해당 브랜드의 실제 UI에서도 동일한 트레이드오프. WCAG AAA(7:1)가 아닌 AA(4.5:1) 기준이며, 대형 텍스트(18px+)는 3:1로 완화.
+**주의**: Toss(#3182F6), Apple(#007AFF), Spotify(#1DB954) 같은 브랜드 색상은 raw accent 위에 흰 텍스트를 올리면 4.5:1 미달일 수 있다. 이 경우 DUVU는 raw accent를 유지하고, primary action fill만 더 진하거나 옅게 보정한다.
 
 ---
 

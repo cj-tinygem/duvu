@@ -9,7 +9,7 @@
   },
   "type": "module",
   "keywords": ["design-system", "design-tokens", "css", "tailwind", "flutter", "swiftui", "unity", "ai-skill", "claude-code", "codex", "gemini"],
-  "files": ["bin/duvu.js", "bin/screenshot.js", "bin/link-smoke.js", "bin/package-smoke.js", "bin/security-smoke.js", "data/", "demo/index.html", "skills/", "README.md"],
+  "files": ["bin/duvu.js", "bin/screenshot.js", "bin/link-smoke.js", "bin/package-smoke.js", "bin/security-smoke.js", "bin/token-smoke.js", "data/", "demo/index.html", "lib/", "skills/", "README.md"],
   "dependencies": {
     "puppeteer-core": "^24.42.0"
   },
@@ -20,9 +20,11 @@
     "start": "node bin/duvu.js",
     "demo": "node bin/duvu.js demo",
     "screenshot": "node bin/screenshot.js --quick",
-    "test": "node bin/duvu.js audit && node bin/duvu.js show clone osmo >/dev/null && node bin/duvu.js generate toss --platform react-native >/dev/null && npm run test:links && npm run test:package && npm run test:security",
+    "test": "node bin/duvu.js audit && node bin/duvu.js show clone osmo >/dev/null && node bin/duvu.js generate toss --platform react-native >/dev/null && npm run test:tokens && npm run test:visual && npm run test:links && npm run test:package && npm run test:security",
     "test:links": "node bin/link-smoke.js",
     "test:package": "node bin/package-smoke.js",
-    "test:security": "node bin/security-smoke.js"
+    "test:security": "node bin/security-smoke.js",
+    "test:tokens": "node bin/token-smoke.js",
+    "test:visual": "node bin/screenshot.js --audit --out /tmp/duvu-visual-audit/dark && node bin/screenshot.js --audit --light --out /tmp/duvu-visual-audit/light"
   }
 }

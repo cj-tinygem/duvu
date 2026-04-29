@@ -35,12 +35,18 @@
   --duvu-font: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --duvu-font-display: 'Pretendard';
   --duvu-font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
-  --duvu-font-size-xs: 11px;
-  --duvu-font-size-sm: 13px;
-  --duvu-font-size-base: 14px;
-  --duvu-font-size-md: 15px;
-  --duvu-font-size-lg: 16px;
-  --duvu-font-size-xl: 18px;
+  --duvu-font-size-xs: 16px;
+  --duvu-font-size-sm: 16px;
+  --duvu-font-size-base: 17px;
+  --duvu-font-size-md: 18px;
+  --duvu-font-size-lg: 19px;
+  --duvu-font-size-xl: 21px;
+  --duvu-section-label-size: 17px;
+  --duvu-section-label-gap: 20px;
+  --duvu-section-title-size: clamp(44px, 6vw, 72px);
+  --duvu-section-title-weight: 760;
+  --duvu-section-title-line-height: 0.98;
+  --duvu-section-title-letter-spacing: 0;
 
   /* ── Shape (duvu generate: rounded) ── */
   --duvu-radius: 16px;
@@ -49,6 +55,7 @@
   --duvu-radius-full: 100px;
   --duvu-btn-radius: 10px;
   --duvu-card-radius: 16px;
+  --duvu-code-radius: clamp(6px, var(--duvu-radius-sm), 14px);
 
   /* ── Spacing (duvu generate: comfortable) ── */
   --duvu-space-xs: 4px;
@@ -58,8 +65,13 @@
   --duvu-space-xl: 32px;
   --duvu-space-2xl: 48px;
   --duvu-space-3xl: 64px;
+  --duvu-space-none: 0px;
   --duvu-space-hero: 200px;
   --duvu-space-section: 120px;
+  --duvu-space-card-tight: 2px;
+  --duvu-space-card-compact-y: 10px;
+  --duvu-space-card-compact-x: 12px;
+  --duvu-space-card-label-gap: 7px;
 
   /* ── Elevation ── */
   --duvu-card-shadow: var(--duvu-shadow-md, 0 1px 2px rgba(0,0,0,0.06), 0 4px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.03));
@@ -81,9 +93,9 @@
   --duvu-emphasis-1-bg: var(--duvu-accent);
   --duvu-emphasis-1-text: var(--duvu-btn-text);
   --duvu-emphasis-2-bg: var(--duvu-surface2);
-  --duvu-emphasis-2-text: var(--duvu-fg2);
+  --duvu-emphasis-2-text: var(--duvu-fg);
   --duvu-emphasis-3-bg: transparent;
-  --duvu-emphasis-3-text: var(--duvu-fg3);
+  --duvu-emphasis-3-text: var(--duvu-fg2);
 
   /* ── Semantic ── */
   --duvu-success: #2A9D8F;
@@ -103,6 +115,23 @@
   --duvu-spacing-density: 1;
   --duvu-gradient: none;
   --duvu-gradient-intensity: 0;
+  --duvu-balanced-section-gap: var(--duvu-space-section);
+  --duvu-balanced-hero-top: var(--duvu-space-hero);
+  --duvu-balanced-title-margin: var(--duvu-space-title-margin, 48px);
+  --duvu-balanced-subtitle-margin: var(--duvu-space-subtitle-margin, 40px);
+  --duvu-balanced-section-label-gap: var(--duvu-section-label-gap, 20px);
+  --duvu-balanced-pill-gap: var(--duvu-pill-grid-gap, var(--duvu-space-sm));
+  --duvu-balanced-tab-gap: var(--duvu-space-xs);
+  --duvu-balanced-preview-gap: var(--duvu-preview-grid-gap, var(--duvu-space-md));
+  --duvu-balanced-hero-sub-max-width: var(--duvu-hero-sub-max-width, 600px);
+  --duvu-balanced-content-max-width: var(--duvu-content-max-width, 680px);
+  --duvu-balanced-section-title-max-width: 960px;
+  --duvu-balanced-pill-min-width: 132px;
+  --duvu-balanced-pill-max-cols: 6;
+  --duvu-balanced-tab-min-width: 104px;
+  --duvu-balanced-tab-max-cols: 7;
+  --duvu-balanced-card-padding: var(--duvu-card-padding, 24px);
+  --duvu-code-tab-cols: 7;
 
   /* ── Touch Target (HIG 44px) ── */
   --duvu-touch-min: 44px;
@@ -188,6 +217,20 @@ a { color: inherit; text-decoration: none; }
   gap: var(--duvu-space-sm);
 }
 
+.nav-link {
+  display: none;
+  color: var(--duvu-fg2);
+  text-decoration: none;
+  font-size: var(--duvu-font-size-sm);
+  font-weight: 500;
+  padding: var(--duvu-space-xs) var(--duvu-space-sm);
+  border-radius: var(--duvu-radius-xs);
+  transition: color var(--duvu-dur-fast);
+}
+.nav-link:hover {
+  color: var(--duvu-fg);
+}
+
 .nav-theme {
   display: flex;
   align-items: center;
@@ -210,7 +253,7 @@ a { color: inherit; text-decoration: none; }
 [data-theme="light"] .ico-moon { display: none; }
 [data-theme="light"] .nav { background: var(--duvu-bg); box-shadow: var(--duvu-shadow-sm); }
 
-[data-theme="light"] .color-card { background: #f8f8f8; }
+[data-theme="light"] .color-card { background: var(--duvu-surface); }
 [data-theme="light"] .color-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 [data-theme="light"] .p-card { box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03); }
 [data-theme="light"] .pill { background: rgba(0,0,0,0.04); }
@@ -243,7 +286,7 @@ section {
 
 /* ─── HERO ─── */
 .hero {
-  padding: var(--duvu-space-hero, 160px) 0 var(--duvu-space-section, 96px);
+  padding: var(--duvu-balanced-hero-top, var(--duvu-space-hero, 160px)) 0 var(--duvu-balanced-section-gap, var(--duvu-space-section, 96px));
   text-align: center;
 }
 
@@ -251,7 +294,7 @@ section {
   font-size: var(--duvu-hero-title-size, clamp(52px, 9vw, 112px));
   font-weight: var(--duvu-hero-title-weight, 700);
   line-height: var(--duvu-hero-title-line-height, 0.95);
-  letter-spacing: var(--duvu-hero-title-letter-spacing, -0.045em);
+  letter-spacing: var(--duvu-hero-title-letter-spacing, 0);
   font-family: var(--duvu-font-display), var(--duvu-font);
   text-wrap: balance;
   word-break: keep-all;
@@ -270,8 +313,10 @@ section {
   letter-spacing: 0.02em;
   line-height: 1.6;
   color: var(--duvu-fg2);
-  max-width: var(--duvu-hero-sub-max-width, 600px);
-  margin: 0 auto var(--duvu-space-subtitle-margin, 48px);
+  max-width: var(--duvu-balanced-hero-sub-max-width, var(--duvu-hero-sub-max-width, 600px));
+  margin-block-start: 0;
+  margin-block-end: var(--duvu-balanced-subtitle-margin, var(--duvu-space-subtitle-margin, 48px));
+  margin-inline: auto;
   word-break: keep-all;
   text-wrap: balance;
   transition: color var(--duvu-dur) var(--duvu-ease);
@@ -285,7 +330,16 @@ section {
   margin-bottom: var(--duvu-space-2xl, 48px);
 }
 
-/* 모바일: 통계 4개를 2×2 그리드로 정렬 — orphan 방지 */
+html[data-balance-density="ultra-tight"] .hero-stats,
+html[data-balance-density="compact"] .hero-stats {
+  gap: var(--duvu-space-xl);
+}
+
+html[data-balance-density="airy"] .hero-stats {
+  gap: calc(var(--duvu-space-stats-gap) + var(--duvu-space-sm));
+}
+
+/* 모바일: 통계 4개를 2×2 그리드로 정렬 — singleton 마지막 줄 방지 */
 @media (max-width: 640px) {
   .hero-stats {
     display: grid;
@@ -305,7 +359,7 @@ section {
 .hero-stat-val {
   font-size: var(--duvu-stat-val-size, 48px);
   font-weight: 700;
-  letter-spacing: var(--duvu-stat-val-letter-spacing, -0.03em);
+  letter-spacing: var(--duvu-stat-val-letter-spacing, 0);
   color: var(--duvu-accent);
   font-variant-numeric: tabular-nums;
   transition: color var(--duvu-dur) var(--duvu-ease);
@@ -313,7 +367,7 @@ section {
 }
 
 .hero-stat-label {
-  font-size: var(--duvu-stat-label-size, 14px);
+  font-size: var(--duvu-stat-label-size, var(--duvu-font-size-xs));
   font-weight: 500;
   color: var(--duvu-fg2);
   margin-top: var(--duvu-space-stat-label-gap, 4px);
@@ -324,16 +378,16 @@ section {
 
 /* ─── PRESET EXPLORER ─── */
 .explorer {
-  padding: var(--duvu-space-section) 0 var(--duvu-space-2xl);
+  padding: var(--duvu-balanced-section-gap, var(--duvu-space-section)) 0 var(--duvu-space-2xl);
 }
 
 .section-label {
   font-size: var(--duvu-section-label-size, var(--duvu-font-size-base));
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--duvu-accent);
-  margin-bottom: var(--duvu-space-md);
+  margin-bottom: var(--duvu-balanced-section-label-gap, var(--duvu-section-label-gap, var(--duvu-space-lg)));
   text-align: center;
 }
 
@@ -341,12 +395,38 @@ section {
   font-size: var(--duvu-section-title-size, clamp(32px, 5vw, 56px));
   font-weight: var(--duvu-section-title-weight, 600);
   line-height: var(--duvu-section-title-line-height, 1.1);
-  letter-spacing: var(--duvu-section-title-letter-spacing, -0.035em);
-  margin-bottom: var(--duvu-space-title-margin, 48px);
+  letter-spacing: var(--duvu-section-title-letter-spacing, 0);
+  margin-bottom: var(--duvu-balanced-title-margin, var(--duvu-space-2xl));
   text-wrap: balance;
   word-break: keep-all;
   font-family: var(--duvu-font-display), var(--duvu-font);
   text-align: center;
+  max-width: var(--duvu-balanced-section-title-max-width, 960px);
+  margin-inline: auto;
+}
+
+@media (min-width: 769px) {
+  html[data-balance-alignment="start"] .hero,
+  html[data-balance-alignment="start"] .section-label,
+  html[data-balance-alignment="start"] .section-title {
+    text-align: left;
+  }
+
+  html[data-balance-alignment="start"] .hero-sub,
+  html[data-balance-alignment="start"] .section-title {
+    margin-inline: 0;
+  }
+
+  html[data-balance-alignment="start"] .hero-stats,
+  html[data-balance-alignment="start"] .hero-actions {
+    justify-content: flex-start;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  html[data-balance-alignment="start"] .tab-bar {
+    justify-content: flex-start;
+  }
 }
 
 .section-accent {
@@ -364,7 +444,7 @@ section {
 /* ─── TABS ─── */
 .tab-bar {
   display: flex;
-  gap: var(--duvu-space-xs);
+  gap: var(--duvu-balanced-tab-gap, var(--duvu-space-xs));
   margin-bottom: var(--duvu-space-xl);
   flex-wrap: wrap;
   justify-content: center;
@@ -378,7 +458,7 @@ section {
   font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   border: none;
   background: transparent;
-  color: var(--duvu-fg3);
+  color: var(--duvu-fg);
   cursor: pointer;
   border-radius: var(--duvu-radius-full);
   transition: background var(--duvu-dur-fast) var(--duvu-ease), color var(--duvu-dur-fast) var(--duvu-ease);
@@ -389,7 +469,7 @@ section {
 }
 
 .tab-btn:hover {
-  color: var(--duvu-fg2);
+  color: var(--duvu-fg);
   background: rgba(255,255,255,0.04);
 }
 [data-theme="light"] .tab-btn:hover {
@@ -397,8 +477,8 @@ section {
 }
 
 .tab-btn.active {
-  background: var(--duvu-accent);
-  color: var(--duvu-btn-text);
+  background: var(--duvu-emphasis-1-bg);
+  color: var(--duvu-emphasis-1-text);
 }
 
 /* ─── TAB PANELS ─── */
@@ -413,8 +493,8 @@ section {
 /* ─── COLOR CARDS ─── */
 .color-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: var(--duvu-space-sm);
+  grid-template-columns: repeat(var(--duvu-balanced-cols, 6), minmax(0, 1fr));
+  gap: var(--duvu-space-md);
 }
 
 .color-card {
@@ -426,6 +506,9 @@ section {
   border: none;
   text-align: left;
   overflow: hidden;
+  height: var(--duvu-palette-card-height, 112px);
+  display: flex;
+  flex-direction: column;
 }
 
 .color-card:hover {
@@ -440,7 +523,8 @@ section {
 
 .color-swatch {
   width: 100%;
-  aspect-ratio: 2.2 / 1;
+  height: var(--duvu-palette-swatch-height, 38px);
+  flex: 0 0 var(--duvu-palette-swatch-height, 38px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -460,29 +544,38 @@ section {
 }
 
 .color-info {
-  padding: var(--duvu-space-sm) var(--duvu-space-sm);
+  padding: var(--duvu-palette-info-pad-y, var(--duvu-space-sm)) var(--duvu-palette-info-pad-x, var(--duvu-space-card-compact-x));
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: var(--duvu-palette-info-justify, center);
+  gap: var(--duvu-palette-info-gap, var(--duvu-space-card-label-gap));
 }
 
 .color-name {
   font-size: var(--duvu-font-size-base);
-  font-weight: 600;
+  font-weight: 700;
   color: var(--duvu-fg);
-  line-height: 1.3;
+  line-height: 1.16;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .color-cat {
-  font-size: var(--duvu-font-size-xs);
-  color: var(--duvu-fg3);
+  font-size: var(--duvu-font-size-sm);
+  color: var(--duvu-fg);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  line-height: 1.1;
 }
 
 /* ─── PILL PRESETS (typo, layout, style, motion) ─── */
 .pill-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--duvu-pill-grid-gap, var(--duvu-space-sm));
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(var(--duvu-balanced-cols, 3), minmax(0, 1fr));
+  gap: var(--duvu-pill-grid-gap, var(--duvu-balanced-pill-gap, var(--duvu-space-sm)));
+  justify-content: stretch;
+  align-items: stretch;
 }
 
 .pill {
@@ -492,7 +585,7 @@ section {
   font-family: var(--duvu-font);
   border: none;
   background: transparent;
-  color: var(--duvu-fg3);
+  color: var(--duvu-fg);
   cursor: pointer;
   border-radius: var(--duvu-radius-full);
   transition: color var(--duvu-dur-fast), background var(--duvu-dur-fast) var(--duvu-ease-spring), box-shadow var(--duvu-dur-fast) var(--duvu-ease-spring), transform var(--duvu-dur-fast) var(--duvu-ease-spring);
@@ -500,18 +593,20 @@ section {
   min-height: var(--duvu-touch-min);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--duvu-space-sm);
-  flex-shrink: 0;
+  width: 100%;
+  min-width: 0;
 }
 
 .pill:hover {
-  color: var(--duvu-fg2);
+  color: var(--duvu-fg);
   background: var(--duvu-surface);
 }
 
 .pill.active {
-  background: var(--duvu-accent);
-  color: var(--duvu-btn-text);
+  background: var(--duvu-emphasis-1-bg);
+  color: var(--duvu-emphasis-1-text);
   box-shadow: 0 2px 10px rgba(var(--duvu-accent-rgb), 0.25);
   transform: scale(1.04);
 }
@@ -546,7 +641,7 @@ section {
 
 /* ─── LIVE PREVIEW ─── */
 .preview-section {
-  padding: var(--duvu-space-section) 0;
+  padding: var(--duvu-balanced-section-gap, var(--duvu-space-section)) 0;
 }
 
 /* preview-watermark CSS 제거됨 */
@@ -558,7 +653,7 @@ section {
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--duvu-preview-grid-gap, var(--duvu-space-md));
+  gap: var(--duvu-preview-grid-gap, var(--duvu-balanced-preview-gap, var(--duvu-space-md)));
   position: relative;
   z-index: 1;
   transition: gap 0.3s var(--duvu-ease);
@@ -568,7 +663,6 @@ section {
   .preview-grid {
     grid-template-columns: 1fr;
   }
-  .color-grid { grid-template-columns: repeat(5, 1fr); }
 }
 
 .p-card {
@@ -576,7 +670,7 @@ section {
   z-index: 1;
   background: var(--duvu-surface);
   border-radius: var(--duvu-card-radius);
-  padding: var(--duvu-card-padding, 32px);
+  padding: var(--duvu-balanced-card-padding, var(--duvu-card-padding, 32px));
   box-shadow: var(--duvu-card-shadow);
   transition:
     background 0.5s var(--duvu-ease-spring),
@@ -616,7 +710,7 @@ section {
 
 /* Chart switcher */
 .chart-switcher {
-  display: flex; gap: 2px;
+  display: flex; gap: var(--duvu-space-xs);
 }
 .chart-sw-btn {
   width: var(--duvu-touch-min); height: var(--duvu-touch-min);
@@ -646,17 +740,17 @@ section {
 .dc-badge {
   font-size: var(--duvu-font-size-sm);
   font-weight: 600;
-  padding: 3px var(--duvu-space-sm);
+  padding: var(--duvu-space-xs) var(--duvu-space-sm);
   border-radius: var(--duvu-radius-full);
   background: rgba(var(--duvu-accent-rgb), 0.1);
-  color: var(--duvu-accent);
+  color: var(--duvu-fg);
   transition: color var(--duvu-dur), background var(--duvu-dur);
 }
 
 .dc-value {
   font-size: var(--duvu-metric-val-size, 36px);
   font-weight: 700;
-  letter-spacing: var(--duvu-stat-val-letter-spacing, -0.03em);
+  letter-spacing: var(--duvu-stat-val-letter-spacing, 0);
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
   color: var(--duvu-fg);
@@ -719,6 +813,14 @@ section {
   box-shadow: 0 4px 16px rgba(var(--duvu-accent-rgb), 0.35);
 }
 
+.btn-emphasis {
+  background: var(--duvu-emphasis-1-bg);
+  color: var(--duvu-emphasis-1-text);
+}
+.btn-emphasis:hover {
+  box-shadow: 0 4px 16px rgba(var(--duvu-accent-rgb), 0.35);
+}
+
 .btn-secondary {
   background: var(--duvu-emphasis-2-bg);
   color: var(--duvu-emphasis-2-text);
@@ -757,7 +859,7 @@ section {
   box-shadow: 0 0 0 2px rgba(var(--duvu-accent-rgb), 0.3);
 }
 .form-pw { letter-spacing: 0.15em; color: var(--duvu-fg3); }
-.form-btn { margin-top: 4px; }
+.form-btn { margin-top: var(--duvu-space-xs); }
 
 /* Table Card */
 .dc-table { width: 100%; border-collapse: collapse; font-size: var(--duvu-font-size-base); }
@@ -768,7 +870,7 @@ section {
 .dc-table-wrap { overflow-x: auto; border-radius: var(--duvu-radius-sm, 10px); }
 
 /* List Card */
-.card-list { display: flex; flex-direction: column; gap: 2px; }
+.card-list { display: flex; flex-direction: column; gap: var(--duvu-space-xs); }
 .list-item {
   display: flex;
   align-items: center;
@@ -795,7 +897,7 @@ section {
 
 .list-check {
   font-size: var(--duvu-font-size-base);
-  color: var(--duvu-accent);
+  color: var(--duvu-fg);
   font-weight: 600;
   transition: color var(--duvu-dur);
 }
@@ -803,10 +905,10 @@ section {
 .list-tag {
   font-size: var(--duvu-font-size-sm);
   font-weight: 600;
-  padding: 3px var(--duvu-space-sm);
+  padding: var(--duvu-space-xs) var(--duvu-space-sm);
   border-radius: var(--duvu-radius-full);
   background: rgba(var(--duvu-accent-rgb), 0.1);
-  color: var(--duvu-accent);
+  color: var(--duvu-fg);
   transition: color var(--duvu-dur), background var(--duvu-dur);
 }
 
@@ -819,13 +921,35 @@ section {
 
 /* ─── TEMPLATES ─── */
 .templates-section {
-  padding: var(--duvu-space-section) 0;
+  padding: var(--duvu-balanced-section-gap, var(--duvu-space-section)) 0;
 }
 
 .template-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--duvu-space-sm);
+  align-items: stretch;
+}
+
+@media (max-width: 1280px) {
+  .template-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+@media (max-width: 900px) {
+  .template-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+@media (max-width: 640px) {
+  .template-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+html[data-balance-density="ultra-tight"] .template-grid,
+html[data-balance-density="compact"] .template-grid {
+  gap: var(--duvu-space-xs);
+}
+
+html[data-balance-density="airy"] .template-grid {
+  gap: var(--duvu-space-md);
 }
 
 .tpl-card {
@@ -833,12 +957,15 @@ section {
   padding: var(--duvu-space-sm) var(--duvu-space-md);
   border-radius: var(--duvu-card-radius);
   background: var(--duvu-surface);
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--duvu-space-sm);
   transition: all var(--duvu-dur-fast) var(--duvu-ease-spring);
-  white-space: nowrap;
   min-height: var(--duvu-touch-min);
+  max-width: 100%;
+  text-align: center;
+  min-width: 0;
 }
 
 .tpl-card:hover {
@@ -860,29 +987,37 @@ section {
   font-size: var(--duvu-font-size-sm);
   font-weight: 600;
   color: var(--duvu-fg);
+  white-space: nowrap;
+  line-height: 1.15;
 }
 
 .tpl-ref {
   font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
+  overflow-wrap: anywhere;
+  white-space: normal;
+  line-height: 1.15;
 }
 
 /* ─── CODE OUTPUT ─── */
 .code-section {
-  padding: var(--duvu-space-section) 0;
+  padding: var(--duvu-balanced-section-gap, var(--duvu-space-section)) 0;
 }
 
 .code-tabs {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
+  display: grid;
+  grid-template-columns: repeat(var(--duvu-code-tab-cols, 7), minmax(0, 1fr));
+  gap: var(--duvu-balanced-tab-gap, var(--duvu-space-sm));
+  margin-bottom: var(--duvu-space-md);
+  overflow: visible;
+  width: 100%;
+  justify-content: center;
 }
-.code-tabs::-webkit-scrollbar { display: none; }
 
 .code-tab {
-  padding: var(--duvu-space-sm) var(--duvu-space-md);
+  min-width: 0;
+  width: 100%;
+  padding: var(--duvu-space-sm) var(--duvu-space-xs);
   font-size: var(--duvu-font-size-sm);
   font-weight: 500;
   font-family: var(--duvu-font);
@@ -890,10 +1025,16 @@ section {
   background: transparent;
   color: var(--duvu-fg3);
   cursor: pointer;
-  white-space: nowrap;
-  border-radius: var(--duvu-btn-radius) var(--duvu-btn-radius) 0 0;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+  border-radius: var(--duvu-btn-radius);
   transition: all var(--duvu-dur-fast);
   min-height: var(--duvu-touch-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.15;
 }
 
 .code-tab:hover { color: var(--duvu-fg); }
@@ -904,10 +1045,10 @@ section {
 
 .code-block {
   background: var(--duvu-surface);
-  border-radius: 0 var(--duvu-card-radius) var(--duvu-card-radius) var(--duvu-card-radius);
+  border-radius: var(--duvu-card-radius);
   padding: var(--duvu-space-lg);
   font-family: var(--duvu-font-mono);
-  font-size: 12px;
+  font-size: var(--duvu-font-size-sm);
   line-height: 1.65;
   color: var(--duvu-fg2);
   overflow-x: auto;
@@ -920,15 +1061,15 @@ section {
 }
 .code-block::-webkit-scrollbar { height: 4px; }
 .code-block::-webkit-scrollbar-track { background: transparent; }
-.code-block::-webkit-scrollbar-thumb { background: var(--duvu-fg3); border-radius: 4px; }
+.code-block::-webkit-scrollbar-thumb { background: var(--duvu-fg3); border-radius: var(--duvu-radius-xs); }
 
 .code-block .hl-key { color: var(--duvu-accent); }
 .code-block .hl-val { color: var(--duvu-fg); }
-.code-block .hl-str { color: #7ec8a4; }
+.code-block .hl-str { color: var(--duvu-success); }
 
-[data-theme="light"] .code-block .hl-str { color: #2d7a5a; }
-[data-theme="light"] .code-block { background: #ffffff; border: 1px solid rgba(0,0,0,0.06); }
-[data-theme="light"] .code-tab.active { background: #ffffff; }
+[data-theme="light"] .code-block .hl-str { color: var(--duvu-success); }
+[data-theme="light"] .code-block { background: var(--duvu-surface); border: 1px solid rgba(0,0,0,0.06); }
+[data-theme="light"] .code-tab.active { background: var(--duvu-surface); }
 
 .copy-btn {
   position: absolute;
@@ -957,7 +1098,7 @@ section {
   color: var(--duvu-fg);
   background: var(--duvu-surface);
 }
-.copy-btn.copied { color: #34D399; opacity: 1; }
+.copy-btn.copied { color: var(--duvu-success); opacity: 1; }
 
 /* ─── FOOTER ─── */
 footer {
@@ -997,8 +1138,16 @@ footer a:hover { color: var(--duvu-fg2); }
 
 /* ─── PREVIEW LAYOUTS ─── */
 .preview-layout-2col { grid-template-columns: repeat(2, 1fr); }
-.preview-layout-single { grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; }
-.preview-layout-dense { grid-template-columns: repeat(3, 1fr); }
+.preview-layout-single { grid-template-columns: 1fr; max-width: min(100%, var(--duvu-balanced-content-max-width, 800px)); margin: 0 auto; }
+.preview-layout-dense { grid-template-columns: repeat(auto-fit, minmax(var(--duvu-balanced-preview-min-width, 280px), 1fr)); }
+
+html[data-balance-journey="operational"] .preview-layout-dense {
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--duvu-balanced-preview-min-width, 280px) * 0.92), 1fr));
+}
+
+html[data-balance-journey="immersive"] .preview-layout-dense {
+  grid-template-columns: repeat(auto-fit, minmax(calc(var(--duvu-balanced-preview-min-width, 280px) * 1.06), 1fr));
+}
 
 @media (max-width: 1024px) { .preview-layout-dense { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) {
@@ -1008,25 +1157,26 @@ footer a:hover { color: var(--duvu-fg2); }
 
 /* ─── ARTICLE CARD ─── */
 .article-title {
-  font-size: clamp(22px, 3vw, 32px); font-weight: 700; color: var(--duvu-fg);
-  line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance;
+  font-size: var(--duvu-font-size-3xl, clamp(22px, 3vw, 32px)); font-weight: 700; color: var(--duvu-fg);
+  line-height: 1.2; letter-spacing: 0; text-wrap: balance;
   margin-bottom: var(--duvu-space-md, 16px);
 }
 .article-excerpt {
-  font-size: 15px; color: var(--duvu-fg2); line-height: 1.7; max-width: 65ch;
+  font-size: var(--duvu-font-size-base); color: var(--duvu-fg2); line-height: 1.7; max-width: var(--duvu-balanced-content-max-width, 65ch);
 }
 .article-meta {
-  font-size: 12px; color: var(--duvu-fg3); margin-top: var(--duvu-space-md, 16px);
+  font-size: var(--duvu-font-size-sm); color: var(--duvu-fg3); margin-top: var(--duvu-space-md, 16px);
 }
 
 /* ─── QUOTE CARD ─── */
 .quote-text {
-  font-size: clamp(18px, 2.5vw, 22px); font-style: italic; color: var(--duvu-fg); line-height: 1.6;
+  font-size: var(--duvu-font-size-xl, clamp(18px, 2.5vw, 22px)); font-style: italic; color: var(--duvu-fg); line-height: 1.6;
   padding-left: var(--duvu-space-lg, 24px);
   border-left: 3px solid var(--duvu-accent);
+  max-width: var(--duvu-balanced-content-max-width, 65ch);
 }
 .quote-author {
-  font-size: 13px; color: var(--duvu-fg3); margin-top: var(--duvu-space-sm, 8px);
+  font-size: var(--duvu-font-size-sm); color: var(--duvu-fg3); margin-top: var(--duvu-space-sm, 8px);
   padding-left: var(--duvu-space-lg, 24px);
 }
 
@@ -1039,8 +1189,8 @@ footer a:hover { color: var(--duvu-fg2); }
   background: linear-gradient(135deg, var(--duvu-surface) 0%, rgba(var(--duvu-accent-rgb), 0.04) 100%);
 }
 .hero-card-title {
-  font-size: clamp(28px, 5vw, 48px); font-weight: 800; color: var(--duvu-fg);
-  line-height: 1.1; letter-spacing: -0.03em; text-wrap: balance;
+  font-size: var(--duvu-font-size-5xl, clamp(28px, 5vw, 48px)); font-weight: 800; color: var(--duvu-fg);
+  line-height: 1.1; letter-spacing: 0; text-wrap: balance;
 }
 .hero-card-sub {
   font-size: 16px; color: var(--duvu-fg2); margin-top: var(--duvu-space-sm, 8px);
@@ -1048,8 +1198,8 @@ footer a:hover { color: var(--duvu-fg2); }
 }
 .hero-card-cta {
   display: inline-flex; align-items: center; margin-top: var(--duvu-space-lg, 24px);
-  padding: 12px 28px; background: var(--duvu-emphasis-1-bg); color: var(--duvu-emphasis-1-text);
-  border: none; border-radius: var(--duvu-btn-radius); font-size: 15px; font-weight: 600;
+  padding: var(--duvu-space-sm) var(--duvu-space-xl); background: var(--duvu-emphasis-1-bg); color: var(--duvu-emphasis-1-text);
+  border: none; border-radius: var(--duvu-btn-radius); font-size: var(--duvu-font-size-base); font-weight: 600;
   font-family: var(--duvu-font); min-height: 44px; cursor: pointer;
   transition: transform 0.2s var(--duvu-ease);
 }
@@ -1061,7 +1211,7 @@ footer a:hover { color: var(--duvu-fg2); }
   text-align: center;
 }
 .stat-item-value {
-  font-size: clamp(22px, 3vw, 28px); font-weight: 700; color: var(--duvu-fg); font-variant-numeric: tabular-nums;
+  font-size: var(--duvu-font-size-3xl, clamp(22px, 3vw, 28px)); font-weight: 700; color: var(--duvu-fg); font-variant-numeric: tabular-nums;
 }
 .stat-item-label {
   font-size: var(--duvu-font-size-xs); color: var(--duvu-fg3); margin-top: var(--duvu-space-xs); text-transform: uppercase;
@@ -1094,26 +1244,26 @@ footer a:hover { color: var(--duvu-fg2); }
 
 /* ─── CODE BLOCK ─── */
 .code-preview-block {
-  background: var(--duvu-surface2); border-radius: var(--duvu-radius-sm, 10px);
+  background: var(--duvu-surface2); border-radius: var(--duvu-code-radius);
   padding: var(--duvu-space-md, 16px); font-family: var(--duvu-font-mono, 'SF Mono', monospace);
-  font-size: 12px; line-height: 1.65; color: var(--duvu-fg2); white-space: pre;
+  font-size: var(--duvu-font-size-sm); line-height: 1.65; color: var(--duvu-fg2); white-space: pre;
   overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--duvu-surface2) transparent;
 }
 .code-preview-block::-webkit-scrollbar { height: 4px; }
 .code-preview-block::-webkit-scrollbar-track { background: transparent; }
-.code-preview-block::-webkit-scrollbar-thumb { background: var(--duvu-fg3); border-radius: 4px; }
+.code-preview-block::-webkit-scrollbar-thumb { background: var(--duvu-fg3); border-radius: var(--duvu-radius-xs); }
 .code-preview-block .hl-key { color: var(--duvu-accent); }
 
 /* ─── CHAT ─── */
 .chat-messages { display: flex; flex-direction: column; gap: var(--duvu-space-sm); }
 .chat-msg { max-width: 80%; padding: var(--duvu-space-sm) var(--duvu-space-sm); border-radius: var(--duvu-radius); font-size: var(--duvu-font-size-base); line-height: 1.4; }
 .chat-incoming { align-self: flex-start; background: var(--duvu-surface2); color: var(--duvu-fg); border-bottom-left-radius: 4px; }
-.chat-outgoing { align-self: flex-end; background: var(--duvu-accent); color: var(--duvu-btn-text); border-bottom-right-radius: 4px; }
-.chat-meta { font-size: var(--duvu-font-size-xs); color: var(--duvu-fg3); margin-top: 2px; }
+.chat-outgoing { align-self: flex-end; background: var(--duvu-emphasis-1-bg); color: var(--duvu-emphasis-1-text); border-bottom-right-radius: 4px; }
+.chat-meta { font-size: var(--duvu-font-size-xs); color: var(--duvu-fg3); margin-top: var(--duvu-space-xs); }
 .chat-incoming .chat-meta { text-align: left; }
-.chat-outgoing .chat-meta { text-align: right; color: var(--duvu-btn-text); opacity: 0.7; }
+.chat-outgoing .chat-meta { text-align: right; color: var(--duvu-emphasis-1-text); opacity: 0.7; }
 
 /* ─── WELLNESS ─── */
 .wellness-ring-container { display: flex; align-items: center; gap: var(--duvu-space-lg, 24px); }
@@ -1122,8 +1272,8 @@ footer a:hover { color: var(--duvu-fg2); }
 .wellness-ring-bg { fill: none; stroke: var(--duvu-surface2); stroke-width: 8; }
 .wellness-ring-fill { fill: none; stroke: var(--duvu-accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 0.6s var(--duvu-ease); }
 .wellness-info { flex: 1; }
-.wellness-current { font-size: clamp(18px, 2.5vw, 22px); font-weight: 700; color: var(--duvu-fg); }
-.wellness-goal { font-size: var(--duvu-font-size-sm); color: var(--duvu-fg3); margin-top: 2px; }
+.wellness-current { font-size: var(--duvu-font-size-xl, clamp(18px, 2.5vw, 22px)); font-weight: 700; color: var(--duvu-fg); }
+.wellness-goal { font-size: var(--duvu-font-size-sm); color: var(--duvu-fg3); margin-top: var(--duvu-space-xs); }
 
 /* ─── PROFILE ─── */
 .profile-row { display: flex; align-items: center; gap: var(--duvu-space-md, 16px); }
@@ -1156,7 +1306,7 @@ footer a:hover { color: var(--duvu-fg2); }
 .marquee-sep {
   color: var(--duvu-accent);
   margin: 0 var(--duvu-space-md);
-  font-size: 10px;
+  font-size: var(--duvu-font-size-xs);
 }
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
@@ -1168,26 +1318,44 @@ footer a:hover { color: var(--duvu-fg2); }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 640px) {
-  .hero { padding: calc(var(--duvu-space-hero, 200px) * 0.5) var(--duvu-space-md) var(--duvu-space-xl); }
+  .hero { padding: var(--duvu-space-section) var(--duvu-space-md) var(--duvu-space-xl); }
   .hero-sub { max-width: 90%; }
   .hero-actions { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
   .hero-actions .btn { width: 100% !important; text-align: center; }
   .hero-cta { width: 100%; padding: var(--duvu-space-md) var(--duvu-space-lg); }
-  .color-grid { grid-template-columns: repeat(3, 1fr); }
-  .tab-bar { gap: var(--duvu-space-xs); overflow-x: auto; flex-wrap: nowrap; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .tab-bar::-webkit-scrollbar { display: none; }
-  .tab-btn { padding: var(--duvu-space-sm) var(--duvu-space-md); font-size: var(--duvu-font-size-base); flex-shrink: 0; min-height: var(--duvu-touch-min); }
+  .color-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--duvu-space-sm); }
+  .color-name { font-size: var(--duvu-font-size-sm); line-height: 1.12; }
+  .color-cat { font-size: var(--duvu-font-size-xs); line-height: 1.05; }
+  .tab-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--duvu-space-sm);
+    overflow: visible;
+    width: 100%;
+  }
+  .tab-btn {
+    justify-content: center;
+    padding: var(--duvu-space-sm) var(--duvu-space-xs);
+    font-size: var(--duvu-font-size-sm);
+    min-height: var(--duvu-touch-min);
+    min-width: 0;
+    width: 100%;
+  }
+  .code-tabs {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--duvu-space-sm);
+  }
   .preview-grid { gap: var(--duvu-space-sm); }
   .p-card { padding: var(--duvu-space-lg); }
   .dc-value { font-size: 36px; }
   .dc-label { font-size: var(--duvu-font-size-md); }
-  .dc-badge { font-size: var(--duvu-font-size-base); padding: 5px var(--duvu-space-sm); }
+  .dc-badge { font-size: var(--duvu-font-size-base); padding: var(--duvu-space-xs) var(--duvu-space-sm); }
   .dc-sub { font-size: var(--duvu-font-size-base); }
   .btn { padding: var(--duvu-space-sm) var(--duvu-space-lg); font-size: var(--duvu-font-size-lg); min-height: 48px; }
   .form-label { font-size: var(--duvu-font-size-base); }
   .form-input { padding: var(--duvu-space-sm) var(--duvu-space-md); font-size: var(--duvu-font-size-lg); min-height: 48px; }
   .list-text { font-size: var(--duvu-font-size-md); }
-  .list-tag { font-size: var(--duvu-font-size-sm); padding: 5px var(--duvu-space-sm); }
+  .list-tag { font-size: var(--duvu-font-size-sm); padding: var(--duvu-space-xs) var(--duvu-space-sm); }
   footer { flex-direction: column; gap: var(--duvu-space-sm); font-size: var(--duvu-font-size-sm); }
 }
 
@@ -1255,6 +1423,10 @@ footer a:hover { color: var(--duvu-fg2); }
   text-align: center;
 }
 </style>
+<script type="module">
+import * as DuvuBalance from '../lib/duvu-balance.js';
+window.DUVU_BALANCE = DuvuBalance;
+</script>
 <script>
 /* ═══════════════════════════════════════
    DUVU v19 Demo — Core Logic
@@ -1344,6 +1516,36 @@ function readableOnAccent(hex) {
   return crWhite >= crBlack ? '#ffffff' : '#000000';
 }
 
+function isHexColor(value) {
+  return typeof value === 'string' && /^#[0-9a-fA-F]{6}$/.test(value);
+}
+
+function resolvePresetAccentText(preset, accentHex, options = {}) {
+  if (!isHexColor(accentHex)) return '#ffffff';
+  if (!options.customOverride && isHexColor(preset?.btnText) && contrastRatio(preset.btnText, accentHex) >= 4.5) {
+    return preset.btnText;
+  }
+  return readableOnAccent(accentHex);
+}
+
+function resolveActionSurface(accentHex, preferredText, minRatio = 4.5) {
+  const text = preferredText || readableOnAccent(accentHex);
+  if (contrastRatio(text, accentHex) >= minRatio) {
+    return { bg: accentHex, text };
+  }
+  const [h, s, l] = hexToHSL(accentHex);
+  const lighten = relativeLuminance(text) < 0.5;
+  const step = lighten ? 1.5 : -1.5;
+  const limit = lighten ? 95 : 5;
+  for (let nextL = l; lighten ? nextL <= limit : nextL >= limit; nextL += step) {
+    const candidate = hslToHex(h, s, nextL);
+    if (contrastRatio(text, candidate) >= minRatio) {
+      return { bg: candidate, text };
+    }
+  }
+  return { bg: accentHex, text: readableOnAccent(accentHex) };
+}
+
 function deriveTheme(sourceHex) {
   const [h, s] = hexToHSL(sourceHex);
   const bgSat = Math.min(s, 15);
@@ -1399,6 +1601,19 @@ function renderCharts() {
       }).join('')}
     </svg>`;
   });
+
+  // 도넛 차트
+  document.querySelectorAll('.chart-donut').forEach(container => {
+    const value = 72;
+    const radius = 17;
+    const circumference = 2 * Math.PI * radius;
+    const dash = circumference * value / 100;
+    container.innerHTML = `<svg viewBox="0 0 48 48">
+      <circle cx="24" cy="24" r="${radius}" fill="none" stroke="var(--duvu-surface2)" stroke-width="7"/>
+      <circle cx="24" cy="24" r="${radius}" fill="none" stroke="${accent}" stroke-width="7" stroke-linecap="round"
+        stroke-dasharray="${dash} ${circumference - dash}" transform="rotate(-90 24 24)"/>
+    </svg>`;
+  });
 }
 
 
@@ -1416,6 +1631,43 @@ let currentMotion = null;
 let currentGradient = null;
 let currentTemplate = null;
 let currentTab = 'color';
+
+function getActivePreviewCards() {
+  return currentTemplate?.preview?.cards || DEFAULT_PREVIEW.cards || [];
+}
+
+function getActivePagePattern() {
+  if (!DATA?.page_patterns) return null;
+  const tags = currentTemplate?.domainTags || currentTemplate?.tags || [];
+  return tags.map(tag => DATA.page_patterns[tag]).find(Boolean) || null;
+}
+
+function applyGlobalBalance(width = window.innerWidth, height = window.innerHeight) {
+  if (!DATA || !window.DUVU_BALANCE) return null;
+  const fallbackTemplate = currentTemplate || {
+    heroAlign: 'center',
+    preview: { cards: getActivePreviewCards() },
+    tags: [],
+    domainTags: [],
+  };
+  const profile = window.DUVU_BALANCE.buildBalanceProfile({
+    layout: currentLayout || {},
+    template: fallbackTemplate,
+    components: DATA.components || [],
+    pagePattern: getActivePagePattern(),
+    width,
+    height,
+    layoutTokens: DATA.layout_tokens || {},
+  });
+  const vars = window.DUVU_BALANCE.getBalanceCssVars(profile);
+  const S = document.documentElement.style;
+  Object.entries(vars).forEach(([key, value]) => S.setProperty(key, value));
+  document.documentElement.dataset.balanceViewport = profile.viewportMode;
+  document.documentElement.dataset.balanceJourney = profile.journeyMode;
+  document.documentElement.dataset.balanceDensity = profile.densityMode;
+  document.documentElement.dataset.balanceAlignment = profile.alignmentMode;
+  return profile;
+}
 
 // ─── APPLY FUNCTIONS ───
 
@@ -1438,9 +1690,8 @@ function applyColorPreset(preset, customOverride) {
 
   // customOverride가 있으면 accent가 달라지므로 btnText 재계산 필수
   // 프리셋 btnText는 원본 accent 기준이라 customColor accent에 맞지 않을 수 있음
-  const btnText = customOverride
-    ? readableOnAccent(accentColor)
-    : (preset.btnText || readableOnAccent(accentColor));
+  const preferredBtnText = resolvePresetAccentText(preset, accentColor, { customOverride });
+  const actionSurface = resolveActionSurface(accentColor, preferredBtnText, 4.5);
   const S = document.documentElement.style;
   S.setProperty('--duvu-accent', accentColor);
   S.setProperty('--duvu-accent-rgb', hexToRGB(accentColor));
@@ -1450,13 +1701,13 @@ function applyColorPreset(preset, customOverride) {
   S.setProperty('--duvu-fg3', colors.fg3);
   S.setProperty('--duvu-surface', colors.surface);
   S.setProperty('--duvu-surface2', colors.surface2);
-  S.setProperty('--duvu-btn-text', btnText);
-  S.setProperty('--duvu-emphasis-1-bg', accentColor);
-  S.setProperty('--duvu-emphasis-1-text', btnText);
+  S.setProperty('--duvu-btn-text', actionSurface.text);
+  S.setProperty('--duvu-emphasis-1-bg', actionSurface.bg);
+  S.setProperty('--duvu-emphasis-1-text', actionSurface.text);
   S.setProperty('--duvu-emphasis-2-bg', colors.surface2);
-  S.setProperty('--duvu-emphasis-2-text', colors.fg2);
+  S.setProperty('--duvu-emphasis-2-text', colors.fg);
   S.setProperty('--duvu-emphasis-3-bg', 'transparent');
-  S.setProperty('--duvu-emphasis-3-text', colors.fg3);
+  S.setProperty('--duvu-emphasis-3-text', colors.fg2);
 
   // Update nav background
   const navEl = document.querySelector('.nav');
@@ -1512,6 +1763,8 @@ function applyTypoPreset(preset) {
 function applyLayoutPreset(preset) {
   currentLayout = preset;
   document.documentElement.style.setProperty('--duvu-spacing-density', preset.density);
+  applyGlobalBalance();
+  balanceAllPresetGrids();
   syncActive('layoutGrid', preset.id);
   updateCmdLine();
 }
@@ -1763,14 +2016,15 @@ function escapeHtml(str) {
 // ─── CARD RENDERERS ───
 const CARD_RENDERERS = {
   'metric': (c) => {
+    const chartClass = c.chartType === 'bar' ? 'chart-bar' : c.chartType === 'donut' ? 'chart-donut' : 'chart-spark';
     return `<div class="dc-row"><span class="dc-label">${escapeHtml(c.label)}</span>${c.badge ? `<span class="dc-badge">${escapeHtml(c.badge)}</span>` : ''}</div>` +
       `<span class="dc-value">${escapeHtml(c.value)}</span>` +
-      (c.chart ? `<div class="chart-container ${c.chartType === 'bar' ? 'chart-bar' : 'chart-spark'}"></div>` : '') +
+      (c.chart ? `<div class="chart-container ${chartClass}"></div>` : '') +
       (c.sub ? `<span class="dc-sub">${escapeHtml(c.sub)}</span>` : '');
   },
   'buttons': () => {
     return `<div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">` +
-      `<button class="btn btn-primary" style="width:100%">시작하기</button>` +
+      `<button class="btn btn-emphasis" style="width:100%">시작하기</button>` +
       `<button class="btn btn-secondary" style="width:100%">자세히 보기</button>` +
       `<button class="btn btn-ghost" style="width:100%;min-height:44px">취소</button>` +
       `</div>`;
@@ -1779,7 +2033,7 @@ const CARD_RENDERERS = {
     return `<div style="display:flex;flex-direction:column;gap:10px;margin-top:8px;">` +
       `<div class="form-label">이메일</div><div class="form-input">hello@duvu.dev</div>` +
       `<div class="form-label">비밀번호</div><div class="form-input">••••••••</div>` +
-      `<button class="btn btn-primary" style="width:100%">로그인</button></div>`;
+      `<button class="btn btn-emphasis" style="width:100%">로그인</button></div>`;
   },
   'table': (c) => {
     const rows = c.rows || [];
@@ -1848,7 +2102,7 @@ const CARD_RENDERERS = {
       .replace(/(&#39;[^&#]*&#39;|&quot;[^&]*&quot;)/g, '<span class="hl-str">$1</span>')
       .replace(/(\/\/.*)/g, '<span style="color:var(--duvu-fg3)">$1</span>')
       .replace(/(\$)/g, '<span class="hl-key">$1</span>');
-    const lang = c.language ? `<div style="font-size:11px;color:var(--duvu-fg3);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.05em">${escapeHtml(c.language)}</div>` : '';
+    const lang = c.language ? `<div style="font-size:var(--duvu-font-size-xs);color:var(--duvu-fg3);margin-bottom:var(--duvu-space-sm);text-transform:uppercase;letter-spacing:0.05em">${escapeHtml(c.language)}</div>` : '';
     return `${lang}<div class="code-preview-block">${code}</div>`;
   },
   'chat': (c) => {
@@ -1927,7 +2181,7 @@ function renderPreview(tpl) {
     const spanStyle = card.span === 'full' ? 'grid-column:1/-1;' : '';
     const level = getLevel(card.type);
     // Level 5: most visual weight, Level 1: least
-    const levelPadding = level >= 5 ? 'var(--duvu-space-2xl)' : level >= 4 ? 'var(--duvu-space-xl)' : 'var(--duvu-card-padding, 36px)';
+    const levelPadding = level >= 5 ? 'var(--duvu-space-2xl)' : level >= 4 ? 'var(--duvu-space-xl)' : 'var(--duvu-balanced-card-padding, var(--duvu-card-padding, 36px))';
     const style = `${spanStyle}padding:${levelPadding}`;
     const showLabel = card.label && card.type !== 'metric';
     const label = showLabel ? `<div class="p-card-label">${escapeHtml(card.label)}</div>` : '';
@@ -1938,6 +2192,8 @@ function renderPreview(tpl) {
   if (preview.cards.some(c => c.type === 'metric' && c.chart)) {
     renderCharts();
   }
+
+  applyGlobalBalance();
 }
 
 // ═══════════════════════════════════════
@@ -1948,7 +2204,7 @@ function calcColorGrid(containerWidth, count) {
   const gap = 12;
   const minCardW = 110;
   const maxCols = Math.min(Math.floor((containerWidth + gap) / (minCardW + gap)), 8);
-  // Find the best column count: prefer no orphans, but if count is prime,
+  // Find the best column count: prefer avoiding singleton last rows, but if count is prime,
   // pick the column count where last row has the most items
   let bestCols = maxCols;
   let bestScore = -1;
@@ -1976,7 +2232,7 @@ function buildColorCards() {
     card.dataset.id = preset.id;
     card.setAttribute('aria-label', preset.name);
 
-    const textColor = readableOnAccent(preset.src);
+    const textColor = resolvePresetAccentText(preset, preset.src);
     card.innerHTML = `
       <div class="color-swatch" style="background:${preset.src}">
         <span class="color-swatch-hex" style="color:${textColor}">${preset.src}</span>
@@ -1996,6 +2252,7 @@ function buildColorCards() {
     });
     container.appendChild(card);
   });
+  balancePresetGrid(container);
 }
 
 function buildPillGrid(containerId, presets, type) {
@@ -2033,6 +2290,7 @@ function buildPillGrid(containerId, presets, type) {
     });
     container.appendChild(pill);
   });
+  balancePresetGrid(container);
 }
 
 function buildGradientPills() {
@@ -2066,6 +2324,195 @@ function buildGradientPills() {
     });
     container.appendChild(pill);
   });
+  balancePresetGrid(container);
+}
+
+function hasSingletonLastRow(count, cols) {
+  return cols > 1 && count > cols && count % cols === 1;
+}
+
+function chooseBalancedColumns(count, width) {
+  if (count <= 1) return 1;
+  if (window.innerWidth <= 640) {
+    const mobileCols = Math.min(count, 3);
+    for (let cols = mobileCols; cols >= 2; cols--) {
+      if (!hasSingletonLastRow(count, cols)) return cols;
+    }
+    return mobileCols;
+  }
+  const rootStyle = getComputedStyle(document.documentElement);
+  const gap = Number.parseFloat(rootStyle.getPropertyValue('--duvu-balanced-pill-gap')) || Number.parseFloat(rootStyle.getPropertyValue('--duvu-pill-grid-gap')) || 8;
+  const minWidth = Number.parseFloat(rootStyle.getPropertyValue('--duvu-balanced-pill-min-width')) || (width < 520 ? 104 : 132);
+  const profileMax = Number.parseInt(rootStyle.getPropertyValue('--duvu-balanced-pill-max-cols'), 10);
+  const widthMax = Math.max(1, Math.floor((width + gap) / (minWidth + gap)));
+  const maxCols = Math.max(1, Math.min(count, Number.isFinite(profileMax) ? Math.min(widthMax, profileMax) : widthMax));
+  for (let cols = maxCols; cols >= 2; cols--) {
+    if (!hasSingletonLastRow(count, cols)) return cols;
+  }
+  return maxCols;
+}
+
+function chooseBalancedColumnsWithProfile(count, width, minWidth, maxColsLimit, minCols = 2) {
+  if (count <= 1) return 1;
+  const rootStyle = getComputedStyle(document.documentElement);
+  const gap = Number.parseFloat(rootStyle.getPropertyValue('--duvu-balanced-tab-gap')) || Number.parseFloat(rootStyle.getPropertyValue('--duvu-balanced-pill-gap')) || 8;
+  const widthMax = Math.max(minCols, Math.floor((width + gap) / (minWidth + gap)));
+  const maxCols = Math.max(minCols, Math.min(count, maxColsLimit, widthMax));
+  for (let cols = maxCols; cols >= minCols; cols--) {
+    if (!hasSingletonLastRow(count, cols)) return cols;
+  }
+  return maxCols;
+}
+
+function chooseColorColumns(count, width) {
+  if (count <= 1) return 1;
+  if (width < 520) return Math.min(count, 3);
+  const gap = 16;
+  const minReadableCardWidth = 150;
+  const maxCols = Math.max(3, Math.min(count, Math.floor((width + gap) / (minReadableCardWidth + gap))));
+  for (let cols = maxCols; cols >= 3; cols--) {
+    if (!hasSingletonLastRow(count, cols)) return cols;
+  }
+  return maxCols;
+}
+
+const PALETTE_GEOMETRY_RULES = {
+  mobile: {
+    single: {
+      cardHeight: '104px',
+      swatchHeight: '40px',
+      infoPadY: 'var(--duvu-space-none)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+    multi: {
+      cardHeight: '104px',
+      swatchHeight: '40px',
+      infoPadY: 'var(--duvu-space-none)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+  },
+  short: {
+    single: {
+      cardHeight: '78px',
+      swatchHeight: '30px',
+      infoPadY: 'var(--duvu-space-card-tight)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-xs)',
+      infoJustify: 'center',
+    },
+    multi: {
+      cardHeight: '94px',
+      swatchHeight: '32px',
+      infoPadY: 'var(--duvu-space-card-tight)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-xs)',
+      infoJustify: 'center',
+    },
+  },
+  base: {
+    single: {
+      cardHeight: '104px',
+      swatchHeight: '34px',
+      infoPadY: 'var(--duvu-space-sm)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+    multi: {
+      cardHeight: '112px',
+      swatchHeight: '38px',
+      infoPadY: 'var(--duvu-space-sm)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+  },
+  tall: {
+    single: {
+      cardHeight: '112px',
+      swatchHeight: '42px',
+      infoPadY: 'var(--duvu-space-sm)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+    multi: {
+      cardHeight: '120px',
+      swatchHeight: '46px',
+      infoPadY: 'var(--duvu-space-sm)',
+      infoPadX: 'var(--duvu-space-card-compact-x)',
+      infoGap: 'var(--duvu-space-card-label-gap)',
+      infoJustify: 'center',
+    },
+  },
+};
+
+function getPaletteViewportMode(width, height) {
+  if (width <= 640) return 'mobile';
+  if (height <= 420) return 'short';
+  if (height >= 900) return 'tall';
+  return 'base';
+}
+
+function getPaletteGeometry(width, height, nameLines) {
+  const viewportMode = getPaletteViewportMode(width, height);
+  const lineMode = nameLines <= 1 ? 'single' : 'multi';
+  return {
+    viewportMode,
+    lineMode,
+    ...PALETTE_GEOMETRY_RULES[viewportMode][lineMode],
+  };
+}
+
+function countRenderedLines(el) {
+  if (!el) return 1;
+  const range = document.createRange();
+  range.selectNodeContents(el);
+  const rects = [...range.getClientRects()].filter(rect => rect.width > 0 && rect.height > 0);
+  return Math.max(1, rects.length);
+}
+
+function syncColorGridLineMode(container) {
+  if (!container?.classList.contains('color-grid')) return;
+  const names = [...container.querySelectorAll('.color-name')];
+  const maxLines = names.reduce((max, el) => Math.max(max, countRenderedLines(el)), 1);
+  container.dataset.nameLines = maxLines <= 1 ? '1' : '2';
+  return maxLines;
+}
+
+function applyPaletteGeometry(container, measuredWidth, measuredHeight) {
+  if (!container?.classList.contains('color-grid')) return;
+  const nameLines = syncColorGridLineMode(container);
+  const geometry = getPaletteGeometry(measuredWidth, measuredHeight, nameLines);
+  container.dataset.viewportMode = geometry.viewportMode;
+  container.style.setProperty('--duvu-palette-card-height', geometry.cardHeight);
+  container.style.setProperty('--duvu-palette-swatch-height', geometry.swatchHeight);
+  container.style.setProperty('--duvu-palette-info-pad-y', geometry.infoPadY);
+  container.style.setProperty('--duvu-palette-info-pad-x', geometry.infoPadX);
+  container.style.setProperty('--duvu-palette-info-gap', geometry.infoGap);
+  container.style.setProperty('--duvu-palette-info-justify', geometry.infoJustify);
+}
+
+function balancePresetGrid(container) {
+  if (!container) return;
+  const count = container.children.length;
+  const panel = container.closest('.tab-panel');
+  const wrap = container.closest('.wrap');
+  const measuredWidth = container.clientWidth || panel?.clientWidth || wrap?.clientWidth || Math.max(0, window.innerWidth - 32);
+  const measuredHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+  const cols = container.classList.contains('color-grid')
+    ? chooseColorColumns(count, measuredWidth)
+    : chooseBalancedColumns(count, measuredWidth);
+  container.style.setProperty('--duvu-balanced-cols', cols);
+  applyPaletteGeometry(container, measuredWidth, measuredHeight);
+}
+
+function balanceAllPresetGrids() {
+  document.querySelectorAll('.pill-grid, .color-grid').forEach(balancePresetGrid);
 }
 
 function buildTemplateCards() {
@@ -2073,7 +2520,7 @@ function buildTemplateCards() {
   if (!container || !DATA) return;
   container.innerHTML = '';
 
-  DATA.templates.forEach(tpl => {
+	  DATA.templates.forEach(tpl => {
     const card = document.createElement('button');
     card.className = 'tpl-card';
     card.dataset.id = tpl.id;
@@ -2087,13 +2534,14 @@ function buildTemplateCards() {
       ${tpl.isClone ? `<span class="tpl-ref">${escapeHtml(tpl.ref || '')}</span>` : ''}`;
 
     card.addEventListener('click', () => { applyTemplate(tpl); demoLog('select-template', { id: tpl.id }); });
-    container.appendChild(card);
-  });
-}
+	    container.appendChild(card);
+	  });
+	}
 
 function buildCodeTabs() {
   const tabs = document.getElementById('codeTabs');
   if (!tabs) return;
+  tabs.innerHTML = '';
   ['CSS', 'Tailwind', 'Flutter', 'SwiftUI', 'Compose', 'Unity', 'React Native'].forEach(name => {
     const key = name.toLowerCase().replace(' ', '-');
     const btn = document.createElement('button');
@@ -2106,6 +2554,20 @@ function buildCodeTabs() {
     });
     tabs.appendChild(btn);
   });
+  balanceCodeTabs(tabs);
+}
+
+function balanceCodeTabs(tabs = document.getElementById('codeTabs')) {
+  if (!tabs) return;
+  const count = tabs.children.length;
+  const measuredWidth = tabs.clientWidth || tabs.parentElement?.clientWidth || Math.max(0, window.innerWidth - 32);
+  const rootStyle = getComputedStyle(document.documentElement);
+  const minWidth = Number.parseFloat(rootStyle.getPropertyValue('--duvu-balanced-tab-min-width')) || (window.innerWidth <= 980 ? 96 : 104);
+  const maxCols = Number.parseInt(rootStyle.getPropertyValue('--duvu-balanced-tab-max-cols'), 10) || 7;
+  const cols = window.innerWidth > 980
+    ? Math.min(count, maxCols)
+    : chooseBalancedColumnsWithProfile(count, measuredWidth, minWidth, Math.min(maxCols, 4), 3);
+  tabs.style.setProperty('--duvu-code-tab-cols', cols);
 }
 
 // ─── TABS ───
@@ -2115,12 +2577,14 @@ function initTabs() {
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       currentTab = btn.dataset.tab;
-      btns.forEach(b => {
+    btns.forEach(b => {
         b.classList.toggle('active', b === btn);
         b.setAttribute('aria-selected', b === btn ? 'true' : 'false');
       });
       updateTabBtnColors();
       panels.forEach(p => p.classList.toggle('active', p.id === `panel-${currentTab}`));
+      requestAnimationFrame(balanceAllPresetGrids);
+      requestAnimationFrame(() => balanceCodeTabs());
     });
   });
 }
@@ -2236,7 +2700,12 @@ function initKeyboardNav() {
 let resizeTimer;
 function handleResize() {
   clearTimeout(resizeTimer);
-  resizeTimer = setTimeout(() => buildColorCards(), 150);
+  resizeTimer = setTimeout(() => {
+    applyGlobalBalance();
+    buildColorCards();
+    balanceAllPresetGrids();
+    balanceCodeTabs();
+  }, 150);
 }
 
 // ═══════════════════════════════════════
@@ -2283,6 +2752,7 @@ async function init() {
   currentGradient = DATA.gradient.find(g => g.id === 'gradient-none') || DATA.gradient[DATA.gradient.length - 1];
 
   // Build UI
+  applyGlobalBalance();
   buildColorCards();
   buildPillGrid('typoGrid', DATA.typography, 'typo');
   buildPillGrid('layoutGrid', DATA.layout, 'layout');
@@ -2292,6 +2762,7 @@ async function init() {
   buildTemplateCards();
   buildCodeTabs();
   initTabs();
+  balanceAllPresetGrids();
   initThemeToggle();
   initCopy();
   initKeyboardNav();
@@ -2310,7 +2781,7 @@ async function init() {
   // Resize
   window.addEventListener('resize', handleResize);
 
-  console.log('%cDUVU v19 loaded', 'color: #3182F6; font-weight: bold; font-size: 14px;');
+  console.log('%cDUVU v19 loaded', 'color: #3182F6; font-weight: bold; font-size: 16px;');
 }
 
 document.addEventListener('DOMContentLoaded', init);
@@ -2331,7 +2802,7 @@ function initCloneLink() {
   <div class="nav-inner">
     <span class="nav-mark">DUVU</span>
     <div class="nav-right">
-      <a id="cloneLink" href="/clones/osmo/index.html" style="display:none;color:var(--duvu-fg2);text-decoration:none;font-size:13px;font-weight:500;padding:8px 12px;border-radius:6px;transition:color 0.2s" onmouseover="this.style.color='var(--duvu-fg)'" onmouseout="this.style.color='var(--duvu-fg2)'">Clones</a>
+      <a id="cloneLink" class="nav-link" href="/clones/osmo/index.html">Clones</a>
       <button class="nav-theme" id="themeToggle" aria-label="테마 전환">
         <svg class="ico-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg class="ico-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -2340,6 +2811,7 @@ function initCloneLink() {
   </div>
 </nav>
 
+<main>
 <!-- HERO -->
 <section class="hero">
   <div class="wrap">
@@ -2399,7 +2871,7 @@ function initCloneLink() {
 <section class="preview-section">
   <div class="wrap">
     <div class="section-label reveal">라이브 프리뷰</div>
-    <h2 class="section-title reveal" style="font-size: clamp(28px, 4vw, 48px); font-weight: 600;">현재 설정이 적용된 UI</h2>
+    <h2 class="section-title reveal">현재 설정이 적용된 UI</h2>
 
     <div class="preview-area">
       <div class="preview-grid"></div>
@@ -2431,6 +2903,7 @@ function initCloneLink() {
     </div>
   </div>
 </section>
+</main>
 
 <footer>
   <span>DUVU v19 · tinygem</span>

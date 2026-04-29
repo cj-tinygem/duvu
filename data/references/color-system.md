@@ -3,7 +3,7 @@
 ## 아키텍처
 
 ```
-소스 색상 (1개 hex) 
+소스 색상 (1개 hex 또는 프리셋 src)
     ↓ deriveTheme()
 다크/라이트 풀 팔레트 (bg, surface, surface2, fg, fg2, fg3)
     ↓ ensureContrast()
@@ -60,7 +60,7 @@ function deriveTheme(sourceHex) {
 
 ## ensureContrast 알고리즘
 
-accent가 bg 대비 최소 비율(기본 3:1)을 충족하도록 밝기를 조정한다.
+accent가 bg 대비 최소 비율(기본 3:1)을 충족하도록 밝기를 조정한다. 저장된 프리셋과 커스텀 `--hex` 입력 모두 이 계약을 따른다.
 
 ```javascript
 function ensureContrast(accentHex, bgHex, minRatio = 3) {
@@ -85,30 +85,35 @@ function ensureContrast(accentHex, bgHex, minRatio = 3) {
 }
 ```
 
-## readableOnAccent 알고리즘
+### 커스텀 `--hex` 처리
 
-accent 배경 위에 올라갈 텍스트 색상을 결정한다.
+`duvu generate "#3182F6"`와 `duvu tokens export --format dtcg --hex "#3182F6"`는 같은 색상 도출 계약을 사용한다.
+
+1. HEX 형식은 `#RRGGBB`만 허용한다.
+2. `deriveFromHex`가 hue/saturation을 보존하면서 dark/light 배경과 표면, 텍스트 계층을 만든다.
+3. accent는 입력 색상을 기준으로 하되, `accent/bg` 3:1 미만이면 보정 또는 감사 실패 대상이다.
+4. 저장된 프리셋은 `btnText`를 브랜드 의도 기반의 accent 전경색 계약으로 사용한다. `readableOnAccent`는 커스텀 HEX 또는 `btnText` 누락 시의 fallback이다.
+5. 필요하면 `action fill`을 따로 보정해 `action/actionText` 4.5:1을 맞춘다. 원본 `accent`와 브랜드 전경색은 보존하고, 작은 텍스트 CTA에는 보정된 `action` 토큰을 쓴다.
+6. `tokens audit`는 커스텀 입력도 프리셋과 같은 DTCG, alias, Figma DTCG parity, 대비 게이트로 검증해야 한다.
+
+이 경로의 목적은 브랜드 색상을 보존하면서도, AI가 접근성 낮은 CTA나 읽히지 않는 버튼을 생성하지 못하게 막는 것이다.
+
+## accent 전경색 계약
+
+accent 배경 위에 올라갈 텍스트 색상은 컴포넌트가 즉석 계산하지 않는다. 저장된 프리셋은 `btnText`를 authoritative token으로 갖고, 데모와 생성 토큰은 이 값을 먼저 사용한다. 이 규칙 때문에 Toss처럼 기계적 대비만 보면 검정이 더 높게 나오는 색도, 브랜드 컨셉이 요구하는 흰색 전경을 일관되게 유지한다.
+
+`readableOnAccent`는 다음 경우에만 사용한다.
+
+- 사용자가 `--hex`로 임의 색상을 입력해 저장된 브랜드 전경색이 없을 때
+- 프리셋 데이터에 `btnText`가 없거나 HEX 형식이 아닐 때
+- 내부 감사/보정 로직이 fallback 후보를 계산할 때
+
+컴포넌트 구현에서는 `readableOnAccent(preset.src)` 같은 직접 호출을 금지하고, `btnText`, `semantic.color.*.actionText`, `--duvu-btn-text`, `--duvu-emphasis-1-text` 같은 역할 토큰을 사용해야 한다.
+
+fallback 알고리즘은 흰색/검정 중 대비가 더 높은 쪽을 고른다.
 
 ```javascript
 function readableOnAccent(hex) {
-  const [h, s, l] = hexToHSL(hex);
-  const lum = relativeLuminance(hex);
-  
-  // 밝은 accent → 검은 텍스트
-  if (lum >= 0.4) return '#000000';
-  
-  // 채도 높고 어두운 accent → 흰 텍스트
-  if (s >= 50 && lum < 0.4) return '#ffffff';
-  
-  // 보라색 계열 특별 처리 (눈이 보라를 어둡게 인지)
-  const isPurplish = h >= 230 && h <= 320;
-  if (isPurplish && l <= 60) return '#ffffff';
-  
-  // 일반적으로 어두운 accent → 흰 텍스트
-  if (s >= 20 && l <= 52) return '#ffffff';
-  if (l <= 45) return '#ffffff';
-  
-  // 최종: 대비가 더 높은 쪽 선택
   const crWhite = contrastRatio('#ffffff', hex);
   const crBlack = contrastRatio('#000000', hex);
   return crWhite >= crBlack ? '#ffffff' : '#000000';
@@ -123,11 +128,13 @@ function readableOnAccent(hex) {
 2. **fg vs bg**: 4.5:1 미만이면 error
 3. **fg2 vs bg**: 2.5:1 미만이면 warning
 4. **accent 눈 피로**: 채도 90%+ AND 밝기 60%+ 이면 warning
-5. **surface vs bg 구분**: 1.08:1 미만이면 warning (구분 부족)
+5. **surface vs bg 구분**: 1.05:1 미만이면 warning (구분 부족)
 6. **색온도 대비**: accent와 bg의 색온도(warm/cool)가 충돌하면 info
 
-## 43개 프리셋 전수조사 결과 (v19.0)
+## 45개 프리셋 전수조사 결과 (v19.0)
 
-- ✅ 다크 모드 43/43: 핵심 대비(fg/bg, fg/surface, accent/bg, btn/accent 3:1) 전체 통과
-- ✅ 라이트 모드 43/43: 핵심 대비 전체 통과
-- `duvu audit`와 별도 구조 검증 스크립트로 현재 `data/presets.json` 기준 확인.
+- ✅ 다크 모드 45/45: 핵심 대비(fg/bg, fg/surface, accent/bg, btn/action 4.5:1) 전체 통과
+- ✅ 라이트 모드 45/45: 핵심 대비 전체 통과
+- ✅ 출처/근거/참고처 메타데이터 45/45: 모든 컬러가 `metadata.presets.color.<id>.provenance`에 `type`, `source`, `rationale`, `references`를 가진다
+- ✅ 토큰 엔진 감사 기준: 45개 컬러, 11개 타이포그래피, 4개 레이아웃, 8개 스타일, 6개 모션, 9개 그라디언트, 17개 컴포넌트, 7개 인터랙션, 22개 템플릿을 현재 `data/presets.json` 기준으로 검사
+- `duvu audit`, `duvu tokens audit`, 토큰 스모크 테스트로 현재 preset 구조와 대비를 확인한다.

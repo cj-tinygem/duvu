@@ -3,6 +3,9 @@ node_modules/
 *.zip
 *.tgz
 .DS_Store
-duvu-v18.6-source/
 demo/clones/
 .duvu/
+.cortex/.ctx.lock
+.cortex/.obsidian/
+.cortex/archive/audit-trail.jsonl
+.cortex/log.md

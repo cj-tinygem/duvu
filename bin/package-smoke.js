@@ -29,8 +29,8 @@ try {
   const files = new Set(pack.files.map(file => file.path));
   const disallowed = [
     'demo/clones/osmo/index.html',
-    'duvu-v18.6-source.zip',
-    'duvu-v18.6-source/',
+    'duvu-source.zip',
+    'duvu-source/',
     'IDEA.md',
     'docs/PRD.md',
   ];
@@ -39,7 +39,7 @@ try {
       fail(`배포 제외 파일이 tarball에 포함됨: ${path}`);
     }
   }
-  for (const required of ['bin/duvu.js', 'bin/screenshot.js', 'data/presets.json', 'demo/index.html', 'skills/SKILL.md']) {
+  for (const required of ['bin/duvu.js', 'bin/screenshot.js', 'bin/token-smoke.js', 'data/presets.json', 'demo/index.html', 'skills/SKILL.md']) {
     if (!files.has(required)) fail(`필수 파일이 tarball에 없음: ${required}`);
   }
 

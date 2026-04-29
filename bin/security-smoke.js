@@ -55,10 +55,9 @@ try {
   mkdirSync(probeDir, { recursive: true });
   writeFileSync(join(probeDir, 'secret.txt'), secret);
 
-  server = spawn('node', ['bin/duvu.js', 'demo', String(port)], {
+  server = spawn('node', ['bin/duvu.js', 'demo', String(port), '--no-open'], {
     cwd: root,
     stdio: 'ignore',
-    env: { ...process.env, BROWSER: 'none' },
   });
 
   await waitForServer();

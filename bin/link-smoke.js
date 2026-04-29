@@ -41,7 +41,12 @@ function isExternal(ref) {
 }
 
 function isLocalFile(pathname) {
-  return existsSync(pathname) && !statSync(pathname).isDirectory();
+  try {
+    return existsSync(pathname) && !statSync(pathname).isDirectory();
+  } catch (error) {
+    fail(`로컬 링크 stat 실패: ${relative(root, pathname)} (${error.code || error.message})`);
+    return false;
+  }
 }
 
 for (const htmlFile of htmlFiles) {

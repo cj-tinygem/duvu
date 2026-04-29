@@ -1,6 +1,6 @@
 ---
 name: duvu
-description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 생성 시 자동 발동. 소스 색상 하나에서 WCAG AA/HIG/MD3를 동시 준수하는 완전한 디자인 토큰을 도출하고, 43개 컬러 프리셋 × 11개 타이포 × 4개 레이아웃 × 8개 스타일 × 6개 모션 × 9개 그라디언트 × 17개 컴포넌트 × 7개 인터랙션 패턴을 조합하여 CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native 코드를 즉시 출력한다. 22개 종합 템플릿과 15개 도메인 매칭으로 SaaS부터 럭셔리까지 모든 도메인을 커버한다. Use when: UI 디자인, 프론트엔드 코드 생성, 디자인 시스템 적용, 컬러/타이포/레이아웃 결정, 디자인 토큰 생성, 컴포넌트 코드 작성, 페이지 레이아웃 구성."
+description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 생성 시 자동 발동. 소스 색상 하나에서 WCAG AA/HIG/MD3를 동시 준수하는 완전한 디자인 토큰을 도출하고, 45개 컬러 프리셋 × 11개 타이포 × 4개 레이아웃 × 8개 스타일 × 6개 모션 × 9개 그라디언트 × 17개 컴포넌트 × 7개 인터랙션 패턴을 조합하여 CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native 코드를 즉시 출력한다. 22개 종합 템플릿과 15개 도메인 매칭으로 SaaS부터 럭셔리까지 모든 도메인을 커버한다. Use when: UI 디자인, 프론트엔드 코드 생성, 디자인 시스템 적용, 컬러/타이포/레이아웃 결정, 디자인 토큰 생성, 컴포넌트 코드 작성, 페이지 레이아웃 구성."
 ---
 
 # DUVU — 범용 디자인 시스템 엔진
@@ -13,6 +13,8 @@ description: "DUVU 범용 디자인 시스템 엔진. UI/프론트엔드 코드 
 사용자는 요구사항만 말한다. 나머지는 이 스킬이 자동으로 처리한다.
 
 **절대 규칙**: 이 스킬이 로드된 상태에서는 어떤 UI 코드도 DUVU 토큰 체계 밖의 값을 사용하지 않는다. 모든 색상, 간격, 반경, 모션, 타이포는 `--duvu-` 접두사 토큰에서 파생된다.
+
+**범위 규칙**: DUVU의 관심사는 협업 캔버스, 창작 공간, 범용 화이트보드, 특정 생성형 디자인 제품과의 호환이 아니다. 오직 뛰어난 디자인, 세계 최고 수준의 프론트엔드/UI/UX/비주얼, 최고 수준의 미감을 실제 코드와 화면으로 강제하는 데 집중한다.
 
 ### DUVU 데이터의 3가지 성격
 
@@ -219,7 +221,7 @@ CLI: `duvu list interaction`, `duvu show interaction <id>`
 - 이미지: `width: 100%; height: auto;` 기본
 - 줄바꿈: `text_system` 참조 — `text-wrap: balance` + `max-width` 토큰으로 의도적 줄바꿈 제어
 - 콘텐츠 생략: `responsive_system` 참조 — 컴포넌트 `level`에 따라 생략 가능 여부 결정. level 1-2만 모바일에서 생략 가능
-- Orphan 방지: 그리드 열 변환 시 마지막 줄에 1개만 남지 않도록. `duvu audit`이 자동 검사
+- Singleton 마지막 줄 방지: 그리드 열 변환 시 마지막 줄에 1개만 남지 않도록. `duvu audit`이 자동 검사
 
 **CSS 출력에 포함되는 유틸리티:**
 - `.duvu-container` — 반응형 컨테이너
@@ -246,6 +248,9 @@ CLI: `duvu list interaction`, `duvu show interaction <id>`
 
 코드 생성 후, 출력하기 전에 다음을 반드시 확인한다:
 
+- [ ] 하나의 강한 aesthetic direction이 먼저 정해졌는가?
+- [ ] 첫 화면에 기억에 남는 signature move가 있는가?
+- [ ] 이 결과가 평균적인 AI 카드 UI처럼 보이지 않는가?
 - [ ] 모든 색상이 `--duvu-` 토큰에서 파생되었는가?
 - [ ] 모든 spacing이 토큰에서 파생되었는가? (매직 넘버 금지)
 - [ ] fg vs bg 대비 4.5:1 이상인가?
@@ -257,9 +262,9 @@ CLI: `duvu list interaction`, `duvu show interaction <id>`
 - [ ] `prefers-reduced-motion` 지원하는가?
 - [ ] 모든 결정에 방어 가능한 의도가 있는가?
 - [ ] 같은 레벨의 요소는 같은 주목도를 가지는가?
-- [ ] 레이아웃의 그리드에 orphan(빈 칸)이 없는가?
+- [ ] 레이아웃의 반복 그리드에 singleton 마지막 줄이 없는가?
 - [ ] 컴포넌트 간 통일성이 유지되는가? (같은 padding/radius/shadow)
-- [ ] **5개 화면비에서 모두 정상인가?** (와이드 1920, 데스크톱 1440, 태블릿 가로 1024, 태블릿 세로 768, 모바일 390) — `duvu screenshot`이 기본으로 5개 전부 캡처
+- [ ] **6개 화면비에서 모두 정상인가?** (와이드 1920, 데스크톱 1440, 랩톱 1280, 태블릿 가로 1024, 태블릿 세로 768, 모바일 390) — `duvu screenshot`이 기본으로 6개 전부 캡처
 - [ ] 불통일이 있다면 그것은 의도된 것인가?
 - [ ] 텍스트 줄바꿈이 의도적인가? (`text_system` 참조 — PC 1줄→모바일 2줄은 자연, 역전은 근거 필요)
 - [ ] 모바일에서 숨겨진 요소가 있다면 의도적 생략인가? (level 낮은 보조 정보만 생략 가능)
@@ -307,6 +312,16 @@ duvu log '{"type":"eval","quality":"good","issues":[]}'
 
 단순함은 출발점이 아니라 **도착점**이다. 모든 차원에서 의도를 부여한 결과로 불필요한 것이 제거된다. 아름다움 자체도, 의도적 불균형도 유효한 의도다.
 
+### Aesthetic Direction Engine — 평균적 AI UI를 넘는 장치
+
+DUVU는 미감 생성 엔진이다. 코드를 쓰기 전에 `duvu tokens contract --template <id> --format md`를 확인하고, contract의 `Aesthetic Direction`을 화면 전체의 상위 의도로 삼는다.
+
+- `direction`: 색상, 타이포, 여백, 모션이 따라야 하는 미학 방향
+- `signature move`: 사용자가 기억해야 하는 단 하나의 구조적 장면
+- `avoid`: 같은 스타일에서 흔히 나오는 가짜 고급감/AI 슬롭
+
+주의: signature move는 장식 추가가 아니다. 큰 여백, 과감한 생략, 비대칭 축, 정보 밀도, 한 가지 색 신호처럼 토큰과 배치로 구현해야 한다.
+
 하나라도 실패하면 수정 후 재출력.
 
 ---
@@ -315,7 +330,7 @@ duvu log '{"type":"eval","quality":"good","issues":[]}'
 
 | 파일 | 용도 | 언제 읽나 |
 |---|---|---|
-| `presets.json` | 43 컬러 + 11 타이포 + 4 레이아웃 + 8 스타일 + 6 모션 + 9 그라디언트 + 17 컴포넌트 + 22 템플릿. 각 템플릿에 `preview` 필드(layout + cards)가 있어 도메인별 컴포넌트 조합을 알 수 있다. `layout_tokens`로 49개 레이아웃 토큰 정의. CLI: `duvu list`, `duvu show <type> <id>`, `duvu match <domain>` | **항상** (프리셋 데이터 조회) |
+| `presets.json` | 45 컬러 + 11 타이포 + 4 레이아웃 + 8 스타일 + 6 모션 + 9 그라디언트 + 17 컴포넌트 + 22 템플릿. 각 템플릿에 `preview` 필드(layout + cards)가 있어 도메인별 컴포넌트 조합을 알 수 있다. `layout_tokens`로 50개 레이아웃 토큰 정의. CLI: `duvu list`, `duvu show <type> <id>`, `duvu match <domain>` | **항상** (프리셋 데이터 조회) |
 | `references/tokens.md` | 10개 카테고리 디자인 토큰 정의 | **항상** (토큰 구조 참조) |
 | `references/platforms.md` | 7개 플랫폼 코드 생성 템플릿 (CSS, Tailwind, Flutter, SwiftUI, Compose, Unity, React Native) | 코드 생성 시 |
 | `references/templates.md` | 22개 종합 템플릿 정의 (도메인별 최적 조합) | 템플릿 매칭 시 |
@@ -371,7 +386,7 @@ duvu log '{"type":"eval","quality":"good","issues":[]}'
 - ❌ WCAG 대비 미달 색상 조합
 - ❌ 44px 미만 터치 타겟
 - ❌ 동시에 3개 이상 폰트, 4개 이상 웨이트
-- ❌ 12px 미만 텍스트
+- ❌ 16px 미만 텍스트 (`xs` 16px, `sm` 16px, 본문 17px 하한)
 - ❌ 의도 없는 편집 (모든 변경에 WHY 필수)
 - ❌ 장식용 모션, 그라디언트, 그림자
 - ❌ `prefers-reduced-motion` 미지원

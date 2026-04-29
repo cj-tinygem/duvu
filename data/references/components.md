@@ -11,7 +11,7 @@
   min-height: 44px;
   padding: 10px 22px;
   border-radius: var(--duvu-btn-radius);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   font-family: var(--duvu-font);
   border: none;
@@ -96,7 +96,7 @@
   border: none;
   border-radius: var(--duvu-radius-sm);
   font-family: var(--duvu-font);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg);
   width: 100%;
   transition: box-shadow var(--duvu-dur-fast) var(--duvu-ease);
@@ -111,7 +111,7 @@
 
 /* 라벨 */
 .duvu-label {
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   margin-bottom: 6px;
@@ -144,7 +144,7 @@
 }
 
 .duvu-nav-link {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   text-decoration: none;
@@ -167,7 +167,7 @@
   align-items: center;
   padding: 2px var(--duvu-space-sm);
   border-radius: var(--duvu-radius-xs);
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   line-height: 1.33;
   background: rgba(var(--duvu-accent-rgb), 0.12);
@@ -229,14 +229,14 @@
 .duvu-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
 }
 
 .duvu-table th {
   text-align: left;
   padding: var(--duvu-space-sm) var(--duvu-space-md);
   font-weight: 500;
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -275,7 +275,7 @@
   display: flex;
   align-items: center;
   gap: var(--duvu-space-sm);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg);
   z-index: 2000;
   animation: duvu-slide-up var(--duvu-dur) var(--duvu-ease);
@@ -301,7 +301,7 @@
 .duvu-tab {
   padding: var(--duvu-space-sm) var(--duvu-space-md);
   min-height: 44px;
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg3);
   background: none;
@@ -339,7 +339,7 @@
   min-height: 44px;
   padding: var(--duvu-space-xs) var(--duvu-space-md);
   border-radius: var(--duvu-radius-full);
-  font-size: 13px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   background: var(--duvu-surface2);
@@ -368,12 +368,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   overflow: hidden;
 }
 .duvu-avatar img { width: 100%; height: 100%; object-fit: cover; }
-.duvu-avatar-sm { width: 32px; height: 32px; font-size: 12px; }
+.duvu-avatar-sm { width: 32px; height: 32px; font-size: var(--duvu-font-size-xs); }
 .duvu-avatar-lg { width: 56px; height: 56px; font-size: 20px; }
 ```
 
@@ -389,7 +389,7 @@
   border: none;
   border-radius: var(--duvu-radius-sm);
   font-family: var(--duvu-font);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg);
   appearance: none;
   cursor: pointer;

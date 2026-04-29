@@ -14,11 +14,11 @@
   --duvu-accent: #3182F6;
   --duvu-accent-rgb: 49, 130, 246;
   --duvu-btn-text: #ffffff;
-  
+
   /* Typography */
   --duvu-font: 'Inter', 'Pretendard', sans-serif;
   --duvu-font-code: 'JetBrains Mono', monospace;
-  
+
   /* Spacing */
   --duvu-space-xs: 4px;
   --duvu-space-sm: 8px;
@@ -27,7 +27,7 @@
   --duvu-space-xl: 32px;
   --duvu-space-2xl: 48px;
   --duvu-space-3xl: 64px;
-  
+
   /* Shape */
   --duvu-radius-xs: 6px;
   --duvu-radius-sm: 10px;
@@ -36,10 +36,10 @@
   --duvu-radius-full: 9999px;
   --duvu-btn-radius: 10px;
   --duvu-card-radius: 16px;
-  
+
   /* Elevation */
   --duvu-card-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-  
+
   /* Motion */
   --duvu-dur: 0.4s;
   --duvu-dur-fast: 0.2s;
@@ -47,7 +47,7 @@
   --duvu-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --duvu-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duvu-ease-std: cubic-bezier(0.4, 0, 0.2, 1);
-  
+
   /* Emphasis */
   --duvu-emphasis-1-bg: var(--duvu-accent);
   --duvu-emphasis-1-text: var(--duvu-btn-text);
@@ -55,7 +55,7 @@
   --duvu-emphasis-2-text: var(--duvu-fg);
   --duvu-emphasis-3-bg: transparent;
   --duvu-emphasis-3-text: var(--duvu-fg2);
-  
+
   /* Semantic */
   --duvu-success: #2A9D8F;
   --duvu-warning: #F4A261;
@@ -116,7 +116,7 @@ body {
   min-height: 44px; /* HIG touch target */
   padding: 10px 22px;
   border-radius: var(--duvu-btn-radius);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   font-family: var(--duvu-font);
   border: none;
@@ -244,7 +244,7 @@ class DuvuTheme {
           textStyle: TextStyle(
             fontFamily: fontFamily,
             fontWeight: FontWeight.w600,
-            fontSize: 14,
+            fontSize: 16,
           ),
         ),
       ),
@@ -264,9 +264,9 @@ class DuvuTheme {
         titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w500, color: fg, height: 1.27),
         titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: fg, height: 1.5),
         bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: fg, height: 1.5),
-        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: fg2, height: 1.43),
-        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: fg3, height: 1.33),
-        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: fg, height: 1.43),
+        bodyMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: fg2, height: 1.43),
+        bodySmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: fg3, height: 1.33),
+        labelLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: fg, height: 1.43),
       ),
     );
   }
@@ -301,7 +301,7 @@ struct DuvuTheme {
     let fg2: Color
     let fg3: Color
     let cornerRadius: CGFloat
-    
+
     // Toss Dark 프리셋
     static let tossDark = DuvuTheme(
         accent: Color(hex: "#3182F6"),
@@ -318,11 +318,11 @@ struct DuvuTheme {
 struct DuvuCard<Content: View>: View {
     let content: Content
     @Environment(\.duvuTheme) var theme
-    
+
     init(@ViewBuilder content: () -> Content) {
         self.content = content()
     }
-    
+
     var body: some View {
         content
             .padding(24)
@@ -337,13 +337,13 @@ struct DuvuButton: View {
     let style: ButtonStyle
     let action: () -> Void
     @Environment(\.duvuTheme) var theme
-    
+
     enum ButtonStyle { case primary, secondary, ghost }
-    
+
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 16, weight: .semibold))
                 .frame(minHeight: 44) // HIG
                 .frame(maxWidth: .infinity)
                 .background(bgColor)
@@ -351,7 +351,7 @@ struct DuvuButton: View {
                 .cornerRadius(theme.cornerRadius * 0.625)
         }
     }
-    
+
     var bgColor: Color {
         switch style {
         case .primary: return theme.accent
@@ -359,7 +359,7 @@ struct DuvuButton: View {
         case .ghost: return .clear
         }
     }
-    
+
     var fgColor: Color {
         switch style {
         case .primary: return .white
@@ -384,19 +384,19 @@ object DuvuTheme {
         val warning: Color = Color(0xFFF4A261),
         val error: Color = Color(0xFFE76F51),
     )
-    
+
     val TossDark = Colors(
         bg = Color(0xFF08080B), surface = Color(0xFF111115), surface2 = Color(0xFF1B1B20),
         fg = Color(0xFFEAEAF0), fg2 = Color(0xFF848490), fg3 = Color(0xFF525258),
         accent = Color(0xFF3182F6), btnText = Color.White,
     )
-    
+
     val TossLight = Colors(
         bg = Color(0xFFF2F1EE), surface = Color.White, surface2 = Color(0xFFE8E7E4),
         fg = Color(0xFF0C0C11), fg2 = Color(0xFF52525C), fg3 = Color(0xFF9E9EA6),
         accent = Color(0xFF3182F6), btnText = Color.White,
     )
-    
+
     fun shapes(radiusDp: Int = 16) = Shapes(
         small = RoundedCornerShape(radiusDp / 2),
         medium = RoundedCornerShape(radiusDp),
@@ -444,7 +444,7 @@ fun DuvuButton(
         ),
         shape = RoundedCornerShape(10.dp),
     ) {
-        Text(text, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
+        Text(text, fontWeight = FontWeight.SemiBold, fontSize = 16.sp)
     }
 }
 ```
@@ -467,27 +467,27 @@ public class DuvuTheme : ScriptableObject
     public Color fg2 = HexToColor("#848490");
     public Color fg3 = HexToColor("#525258");
     public Color accent = HexToColor("#3182F6");
-    
+
     [Header("Shape")]
     public float cornerRadius = 16f;
     public float buttonRadius = 10f;
-    
+
     [Header("Spacing")]
     public float spaceXs = 4f;
     public float spaceSm = 8f;
     public float spaceMd = 16f;
     public float spaceLg = 24f;
     public float spaceXl = 32f;
-    
+
     [Header("Motion")]
     public float duration = 0.4f;
     public float durationFast = 0.2f;
-    
+
     public static Color HexToColor(string hex) {
         ColorUtility.TryParseHtmlString(hex, out Color color);
         return color;
     }
-    
+
     // 프리셋 생성 팩토리
     public static DuvuTheme CreateFromPreset(string presetName, bool isDark = true) {
         var theme = CreateInstance<DuvuTheme>();
@@ -549,12 +549,12 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: DuvuTheme.colors.btnText,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
     fontFamily: DuvuTheme.font.medium,
   },
   text: { color: DuvuTheme.colors.fg, fontSize: 16, lineHeight: 24 },
-  textSecondary: { color: DuvuTheme.colors.fg2, fontSize: 14 },
+  textSecondary: { color: DuvuTheme.colors.fg2, fontSize: 16 },
 });
 ```
 
@@ -598,7 +598,7 @@ DUVU의 디자인 토큰은 **플랫폼에 독립적**이다. 모든 토큰은 �
   box-shadow: var(--duvu-card-shadow);
 }
 .duvu-metric__label {
-  font-size: 13px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 500;
   color: var(--duvu-fg2);
   letter-spacing: 0.02em;
@@ -614,7 +614,7 @@ DUVU의 디자인 토큰은 **플랫폼에 독립적**이다. 모든 토큰은 �
   display: inline-flex;
   align-items: center;
   gap: var(--duvu-space-xs);
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   padding: 2px 8px;
   border-radius: var(--duvu-radius-full);
@@ -671,7 +671,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   label: {
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: '500',
     color: '#848490',
     letterSpacing: 0.26,
@@ -693,7 +693,7 @@ const styles = StyleSheet.create({
   },
   badgeUp: { backgroundColor: 'rgba(42,157,143,0.15)' },
   badgeDown: { backgroundColor: 'rgba(231,111,81,0.15)' },
-  badgeText: { fontSize: 12, fontWeight: '600' },
+  badgeText: { fontSize: 16, fontWeight: '600' },
 });
 
 export default DuvuMetric;
@@ -743,7 +743,7 @@ class DuvuMetric extends StatelessWidget {
           Text(
             label,
             style: const TextStyle(
-              fontSize: 13,
+              fontSize: 16,
               fontWeight: FontWeight.w500,
               color: Color(0xFF848490),
               letterSpacing: 0.26,
@@ -770,7 +770,7 @@ class DuvuMetric extends StatelessWidget {
               child: Text(
                 '${isUp ? '▲' : '▼'} $badgeText',
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: badgeColor,
                 ),
@@ -799,9 +799,9 @@ struct DuvuMetric: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(label)
-                .font(.system(size: 13, weight: .medium))
+                .font(.system(size: 16, weight: .medium))
                 .foregroundColor(Color(hex: "#848490"))
-                .tracking(0.26)
+
 
             Text(value)
                 .font(.system(size: 32, weight: .bold).monospacedDigit())
@@ -812,7 +812,7 @@ struct DuvuMetric: View {
                 let isUp = dir == .up
                 let color = isUp ? Color(hex: "#2A9D8F") : Color(hex: "#E76F51")
                 Text("\(isUp ? "▲" : "▼") \(badgeText)")
-                    .font(.system(size: 12, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(color)
                     .padding(.horizontal, 8)
                     .padding(.vertical, 2)
@@ -844,7 +844,7 @@ struct DuvuMetric: View {
   min-height: 44px;
   padding: 10px 22px;
   border-radius: var(--duvu-btn-radius);
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   font-family: var(--duvu-font);
   border: none;
@@ -952,7 +952,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   btnText: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
   },
 });
@@ -1011,7 +1011,7 @@ class DuvuButtons extends StatelessWidget {
       elevation: 0,
       child: Text(
         btn.label,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -1054,7 +1054,7 @@ struct DuvuButtons: View {
             ForEach(buttons) { btn in
                 Button(action: btn.action) {
                     Text(btn.label)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .padding(.horizontal, 22)
                         .padding(.vertical, 10)
                         .frame(minHeight: 44)
@@ -1111,7 +1111,7 @@ struct ScaleButtonStyle: SwiftUI.ButtonStyle {
   background: var(--duvu-bg);
 }
 .duvu-hero__eyebrow {
-  font-size: 13px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   color: var(--duvu-accent);
   text-transform: uppercase;
@@ -1141,7 +1141,7 @@ struct ScaleButtonStyle: SwiftUI.ButtonStyle {
 **React Native:**
 ```typescript
 import React from 'react';
-import { View, Text, StyleSheet, useWindowDimensions } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 interface DuvuHeroProps {
   eyebrow?: string;
@@ -1151,8 +1151,7 @@ interface DuvuHeroProps {
 }
 
 const DuvuHero: React.FC<DuvuHeroProps> = ({ eyebrow, title, subtitle, children }) => {
-  const { width } = useWindowDimensions();
-  const titleSize = Math.min(Math.max(width * 0.07, 32), 56);
+  const titleSize = 48;
 
   return (
     <View style={styles.container}>
@@ -1173,7 +1172,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#08080B',
   },
   eyebrow: {
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: '600',
     color: '#3182F6',
     textTransform: 'uppercase',
@@ -1224,8 +1223,7 @@ class DuvuHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final titleSize = (screenWidth * 0.07).clamp(32.0, 56.0);
+    const titleSize = 48.0;
 
     return Container(
       color: const Color(0xFF08080B),
@@ -1239,7 +1237,7 @@ class DuvuHero extends StatelessWidget {
               child: Text(
                 eyebrow!.toUpperCase(),
                 style: const TextStyle(
-                  fontSize: 13,
+                  fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Color(0xFF3182F6),
                   letterSpacing: 1.04,
@@ -1319,13 +1317,13 @@ struct DuvuHero<Actions: View>: View {
         VStack(spacing: 16) {
             if let eyebrow {
                 Text(eyebrow.uppercased())
-                    .font(.system(size: 13, weight: .semibold))
+                    .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(Color(hex: "#3182F6"))
-                    .tracking(1.04)
+
             }
 
             Text(title)
-                .font(.system(size: dynamicTitleSize, weight: .heavy))
+                .font(.system(size: 48, weight: .heavy))
                 .foregroundColor(Color(hex: "#EAEAF0"))
                 .multilineTextAlignment(.center)
                 .lineSpacing(0)
@@ -1349,14 +1347,6 @@ struct DuvuHero<Actions: View>: View {
         .background(Color(hex: "#08080B"))
     }
 
-    private var dynamicTitleSize: CGFloat {
-        #if os(iOS)
-        let width = UIScreen.main.bounds.width
-        return min(max(width * 0.07, 32), 56)
-        #else
-        return 48
-        #endif
-    }
 }
 ```
 
@@ -1378,7 +1368,7 @@ struct DuvuHero<Actions: View>: View {
   margin-bottom: var(--duvu-space-xl);
 }
 .duvu-article__category {
-  font-size: 13px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   color: var(--duvu-accent);
   text-transform: uppercase;
@@ -1393,7 +1383,7 @@ struct DuvuHero<Actions: View>: View {
 .duvu-article__meta {
   display: flex;
   gap: var(--duvu-space-md);
-  font-size: 13px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
 }
 .duvu-article__cover {
@@ -1460,7 +1450,7 @@ const styles = StyleSheet.create({
   content: { maxWidth: 680, alignSelf: 'center', padding: 24, paddingVertical: 48 },
   header: { gap: 8, marginBottom: 32 },
   category: {
-    fontSize: 13,
+    fontSize: 16,
     fontWeight: '600',
     color: '#3182F6',
     letterSpacing: 0.52,
@@ -1472,7 +1462,7 @@ const styles = StyleSheet.create({
     lineHeight: 35,
   },
   metaRow: { flexDirection: 'row', gap: 16 },
-  meta: { fontSize: 13, color: '#525258' },
+  meta: { fontSize: 16, color: '#525258' },
   cover: {
     width: '100%',
     aspectRatio: 16 / 9,
@@ -1524,7 +1514,7 @@ class DuvuArticle extends StatelessWidget {
                     child: Text(
                       category!.toUpperCase(),
                       style: const TextStyle(
-                        fontSize: 13,
+                        fontSize: 16,
                         fontWeight: FontWeight.w600,
                         color: Color(0xFF3182F6),
                         letterSpacing: 0.52,
@@ -1544,10 +1534,10 @@ class DuvuArticle extends StatelessWidget {
                 Row(
                   children: [
                     Text(author,
-                        style: const TextStyle(fontSize: 13, color: Color(0xFF525258))),
+                        style: const TextStyle(fontSize: 16, color: Color(0xFF525258))),
                     const SizedBox(width: 16),
                     Text(date,
-                        style: const TextStyle(fontSize: 13, color: Color(0xFF525258))),
+                        style: const TextStyle(fontSize: 16, color: Color(0xFF525258))),
                   ],
                 ),
                 const SizedBox(height: 32),
@@ -1615,9 +1605,9 @@ struct DuvuArticle<Body: View>: View {
                 VStack(alignment: .leading, spacing: 8) {
                     if let category {
                         Text(category.uppercased())
-                            .font(.system(size: 13, weight: .semibold))
+                            .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(Color(hex: "#3182F6"))
-                            .tracking(0.52)
+
                     }
                     Text(title)
                         .font(.system(size: 28, weight: .bold))
@@ -1627,7 +1617,7 @@ struct DuvuArticle<Body: View>: View {
                         Text(author)
                         Text(date)
                     }
-                    .font(.system(size: 13))
+                    .font(.system(size: 16))
                     .foregroundColor(Color(hex: "#525258"))
                 }
                 .padding(.bottom, 32)
@@ -1703,12 +1693,12 @@ struct DuvuArticle<Body: View>: View {
   opacity: 1;
 }
 .duvu-gallery__caption {
-  font-size: 14px;
+  font-size: var(--duvu-font-size-xs);
   font-weight: 600;
   color: var(--duvu-fg);
 }
 .duvu-gallery__sub {
-  font-size: 12px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
 }
 ```
@@ -1787,12 +1777,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
   },
   caption: {
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: '600',
     color: '#EAEAF0',
   },
   sub: {
-    fontSize: 12,
+    fontSize: 16,
     color: '#525258',
     marginTop: 2,
   },
@@ -1876,7 +1866,7 @@ class DuvuGallery extends StatelessWidget {
                             Text(
                               item.caption!,
                               style: const TextStyle(
-                                fontSize: 14,
+                                fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Color(0xFFEAEAF0),
                               ),
@@ -1885,7 +1875,7 @@ class DuvuGallery extends StatelessWidget {
                               Text(
                                 item.sub!,
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 16,
                                   color: Color(0xFF525258),
                                 ),
                               ),
@@ -1944,11 +1934,11 @@ struct DuvuGallery: View {
                         if let caption = item.caption {
                             VStack(alignment: .leading, spacing: 2) {
                                 Text(caption)
-                                    .font(.system(size: 14, weight: .semibold))
+                                    .font(.system(size: 16, weight: .semibold))
                                     .foregroundColor(Color(hex: "#EAEAF0"))
                                 if let sub = item.sub {
                                     Text(sub)
-                                        .font(.system(size: 12))
+                                        .font(.system(size: 16))
                                         .foregroundColor(Color(hex: "#525258"))
                                 }
                             }
@@ -1988,7 +1978,7 @@ struct DuvuGallery: View {
 .duvu-chat__bubble {
   max-width: 75%;
   padding: 10px 14px;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.45;
   word-break: break-word;
 }
@@ -2005,7 +1995,7 @@ struct DuvuGallery: View {
   border-radius: var(--duvu-radius-lg) var(--duvu-radius-lg) var(--duvu-radius-lg) var(--duvu-radius-xs);
 }
 .duvu-chat__time {
-  font-size: 11px;
+  font-size: var(--duvu-font-size-xs);
   color: var(--duvu-fg3);
   padding: 0 4px;
 }
@@ -2024,7 +2014,7 @@ struct DuvuGallery: View {
   color: var(--duvu-fg);
   border: none;
   border-radius: var(--duvu-radius-full);
-  font-size: 15px;
+  font-size: 16px;
   font-family: var(--duvu-font);
   outline: none;
 }
@@ -2156,8 +2146,8 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 6,
     borderBottomRightRadius: 16,
   },
-  bubbleText: { fontSize: 15, lineHeight: 22 },
-  time: { fontSize: 11, color: '#525258', paddingHorizontal: 4 },
+  bubbleText: { fontSize: 16, lineHeight: 22 },
+  time: { fontSize: 16, color: '#525258', paddingHorizontal: 4 },
   inputRow: {
     flexDirection: 'row',
     gap: 8,
@@ -2172,7 +2162,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#1B1B20',
     color: '#EAEAF0',
     borderRadius: 9999,
-    fontSize: 15,
+    fontSize: 16,
   },
   sendBtn: {
     width: 44,
@@ -2263,7 +2253,7 @@ class _DuvuChatState extends State<DuvuChat> {
                       child: Text(
                         msg.text,
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: 16,
                           height: 1.45,
                           color: msg.sent
                               ? const Color(0xFFFFFFFF)
@@ -2276,7 +2266,7 @@ class _DuvuChatState extends State<DuvuChat> {
                       padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: Text(
                         msg.time,
-                        style: const TextStyle(fontSize: 11, color: Color(0xFF525258)),
+                        style: const TextStyle(fontSize: 16, color: Color(0xFF525258)),
                       ),
                     ),
                   ],
@@ -2292,7 +2282,7 @@ class _DuvuChatState extends State<DuvuChat> {
                   child: TextField(
                     controller: _controller,
                     onSubmitted: (_) => _handleSend(),
-                    style: const TextStyle(fontSize: 15, color: Color(0xFFEAEAF0)),
+                    style: const TextStyle(fontSize: 16, color: Color(0xFFEAEAF0)),
                     decoration: InputDecoration(
                       hintText: '메시지 입력...',
                       hintStyle: const TextStyle(color: Color(0xFF525258)),
@@ -2364,7 +2354,7 @@ struct DuvuChat: View {
                         ForEach(messages) { msg in
                             VStack(alignment: msg.sent ? .trailing : .leading, spacing: 2) {
                                 Text(msg.text)
-                                    .font(.system(size: 15))
+                                    .font(.system(size: 16))
                                     .foregroundColor(msg.sent ? .white : Color(hex: "#EAEAF0"))
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 10)
@@ -2376,7 +2366,7 @@ struct DuvuChat: View {
                                     .clipShape(ChatBubbleShape(sent: msg.sent))
 
                                 Text(msg.time)
-                                    .font(.system(size: 11))
+                                    .font(.system(size: 16))
                                     .foregroundColor(Color(hex: "#525258"))
                                     .padding(.horizontal, 4)
                             }
@@ -2395,7 +2385,7 @@ struct DuvuChat: View {
 
             HStack(spacing: 8) {
                 TextField("메시지 입력...", text: $input)
-                    .font(.system(size: 15))
+                    .font(.system(size: 16))
                     .foregroundColor(Color(hex: "#EAEAF0"))
                     .padding(.horizontal, 16)
                     .padding(.vertical, 10)
