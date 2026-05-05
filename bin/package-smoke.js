@@ -39,7 +39,7 @@ try {
       fail(`배포 제외 파일이 tarball에 포함됨: ${path}`);
     }
   }
-  for (const required of ['bin/duvu.js', 'bin/screenshot.js', 'bin/token-smoke.js', 'data/presets.json', 'demo/index.html', 'skills/SKILL.md']) {
+  for (const required of ['bin/duvu.js', 'bin/screenshot.js', 'bin/token-smoke.js', 'bin/docs-smoke.js', 'data/presets.json', 'demo/index.html', 'skills/SKILL.md', 'CALIBRATION.md']) {
     if (!files.has(required)) fail(`필수 파일이 tarball에 없음: ${required}`);
   }
 

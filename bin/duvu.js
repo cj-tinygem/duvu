@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { fileURLToPath } from 'url';
-import { dirname, join, resolve, relative, isAbsolute } from 'path';
+import { basename, dirname, join, resolve, relative, isAbsolute } from 'path';
 import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync, statSync, appendFileSync, renameSync, unlinkSync, readdirSync } from 'fs';
 import { execSync } from 'child_process';
 import { createServer } from 'http';
@@ -307,6 +307,10 @@ ${c.b}${c.cyan}── 조회 ──${c.r}
   ${c.green}tokens sync-figma${c.r} --file-key <key> [--token <token>|FIGMA_TOKEN] [--dry-run]
                           Figma Variables REST API에 figma-api payload 적용
   ${c.green}tokens audit${c.r}            토큰 그래프/alias/생성형 UI 품질 게이트 검증
+  ${c.green}project init${c.r} [--template <id>] [--preset <id>|--hex <#hex>] [--out <dir>] [--name <name>] [--force]
+                          프로젝트별 DUVU 인계 문서와 구조화 토큰 계약 생성
+  ${c.green}project audit${c.r} [--out <dir>] [--format json]
+                          프로젝트별 DUVU 계약 파일 정합성 검증
   ${c.green}demo${c.r} [port] [--no-open] [--window-size 1440x1000]
                           데모 웹페이지 실행. WSL에서는 새 데스크톱 크기 Chrome 창으로 열기
 
@@ -341,6 +345,7 @@ ${c.b}${c.cyan}── 검증 ──${c.r}
   ${c.green}tokens audit${c.r}            DTCG 구조, alias 그래프, AI 슬롭 방지 품질 게이트
   ${c.green}tokens score${c.r}            템플릿별 hierarchy/spacing/color/responsive 품질 점수
   ${c.green}tokens lint${c.r} <html-file>  생성 결과물의 placeholder/CTA/token/reduced-motion 검사
+  ${c.green}project audit${c.r}            DUVU.md + .duvu 계약 파일 정합성 검사
 
 ${c.b}${c.cyan}── 사용 이력 ──${c.r}
   ${c.green}log${c.r} '<JSON>'           AI 설계 결정 기록 (프리셋 선택 근거, 평가 등)
@@ -1798,6 +1803,356 @@ ${contract.prompt}
 `);
 }
 
+function projectOutputRoot() {
+  return resolve(getArgValue('--out') || getArgValue('--dir') || process.cwd());
+}
+
+function projectNameFromRoot(root) {
+  return getArgValue('--name') || basename(root) || 'duvu-project';
+}
+
+function buildProjectManifest({ projectName, root, template, preset, contract, dtcg, tokenAudit }) {
+  return {
+    schemaVersion: 1,
+    kind: 'duvu-project-contract',
+    project: {
+      name: projectName,
+      root,
+      createdAt: new Date().toISOString(),
+    },
+    duvu: {
+      version: PKG_VERSION,
+      source: 'duvu project init',
+      canonicalDocument: 'DUVU.md',
+      machineFiles: [
+        '.duvu/project.json',
+        '.duvu/contract.json',
+        '.duvu/tokens.dtcg.json',
+      ],
+    },
+    selection: {
+      template: template.id,
+      color: preset.id,
+      sourceColor: preset.src,
+      typography: contract.presets.typography.id,
+      layout: contract.presets.layout.id,
+      style: contract.presets.style.id,
+      motion: contract.presets.motion.id,
+    },
+    quality: {
+      tokenScore: tokenAudit.score,
+      tokenGrade: tokenAudit.grade,
+      templateScore: contract.quality.score.score,
+      templateGrade: contract.quality.score.grade,
+      templatePass: contract.quality.score.pass,
+      antiSlopGates: contract.quality.hardRules,
+    },
+    handoff: {
+      requiredReadOrder: ['DUVU.md', '.duvu/contract.json', '.duvu/tokens.dtcg.json'],
+      rule: '다른 에이전트와 작업자는 UI 변경 전 DUVU.md를 먼저 읽고, 색상/간격/반경/모션/타이포를 .duvu/tokens.dtcg.json 또는 DUVU 토큰 alias에서만 파생한다.',
+      maintenance: '토큰, 템플릿, 미학 방향, 또는 선택적으로 연결한 외부 레퍼런스가 바뀌면 duvu project init --force로 계약을 재생성하고 duvu project audit을 통과시킨다.',
+    },
+    picasso: {
+      independent: true,
+      required: false,
+      role: 'Picasso는 DUVU와 별개의 독립 도구다. 둘은 각각 단독으로 사용할 수 있으며, 함께 쓸 때만 Picasso clone 결과를 DUVU 토큰/컴포넌트/템플릿/품질 게이트 후보로 정규화한다.',
+      optionalLocalPathHint: '/mnt/c/dev/picasso',
+      workflow: [
+        'DUVU만 사용할 수 있다. 이 경우 Picasso 관련 단계는 건너뛰고 DUVU 프리셋, 템플릿, 토큰 계약만 사용한다.',
+        'Picasso만 독립적으로 사용할 수도 있다. DUVU 계약 생성은 필수가 아니다.',
+        '두 도구를 선택적으로 함께 쓸 때 Picasso로 레퍼런스를 캡처하고 로컬 아카이브를 만든다.',
+        '캡처된 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 DUVU 프리셋 또는 프로젝트 계약 후보로 분해한다.',
+        'DUVU tokens audit, project audit, visual audit로 접근성/AI 슬롭/반응형/미학 방향을 검증한다.',
+        '저작권 리스크가 있는 원본 clone 자산은 로컬 전용으로 유지하고, 프로젝트에는 추상 토큰과 의도만 남긴다.',
+      ],
+    },
+  };
+}
+
+function tokenValueToReadable(token) {
+  if (!token) return '';
+  const value = token.$value;
+  if (typeof value === 'string') return value;
+  if (value?.hex) return value.hex;
+  if (value && typeof value === 'object' && typeof value.value === 'number') return `${value.value}${value.unit || ''}`;
+  return JSON.stringify(value);
+}
+
+function tokenMapFromDtcg(dtcg) {
+  return new Map(flattenDtcgTokens(dtcg).map(entry => [entry.path, entry.token]));
+}
+
+function buildDuvuProjectMarkdown({ manifest, contract, dtcg }) {
+  const tokenMap = tokenMapFromDtcg(dtcg);
+  const tokenRows = [
+    ['background', 'semantic.color.background'],
+    ['surface', 'semantic.color.surface'],
+    ['text', 'semantic.color.text'],
+    ['textMuted', 'semantic.color.textMuted'],
+    ['action', 'semantic.color.action'],
+    ['actionText', 'semantic.color.actionText'],
+    ['radius.card', 'component.card.radius'],
+    ['button.height', 'component.button.height'],
+  ].map(([label, path]) => `| ${label} | \`${path}\` | \`${tokenValueToReadable(tokenMap.get(path))}\` |`).join('\n');
+  const previewCards = contract.composition.previewCards
+    .map(card => `- ${card.type}${card.span ? ` (${card.span})` : ''}`)
+    .join('\n');
+  const hardRules = contract.quality.hardRules.map(rule => `- ${rule}`).join('\n');
+  const rubric = Object.entries(contract.quality.rubric).map(([key, value]) => `- ${key}: ${value}`).join('\n');
+  const picassoWorkflow = manifest.picasso.workflow.map(item => `- ${item}`).join('\n');
+
+  return `# DUVU Project Contract: ${manifest.project.name}
+
+이 파일은 이 프로젝트의 디자인 정본이다. 다른 에이전트, 작업자, AI는 UI를 만들거나 수정하기 전에 이 파일과 \`.duvu/contract.json\`, \`.duvu/tokens.dtcg.json\`을 먼저 읽어야 한다.
+
+## Identity
+
+| 항목 | 값 |
+|---|---|
+| DUVU version | ${manifest.duvu.version} |
+| template | ${manifest.selection.template} |
+| color | ${manifest.selection.color} (${manifest.selection.sourceColor}) |
+| typography | ${manifest.selection.typography} |
+| layout | ${manifest.selection.layout} |
+| style | ${manifest.selection.style} |
+| motion | ${manifest.selection.motion} |
+| token quality | ${manifest.quality.tokenScore}/100 (${manifest.quality.tokenGrade}) |
+| template quality | ${manifest.quality.templateScore}/100 (${manifest.quality.templateGrade}) |
+
+## Aesthetic Direction
+
+- profile: ${contract.aesthetic.profile?.id || 'none'}
+- direction: ${contract.aesthetic.profile?.direction || '명시적 미학 방향을 먼저 정한다.'}
+- signature move: ${contract.aesthetic.profile?.signatureMove || '기억에 남는 구조적 장면을 하나 만든다.'}
+- avoid: ${contract.aesthetic.profile?.antiPattern || 'generic AI-looking UI'}
+
+## Core Tokens
+
+| 역할 | token path | value |
+|---|---|---|
+${tokenRows}
+
+## Composition
+
+- hero alignment: ${contract.composition.heroAlign}
+- grid style: ${contract.composition.gridStyle}
+- journey: ${contract.balance.journeyMode}
+- density: ${contract.balance.densityMode}
+- alignment: ${contract.balance.alignmentMode}
+- wrapping: ${contract.balance.wrapMode}
+- surface separation: ${contract.balance.separationMode}
+
+### Preview Components
+
+${previewCards || '- preview component 없음'}
+
+## Non-Negotiable Rules
+
+${hardRules}
+
+## Quality Rubric
+
+${rubric}
+
+## AI Handoff Protocol
+
+1. UI 변경 전 이 파일을 읽고, \`.duvu/project.json\`의 selection과 quality를 확인한다.
+2. 색상, 간격, 반경, 모션, 타이포는 \`.duvu/tokens.dtcg.json\`의 토큰 또는 alias에서만 파생한다.
+3. 새 컴포넌트는 \`.duvu/contract.json\`의 aesthetic direction과 preview component intent를 따른다.
+4. 평균적인 AI 카드 UI, placeholder, raw hex/px, 장식용 glow/blob/orb, 중첩 카드, 복수 Primary CTA를 만들지 않는다.
+5. 산출 HTML/CSS는 \`duvu tokens lint <html-file>\`로 검사하고, 프로젝트 계약은 \`duvu project audit\`으로 검사한다.
+6. 토큰이나 템플릿을 바꾸면 \`duvu project init --force\`로 이 계약을 재생성한다.
+
+## Optional Picasso Bridge
+
+Picasso와 DUVU는 별개의 독립 도구다. DUVU는 Picasso 없이도 단독으로 프로젝트 계약과 토큰 시스템을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때만 원본 HTML/CSS를 그대로 배포하지 말고, 아래 흐름으로 추상화한다.
+
+${picassoWorkflow}
+
+## Machine Files
+
+- \`.duvu/project.json\`: 프로젝트 선택, 품질, 인계 규칙, Picasso 브리지 메타데이터
+- \`.duvu/contract.json\`: AI 생성 계약과 미학 방향
+- \`.duvu/tokens.dtcg.json\`: DTCG 호환 토큰 그래프
+`;
+}
+
+function writeProjectFile(path, content, force, written) {
+  if (existsSync(path) && !force) {
+    throw new Error(`이미 파일이 있습니다: ${path} (--force로 덮어쓰기 가능)`);
+  }
+  writeFileSync(path, content);
+  written.push(path);
+}
+
+function buildProjectArtifacts({ root, projectName, data, template, preset }) {
+  const contract = buildGenerationContract(data, template, preset);
+  if (!contract.quality.score.pass) {
+    throw new Error(`템플릿 품질 게이트 실패: ${contract.quality.score.reasons.join(', ')}`);
+  }
+  const tokenAudit = auditTokenEngine(data, preset);
+  if (tokenAudit.issues.length) {
+    throw new Error(`토큰 품질 게이트 실패: ${tokenAudit.issues.join(', ')}`);
+  }
+  const dtcg = tokenAudit.dtcg;
+  const manifest = buildProjectManifest({ projectName, root, template, preset, contract, dtcg, tokenAudit });
+  return {
+    manifest,
+    contract,
+    dtcg,
+    markdown: buildDuvuProjectMarkdown({ manifest, contract, dtcg }),
+  };
+}
+
+function initProjectContract() {
+  const data = loadPresets();
+  const root = projectOutputRoot();
+  const projectName = projectNameFromRoot(root);
+  const force = args.includes('--force');
+  let preset;
+  let template;
+  try {
+    preset = tokenSourceFromArgs(data);
+    template = templateFromArgs(data);
+    preset = resolveContractPreset(data, template, preset);
+  } catch (e) {
+    console.log(`${c.red}${e.message}${c.r}`);
+    process.exit(1);
+  }
+
+  let artifacts;
+  try {
+    artifacts = buildProjectArtifacts({ root, projectName, data, template, preset });
+  } catch (e) {
+    console.log(`${c.red}${e.message}${c.r}`);
+    process.exit(1);
+  }
+
+  const duvuDir = join(root, '.duvu');
+  const written = [];
+  try {
+    mkdirSync(duvuDir, { recursive: true });
+    writeProjectFile(join(root, 'DUVU.md'), artifacts.markdown, force, written);
+    writeProjectFile(join(duvuDir, 'project.json'), JSON.stringify(artifacts.manifest, null, 2) + '\n', force, written);
+    writeProjectFile(join(duvuDir, 'contract.json'), JSON.stringify(artifacts.contract, null, 2) + '\n', force, written);
+    writeProjectFile(join(duvuDir, 'tokens.dtcg.json'), JSON.stringify(artifacts.dtcg, null, 2) + '\n', force, written);
+  } catch (e) {
+    console.log(`${c.red}${e.message}${c.r}`);
+    process.exit(1);
+  }
+
+  console.log(`${c.green}✓${c.r} DUVU 프로젝트 계약 생성 완료`);
+  for (const file of written) console.log(`  ${c.d}${relative(root, file) || file}${c.r}`);
+  writeLog({ cmd: 'project init', args, presets: { color: preset.id }, result: { root, template: template.id, files: written.length } });
+}
+
+function readProjectJson(root, relPath, issues) {
+  const path = join(root, relPath);
+  if (!existsSync(path)) {
+    issues.push(`${relPath}: 파일 누락`);
+    return null;
+  }
+  try {
+    return JSON.parse(readFileSync(path, 'utf8'));
+  } catch (e) {
+    issues.push(`${relPath}: JSON 파싱 실패 (${e.message})`);
+    return null;
+  }
+}
+
+function auditProjectContract() {
+  const root = projectOutputRoot();
+  const issues = [];
+  const warnings = [];
+  const mdPath = join(root, 'DUVU.md');
+  if (!existsSync(mdPath)) {
+    issues.push('DUVU.md: 파일 누락');
+  } else {
+    const md = readFileSync(mdPath, 'utf8');
+    for (const required of ['DUVU Project Contract', 'AI Handoff Protocol', 'Optional Picasso Bridge', '.duvu/tokens.dtcg.json']) {
+      if (!md.includes(required)) issues.push(`DUVU.md: 필수 섹션/참조 누락 (${required})`);
+    }
+    if (!md.includes('별개의 독립 도구') || !md.includes('Picasso 없이도 단독')) {
+      issues.push('DUVU.md: Picasso/DUVU 독립성 설명 누락');
+    }
+  }
+
+  const manifest = readProjectJson(root, '.duvu/project.json', issues);
+  const contract = readProjectJson(root, '.duvu/contract.json', issues);
+  const dtcg = readProjectJson(root, '.duvu/tokens.dtcg.json', issues);
+
+  if (manifest && manifest.kind !== 'duvu-project-contract') issues.push('.duvu/project.json: kind가 duvu-project-contract가 아님');
+  if (contract && contract.kind !== 'duvu-generation-contract') issues.push('.duvu/contract.json: kind가 duvu-generation-contract가 아님');
+  if (dtcg && !dtcg.$schema) issues.push('.duvu/tokens.dtcg.json: $schema 누락');
+  if (manifest && contract && manifest.selection?.template !== contract.template?.id) {
+    issues.push(`template 불일치: manifest=${manifest.selection?.template}, contract=${contract.template?.id}`);
+  }
+  if (manifest && contract && manifest.selection?.color !== contract.presets?.color?.id) {
+    issues.push(`color 불일치: manifest=${manifest.selection?.color}, contract=${contract.presets?.color?.id}`);
+  }
+  if (dtcg) {
+    const flat = flattenDtcgTokens(dtcg);
+    const tokenMap = new Map(flat.map(entry => [entry.path, entry.token]));
+    if (flat.length < 70) issues.push(`DTCG 토큰 수 부족: ${flat.length}`);
+    for (const entry of flat) {
+      for (const prop of ['$type', '$value', '$description']) {
+        if (!Object.prototype.hasOwnProperty.call(entry.token, prop)) issues.push(`${entry.path}: ${prop} 누락`);
+      }
+      if (typeof entry.token.$value === 'string' && entry.token.$value.startsWith('{')) {
+        try { resolveTokenReference(entry.token.$value, tokenMap); }
+        catch (e) { issues.push(`${entry.path}: ${e.message}`); }
+      }
+      issues.push(...validateDtcgTokenValue(entry.path, entry.token));
+    }
+  }
+  if (contract?.quality?.score && !contract.quality.score.pass) {
+    issues.push(`contract 품질 실패: ${contract.quality.score.score}/100`);
+  }
+  if (manifest?.duvu?.canonicalDocument !== 'DUVU.md') {
+    issues.push('.duvu/project.json: canonicalDocument는 DUVU.md여야 함');
+  }
+  if (manifest?.picasso && (manifest.picasso.independent !== true || manifest.picasso.required !== false)) {
+    issues.push('.duvu/project.json: Picasso는 독립적이고 선택적인 외부 도구로 표시되어야 함');
+  }
+  const legacyDesignDocName = ['DESIGN', 'md'].join('.');
+  if (existsSync(join(root, legacyDesignDocName))) {
+    warnings.push('기존 단일 디자인 지침 파일이 별도로 존재합니다. DUVU는 DUVU.md를 정본으로 사용합니다.');
+  }
+
+  const result = {
+    root,
+    pass: issues.length === 0,
+    issues,
+    warnings,
+    files: ['DUVU.md', '.duvu/project.json', '.duvu/contract.json', '.duvu/tokens.dtcg.json'],
+  };
+  if (getArgValue('--format') === 'json') {
+    console.log(JSON.stringify(result, null, 2));
+  } else {
+    console.log(`${c.b}${c.cyan}DUVU 프로젝트 계약 감사${c.r}`);
+    console.log(`  경로: ${root}`);
+    console.log(`  결과: ${result.pass ? c.green + '통과' : c.red + '실패'}${c.r}`);
+    for (const issue of issues) console.log(`  ${c.red}✗${c.r} ${issue}`);
+    for (const warning of warnings) console.log(`  ${c.yellow}!${c.r} ${warning}`);
+    if (result.pass && warnings.length === 0) console.log(`  ${c.green}✓${c.r} DUVU.md와 .duvu 계약 파일 정합성 통과`);
+  }
+  writeLog({ cmd: 'project audit', args, result: { pass: result.pass, issues: issues.length, warnings: warnings.length } });
+  if (!result.pass) process.exit(1);
+}
+
+function projectCmd(subcmd) {
+  if (subcmd === 'init' || subcmd === 'create') {
+    initProjectContract();
+    return;
+  }
+  if (subcmd === 'audit' || subcmd === 'check' || !subcmd) {
+    auditProjectContract();
+    return;
+  }
+  console.log(`${c.red}사용법: duvu project init|audit [--template <id>] [--preset <id>|--hex <#hex>] [--out <dir>] [--name <name>] [--force] [--format json]${c.r}`);
+  process.exit(1);
+}
+
 function countMatches(input, re) {
   return [...input.matchAll(re)].length;
 }
@@ -2972,6 +3327,7 @@ switch(cmd) {
   case 'list': case 'ls': list(args[0]); break;
   case 'show': show(args[0], args[1]); break;
   case 'tokens': await tokensCmd(args[0]); break;
+  case 'project': case 'proj': projectCmd(args[0]); break;
   case 'generate': case 'gen': generate(args[0]); break;
   case 'template': case 'tmpl': templateCmd(args[0]); break;
   case 'match': matchDomain(args[0]); break;

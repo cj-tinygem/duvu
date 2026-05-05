@@ -34,6 +34,8 @@ duvu tokens contract --template saas --format json
 duvu tokens score            # 22개 템플릿 생성 품질 점수
 duvu tokens lint ./index.html --format json
 duvu tokens audit            # alias 그래프 + 생성형 UI 품질 게이트 검증
+duvu project init --template saas          # DUVU.md + .duvu 계약 파일 생성
+duvu project audit                         # 프로젝트별 디자인 계약 정합성 검증
 ```
 
 ### 코드 생성
@@ -62,6 +64,8 @@ duvu tokens contract --template saas --format md
 duvu tokens score
 duvu tokens lint ./index.html --format json
 duvu tokens audit --preset toss
+duvu project init --template saas --out . --name "Revenue OS"
+duvu project audit --out . --format json
 ```
 
 `tokens export --format dtcg`는 DTCG 2025.10 형식의 `$schema`, `$type`, `$value`, `$description`, `$extensions.duvu`를 가진 범용 토큰 번들을 출력한다.
@@ -92,6 +96,42 @@ Figma 지원 범위는 현재 **import-ready/export-ready JSON 생성**과 `toke
 `tokens lint`는 AI가 생성한 HTML/CSS 결과물을 검사한다. DUVU 토큰 미사용, placeholder/lorem, raw hex 색상, raw px spacing/radius, Primary CTA 과다, `prefers-reduced-motion` 누락, `font-size: vw`, 16px 미만 텍스트, 모바일 팔레트 2열, 프리셋 칩 singleton 마지막 줄을 만드는 `flex-wrap`, 모바일 탭 가로 스크롤, 코드 출력 탭 가로 스크롤/nowrap, 코드/데이터 표면의 과도한 pill 반경, orb/blob/glow 장식, 중첩 카드, 44px 미만 터치 타겟 근거 부족을 실패로 처리한다.
 
 DUVU 토큰 엔진의 A+ 기준은 “예쁜 JSON 출력”이 아니라 구조, 대비, alias, Figma import parity, 템플릿 점수, 미학 방향, 생성 결과 린트가 함께 통과하는 상태다. 목표는 AI가 흔히 만드는 카드 나열·장식 과다·토큰 미사용·무성격 UI를 사전에 차단하고, 강한 미감 방향을 계약으로 고정해 최고 수준의 프론트엔드·디자인·UI/UX·비주얼 산출물을 만드는 것이다.
+
+### 프로젝트별 DUVU 계약
+
+DUVU는 단일 Markdown 지침 파일보다 상위 계층의 프로젝트 계약을 남긴다. 파일 이름은 `DUVU.md`이며, 같은 내용을 기계가 안정적으로 이어받을 수 있도록 `.duvu/` 구조화 파일을 함께 생성한다.
+
+```bash
+duvu project init --template saas --out . --name "Revenue OS"
+duvu project init --template fintech --preset stripe --force
+duvu project audit --out .
+```
+
+생성 파일:
+
+| 파일 | 역할 |
+|---|---|
+| `DUVU.md` | 사람과 AI가 먼저 읽는 프로젝트 디자인 정본. 미학 방향, signature move, 금지 규칙, 선택적 Picasso 브리지, 인계 프로토콜을 포함 |
+| `.duvu/project.json` | 프로젝트 선택값, 품질 점수, canonical 문서, 유지보수 규칙, 선택적 외부 레퍼런스 연계 메타데이터 |
+| `.duvu/contract.json` | `tokens contract`와 같은 AI 생성 계약. 템플릿, 프리셋, preview cards, balance, hard rules 포함 |
+| `.duvu/tokens.dtcg.json` | DTCG 호환 토큰 그래프. 다른 에이전트와 도구가 색상/간격/반경/모션/타이포를 안정적으로 재사용 |
+
+`duvu project audit`는 `DUVU.md`와 `.duvu/*` 파일의 존재, JSON 파싱, template/color 정합성, DTCG alias 무결성, 토큰 수, 품질 통과 여부를 검사한다. 기존 계약 파일은 기본적으로 덮어쓰지 않으며, 의도적으로 갱신할 때만 `--force`를 사용한다.
+
+이 구조에서 DUVU는 프로젝트별 디자인 지침 문서를 품되, 더 강한 토큰 그래프와 감사 가능한 생성 계약을 함께 남긴다. 다른 에이전트는 `DUVU.md`를 읽고 `.duvu/tokens.dtcg.json`에서 실제 값을 가져오며, 작업 후 `duvu tokens lint`와 `duvu project audit`로 일관성을 검증한다.
+
+### 선택적 Picasso 연계 설계
+
+Picasso와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Picasso 없이도 독립적으로 프로젝트 계약, 토큰 그래프, 생성 계약, 품질 감사를 제공한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때 DUVU는 Picasso의 clone 결과를 재사용 가능한 디자인 토큰·컴포넌트·템플릿·품질 게이트 후보로 정규화한다.
+
+선택적 결합 흐름:
+
+1. DUVU만 사용할 때는 `duvu project init`으로 프로젝트별 `DUVU.md`와 `.duvu/*` 계약을 생성한다.
+2. Picasso만 사용할 때는 DUVU 계약 없이 독립적인 clone 도구로 사용한다.
+3. 두 도구를 함께 쓸 때만 Picasso로 레퍼런스 사이트를 캡처하고 로컬 아카이브를 만든다.
+4. 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 DUVU 프리셋 후보로 분해한다.
+5. `duvu tokens audit`, `duvu project audit`, `npm run test:visual`로 접근성, AI 슬롭, 반응형, 미학 방향을 검증한다.
+6. 저작권 리스크가 있는 원본 clone 자산은 로컬 전용으로 유지하고, 배포물에는 추상 토큰과 의도만 남긴다.
 
 ### 확장
 

@@ -39,14 +39,18 @@
 
   /* Elevation */
   --duvu-card-shadow: 0 2px 8px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+  --duvu-card-shadow-hover: 0 4px 16px rgba(0,0,0,0.12);
 
   /* Motion */
   --duvu-dur: 0.4s;
   --duvu-dur-fast: 0.2s;
   --duvu-dur-slow: 0.7s;
+  --duvu-dur-active: 0.15s;
   --duvu-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --duvu-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --duvu-ease-std: cubic-bezier(0.4, 0, 0.2, 1);
+  --duvu-hover-lift: -2px;
+  --duvu-active-scale: 0.97;
 
   /* Emphasis */
   --duvu-emphasis-1-bg: var(--duvu-accent);
@@ -61,6 +65,11 @@
   --duvu-warning: #F4A261;
   --duvu-error: #E76F51;
   --duvu-info: var(--duvu-accent);
+
+  /* Touch / control geometry */
+  --duvu-touch-min: 44px;
+  --duvu-btn-padding-y: 10px;
+  --duvu-btn-padding-x: 22px;
 }
 
 /* 다크/라이트 전환 */
@@ -104,8 +113,8 @@ body {
               box-shadow var(--duvu-dur-fast) var(--duvu-ease);
 }
 .duvu-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  transform: translateY(var(--duvu-hover-lift));
+  box-shadow: var(--duvu-card-shadow-hover);
 }
 ```
 
@@ -113,8 +122,8 @@ body {
 
 ```css
 .duvu-btn {
-  min-height: 44px; /* HIG touch target */
-  padding: 10px 22px;
+  min-height: var(--duvu-touch-min); /* HIG touch target */
+  padding: var(--duvu-btn-padding-y) var(--duvu-btn-padding-x);
   border-radius: var(--duvu-btn-radius);
   font-size: var(--duvu-font-size-xs);
   font-weight: 600;
@@ -122,9 +131,9 @@ body {
   border: none;
   cursor: pointer;
   transition: background var(--duvu-dur-fast) var(--duvu-ease-spring),
-              transform 0.15s var(--duvu-ease-spring);
+              transform var(--duvu-dur-active) var(--duvu-ease-spring);
 }
-.duvu-btn:active { transform: scale(0.97); }
+.duvu-btn:active { transform: scale(var(--duvu-active-scale)); }
 
 .duvu-btn-primary {
   background: var(--duvu-emphasis-1-bg);
@@ -841,8 +850,8 @@ struct DuvuMetric: View {
   flex-wrap: wrap;
 }
 .duvu-buttons .duvu-btn {
-  min-height: 44px;
-  padding: 10px 22px;
+  min-height: var(--duvu-touch-min);
+  padding: var(--duvu-btn-padding-y) var(--duvu-btn-padding-x);
   border-radius: var(--duvu-btn-radius);
   font-size: var(--duvu-font-size-xs);
   font-weight: 600;
@@ -850,10 +859,10 @@ struct DuvuMetric: View {
   border: none;
   cursor: pointer;
   transition: background var(--duvu-dur-fast) var(--duvu-ease-spring),
-              transform 0.15s var(--duvu-ease-spring),
+              transform var(--duvu-dur-active) var(--duvu-ease-spring),
               opacity var(--duvu-dur-fast) var(--duvu-ease);
 }
-.duvu-buttons .duvu-btn:active { transform: scale(0.97); }
+.duvu-buttons .duvu-btn:active { transform: scale(var(--duvu-active-scale)); }
 .duvu-buttons .duvu-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
@@ -2019,8 +2028,8 @@ struct DuvuGallery: View {
   outline: none;
 }
 .duvu-chat__send {
-  width: 44px;
-  height: 44px;
+  width: var(--duvu-touch-min);
+  height: var(--duvu-touch-min);
   border-radius: var(--duvu-radius-full);
   background: var(--duvu-accent);
   color: var(--duvu-btn-text);
@@ -2029,11 +2038,11 @@ struct DuvuGallery: View {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: var(--duvu-font-size-md);
   flex-shrink: 0;
-  transition: transform 0.15s var(--duvu-ease-spring);
+  transition: transform var(--duvu-dur-active) var(--duvu-ease-spring);
 }
-.duvu-chat__send:active { transform: scale(0.92); }
+.duvu-chat__send:active { transform: scale(var(--duvu-active-scale)); }
 ```
 
 **React Native:**

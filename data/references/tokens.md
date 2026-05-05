@@ -17,6 +17,8 @@ duvu tokens contract --template saas --format json
 duvu tokens score
 duvu tokens lint ./index.html --format json
 duvu tokens audit --preset toss
+duvu project init --template saas --out .
+duvu project audit --out .
 ```
 
 내보내기 계약:
@@ -128,6 +130,32 @@ DUVU의 목표는 Figma 앱 자체를 대체하거나 자동 동기화를 과장
 - 17개 컴포넌트, 7개 인터랙션 패턴, AI 슬롭 방지 규칙 포함
 
 이 기준은 AI가 흔히 만드는 placeholder, raw hex/px, Primary CTA 과다, 장식용 glow/blob, 중첩 카드, 얕은 타이포 계층, 모바일 잘림, 프리셋 singleton 마지막 줄을 실패로 처리한다.
+
+## 프로젝트 계약 형식
+
+`duvu project init`은 디자인 토큰을 프로젝트별로 문서화하고, 다른 에이전트와 작업자가 이어받을 수 있는 정본을 남긴다.
+
+| 파일 | 소비자 | 역할 |
+|---|---|---|
+| `DUVU.md` | 사람, AI 에이전트 | 프로젝트 디자인 정본. 미학 방향, signature move, 핵심 토큰, 금지 규칙, 인계 프로토콜, 선택적 Picasso 브리지 |
+| `.duvu/project.json` | CLI, CI, 에이전트 | 프로젝트 선택값, 품질 점수, 유지보수 규칙, canonical 문서 |
+| `.duvu/contract.json` | AI 에이전트 | `tokens contract` 전체 JSON. 화면 생성 전 읽는 구체 계약 |
+| `.duvu/tokens.dtcg.json` | 코드 생성기, 디자인 도구, AI | DTCG 호환 토큰 그래프. 색상/간격/반경/모션/타이포의 실제 소스 |
+
+`duvu project audit`는 위 4개 파일의 존재, JSON 파싱, 템플릿/컬러 선택 정합성, DTCG alias 무결성, 토큰 값 형식, 품질 점수 통과 여부를 검증한다. 기존 계약은 기본적으로 덮어쓰지 않고, 의도적 갱신에는 `--force`를 요구한다.
+
+이 구조는 Markdown 지침 파일을 포함하되, DTCG 토큰 그래프와 감사 가능한 생성 계약을 함께 남기므로 단일 문서보다 강한 프로젝트별 유지보수 시스템이다.
+
+### 선택적 Picasso 연계 토큰화
+
+Picasso와 DUVU는 완전히 독립적인 도구다. DUVU는 Picasso 없이도 토큰 그래프와 프로젝트 계약을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 clone 도구로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때 Picasso로 클론한 레퍼런스는 원본 표면을 그대로 배포하기 위한 것이 아니라, DUVU가 분해할 고품질 관측 자료로만 취급한다.
+
+1. DUVU 단독 사용 시에는 `duvu project init`과 `duvu project audit`만으로 계약을 관리한다.
+2. Picasso 단독 사용 시에는 DUVU 계약 생성 없이 clone 결과를 별도로 관리한다.
+3. 선택적으로 함께 쓸 때 Picasso가 원본 DOM/CSS/자산을 로컬 아카이브로 캡처한다.
+4. DUVU가 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 추상 토큰 후보로 분리한다.
+5. 프로젝트에는 `DUVU.md`와 `.duvu/*` 계약만 남겨 저작권 리스크가 있는 원본 자산과 배포 계약을 분리한다.
+6. `tokens audit`, `project audit`, 시각 감사가 접근성, AI 슬롭, 반응형, 미학 방향을 검증한다.
 
 ## 1. 색상 토큰 (Color)
 

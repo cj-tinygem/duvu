@@ -9,7 +9,7 @@ DUVU의 핵심 가치는 **"세계 최고의 디자인을 해체해서 재사용
 
 DUVU의 비교 기준은 협업 캔버스, 창작 공간, 특정 생성형 디자인 제품과의 호환성이 아니다. 오직 뛰어난 디자인, 세계 최고 수준의 프론트엔드/UI/UX/비주얼, 최고 수준의 미감을 실제 산출물로 강제하고 검증하는 능력만을 기준으로 삼는다.
 
-파이프라인: **Picasso(복제 수단) → DUVU(분해/저장/재조합 시스템) → AI 스킬(사용)**
+선택적 연계: **Picasso(독립 clone 도구)**와 **DUVU(독립 토큰/계약/검증 시스템)**는 각각 단독으로 사용할 수 있다. 함께 사용할 때만 Picasso 결과를 DUVU가 분해/저장/재조합 후보로 정규화한다.
 
 ---
 
@@ -104,6 +104,7 @@ DUVU의 비교 기준은 협업 캔버스, 창작 공간, 특정 생성형 디�
 | Figma REST API payload export/sync | ✅ 구현됨. `figma-api` 포맷은 payload 생성과 자체 검증, `sync-figma`는 실제 POST 호출 담당 |
 | AI 슬롭 방지 토큰 게이트 | ✅ `tokens audit`, `tokens score`, `tokens lint`, `tokens contract`로 구조화 |
 | 미학 방향/기억점 게이트 | ✅ `tokens score`와 `tokens contract`가 aesthetic profile, direction, signature move, anti-pattern을 강제 |
+| 프로젝트별 디자인 계약 | ✅ `duvu project init`이 `DUVU.md`, `.duvu/project.json`, `.duvu/contract.json`, `.duvu/tokens.dtcg.json`을 생성하고 `duvu project audit`이 정합성을 검증 |
 | 다크/라이트 모드 지원 | ✅ 구현됨 |
 | 6개 프리셋 카테고리 + 17 컴포넌트 | ✅ 구현됨 |
 | 22개 종합 템플릿 | ✅ 구현됨 + 전수 시각 검증 완료 |
@@ -117,6 +118,6 @@ DUVU의 비교 기준은 협업 캔버스, 창작 공간, 특정 생성형 디�
 
 1. ~~**G-01**~~ **해결됨** — 17개 컴포넌트 + 22개 템플릿별 다른 UI
 2. ~~**G-02**~~ **해결됨** — 6개 화면비 × 모든 프리셋 탭 × 22개 템플릿 순회 감사
-3. **G-04** (클론 템플릿 완성도) → Picasso 연동 시 본격 착수
+3. **G-04** (클론 템플릿 완성도) → 선택적 Picasso 연동 시 본격 착수
 4. ~~**G-07**~~ **해결됨** — 16px floor + 균형 그리드 + 상태 순회 렌더 감사
 5. ~~**G-12**~~ **해결됨** — 컬러 출처/근거 메타데이터 보강 + 감사 게이트 추가

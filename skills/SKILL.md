@@ -67,6 +67,8 @@ AI가 발전할수록 **맥락과 추천을 더 잘 해석**하여 더 좋은 �
 타겟 플랫폼 코드 (references/platforms.md)
     ↓ [5단계: 검증]
 WCAG/HIG/MD3 자동 체크 (references/compliance.md)
+    ↓ [6단계: 프로젝트 계약]
+DUVU.md + .duvu/tokens.dtcg.json + .duvu/contract.json으로 인계
 ```
 
 ---
@@ -182,6 +184,24 @@ CLI: `duvu list component`, `duvu show component <id>`, `duvu match <domain>`
 각 패턴에 `intent`(왜 이 패턴인가), `meaning`(사용자에게 무슨 뜻인가), `responsive`(반응형 전환), `accessibility`(접근성 요구) 정보가 있다. Intent Engine의 차원과 동일하게, "왜 carousel인가? masonry가 아니라?"를 판단하라.
 
 CLI: `duvu list interaction`, `duvu show interaction <id>`
+
+### 2.9단계: 프로젝트별 계약 생성
+
+프로젝트 단위로 UI를 장기 유지보수해야 하면 단발성 출력만 남기지 말고 DUVU 프로젝트 계약을 생성한다.
+
+```bash
+duvu project init --template <id> --out <project-root> --name "<project-name>"
+duvu project audit --out <project-root>
+```
+
+생성되는 정본은 `DUVU.md`다. 이 파일은 사람과 AI가 먼저 읽는 디자인 인계 문서이며, `.duvu/project.json`, `.duvu/contract.json`, `.duvu/tokens.dtcg.json`이 같은 내용을 기계가 안정적으로 이어받도록 보강한다. 기존 계약 파일은 `--force`가 없으면 덮어쓰지 않는다.
+
+다른 에이전트나 작업자가 이어받을 때의 순서:
+
+1. `DUVU.md`를 읽어 미학 방향, signature move, 금지 규칙을 확인한다.
+2. `.duvu/contract.json`에서 템플릿, preview components, balance contract를 확인한다.
+3. `.duvu/tokens.dtcg.json`의 토큰 또는 alias에서 실제 값을 가져온다.
+4. 변경 후 `duvu tokens lint <html-file>`과 `duvu project audit`을 통과시킨다.
 
 ### 3단계: 토큰 생성
 
@@ -324,6 +344,29 @@ DUVU는 미감 생성 엔진이다. 코드를 쓰기 전에 `duvu tokens contrac
 
 하나라도 실패하면 수정 후 재출력.
 
+### Project Contract Engine — 프로젝트별 유지보수 정본
+
+DUVU는 단일 지침 파일보다 강한 프로젝트 계약을 남긴다. `DUVU.md`는 사람이 읽는 정본이고, `.duvu/` 아래 JSON 파일은 AI와 도구가 같은 결정을 반복 가능하게 읽는 구조화 데이터다.
+
+- `DUVU.md`: 프로젝트 정체성, 미학 방향, 핵심 토큰, 금지 규칙, AI 인계 프로토콜, 선택적 Picasso 브리지
+- `.duvu/project.json`: 선택한 템플릿/프리셋, 품질 점수, canonical 문서, 유지보수 규칙
+- `.duvu/contract.json`: 생성 계약 전체
+- `.duvu/tokens.dtcg.json`: DTCG 토큰 그래프
+
+프로젝트의 디자인 방향을 바꾸면 `duvu project init --force`로 계약을 재생성하고 `duvu project audit`으로 정합성을 확인한다.
+
+### Optional Picasso Bridge — 클론에서 토큰으로
+
+Picasso와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Picasso 없이도 독립적으로 토큰과 프로젝트 계약을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때만 DUVU가 Picasso clone 결과를 재사용 가능한 디자인 시스템 후보로 정규화한다.
+
+1. DUVU 단독 사용 시에는 Picasso 관련 단계를 건너뛰고 DUVU 프리셋/템플릿/토큰 계약만 사용한다.
+2. Picasso 단독 사용 시에는 DUVU 계약 없이 독립 clone 도구로 사용한다.
+3. 두 도구를 선택적으로 함께 쓸 때 Picasso로 원본 사이트의 DOM/CSS/자산을 로컬에 보존한다.
+4. 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 추출한다.
+5. DUVU 프리셋/템플릿/프로젝트 계약 후보로 분해한다.
+6. `tokens audit`, `project audit`, 시각 감사로 AI 슬롭과 접근성/반응형 문제를 차단한다.
+7. 원본 clone 자산은 로컬 전용으로 두고, 배포·인계에는 추상 토큰과 의도만 남긴다.
+
 ---
 
 ## 레퍼런스 파일 (필독)
@@ -427,4 +470,4 @@ Picasso로 캡처한 클론의 스타일을 재현하여 새 UI를 만들 때:
 3. **인터랙션 패턴**: 아카이브에서 사용된 동적 패턴(carousel, masonry 등)을 식별하여 `interaction_patterns`에서 매칭
 4. **조합**: DUVU 토큰(시스템) + 아카이브 참조(구체 수치) + 인터랙션 패턴(동적) → 새 콘텐츠로 재창조
 
-**DUVU 토큰은 "무엇을, 왜"를 제공하고, Picasso 아카이브는 "구체적으로 어떻게"를 제공한다. 둘을 함께 사용하라.**
+**DUVU 토큰은 "무엇을, 왜"를 제공하고, Picasso 아카이브는 선택적으로 함께 쓸 때만 "구체적으로 어떻게"를 제공한다. 두 도구는 독립적이며, 함께 사용할 때도 DUVU 계약은 원본 clone 자산에 의존하지 않아야 한다.**

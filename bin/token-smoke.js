@@ -457,6 +457,44 @@ if (!markdown.includes('DUVU Generation Contract: saas') || !markdown.includes('
 
 const tmp = mkdtempSync(join(tmpdir(), 'duvu-token-lint-'));
 try {
+  const projectDir = join(tmp, 'project-contract');
+  const projectInit = run(['project', 'init', '--template', 'saas', '--out', projectDir, '--name', 'Revenue OS']);
+  if (!projectInit.includes('DUVU 프로젝트 계약 생성 완료')) fail('project init 완료 메시지 누락');
+  const projectDoc = readFileSync(join(projectDir, 'DUVU.md'), 'utf8');
+  if (!projectDoc.includes('DUVU Project Contract: Revenue OS')) fail('DUVU.md 제목 누락');
+  if (!projectDoc.includes('AI Handoff Protocol')) fail('DUVU.md AI 인계 프로토콜 누락');
+  if (!projectDoc.includes('Optional Picasso Bridge')) fail('DUVU.md 선택적 Picasso 브리지 누락');
+  if (!projectDoc.includes('별개의 독립 도구') || !projectDoc.includes('Picasso 없이도 단독')) {
+    fail('DUVU.md가 Picasso/DUVU 독립성을 명시하지 않음');
+  }
+  const legacyDesignDocName = ['DESIGN', 'md'].join('.');
+  if (projectDoc.includes(legacyDesignDocName)) fail('DUVU.md가 금지된 파일명을 직접 언급함');
+  const projectManifest = JSON.parse(readFileSync(join(projectDir, '.duvu', 'project.json'), 'utf8'));
+  if (projectManifest.kind !== 'duvu-project-contract') fail('project manifest kind 불일치');
+  if (projectManifest.duvu?.canonicalDocument !== 'DUVU.md') fail('project manifest canonicalDocument 불일치');
+  if (projectManifest.picasso?.independent !== true || projectManifest.picasso?.required !== false) {
+    fail('project manifest가 Picasso 독립/선택 관계를 명시하지 않음');
+  }
+  if (projectManifest.selection?.template !== 'saas' || projectManifest.selection?.color !== 'toss') {
+    fail('project manifest selection 불일치');
+  }
+  const projectContract = JSON.parse(readFileSync(join(projectDir, '.duvu', 'contract.json'), 'utf8'));
+  if (projectContract.kind !== 'duvu-generation-contract') fail('project contract kind 불일치');
+  const projectTokens = JSON.parse(readFileSync(join(projectDir, '.duvu', 'tokens.dtcg.json'), 'utf8'));
+  if (!projectTokens.$schema || flatten(projectTokens).length < 70) fail('project DTCG 토큰 불완전');
+  const projectAudit = parseJson(run(['project', 'audit', '--out', projectDir, '--format', 'json']));
+  if (!projectAudit.pass || projectAudit.issues.length) fail(`project audit 실패: ${projectAudit.issues.join(', ')}`);
+  let overwriteBlocked = false;
+  try {
+    run(['project', 'init', '--template', 'saas', '--out', projectDir, '--name', 'Revenue OS']);
+  } catch (error) {
+    overwriteBlocked = true;
+    if (!String(error.stdout || '').includes('--force')) fail('project init overwrite 보호 메시지 누락');
+  }
+  if (!overwriteBlocked) fail('project init가 기존 계약을 --force 없이 덮어씀');
+  const forcedProjectInit = run(['project', 'init', '--template', 'saas', '--out', projectDir, '--name', 'Revenue OS', '--force']);
+  if (!forcedProjectInit.includes('DUVU 프로젝트 계약 생성 완료')) fail('project init --force 실패');
+
 	  const goodHtml = join(tmp, 'good.html');
 	  const generatedCssHtml = join(tmp, 'generated-css.html');
 	  const badHtml = join(tmp, 'bad.html');
