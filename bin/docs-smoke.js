@@ -61,9 +61,85 @@ for (const forbidden of [
   'transform 0.15s var(--duvu-ease-spring);',
   '.duvu-btn:active { transform: scale(0.97); }',
   '.duvu-chat__send:active { transform: scale(0.92); }',
+  'padding: 2px 8px;',
+  'padding: 10px 14px;',
+  'padding: 10px 16px;',
+  'placeholderTextColor="#525258"',
 ]) {
   if (platforms.includes(forbidden)) {
     fail(`platforms.md CSS 예시에 토큰 밖 직접값이 남아 있습니다: ${forbidden}`);
+  }
+}
+
+const tokenOnlyReferenceFiles = [
+  'data/references/components.md',
+];
+
+const directValuePatterns = [
+  {
+    name: 'raw px spacing',
+    re: /(?<!-)\b(?:padding|padding-left|padding-right|padding-top|padding-bottom|margin|margin-left|margin-right|margin-top|margin-bottom|gap|row-gap|column-gap)\s*:\s*(?!\s*var\()[^;{}\n]*\d+(?:\.\d+)?px\b/g,
+  },
+  {
+    name: 'raw px size',
+    re: /(?<!-)\b(?:width|height|min-width|min-height|max-width|max-height|top|right|bottom|left|inset)\s*:\s*(?!\s*var\()[^;{}\n]*\d+(?:\.\d+)?px\b/g,
+  },
+  {
+    name: 'raw px font-size',
+    re: /\bfont-size\s*:\s*(?!\s*var\()[^;{}\n]*\d+(?:\.\d+)?px\b/g,
+  },
+  {
+    name: 'raw shadow',
+    re: /\bbox-shadow\s*:\s*(?!\s*var\()[^;{}\n]*\d+(?:\.\d+)?px\b/g,
+  },
+  {
+    name: 'raw blur',
+    re: /\b(?:backdrop-filter|-webkit-backdrop-filter|filter)\s*:\s*[^;{}\n]*blur\(\s*\d+(?:\.\d+)?px\s*\)/g,
+  },
+  {
+    name: 'raw translate',
+    re: /\btransform\s*:\s*[^;{}\n]*(?:translate[XY]?|translate3d)\([^;{}\n]*\d+(?:\.\d+)?px/g,
+  },
+  {
+    name: 'raw rgba color',
+    re: /\brgba\(\s*(?!var\()[^)]+\)/g,
+  },
+  {
+    name: 'raw hex',
+    re: /#[0-9a-fA-F]{3,8}\b/g,
+  },
+];
+
+function extractCodeBlocks(markdown, languages = ['css', 'scss', 'javascript', 'jsx', 'tsx', 'swift', 'dart', 'kotlin', 'csharp']) {
+  return [...markdown.matchAll(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g)]
+    .filter(match => languages.includes((match[1] || '').toLowerCase()))
+    .map(match => match[2]);
+}
+
+function stripAllowedDirectValues(source) {
+  return source
+    .replace(/\b(?:min-width|min-height|width|height):\s*(?:44|48)px\b/g, 'min-size: var(--duvu-touch-min)')
+    .replace(/\bfont-size:\s*(?:16|17)px\b/g, 'font-size: var(--duvu-font-size-base)')
+    .replace(/\b(?:width|height):\s*100%\b/g, 'size: var(--duvu-fill)')
+    .replace(/@media[^{\n]*\d+(?:\.\d+)?px[^{\n]*\{/g, '@media (--duvu-breakpoint) {')
+    .replace(/#[0-9a-fA-F]{3,8}\b/g, (match, offset) => {
+      if (source.slice(Math.max(0, offset - 40), offset).includes('Color(0xFF')) return 'DUVU_PLATFORM_COLOR_LITERAL';
+      return match;
+    });
+}
+
+for (const relPath of tokenOnlyReferenceFiles) {
+  const source = read(relPath);
+  const blocks = extractCodeBlocks(source);
+  for (const [blockIndex, rawBlock] of blocks.entries()) {
+    const block = stripAllowedDirectValues(rawBlock);
+    for (const { name, re } of directValuePatterns) {
+      re.lastIndex = 0;
+      const match = re.exec(block);
+      if (match) {
+        fail(`${relPath}: 코드 예시 ${blockIndex + 1}에 ${name} 직접값이 남아 있습니다: ${match[0]}`);
+      }
+    }
   }
 }
 

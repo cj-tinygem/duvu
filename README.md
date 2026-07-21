@@ -111,7 +111,7 @@ duvu project audit --out .
 
 | 파일 | 역할 |
 |---|---|
-| `DUVU.md` | 사람과 AI가 먼저 읽는 프로젝트 디자인 정본. 미학 방향, signature move, 금지 규칙, 선택적 Picasso 브리지, 인계 프로토콜을 포함 |
+| `DUVU.md` | 사람과 AI가 먼저 읽는 프로젝트 디자인 정본. 미학 방향, signature move, 금지 규칙, 선택적 Waffle 브리지, 인계 프로토콜을 포함 |
 | `.duvu/project.json` | 프로젝트 선택값, 품질 점수, canonical 문서, 유지보수 규칙, 선택적 외부 레퍼런스 연계 메타데이터 |
 | `.duvu/contract.json` | `tokens contract`와 같은 AI 생성 계약. 템플릿, 프리셋, preview cards, balance, hard rules 포함 |
 | `.duvu/tokens.dtcg.json` | DTCG 호환 토큰 그래프. 다른 에이전트와 도구가 색상/간격/반경/모션/타이포를 안정적으로 재사용 |
@@ -120,15 +120,15 @@ duvu project audit --out .
 
 이 구조에서 DUVU는 프로젝트별 디자인 지침 문서를 품되, 더 강한 토큰 그래프와 감사 가능한 생성 계약을 함께 남긴다. 다른 에이전트는 `DUVU.md`를 읽고 `.duvu/tokens.dtcg.json`에서 실제 값을 가져오며, 작업 후 `duvu tokens lint`와 `duvu project audit`로 일관성을 검증한다.
 
-### 선택적 Picasso 연계 설계
+### 선택적 Waffle 연계 설계
 
-Picasso와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Picasso 없이도 독립적으로 프로젝트 계약, 토큰 그래프, 생성 계약, 품질 감사를 제공한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때 DUVU는 Picasso의 clone 결과를 재사용 가능한 디자인 토큰·컴포넌트·템플릿·품질 게이트 후보로 정규화한다.
+Waffle와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Waffle 없이도 독립적으로 프로젝트 계약, 토큰 그래프, 생성 계약, 품질 감사를 제공한다. Waffle도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때 DUVU는 Waffle의 clone 결과를 재사용 가능한 디자인 토큰·컴포넌트·템플릿·품질 게이트 후보로 정규화한다.
 
 선택적 결합 흐름:
 
 1. DUVU만 사용할 때는 `duvu project init`으로 프로젝트별 `DUVU.md`와 `.duvu/*` 계약을 생성한다.
-2. Picasso만 사용할 때는 DUVU 계약 없이 독립적인 clone 도구로 사용한다.
-3. 두 도구를 함께 쓸 때만 Picasso로 레퍼런스 사이트를 캡처하고 로컬 아카이브를 만든다.
+2. Waffle만 사용할 때는 DUVU 계약 없이 독립적인 clone 도구로 사용한다.
+3. 두 도구를 함께 쓸 때만 Waffle로 레퍼런스 사이트를 캡처하고 로컬 아카이브를 만든다.
 4. 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 DUVU 프리셋 후보로 분해한다.
 5. `duvu tokens audit`, `duvu project audit`, `npm run test:visual`로 접근성, AI 슬롭, 반응형, 미학 방향을 검증한다.
 6. 저작권 리스크가 있는 원본 clone 자산은 로컬 전용으로 유지하고, 배포물에는 추상 토큰과 의도만 남긴다.
@@ -147,10 +147,10 @@ duvu reset                   # 전체 기본값 복원
 ### AI 에이전트 스킬 설치
 
 ```bash
-duvu install-skill            # Claude Code + Codex CLI + Gemini CLI 전부
+duvu install-skill            # Claude Code + Codex CLI + Antigravity CLI 전부
 duvu install-skill --claude   # Claude Code만
 duvu install-skill --codex    # Codex CLI만
-duvu install-skill --gemini   # Gemini CLI만
+duvu install-skill --antigravity # Antigravity CLI만
 ```
 
 설치 경로:
@@ -158,7 +158,7 @@ duvu install-skill --gemini   # Gemini CLI만
 | 에이전트 | 경로 |
 |---------|------|
 | Claude Code | `~/.claude/skills/duvu/SKILL.md` |
-| Codex CLI + Gemini CLI (공용) | `~/.agents/skills/duvu/SKILL.md` |
+| Codex CLI + Antigravity CLI (공용) | `~/.agents/skills/duvu/SKILL.md` |
 
 설치 후 각 에이전트가 UI/프론트엔드 코드를 작성할 때 DUVU 디자인 시스템이 자동으로 적용된다.
 
@@ -224,7 +224,7 @@ duvu-cli/
 
 ## 클론 (로컬 전용)
 
-`demo/clones/`에는 Picasso로 생성한 레퍼런스 사이트 클론이 저장된다. 이 클론들은 **로컬 개발/학습 전용**이며, 원본 사이트의 저작권이 있는 콘텐츠를 포함한다.
+`demo/clones/`에는 Waffle로 생성한 레퍼런스 사이트 클론이 저장된다. 이 클론들은 **로컬 개발/학습 전용**이며, 원본 사이트의 저작권이 있는 콘텐츠를 포함한다.
 
 **배포 시 반드시 배제한다.** `.gitignore`와 `.npmignore` 모두에서 `demo/clones/`를 제외하고 있다. npm publish, Docker 빌드, CI/CD 파이프라인 등 어떤 배포 경로에서도 클론 디렉토리가 포함되어서는 안 된다.
 

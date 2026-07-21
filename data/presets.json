@@ -3792,7 +3792,7 @@
                 "status": "진행중"
               },
               {
-                "text": "Picasso 연동",
+                "text": "Waffle 연동",
                 "done": false
               }
             ]
@@ -5122,8 +5122,8 @@
         "osmo": {
           "provenance": {
             "type": "clone-extracted",
-            "source": "Picasso local clone token extraction: osmo.supply",
-            "rationale": "로컬 Picasso 클론 아카이브에서 추출한 시각 신호를 재사용 가능한 DUVU 토큰으로 환원했다. 원본 HTML/CSS 아카이브는 로컬 전용이며 패키지에는 포함하지 않는다.",
+            "source": "Waffle local clone token extraction: osmo.supply",
+            "rationale": "로컬 Waffle 클론 아카이브에서 추출한 시각 신호를 재사용 가능한 DUVU 토큰으로 환원했다. 원본 HTML/CSS 아카이브는 로컬 전용이며 패키지에는 포함하지 않는다.",
             "references": [
               "https://www.osmo.supply/",
               "demo/clones/osmo/index.html"
@@ -6018,7 +6018,7 @@
         "portfolio"
       ],
       "tone": "neutral",
-      "source": "picasso",
+      "source": "waffle",
       "fidelity": 75,
       "tokens_extracted": {
         "colors": 19,
@@ -6280,7 +6280,7 @@
         "--duvu-ease",
         "--duvu-space-md"
       ],
-      "picasso_detect": [
+      "waffle_detect": [
         ".flick-panel",
         ".swiper-slide",
         ".slick-slide",
@@ -6321,7 +6321,7 @@
         "--duvu-card-radius"
       ],
       "css_approach": "CSS columns (현재) → CSS masonry (표준 확정 시)",
-      "picasso_detect": [
+      "waffle_detect": [
         "같은 클래스 자식이 한 컨테이너에 몰림",
         "float:left 패턴"
       ]
@@ -6361,7 +6361,7 @@
       "css_tokens": [
         "--duvu-space-md"
       ],
-      "picasso_detect": [
+      "waffle_detect": [
         "IntersectionObserver 패턴",
         "scroll 이벤트 + DOM 추가"
       ]
@@ -6399,7 +6399,7 @@
         "--duvu-bg",
         "--duvu-shadow-sm"
       ],
-      "picasso_detect": [
+      "waffle_detect": [
         "position: fixed",
         "position: sticky"
       ]
@@ -6428,7 +6428,7 @@
       },
       "css_tokens": [],
       "html_approach": "loading=\"lazy\" (네이티브) 또는 IntersectionObserver",
-      "picasso_detect": [
+      "waffle_detect": [
         "data-src",
         "data-original",
         "loading=lazy"
@@ -6467,7 +6467,7 @@
         "--duvu-radius-sm",
         "--duvu-dur-fast"
       ],
-      "picasso_detect": [
+      "waffle_detect": [
         "role=tablist",
         "aria-selected",
         ".tab-active 패턴"
@@ -6505,7 +6505,7 @@
         "--duvu-card-radius",
         "--duvu-shadow-lg"
       ],
-      "picasso_detect": [
+      "waffle_detect": [
         "role=dialog",
         ".modal",
         ".overlay + z-index 높은 요소"

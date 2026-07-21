@@ -348,20 +348,20 @@ DUVU는 미감 생성 엔진이다. 코드를 쓰기 전에 `duvu tokens contrac
 
 DUVU는 단일 지침 파일보다 강한 프로젝트 계약을 남긴다. `DUVU.md`는 사람이 읽는 정본이고, `.duvu/` 아래 JSON 파일은 AI와 도구가 같은 결정을 반복 가능하게 읽는 구조화 데이터다.
 
-- `DUVU.md`: 프로젝트 정체성, 미학 방향, 핵심 토큰, 금지 규칙, AI 인계 프로토콜, 선택적 Picasso 브리지
+- `DUVU.md`: 프로젝트 정체성, 미학 방향, 핵심 토큰, 금지 규칙, AI 인계 프로토콜, 선택적 Waffle 브리지
 - `.duvu/project.json`: 선택한 템플릿/프리셋, 품질 점수, canonical 문서, 유지보수 규칙
 - `.duvu/contract.json`: 생성 계약 전체
 - `.duvu/tokens.dtcg.json`: DTCG 토큰 그래프
 
 프로젝트의 디자인 방향을 바꾸면 `duvu project init --force`로 계약을 재생성하고 `duvu project audit`으로 정합성을 확인한다.
 
-### Optional Picasso Bridge — 클론에서 토큰으로
+### Optional Waffle Bridge — 클론에서 토큰으로
 
-Picasso와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Picasso 없이도 독립적으로 토큰과 프로젝트 계약을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때만 DUVU가 Picasso clone 결과를 재사용 가능한 디자인 시스템 후보로 정규화한다.
+Waffle와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU는 Waffle 없이도 독립적으로 토큰과 프로젝트 계약을 생성하고 검증한다. Waffle도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 함께 쓰는 것은 선택 사항이며, 함께 쓸 때만 DUVU가 Waffle clone 결과를 재사용 가능한 디자인 시스템 후보로 정규화한다.
 
-1. DUVU 단독 사용 시에는 Picasso 관련 단계를 건너뛰고 DUVU 프리셋/템플릿/토큰 계약만 사용한다.
-2. Picasso 단독 사용 시에는 DUVU 계약 없이 독립 clone 도구로 사용한다.
-3. 두 도구를 선택적으로 함께 쓸 때 Picasso로 원본 사이트의 DOM/CSS/자산을 로컬에 보존한다.
+1. DUVU 단독 사용 시에는 Waffle 관련 단계를 건너뛰고 DUVU 프리셋/템플릿/토큰 계약만 사용한다.
+2. Waffle 단독 사용 시에는 DUVU 계약 없이 독립 clone 도구로 사용한다.
+3. 두 도구를 선택적으로 함께 쓸 때 Waffle로 원본 사이트의 DOM/CSS/자산을 로컬에 보존한다.
 4. 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 추출한다.
 5. DUVU 프리셋/템플릿/프로젝트 계약 후보로 분해한다.
 6. `tokens audit`, `project audit`, 시각 감사로 AI 슬롭과 접근성/반응형 문제를 차단한다.
@@ -463,11 +463,11 @@ Picasso와 DUVU는 완전히 별개의 시스템이고 별개의 도구다. DUVU
 
 ## 클론 재창조 프로토콜
 
-Picasso로 캡처한 클론의 스타일을 재현하여 새 UI를 만들 때:
+Waffle로 캡처한 클론의 스타일을 재현하여 새 UI를 만들 때:
 
 1. **클론 확인**: `duvu show clone <id>` → 추상 토큰 (색상, 폰트, 모션, 레이아웃 프리셋)
-2. **아카이브 참조**: `duvu show clone <id>`의 `archive` 필드 확인. `archive.available=true`일 때만 `archive.localPath`의 로컬 Picasso HTML/CSS를 직접 읽고, `archive.status="metadata-only"`이면 추출 토큰(`extractedTokens`)과 템플릿 메타데이터(`presetId`)만 사용
+2. **아카이브 참조**: `duvu show clone <id>`의 `archive` 필드 확인. `archive.available=true`일 때만 `archive.localPath`의 로컬 Waffle HTML/CSS를 직접 읽고, `archive.status="metadata-only"`이면 추출 토큰(`extractedTokens`)과 템플릿 메타데이터(`presetId`)만 사용
 3. **인터랙션 패턴**: 아카이브에서 사용된 동적 패턴(carousel, masonry 등)을 식별하여 `interaction_patterns`에서 매칭
 4. **조합**: DUVU 토큰(시스템) + 아카이브 참조(구체 수치) + 인터랙션 패턴(동적) → 새 콘텐츠로 재창조
 
-**DUVU 토큰은 "무엇을, 왜"를 제공하고, Picasso 아카이브는 선택적으로 함께 쓸 때만 "구체적으로 어떻게"를 제공한다. 두 도구는 독립적이며, 함께 사용할 때도 DUVU 계약은 원본 clone 자산에 의존하지 않아야 한다.**
+**DUVU 토큰은 "무엇을, 왜"를 제공하고, Waffle 아카이브는 선택적으로 함께 쓸 때만 "구체적으로 어떻게"를 제공한다. 두 도구는 독립적이며, 함께 사용할 때도 DUVU 계약은 원본 clone 자산에 의존하지 않아야 한다.**

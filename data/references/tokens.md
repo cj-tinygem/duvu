@@ -137,7 +137,7 @@ DUVU의 목표는 Figma 앱 자체를 대체하거나 자동 동기화를 과장
 
 | 파일 | 소비자 | 역할 |
 |---|---|---|
-| `DUVU.md` | 사람, AI 에이전트 | 프로젝트 디자인 정본. 미학 방향, signature move, 핵심 토큰, 금지 규칙, 인계 프로토콜, 선택적 Picasso 브리지 |
+| `DUVU.md` | 사람, AI 에이전트 | 프로젝트 디자인 정본. 미학 방향, signature move, 핵심 토큰, 금지 규칙, 인계 프로토콜, 선택적 Waffle 브리지 |
 | `.duvu/project.json` | CLI, CI, 에이전트 | 프로젝트 선택값, 품질 점수, 유지보수 규칙, canonical 문서 |
 | `.duvu/contract.json` | AI 에이전트 | `tokens contract` 전체 JSON. 화면 생성 전 읽는 구체 계약 |
 | `.duvu/tokens.dtcg.json` | 코드 생성기, 디자인 도구, AI | DTCG 호환 토큰 그래프. 색상/간격/반경/모션/타이포의 실제 소스 |
@@ -146,13 +146,13 @@ DUVU의 목표는 Figma 앱 자체를 대체하거나 자동 동기화를 과장
 
 이 구조는 Markdown 지침 파일을 포함하되, DTCG 토큰 그래프와 감사 가능한 생성 계약을 함께 남기므로 단일 문서보다 강한 프로젝트별 유지보수 시스템이다.
 
-### 선택적 Picasso 연계 토큰화
+### 선택적 Waffle 연계 토큰화
 
-Picasso와 DUVU는 완전히 독립적인 도구다. DUVU는 Picasso 없이도 토큰 그래프와 프로젝트 계약을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 clone 도구로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때 Picasso로 클론한 레퍼런스는 원본 표면을 그대로 배포하기 위한 것이 아니라, DUVU가 분해할 고품질 관측 자료로만 취급한다.
+Waffle와 DUVU는 완전히 독립적인 도구다. DUVU는 Waffle 없이도 토큰 그래프와 프로젝트 계약을 생성하고 검증한다. Waffle도 DUVU 없이 독립적으로 clone 도구로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때 Waffle로 클론한 레퍼런스는 원본 표면을 그대로 배포하기 위한 것이 아니라, DUVU가 분해할 고품질 관측 자료로만 취급한다.
 
 1. DUVU 단독 사용 시에는 `duvu project init`과 `duvu project audit`만으로 계약을 관리한다.
-2. Picasso 단독 사용 시에는 DUVU 계약 생성 없이 clone 결과를 별도로 관리한다.
-3. 선택적으로 함께 쓸 때 Picasso가 원본 DOM/CSS/자산을 로컬 아카이브로 캡처한다.
+2. Waffle 단독 사용 시에는 DUVU 계약 생성 없이 clone 결과를 별도로 관리한다.
+3. 선택적으로 함께 쓸 때 Waffle가 원본 DOM/CSS/자산을 로컬 아카이브로 캡처한다.
 4. DUVU가 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 추상 토큰 후보로 분리한다.
 5. 프로젝트에는 `DUVU.md`와 `.duvu/*` 계약만 남겨 저작권 리스크가 있는 원본 자산과 배포 계약을 분리한다.
 6. `tokens audit`, `project audit`, 시각 감사가 접근성, AI 슬롭, 반응형, 미학 방향을 검증한다.

@@ -15,6 +15,6 @@
 
 ## Docs
 - [DUVU 프로젝트 계약과 문서 스모크 검증 2026-05-05](docs/duvu-프로젝트-계약과-문서-스모크-검증-2026-05-05.md) — 2026-05-05 기준 DUVU project init/audit 계약 흐름과 docs smoke 회귀 검증을 반영하고 npm test 및 보안 감사를 통과한 상태.
-- [DUVU 프로젝트 전체 상태 push 전 2026-04-29](docs/duvu-프로젝트-전체-상태-push-전-2026-04-29.md) — push 전 전체 프로젝트 상태: npm test, npm audit, ctx audit, JS/JSON 검증, dark/light visual audit 통과. 남은 리스크는 외부 레퍼런스 1:1 비전 벤치마크와 이전 감사 문서의 일부 stale 서술.
+- [DUVU 프로젝트 전체 상태 push 전 2026-04-29](docs/duvu-프로젝트-전체-상태-push-전-2026-04-29.md) — push 전 전체 프로젝트 상태: npm test, npm audit, ctx audit, JS/JSON 검증, dark/light visual audit 통과. 당시 남은 리스크였던 이전 감사 문서의 CALIBRATION stale 서술은 현재 과거 시점 기록으로 정리되었고, 외부 레퍼런스 1:1 비전 벤치마크는 별도 운영 리스크로 남아 있다.
 - [DUVU 프로젝트 전수 감사 2026-04-29](docs/duvu-프로젝트-전수-감사-2026-04-29.md) — 과거 감사 시점 기록. 현재는 CALIBRATION.md가 존재하며, 당시의 calibrate 보류와 일부 플랫폼 레퍼런스 지적은 후속 상태 문서와 현재 구현으로 supersede되었다.
 - [DUVU 프로젝트 전수 감사 2026-04-24](docs/duvu-프로젝트-전수-감사-2026-04-24.md) — 전체 테스트와 Cortex 감사가 통과했고, 미참조 clone 폰트 정리까지 완료됨.

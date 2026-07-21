@@ -331,10 +331,10 @@ ${c.b}${c.cyan}── 확장 ──${c.r}
 ${c.b}${c.cyan}── 스킬 설치 ──${c.r}
   ${c.green}install-skill${c.r}          모든 AI 에이전트에 스킬 설치
                           ${c.d}.claude/skills/duvu/ (Claude Code)${c.r}
-                          ${c.d}.agents/skills/duvu/ (Codex+Gemini 공용)${c.r}
+                          ${c.d}.agents/skills/duvu/ (Codex+Antigravity 공용)${c.r}
   ${c.green}install-skill --claude${c.r}  Claude Code만
   ${c.green}install-skill --codex${c.r}   Codex CLI만
-  ${c.green}install-skill --gemini${c.r}  Gemini CLI만
+  ${c.green}install-skill --antigravity${c.r}  Antigravity CLI만
 
 ${c.b}${c.cyan}── 검증 ──${c.r}
   ${c.green}screenshot${c.r}            데모 페이지 시각적 검증용 스크린샷 캡처
@@ -1852,15 +1852,15 @@ function buildProjectManifest({ projectName, root, template, preset, contract, d
       rule: '다른 에이전트와 작업자는 UI 변경 전 DUVU.md를 먼저 읽고, 색상/간격/반경/모션/타이포를 .duvu/tokens.dtcg.json 또는 DUVU 토큰 alias에서만 파생한다.',
       maintenance: '토큰, 템플릿, 미학 방향, 또는 선택적으로 연결한 외부 레퍼런스가 바뀌면 duvu project init --force로 계약을 재생성하고 duvu project audit을 통과시킨다.',
     },
-    picasso: {
+    waffle: {
       independent: true,
       required: false,
-      role: 'Picasso는 DUVU와 별개의 독립 도구다. 둘은 각각 단독으로 사용할 수 있으며, 함께 쓸 때만 Picasso clone 결과를 DUVU 토큰/컴포넌트/템플릿/품질 게이트 후보로 정규화한다.',
-      optionalLocalPathHint: '/mnt/c/dev/picasso',
+      role: 'Waffle는 DUVU와 별개의 독립 도구다. 둘은 각각 단독으로 사용할 수 있으며, 함께 쓸 때만 Waffle clone 결과를 DUVU 토큰/컴포넌트/템플릿/품질 게이트 후보로 정규화한다.',
+      optionalLocalPathHint: '/mnt/c/dev/waffle',
       workflow: [
-        'DUVU만 사용할 수 있다. 이 경우 Picasso 관련 단계는 건너뛰고 DUVU 프리셋, 템플릿, 토큰 계약만 사용한다.',
-        'Picasso만 독립적으로 사용할 수도 있다. DUVU 계약 생성은 필수가 아니다.',
-        '두 도구를 선택적으로 함께 쓸 때 Picasso로 레퍼런스를 캡처하고 로컬 아카이브를 만든다.',
+        'DUVU만 사용할 수 있다. 이 경우 Waffle 관련 단계는 건너뛰고 DUVU 프리셋, 템플릿, 토큰 계약만 사용한다.',
+        'Waffle만 독립적으로 사용할 수도 있다. DUVU 계약 생성은 필수가 아니다.',
+        '두 도구를 선택적으로 함께 쓸 때 Waffle로 레퍼런스를 캡처하고 로컬 아카이브를 만든다.',
         '캡처된 색상, 타이포, 간격, 레이아웃, 모션, 컴포넌트 패턴을 DUVU 프리셋 또는 프로젝트 계약 후보로 분해한다.',
         'DUVU tokens audit, project audit, visual audit로 접근성/AI 슬롭/반응형/미학 방향을 검증한다.',
         '저작권 리스크가 있는 원본 clone 자산은 로컬 전용으로 유지하고, 프로젝트에는 추상 토큰과 의도만 남긴다.',
@@ -1899,7 +1899,7 @@ function buildDuvuProjectMarkdown({ manifest, contract, dtcg }) {
     .join('\n');
   const hardRules = contract.quality.hardRules.map(rule => `- ${rule}`).join('\n');
   const rubric = Object.entries(contract.quality.rubric).map(([key, value]) => `- ${key}: ${value}`).join('\n');
-  const picassoWorkflow = manifest.picasso.workflow.map(item => `- ${item}`).join('\n');
+  const waffleWorkflow = manifest.waffle.workflow.map(item => `- ${item}`).join('\n');
 
   return `# DUVU Project Contract: ${manifest.project.name}
 
@@ -1963,15 +1963,15 @@ ${rubric}
 5. 산출 HTML/CSS는 \`duvu tokens lint <html-file>\`로 검사하고, 프로젝트 계약은 \`duvu project audit\`으로 검사한다.
 6. 토큰이나 템플릿을 바꾸면 \`duvu project init --force\`로 이 계약을 재생성한다.
 
-## Optional Picasso Bridge
+## Optional Waffle Bridge
 
-Picasso와 DUVU는 별개의 독립 도구다. DUVU는 Picasso 없이도 단독으로 프로젝트 계약과 토큰 시스템을 생성하고 검증한다. Picasso도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때만 원본 HTML/CSS를 그대로 배포하지 말고, 아래 흐름으로 추상화한다.
+Waffle와 DUVU는 별개의 독립 도구다. DUVU는 Waffle 없이도 단독으로 프로젝트 계약과 토큰 시스템을 생성하고 검증한다. Waffle도 DUVU 없이 독립적으로 사용할 수 있다. 두 도구를 선택적으로 함께 쓸 때만 원본 HTML/CSS를 그대로 배포하지 말고, 아래 흐름으로 추상화한다.
 
-${picassoWorkflow}
+${waffleWorkflow}
 
 ## Machine Files
 
-- \`.duvu/project.json\`: 프로젝트 선택, 품질, 인계 규칙, Picasso 브리지 메타데이터
+- \`.duvu/project.json\`: 프로젝트 선택, 품질, 인계 규칙, Waffle 브리지 메타데이터
 - \`.duvu/contract.json\`: AI 생성 계약과 미학 방향
 - \`.duvu/tokens.dtcg.json\`: DTCG 호환 토큰 그래프
 `;
@@ -2069,11 +2069,11 @@ function auditProjectContract() {
     issues.push('DUVU.md: 파일 누락');
   } else {
     const md = readFileSync(mdPath, 'utf8');
-    for (const required of ['DUVU Project Contract', 'AI Handoff Protocol', 'Optional Picasso Bridge', '.duvu/tokens.dtcg.json']) {
+    for (const required of ['DUVU Project Contract', 'AI Handoff Protocol', 'Optional Waffle Bridge', '.duvu/tokens.dtcg.json']) {
       if (!md.includes(required)) issues.push(`DUVU.md: 필수 섹션/참조 누락 (${required})`);
     }
-    if (!md.includes('별개의 독립 도구') || !md.includes('Picasso 없이도 단독')) {
-      issues.push('DUVU.md: Picasso/DUVU 독립성 설명 누락');
+    if (!md.includes('별개의 독립 도구') || !md.includes('Waffle 없이도 단독')) {
+      issues.push('DUVU.md: Waffle/DUVU 독립성 설명 누락');
     }
   }
 
@@ -2111,8 +2111,8 @@ function auditProjectContract() {
   if (manifest?.duvu?.canonicalDocument !== 'DUVU.md') {
     issues.push('.duvu/project.json: canonicalDocument는 DUVU.md여야 함');
   }
-  if (manifest?.picasso && (manifest.picasso.independent !== true || manifest.picasso.required !== false)) {
-    issues.push('.duvu/project.json: Picasso는 독립적이고 선택적인 외부 도구로 표시되어야 함');
+  if (manifest?.waffle && (manifest.waffle.independent !== true || manifest.waffle.required !== false)) {
+    issues.push('.duvu/project.json: Waffle는 독립적이고 선택적인 외부 도구로 표시되어야 함');
   }
   const legacyDesignDocName = ['DESIGN', 'md'].join('.');
   if (existsSync(join(root, legacyDesignDocName))) {
@@ -2842,9 +2842,10 @@ function reset(type) {
 
 // ─── Install Skills ───
 function installSkill() {
-  const installClaude = args.includes('--claude') || (!args.includes('--codex') && !args.includes('--gemini'));
-  const installCodex = args.includes('--codex') || (!args.includes('--claude') && !args.includes('--gemini'));
-  const installGemini = args.includes('--gemini') || (!args.includes('--claude') && !args.includes('--codex'));
+  const wantsAntigravity = args.includes('--antigravity');
+  const installClaude = args.includes('--claude') || (!args.includes('--codex') && !wantsAntigravity);
+  const installCodex = args.includes('--codex') || (!args.includes('--claude') && !wantsAntigravity);
+  const installAntigravity = wantsAntigravity || (!args.includes('--claude') && !args.includes('--codex'));
 
   banner();
   console.log(`${c.b}스킬 설치 중...${c.r}\n`);
@@ -2877,11 +2878,11 @@ function installSkill() {
     console.log(`    ${c.d}${claudeSkillDir}${c.r}`);
   }
 
-  // ━━━ 2. Codex CLI + Gemini CLI: ~/.agents/skills/duvu/ ━━━
-  if (installCodex || installGemini) {
+  // ━━━ 2. Codex CLI + Antigravity CLI: ~/.agents/skills/duvu/ ━━━
+  if (installCodex || installAntigravity) {
     const agentsSkillDir = join(HOME, '.agents', 'skills', 'duvu');
     installSkillBundle(agentsSkillDir);
-    console.log(`  ${c.green}✓${c.r} Codex CLI + Gemini CLI`);
+    console.log(`  ${c.green}✓${c.r} Codex CLI + Antigravity CLI`);
     console.log(`    ${c.d}${agentsSkillDir}${c.r}`);
   }
 

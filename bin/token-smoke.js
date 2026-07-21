@@ -463,17 +463,17 @@ try {
   const projectDoc = readFileSync(join(projectDir, 'DUVU.md'), 'utf8');
   if (!projectDoc.includes('DUVU Project Contract: Revenue OS')) fail('DUVU.md 제목 누락');
   if (!projectDoc.includes('AI Handoff Protocol')) fail('DUVU.md AI 인계 프로토콜 누락');
-  if (!projectDoc.includes('Optional Picasso Bridge')) fail('DUVU.md 선택적 Picasso 브리지 누락');
-  if (!projectDoc.includes('별개의 독립 도구') || !projectDoc.includes('Picasso 없이도 단독')) {
-    fail('DUVU.md가 Picasso/DUVU 독립성을 명시하지 않음');
+  if (!projectDoc.includes('Optional Waffle Bridge')) fail('DUVU.md 선택적 Waffle 브리지 누락');
+  if (!projectDoc.includes('별개의 독립 도구') || !projectDoc.includes('Waffle 없이도 단독')) {
+    fail('DUVU.md가 Waffle/DUVU 독립성을 명시하지 않음');
   }
   const legacyDesignDocName = ['DESIGN', 'md'].join('.');
   if (projectDoc.includes(legacyDesignDocName)) fail('DUVU.md가 금지된 파일명을 직접 언급함');
   const projectManifest = JSON.parse(readFileSync(join(projectDir, '.duvu', 'project.json'), 'utf8'));
   if (projectManifest.kind !== 'duvu-project-contract') fail('project manifest kind 불일치');
   if (projectManifest.duvu?.canonicalDocument !== 'DUVU.md') fail('project manifest canonicalDocument 불일치');
-  if (projectManifest.picasso?.independent !== true || projectManifest.picasso?.required !== false) {
-    fail('project manifest가 Picasso 독립/선택 관계를 명시하지 않음');
+  if (projectManifest.waffle?.independent !== true || projectManifest.waffle?.required !== false) {
+    fail('project manifest가 Waffle 독립/선택 관계를 명시하지 않음');
   }
   if (projectManifest.selection?.template !== 'saas' || projectManifest.selection?.color !== 'toss') {
     fail('project manifest selection 불일치');

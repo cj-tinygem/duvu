@@ -8,7 +8,7 @@
     "duvu": "./bin/duvu.js"
   },
   "type": "module",
-  "keywords": ["design-system", "design-tokens", "css", "tailwind", "flutter", "swiftui", "unity", "ai-skill", "claude-code", "codex", "gemini"],
+  "keywords": ["design-system", "design-tokens", "css", "tailwind", "flutter", "swiftui", "unity", "ai-skill", "claude-code", "codex", "antigravity"],
   "files": ["bin/duvu.js", "bin/screenshot.js", "bin/link-smoke.js", "bin/package-smoke.js", "bin/security-smoke.js", "bin/token-smoke.js", "bin/docs-smoke.js", "data/", "demo/index.html", "lib/", "skills/", "README.md", "CALIBRATION.md"],
   "dependencies": {
     "puppeteer-core": "^24.42.0"

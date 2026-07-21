@@ -5,14 +5,14 @@ DUVU는 CLI, 프리셋 DB, 데모, AI 스킬 설치, clone 조회, 프로젝트�
 
 ## 다음 작업
 1. 레퍼런스 사이트와의 1:1 비전 비교가 필요한 경우 별도 벤치마크 자산으로 관리한다.
-2. `/mnt/c/dev/picasso`와 선택적으로 연계할 실제 import/ingest 명령을 설계하되, DUVU와 Picasso가 서로 독립적으로 동작한다는 경계를 유지한다.
+2. `/mnt/c/dev/waffle`와 선택적으로 연계할 실제 import/ingest 명령을 설계하되, DUVU와 Waffle가 서로 독립적으로 동작한다는 경계를 유지한다.
 3. 10개 클론 템플릿의 fidelity를 별도 점수로 관리한다.
 4. 의미 단위 줄바꿈과 DOM 기반 접근성 검사를 `duvu audit`에 확장한다.
 5. `/mnt/c`에서 발생하는 간헐 `EIO`를 WSL 네이티브 경로와 비교 검증한다.
 
 ## 최근 완료
 - `duvu project init|audit`을 추가해 프로젝트별 `DUVU.md`, `.duvu/project.json`, `.duvu/contract.json`, `.duvu/tokens.dtcg.json` 생성과 정합성 검증을 구현했다.
-- README, PRD, GAPS, 스킬 문서, 토큰 레퍼런스에 프로젝트 계약과 선택적 Picasso 브리지 설계를 반영했다.
+- README, PRD, GAPS, 스킬 문서, 토큰 레퍼런스에 프로젝트 계약과 선택적 Waffle 브리지 설계를 반영했다.
 - `npm test`, `npm audit --audit-level=moderate`, JS 문법 검사, Markdown 링크 검사 통과.
 
 ## 주의사항

@@ -625,7 +625,7 @@ DUVU의 디자인 토큰은 **플랫폼에 독립적**이다. 모든 토큰은 �
   gap: var(--duvu-space-xs);
   font-size: var(--duvu-font-size-xs);
   font-weight: 600;
-  padding: 2px 8px;
+  padding: var(--duvu-badge-padding-y, var(--duvu-space-xs)) var(--duvu-space-sm);
   border-radius: var(--duvu-radius-full);
   width: fit-content;
 }
@@ -1986,7 +1986,7 @@ struct DuvuGallery: View {
 }
 .duvu-chat__bubble {
   max-width: 75%;
-  padding: 10px 14px;
+  padding: var(--duvu-chat-bubble-padding-y, var(--duvu-space-sm)) var(--duvu-chat-bubble-padding-x, var(--duvu-space-md));
   font-size: 16px;
   line-height: 1.45;
   word-break: break-word;
@@ -2018,7 +2018,7 @@ struct DuvuGallery: View {
 .duvu-chat__input {
   flex: 1;
   min-height: 44px;
-  padding: 10px 16px;
+  padding: var(--duvu-input-padding-y, var(--duvu-space-sm)) var(--duvu-space-md);
   background: var(--duvu-surface2);
   color: var(--duvu-fg);
   border: none;
@@ -2112,7 +2112,7 @@ const DuvuChat: React.FC<DuvuChatProps> = ({ messages, onSend }) => {
           value={input}
           onChangeText={setInput}
           placeholder="메시지 입력..."
-          placeholderTextColor="#525258"
+          placeholderTextColor={DuvuTheme.colors.fg3}
           onSubmitEditing={handleSend}
           returnKeyType="send"
         />
